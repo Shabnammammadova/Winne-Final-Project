@@ -1,3 +1,4 @@
+import { ProductList } from "@/components/shared/product/ProductList"
 import { Cards } from "./components/Cards"
 import { Hero } from "./components/Hero"
 
@@ -7,6 +8,7 @@ const HomePage = () => {
         <div>
             <Hero />
             <Cards />
+            <ProductList />
         </div>
     )
 }

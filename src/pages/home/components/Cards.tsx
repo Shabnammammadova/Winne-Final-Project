@@ -3,7 +3,6 @@ import OrginalBerr from "../../../assets/images/originalbeer.webp"
 import LargerBeer from "../../../assets/images/lagerbeer.webp"
 export const Cards = () => {
     return (
-
         <section id="container"
             className=" container py-[100px] mx-auto grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 justify-items-center justify-center items-center gap-y-20 gap-x-14 mt-10 mb-5 font-sans">
             <div className=" bg-white px-[30px] py-[40px] cursor-pointer scale-100 overflow-hidden relative z-10 hover:bg-primary hover:text-black hover:transition-all hover:delay-300 hover:ease-out">
@@ -30,10 +29,6 @@ export const Cards = () => {
                     <p className="text-[16px] mb-[30px] leading-6 text-white  block">Food is any substance consumed to provide nutritional support for an organism.</p>
                 </div>
             </div>
-
-
         </section>
-
-
     )
 }
