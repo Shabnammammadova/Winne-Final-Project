@@ -8,7 +8,8 @@
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "prepare": "husky"
+    "prepare": "husky",
+    "test": "echo \"test script\" && exit 0"
   },
   "dependencies": {
     "@radix-ui/react-dialog": "^1.1.4",
