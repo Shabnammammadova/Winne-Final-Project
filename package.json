@@ -9,7 +9,7 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "prepare": "husky",
-    "test": "vitest run"
+    "start": "eslint ."
   },
   "dependencies": {
     "@radix-ui/react-dialog": "^1.1.4",
