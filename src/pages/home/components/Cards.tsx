@@ -4,7 +4,7 @@ import LargerBeer from "../../../assets/images/lagerbeer.webp"
 export const Cards = () => {
     return (
         <section
-            className=" container py-[100px] mx-auto grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 justify-items-center justify-center items-center gap-x-2 gap-y-2 lg:gap-x-8 md:gap-x-2 mt-10 mb-5 font-sans">
+            className=" container py-[100px] mx-auto grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 justify-items-center justify-center items-center gap-x-2 gap-y-2 lg:gap-x-8 md:gap-x-2 mt-10 mb-5 font-sans bg-background">
             <div className=" bg-white px-[15px] py-[15px] lg:px-[30px] lg:py-[40px] cursor-pointer scale-100 overflow-hidden relative z-10 hover:bg-primary hover:text-black hover:transition-all hover:delay-300 hover:ease-out">
                 <img src={OrginalBerr}
                     alt="Product" className="object-cover rounded-t-xl pb-[100px]" />

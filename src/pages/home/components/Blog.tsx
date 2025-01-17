@@ -5,7 +5,7 @@ import Blog3 from "../../../assets/images/blog3.webp"
 
 export const HomeBlog = () => {
     return (
-        <div className="bg-white">
+        <div className="bg-white pb-[70px]">
             <div className="flex justify-center items-center flex-col pt-[70px] font-sans">
                 <p className="text-2xl font-medium pb-2 tracking-[1px] uppercase">
                     Our Blogs
