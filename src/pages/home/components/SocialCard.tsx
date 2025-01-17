@@ -14,8 +14,8 @@ export const SocialCard = () => {
                 </div>
                 <h3 className="text-2xl font-semibold mt-2 pb-[25px] text-black font-sans capitalize">Follow us on Instagram</h3>
             </div>
-            <div className="grid grid-cols-2 gap-x-6">
-                <div className="w-full relative group group mx-auto h-[677px] overflow-hidden cursor-pointer">
+            <div className="grid xl:grid-cols-2 grid-cols-1 gap-x-6 gap-y-2">
+                <div className="w-full relative group group mx-auto  overflow-hidden cursor-pointer">
                     <img src={Instagram1} alt="" className="w-full h-auto transition-all duration-300 group-hover:scale-105" />
                     <div className="absolute inset-0 bg-black bg-opacity-0 transition-opacity duration-300 group-hover:bg-opacity-70 group-hover:flex hidden  flex-col items-center justify-center ">
                         <div className="text-center">
@@ -25,8 +25,8 @@ export const SocialCard = () => {
                     </div>
                 </div>
 
-                <div className="grid grid-cols-2 gap-x-2 gap-y-4 lg:gap-x-2 md:gap-x-2">
-                    <div className="w-[330px] relative group group mx-auto h-[330pxpx] overflow-hidden cursor-pointer">
+                <div className="grid xl:grid-cols-2 lg:grid-cols-2 md:grid-cols-2  gap-x-2 gap-y-4 lg:gap-x-4 md:gap-x-2">
+                    <div className="w-auto relative group group mx-auto h-auto overflow-hidden cursor-pointer">
                         <img src={Instagram2} alt="" className="w-full h-auto transition-all duration-300 group-hover:scale-105" />
                         <div className="absolute inset-0 bg-black bg-opacity-0 transition-opacity duration-300 group-hover:bg-opacity-70 group-hover:flex hidden  flex-col items-center justify-center ">
                             <div className="text-center">
@@ -35,7 +35,7 @@ export const SocialCard = () => {
                             <h3 className="text-sm font-medium mt-2 pb-[25px] text-white font-sans uppercase tracking-[.2em]">Shop it</h3>
                         </div>
                     </div>
-                    <div className="w-[330px] relative group group mx-auto h-[330pxpx] overflow-hidden cursor-pointer">
+                    <div className="w-auto relative group group mx-auto h-auto overflow-hidden cursor-pointer">
                         <img src={Instagram3} alt="" className="w-full h-auto transition-all duration-300 group-hover:scale-105" />
                         <div className="absolute inset-0 bg-black bg-opacity-0 transition-opacity duration-300 group-hover:bg-opacity-70 group-hover:flex hidden  flex-col items-center justify-center ">
                             <div className="text-center">
@@ -44,7 +44,7 @@ export const SocialCard = () => {
                             <h3 className="text-sm font-medium mt-2 pb-[25px] text-white font-sans uppercase tracking-[.2em]">Shop it</h3>
                         </div>
                     </div>
-                    <div className="w-[330px] relative group group mx-auto h-[330pxpx] overflow-hidden cursor-pointer">
+                    <div className="w-auto relative group group mx-auto h-auto overflow-hidden cursor-pointer">
                         <img src={Instagram4} alt="" className="w-full h-auto transition-all duration-300 group-hover:scale-105" />
                         <div className="absolute inset-0 bg-black bg-opacity-0 transition-opacity duration-300 group-hover:bg-opacity-70 group-hover:flex hidden  flex-col items-center justify-center ">
                             <div className="text-center">
@@ -53,7 +53,7 @@ export const SocialCard = () => {
                             <h3 className="text-sm font-medium mt-2 pb-[25px] text-white font-sans uppercase tracking-[.2em]">Shop it</h3>
                         </div>
                     </div>
-                    <div className="w-[330px] relative group group mx-auto h-[330pxpx] overflow-hidden cursor-pointer">
+                    <div className="w-auto relative group group mx-auto h-auto overflow-hidden cursor-pointer">
                         <img src={Instagram5} alt="" className="w-full h-auto transition-all duration-300 group-hover:scale-105" />
                         <div className="absolute inset-0 bg-black bg-opacity-0 transition-opacity duration-300 group-hover:bg-opacity-70 group-hover:flex hidden  flex-col items-center justify-center ">
                             <div className="text-center">
