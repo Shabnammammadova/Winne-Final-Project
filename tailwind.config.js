@@ -22,7 +22,7 @@ export default {
       md: "768px",
       sm: "640px",
       xs: "480px",
-      "2xs": "100px",
+      "2xs": "350px",
     },
     extend: {
       borderRadius: {
