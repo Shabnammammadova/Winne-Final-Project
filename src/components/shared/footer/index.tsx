@@ -1,11 +1,12 @@
 import Logo from "../../../assets/images/logo.webp"
 import Message from "../../../assets/icons/message.svg"
+import Payment from "../../../assets/images/payment.webp"
 import { Dribbble, Instagram, Twitter, Youtube } from "lucide-react"
 
 
 export const Footer = () => {
     return (
-        <footer className="bg-white  pb-[40px] font-sans">
+        <footer className="bg-white font-sans">
             <div className="container">
                 <div className="2xs:flex-col 2xs:gap-16 lg:flex-row flex gap-24">
                     <div className="pt-[50px] 2xs:flex-col 2xs:items-center lg:items-start flex ">
@@ -61,6 +62,18 @@ export const Footer = () => {
                                 <li><a href="" className="text-2xs font-normal leading-[32px] hover:text-red-800">Secure Payment</a></li>
                                 <li><a href="" className="text-2xs font-normal leading-[32px] hover:text-red-800 ">Stores</a></li>
                             </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div className="xs:mt-[60px] lg:mt-0 border-solid py-[26px] border-t-[1px]">
+                <div className="container">
+                    <div className="xs:flex-col xs:justify-center lg:flex lg:flex-row items-center lg:justify-between">
+                        <div className="xs:justify-center flex items-center font-sans text-sm">
+                            © Copyright 2025 | <p className="ml-[4px]">Winne By</p><p className="ml-[3px] text-slate-500 hover:underline"> EngoTheme.</p><p className="ml-[3px]"> Powered by Shopify.</p>
+                        </div>
+                        <div className="xs:flex xs:items-center xs:justify-center">
+                            <img src={Payment} alt="" />
                         </div>
                     </div>
                 </div>

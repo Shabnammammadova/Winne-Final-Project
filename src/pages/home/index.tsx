@@ -5,8 +5,6 @@ import { WineHero } from "./components/Hero2"
 import { HomeBlog } from "./components/Blog"
 import { SocialCard } from "./components/SocialCard"
 import { SwiperSlides } from "./components/Swiper"
-// import { SwiperSlide } from "./components/Swiper"
-
 
 
 const HomePage = () => {
