@@ -132,11 +132,7 @@ export const ProductList = () => {
                         </li>
                     </ul>
                 </div>
-
-
-
             </section>
         </div>
-
     )
 }
