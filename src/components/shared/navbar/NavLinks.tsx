@@ -2,7 +2,6 @@ import { paths } from "@/constants/paths";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 
-
 export const NavLinks = () => {
     const [showPageMenu, setShowPageMenu] = useState(false);
 

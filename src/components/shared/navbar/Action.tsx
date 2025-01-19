@@ -6,7 +6,7 @@ export const Action = () => {
     return (
         <div className='flex items-center justify-end gap-3 cursor-pointer'>
             <SearchSide />
-            <User className='lg:block hidden' />
+            <User />
             <Heart className='lg:block hidden' />
             <ShoppingBag />
         </div>

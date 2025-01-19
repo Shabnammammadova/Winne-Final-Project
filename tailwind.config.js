@@ -10,8 +10,9 @@ export default {
       center: "true",
       padding: {
         xl: "0px",
-        md: "2rem",
-        sm: "1rem",
+        lg: "0px",
+        md: "0px",
+        sm: "0px",
         DEFAULT: "0.5rem",
       },
     },

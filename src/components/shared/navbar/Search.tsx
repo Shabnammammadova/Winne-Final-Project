@@ -11,7 +11,7 @@ import Searchbar from "../../../assets/icons/searchbar.svg"
 
 export function SearchSide() {
     return (
-        <div className="transition-all bg-white">
+        <div className="transition-all">
             <Sheet>
                 <SheetTrigger asChild>
                     <Search className="transition-all" />

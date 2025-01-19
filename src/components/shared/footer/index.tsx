@@ -70,7 +70,7 @@ export const Footer = () => {
                 <div className="container">
                     <div className="xs:flex-col xs:justify-center lg:flex lg:flex-row items-center lg:justify-between">
                         <div className="xs:justify-center flex items-center font-sans text-sm">
-                            © Copyright 2025 | <p className="ml-[4px]">Winne By</p><p className="ml-[3px] text-slate-500 hover:underline"> EngoTheme.</p><p className="ml-[3px]"> Powered by Shopify.</p>
+                            © Copyright 2025 | <p className="ml-[4px]">Winne By</p><p className="ml-[3px] text-slate-500 cursor-pointer hover:underline"> EngoTheme.</p><p className="ml-[3px]"> Powered by Shopify.</p>
                         </div>
                         <div className="xs:flex xs:items-center xs:justify-center">
                             <img src={Payment} alt="" />
