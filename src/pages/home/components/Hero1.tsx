@@ -2,7 +2,7 @@ import { useState } from "react";
 import Hero1 from "../../../assets/images/Hero1.webp";
 import Hero2 from "../../../assets/images/Hero 2.webp";
 
-export const Hero = () => {
+export const HomeHero = () => {
     const images = [Hero1, Hero2];
     const [currentIndex, setCurrentIndex] = useState(0);
 

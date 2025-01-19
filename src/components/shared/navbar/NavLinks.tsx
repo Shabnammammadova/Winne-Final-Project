@@ -50,9 +50,11 @@ export const PageMenu = () => {
                     <p className="text-lg font-semibold uppercase hover:text-red-800 mb-[5px]">Pre-built Pages</p>
                     <div className="border-b-[1px] border-red-900 w-[70px]"></div>
                     <ul className="space-y-2 mt-2">
-                        <li className="text-gray-500 text-[15px] hover:text-red-800">About Us</li>
-                        <li className="text-gray-500 text-[15px] hover:text-red-800">Contact Us</li>
-                        <li className="text-gray-500 text-[15px] hover:text-red-800">FAQs</li>
+                        <Link to={paths.ABOUT}>
+                            <li className="text-gray-500 text-[15px] hover:text-red-800">About Us</li>
+                        </Link>
+                        <Link to={paths.CONTACT}><li className="text-gray-500 text-[15px] hover:text-red-800">Contact Us</li></Link>
+                        <Link to={paths.FAQ}><li className="text-gray-500 text-[15px] hover:text-red-800">FAQs</li></Link>
                     </ul>
                 </div>
                 <div>

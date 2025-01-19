@@ -59,13 +59,12 @@ export const Navbar = () => {
                         SHOP
                     </Link>
                     <div className="flex items-center justify-between">
-                        <Link
-                            to={paths.PAGES}
+                        <li
                             className="block mb-4 text-black hover:text-gray-700 font-medium"
                             onClick={() => setShowPageMenu(false)}
                         >
                             PAGES
-                        </Link>
+                        </li>
                         <ChevronRight onClick={togglePageMenu} />
                     </div>
                     {showPageMenu && (
@@ -74,9 +73,9 @@ export const Navbar = () => {
                                 <p className="text-lg font-semibold uppercase hover:text-red-800 mb-[5px]">Pre-built Pages</p>
                                 <div className="border-b-[1px] border-red-900 w-[70px]"></div>
                                 <ul className="space-y-2 mt-2">
-                                    <li className="text-gray-500 text-[15px] hover:text-red-800">About Us</li>
-                                    <li className="text-gray-500 text-[15px] hover:text-red-800">Contact Us</li>
-                                    <li className="text-gray-500 text-[15px] hover:text-red-800">FAQs</li>
+                                    <Link to={paths.ABOUT}><li className="text-gray-500 text-[15px] hover:text-red-800">About Us</li></Link>
+                                    <Link to={paths.CONTACT}><li className="text-gray-500 text-[15px] hover:text-red-800">Contact Us</li></Link>
+                                    <Link to={paths.FAQ}><li className="text-gray-500 text-[15px] hover:text-red-800">FAQs</li></Link>
                                 </ul>
                             </div>
                             <div className="pt-[30px]">
