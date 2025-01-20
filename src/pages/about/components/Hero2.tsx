@@ -7,7 +7,7 @@ import Journey from "../../../assets/icons/journey.svg";
 
 export const BgHero = () => {
     return (
-        <div className="py-[130px] bg-white">
+        <div className="py-[70px] bg-white">
             <div
                 className="relative bg-gradient-to-t h-[532px] w-full bg-cover bg-center bg-fixed mx-auto flex flex-col justify-center"
                 style={{ backgroundImage: `url(${About3})` }}
