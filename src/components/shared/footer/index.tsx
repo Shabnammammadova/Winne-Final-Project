@@ -13,7 +13,7 @@ export const Footer = () => {
                         <img src={Logo} alt="" className="w-[140px]" />
                         <p className="mt-[23px] text-sm 2xs:text-center lg:text-left text-black">Subscribe our newsletter and get <br />discount 30% off</p>
                         <div className="relative flex flex-row mt-5">
-                            <input type="text" className=" leading-[40px] w-[250px] h-[40px] text-[1rem]  px-[.75rem] py-[.375rem] bg-slate-50" placeholder="Your email address..." />
+                            <input type="text" className=" leading-[40px] w-[250px] h-[40px] text-[1rem]  px-[.75rem] py-[.375rem] bg-slate-50 outline-none" placeholder="Your email address..." />
                             <button type="submit" className=" absolute  top-0 right-0 bg-black text-white w-[40px] h-[40px] flex items-center justify-center hover:bg-primary"><img src={Message} alt="" className="w-[15px] h-[12px] !text-white !fill-white" /></button>
                         </div>
                         <div className="flex items-center gap-3 mt-[30px] cursor-pointer">

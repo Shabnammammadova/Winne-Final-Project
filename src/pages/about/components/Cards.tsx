@@ -24,7 +24,7 @@ export const Cards = () => {
                         1024: { slidesPerView: 3 },
                         1440: { slidesPerView: 3 }
                     }}
-                    className="lg:w-[1170px] w-full font-sans text-white"
+                    className="max-w-[1170px] w-full font-sans text-white"
                 >
                     <SwiperSlide>
                         <div className="flex flex-col items-center justify-center text-center">

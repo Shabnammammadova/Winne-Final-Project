@@ -14,13 +14,14 @@ export const BgHero = () => {
             >
                 <div className="container">
                     <Swiper
-                        spaceBetween={30}
+                        spaceBetween={3}
                         slidesPerView={1}
                         breakpoints={{
                             768: { slidesPerView: 2 },
                             1024: { slidesPerView: 3 },
+                            1440: { slidesPerView: 3 }
                         }}
-                        className="lg:w-[1170px] w-full font-sans text-white"
+                        className="max-w-[1170px] w-full font-sans text-white"
                     >
                         <SwiperSlide>
                             <div className="flex flex-col items-center justify-center text-center">

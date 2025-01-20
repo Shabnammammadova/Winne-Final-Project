@@ -39,9 +39,10 @@ export const Navbar = () => {
             </div>
             <div
                 className={`fixed top-0 left-0 w-[250px] h-full bg-white shadow-xl transform ${isSidebarOpen ? "translate-x-0" : "-translate-x-full"
-                    } transition-transform duration-300 ease-in-out z-40 lg:hidden`}
+                    } transition-transform duration-300 ease-in-out z-50 lg:hidden`}
             >
-                <div className="flex justify-between items-center p-10 bg-primary border-b border-gray-200">
+                <div className="flex justify-between items-center p-6 bg-primary border-b border-gray-200">
+                    <h6 className="text-2xl flex items-center gap-2">  <AlignLeft />Menu</h6>
                 </div>
                 <nav className="p-4">
                     <Link
