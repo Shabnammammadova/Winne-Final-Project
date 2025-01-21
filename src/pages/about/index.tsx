@@ -8,7 +8,7 @@ import { Carousel } from "@/components/shared/carousel"
 
 const About = () => {
     return (
-        <div>
+        <div className="bg-white">
             <AboutHero />
             <Story />
             <BgHero />

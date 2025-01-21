@@ -51,10 +51,10 @@ export const PageMenu = () => {
                     <div className="border-b-[1px] border-red-900 w-[70px]"></div>
                     <ul className="space-y-2 mt-2">
                         <Link to={paths.ABOUT}>
-                            <li className="text-gray-500 text-[15px] hover:text-red-800">About Us</li>
+                            <li className="text-gray-500 text-[15px] hover:text-red-800 mt-2">About Us</li>
                         </Link>
-                        <Link to={paths.CONTACT}><li className="text-gray-500 text-[15px] hover:text-red-800">Contact Us</li></Link>
-                        <Link to={paths.FAQ}><li className="text-gray-500 text-[15px] hover:text-red-800">FAQs</li></Link>
+                        <Link to={paths.CONTACT}><li className="text-gray-500 text-[15px] hover:text-red-800 mt-2">Contact Us</li></Link>
+                        <Link to={paths.FAQ}><li className="text-gray-500 text-[15px] hover:text-red-800 mt-2">FAQs</li></Link>
                     </ul>
                 </div>
                 <div>
