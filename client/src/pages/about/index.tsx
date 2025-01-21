@@ -6,7 +6,7 @@ import { Story } from "./components/Story"
 import { Carousel } from "@/components/shared/carousel"
 
 
-const About = () => {
+export const About = () => {
     return (
         <div className="bg-white">
             <AboutHero />
@@ -18,5 +18,3 @@ const About = () => {
         </div>
     )
 }
-
-export default About
