@@ -24,7 +24,7 @@ export const Footer = () => {
                         </div>
                     </div>
                     <div className="2xs:flex-col 2xs:items-center 2xs:gap-y-20 lg:flex-row flex w-full">
-                        <div className="2xs:text-center text-left 2xs:border-none lg:border-solid lg:border-l-[1px] lg:pb-[40px] lg:pl-[30px] lg:pt-[50px] lg:w-[200px]  xl:w-[360px]">
+                        <div className="2xs:text-center text-left 2xs:border-none lg:border-solid lg:border-l-[1px] lg:pb-[40px] lg:pl-[30px] lg:pt-[50px] w-full max-w-[360px]">
                             <h4 className="2xs:text-center lg:text-left text-lg text-gray-900 font-semibold">Customer Care</h4>
                             <div className="2xs:text-center flex 2xs:items-center 2xs:justify-center lg:text-left lg:items-start lg:justify-start">
                                 <span className="w-[30px] h-[2px] mt-5 bg-black block"></span>
@@ -37,7 +37,7 @@ export const Footer = () => {
                                 <li><a href="" className="text-2xs font-normal leading-[32px] hover:text-red-800 ">Terms of us</a></li>
                             </ul>
                         </div>
-                        <div className="2xs:text-center text-left 2xs:border-none lg:border-solid lg:border-l-[1px] lg:pb-[40px] lg:pl-[30px] lg:pt-[50px] lg:w-[200px]  xl:w-[360px]">
+                        <div className="2xs:text-center text-left 2xs:border-none lg:border-solid lg:border-l-[1px] lg:pb-[40px] lg:pl-[30px] lg:pt-[50px] w-full max-w-[360px]">
                             <h4 className="2xs:text-center lg:text-left text-lg text-gray-900 font-semibold">Quick Shop</h4>
                             <div className="2xs:text-center flex 2xs:items-center 2xs:justify-center lg:text-left lg:items-start lg:justify-start">
                                 <span className="w-[30px] h-[2px] mt-5 bg-black block"></span>
@@ -50,7 +50,7 @@ export const Footer = () => {
                                 <li><a href="" className="text-2xs font-normal leading-[32px] hover:text-red-800 ">Clothings</a></li>
                             </ul>
                         </div>
-                        <div className="2xs:text-center text-left 2xs:border-none lg:border-solid lg:border-l-[1px] lg:pb-[40px] lg:pl-[30px] lg:pt-[50px] lg:w-[200px]  xl:w-[360px]">
+                        <div className="2xs:text-center text-left 2xs:border-none lg:border-solid lg:border-l-[1px] lg:pb-[40px] lg:pl-[30px] lg:pt-[50px] w-full max-w-[360px]">
                             <h4 className="2xs:text-center lg:text-left text-lg text-gray-900 font-semibold">Company</h4>
                             <div className="2xs:text-center flex 2xs:items-center 2xs:justify-center lg:text-left lg:items-start lg:justify-start">
                                 <span className="w-[30px] h-[2px] mt-5 bg-black block"></span>
