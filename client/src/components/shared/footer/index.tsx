@@ -69,8 +69,8 @@ export const Footer = () => {
             <div className="xs:mt-[60px] lg:mt-0 border-solid py-[26px] border-t-[1px]">
                 <div className="container">
                     <div className="xs:flex-col xs:justify-center lg:flex lg:flex-row items-center lg:justify-between">
-                        <div className="xs:justify-center flex items-center font-sans text-sm">
-                            © Copyright 2025 | <p className="ml-[4px]">Winne By</p><p className="ml-[3px] text-slate-500 cursor-pointer hover:underline"> EngoTheme.</p><p className="ml-[3px]"> Powered by Shopify.</p>
+                        <div className="xs:justify-center xs:text-center flex items-center font-sans text-sm">
+                            © Copyright 2025 | Winne By EngoTheme. Powered by Shopify.
                         </div>
                         <div className="xs:flex xs:items-center xs:justify-center">
                             <img src={Payment} alt="" />

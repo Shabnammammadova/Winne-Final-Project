@@ -22,7 +22,7 @@ export const Cards = () => {
             ].map((card, index) => (
                 <div
                     key={index}
-                    className="group  px-[15px] py-[15px] lg:px-[30px] lg:py-[40px] cursor-pointer overflow-hidden relative z-10 hover:transition-all hover:duration-500 ease-out"
+                    className="group cursor-pointer overflow-hidden relative z-10 hover:transition-all hover:duration-500 ease-out"
                 >
                     <img
                         src={card.img}

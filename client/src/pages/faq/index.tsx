@@ -1,9 +1,15 @@
-import { FaqHero } from "../faq/components/Hero"
+import { FaqAccordion } from "./components/Accordion"
+import { FaqHero } from "./components/Hero"
+import { Offers } from "./components/Offers"
+
+
 
 export const Faq = () => {
     return (
-        <div>
+        <div className="bg-white">
             <FaqHero />
+            <FaqAccordion />
+            <Offers />
         </div>
     )
 }
