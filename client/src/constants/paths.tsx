@@ -5,6 +5,7 @@ export const paths = {
     FAQ: "/faq",
     SHOP: "/shop",
     BLOGS: "/blogs",
+    WISHLIST: "/wishlist",
     LIST: "/list",
     DETAIL: "/detail"
 }

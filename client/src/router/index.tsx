@@ -5,6 +5,7 @@ import { Blog } from "@/pages/blog";
 import { Contact } from "@/pages/contact";
 import { Faq } from "@/pages/faq";
 import HomePage from "@/pages/home";
+import { WishList } from "@/pages/wishlist";
 import { createBrowserRouter } from "react-router-dom";
 
 export const router = createBrowserRouter([
@@ -31,6 +32,10 @@ export const router = createBrowserRouter([
             {
                 path: paths.BLOGS,
                 element: <Blog />
+            },
+            {
+                path: paths.WISHLIST,
+                element: <WishList />
             }
         ]
     },

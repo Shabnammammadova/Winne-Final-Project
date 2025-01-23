@@ -21,7 +21,7 @@ const blogData = [
         date: "30",
         month: "May",
         category: "News",
-        title: "The secret to perfect wine fermentation",
+        title: "Popular types of wine today",
         description:
             "Fermentation is a key step in winemaking. Here's how you can ensure the best results for your homemade wine...",
     },
@@ -30,7 +30,7 @@ const blogData = [
         date: "30",
         month: "May",
         category: "News",
-        title: "Top 5 tips for preserving wine",
+        title: "The art of making wine",
         description:
             "Storing wine correctly ensures that it stays fresh and flavorful for a long time. Discover the best tips...",
     },
@@ -39,7 +39,7 @@ const blogData = [
         date: "30",
         month: "May",
         category: "News",
-        title: "Top 5 tips for preserving wine",
+        title: "Things to know about alcohol",
         description:
             "Storing wine correctly ensures that it stays fresh and flavorful for a long time. Discover the best tips...",
     },
@@ -48,7 +48,7 @@ const blogData = [
         date: "30",
         month: "May",
         category: "News",
-        title: "Top 5 tips for preserving wine",
+        title: "How to make handmade wine",
         description:
             "Storing wine correctly ensures that it stays fresh and flavorful for a long time. Discover the best tips...",
     },
@@ -57,7 +57,7 @@ const blogData = [
         date: "30",
         month: "May",
         category: "News",
-        title: "Top 5 tips for preserving wine",
+        title: "Does the age of the wine matter?",
         description:
             "Storing wine correctly ensures that it stays fresh and flavorful for a long time. Discover the best tips...",
     },
@@ -85,7 +85,7 @@ export const BlogCards = () => {
                         </div>
                         <div className="flex flex-col items-start justify-center font-sans mt-4">
                             <p className="text-xs leading-8 font-medium uppercase text-red-800">{blog.category}</p>
-                            <span className="text-[22px] font-medium pb-[10px] text-black capitalize">{blog.title}</span>
+                            <span className="text-[22px] font-medium pb-[10px] text-black capitalize cursor-pointer hover:text-red-800">{blog.title}</span>
                             <span className="h-[1px] w-[120px] bg-gray-400"></span>
                             <p className="text-sm text-start font-normal text-gray-400 pt-[10px]">{blog.description}</p>
                             <button className="text-sm mt-[23px] font-medium border-b border-black text-black hover:text-red-800 hover:border-red-800">
