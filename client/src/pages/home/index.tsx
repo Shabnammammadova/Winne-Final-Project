@@ -1,10 +1,10 @@
-import { ProductList } from "@/components/shared/product/ProductList"
 import { Cards } from "./components/Cards"
 import { HomeHero } from "./components/Hero1"
 import { WineHero } from "./components/Hero2"
 import { HomeBlog } from "./components/Blog"
 import { SocialCard } from "./components/SocialCard"
 import { SwiperSlides } from "./components/Swiper"
+import { WineProductList } from "@/components/shared/product/ProductList"
 
 
 const HomePage = () => {
@@ -12,7 +12,7 @@ const HomePage = () => {
         <div>
             <HomeHero />
             <Cards />
-            <ProductList />
+            <WineProductList />
             <WineHero />
             <SwiperSlides />
             <HomeBlog />

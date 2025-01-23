@@ -2,8 +2,12 @@ import Winne1 from "../../../assets/images/winne1.webp"
 import { Search } from "lucide-react"
 import ShoppingIcon from "../../../assets/icons/shoppingbag.svg"
 import HeartIcon from "../../../assets/icons/heart.svg"
+import { useNavigate } from "react-router-dom"
 
-export const ProductList = () => {
+export const WineProductList = () => {
+    const navigate = useNavigate()
+
+
     return (
         <div className="bg-white w-full">
             <div className="flex justify-center items-center flex-col pt-[70px] font-sans">
@@ -35,7 +39,7 @@ export const ProductList = () => {
                             </li>
                         </div>
                         <li className="bg-white p-2 rounded-full shadow-md transition-all duration-300 ease-in-out hover:bg-primary">
-                            <Search className="w-[20px] h-[20px]" />
+                            <Search className="w-[20px] h-[20px]" onClick={() => navigate("/detail/${id}")} />
                         </li>
                         <li className="bg-white p-2 rounded-full shadow-md transition-all duration-300 ease-in-out hover:bg-primary hover:text-white">
                             <img src={HeartIcon} alt="" className=' w-[20px] h-[20px] lg:block hidden' />

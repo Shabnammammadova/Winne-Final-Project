@@ -3,6 +3,7 @@ import { paths } from "@/constants/paths";
 import { About } from "@/pages/about";
 import { Blog } from "@/pages/blog";
 import { Contact } from "@/pages/contact";
+import { WineProductDetail } from "@/pages/detail";
 import { Faq } from "@/pages/faq";
 import HomePage from "@/pages/home";
 import { WishList } from "@/pages/wishlist";
@@ -36,6 +37,10 @@ export const router = createBrowserRouter([
             {
                 path: paths.WISHLIST,
                 element: <WishList />
+            },
+            {
+                path: paths.DETAIL(),
+                element: <WineProductDetail />
             }
         ]
     },

@@ -7,5 +7,5 @@ export const paths = {
     BLOGS: "/blogs",
     WISHLIST: "/wishlist",
     LIST: "/list",
-    DETAIL: "/detail"
+    DETAIL: (id = ":id") => `/detail/${id}`,
 }
