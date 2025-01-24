@@ -15,7 +15,7 @@ export function ShoppingCart() {
                 <img src={ShoppingIcon} alt="" className='w-[24px] h-[24px]' />
             </button>
             {isOpen && (
-                <div className="fixed inset-0 z-50 flex items-center justify-end font-sans">
+                <div className="fixed inset-0 z-50 mr-[13px] flex items-center justify-end font-sans">
                     <div
                         className="fixed inset-0 bg-black bg-opacity-50"
                         onClick={handleClose}

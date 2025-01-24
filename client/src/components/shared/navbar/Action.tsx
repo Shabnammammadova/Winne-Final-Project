@@ -7,10 +7,10 @@ import { UserDropdown } from "./User"
 
 export const Action = () => {
     return (
-        <div className='flex items-center justify-end gap-2 cursor-pointer'>
+        <div className='flex items-center justify-end  cursor-pointer'>
             <SearchSide />
             <UserDropdown />
-            <Link to={paths.WISHLIST}><img src={HeartIcon} alt="" className='w-[24px] h-[24px] lg:block hidden' /></Link>
+            <Link to={paths.WISHLIST}><img src={HeartIcon} alt="" className='w-[24px] h-[24px] mr-[13px] lg:block hidden' /></Link>
             <ShoppingCart />
         </div>
     )

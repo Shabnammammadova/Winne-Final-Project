@@ -23,7 +23,7 @@ export function UserDropdown() {
     }, []);
 
     return (
-        <div className="relative" ref={dropdownRef}>
+        <div className="relative mr-[13px]" ref={dropdownRef}>
             <img
                 src={UserIcon}
                 alt="User Icon"
