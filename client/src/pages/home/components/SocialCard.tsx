@@ -15,7 +15,7 @@ export const SocialCard = () => {
                 <h3 className="text-2xl font-semibold mt-2 pb-[25px] text-black font-sans capitalize">Follow us on Instagram</h3>
             </div>
             <div className="grid xl:grid-cols-2 grid-cols-1 gap-x-6 gap-y-2">
-                <div className="w-full relative group group mx-auto  overflow-hidden cursor-pointer">
+                <div className="w-full relative group group mx-auto overflow-hidden cursor-pointer">
                     <img src={Instagram1} alt="" className="w-full h-auto transition-all duration-300 group-hover:scale-105" />
                     <div className="absolute inset-0 bg-black bg-opacity-0 transition-opacity duration-300 group-hover:bg-opacity-70 group-hover:flex hidden  flex-col items-center justify-center ">
                         <div className="text-center">

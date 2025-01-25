@@ -23,9 +23,13 @@ export const Carousel = () => {
     const [currentIndex, setCurrentIndex] = useState(0);
 
     const handleNext = () => {
-        setCurrentIndex((prevIndex) =>
-            prevIndex === images.length - 1 ? prevIndex : prevIndex + 1
-        );
+        if (currentIndex === 2) {
+            setCurrentIndex(0)
+        } else {
+            setCurrentIndex((prevIndex) =>
+                prevIndex === images.length - 1 ? prevIndex : prevIndex + 1
+            );
+        }
     };
 
     const handlePrev = () => {

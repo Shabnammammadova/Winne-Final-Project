@@ -20,7 +20,7 @@ export function ShoppingCart() {
                         className="fixed inset-0 bg-black bg-opacity-50"
                         onClick={handleClose}
                     ></div>
-                    <div className="relative w-[300px] sm:w-[400px] h-full bg-white shadow-lg">
+                    <div className="relative w-[300px] left-[13px] sm:w-[400px] h-full bg-white shadow-lg">
                         <div className="p-4 border-b">
                             <h2 className="text-2xl text-center font-semibold">Shopping Cart</h2>
                         </div>

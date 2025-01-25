@@ -5,7 +5,7 @@ import { paths } from "@/constants/paths"
 
 export const ContactHero = () => {
     return (
-        <div className="pt-[80px]">
+        <div>
             <div className="relative bg-gradient-to-t h-[400px] w-full bg-cover bg-center mx-auto flex flex-col justify-center" style={{ backgroundImage: `url(${HeadingImage})` }}>
                 <div className="font-sans text-white text-[46px] font-medium mx-auto flex items-center justify-center text-center">
                     Contact Us

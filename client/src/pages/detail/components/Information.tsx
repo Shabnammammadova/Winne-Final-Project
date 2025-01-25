@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { History } from "./History";
 import { Return } from "./Return";
+import { Review } from "./Review";
 
 export const Information = () => {
     const [activeTab, setActiveTab] = useState("description");
@@ -41,7 +42,7 @@ export const Information = () => {
             </div>
             {activeTab === "description" && <History />}
             {activeTab === "information" && <Return />}
-            {activeTab === "review" && <History />}
+            {activeTab === "review" && <Review />}
         </div>
     );
 };

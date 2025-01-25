@@ -13,9 +13,9 @@ export const HomeBlog = () => {
                 <span className="border-red-800 border-2 w-[75px]"></span>
             </div>
             <div className="container pt-[50px] grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 gap-x-2 gap-y-2 lg:gap-x-8 md:gap-x-2 ">
-                <div className="relative">
+                <div className="relative cursor-pointer">
                     <img src={Blog1} alt="" className=" opacity-1 z-10 transition-opacity duration-300 hover:opacity-70" />
-                    <div className="absolute p-3 w-[68px] h-[68px] bg-white flex flex-col items-center bottom-[80%] left-[16%] font-sans">
+                    <div className="absolute p-3 w-[68px] h-[68px] bg-white flex flex-col items-center bottom-[80%] left-[6%] font-sans">
                         <p className="text-sm font-medium font-sans">30</p>
                         <span className="border w-8 border-black"></span>
                         <p className="text-[14px] font-sans">May</p>
@@ -30,9 +30,9 @@ export const HomeBlog = () => {
                         </p>
                     </div>
                 </div>
-                <div className="relative">
+                <div className="relative cursor-pointer">
                     <img src={Blog2} alt="" className=" opacity-1 z-10 transition-opacity duration-300 hover:opacity-70" />
-                    <div className="absolute p-3 w-[68px] h-[68px] bg-white flex flex-col items-center bottom-[80%] left-[16%] font-sans">
+                    <div className="absolute p-3 w-[68px] h-[68px] bg-white flex flex-col items-center bottom-[80%] left-[6%] font-sans">
                         <p className="text-sm font-medium font-sans">30</p>
                         <span className="border w-8 border-black"></span>
                         <p className="text-[14px] font-sans">May</p>
@@ -47,9 +47,9 @@ export const HomeBlog = () => {
                         </p>
                     </div>
                 </div>
-                <div className="relative">
+                <div className="relative cursor-pointer">
                     <img src={Blog3} alt="" className=" opacity-1 z-10 transition-opacity duration-300 hover:opacity-70" />
-                    <div className="absolute p-3 w-[68px] h-[68px] bg-white flex flex-col items-center bottom-[80%] left-[16%] font-sans">
+                    <div className="absolute p-3 w-[68px] h-[68px] bg-white flex flex-col items-center bottom-[80%] left-[6%] font-sans">
                         <p className="text-sm font-medium font-sans">30</p>
                         <span className="border w-8 border-black"></span>
                         <p className="text-[14px] font-sans">May</p>

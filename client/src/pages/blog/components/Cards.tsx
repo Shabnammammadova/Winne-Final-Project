@@ -66,7 +66,7 @@ const blogData = [
 export const BlogCards = () => {
     return (
         <div className="bg-white pb-[70px] border-b">
-            <div className="flex justify-center items-center flex-col pt-[100px] font-sans">
+            <div className="flex justify-center items-center flex-col font-sans">
                 <p className="text-2xl font-medium pb-2 tracking-[1px] uppercase">News</p>
                 <span className="border-red-800 border-2 w-[75px]"></span>
             </div>

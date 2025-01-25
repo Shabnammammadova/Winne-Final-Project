@@ -8,7 +8,7 @@ export const HomeHero = () => {
 
     return (
         <div className="relative w-full">
-            <div className="relative top-[80px] xs:top-[80px]">
+            <div className="relative">
                 <img
                     src={images[currentIndex]}
                     alt={`Slide ${currentIndex}`}
