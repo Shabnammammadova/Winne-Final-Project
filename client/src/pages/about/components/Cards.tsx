@@ -29,7 +29,7 @@ export const Cards = () => {
                     <SwiperSlide>
                         <div className="flex flex-col items-center justify-center text-center">
                             <div className='relative group'>
-                                <img src={About4} alt="" className="w-[360px] h-[395px] transition-transform duration-500 ease-in-out bg-black opacity-100 group-hover:filter group-hover:brightness-50" />
+                                <img src={About4} alt="" className="w-[360px] h-[395px] cursor-pointer  transition-transform duration-500 ease-in-out bg-black opacity-100 group-hover:filter group-hover:brightness-50" />
                                 <div className='absolute items-center justify-between gap-3  mx-auto top-[45%] left-[20%] fill-gray-300 hidden group-hover:flex'>
                                     <Facebook className='p-[12px] text-[2px] fill-gray-400 bg-white text-gray-400 w-[40px] h-[40px] cursor-pointer hover:fill-white hover:bg-primary hover:text-white' />
                                     <Twitter className='p-[12px] text-[2px] fill-gray-400 bg-white text-gray-400 w-[40px] h-[40px] cursor-pointer hover:fill-white hover:bg-primary hover:text-white' />
@@ -46,7 +46,7 @@ export const Cards = () => {
                     <SwiperSlide>
                         <div className="flex flex-col items-center justify-center text-center">
                             <div className='relative group'>
-                                <img src={About5} alt="" className="w-[360px] h-[395px] transition-transform duration-500 ease-in-out bg-black opacity-100 group-hover:filter group-hover:brightness-50" />
+                                <img src={About5} alt="" className="w-[360px] h-[395px] cursor-pointer transition-transform duration-500 ease-in-out bg-black opacity-100 group-hover:filter group-hover:brightness-50" />
                                 <div className='absolute items-center justify-between gap-3  mx-auto top-[45%] left-[20%] fill-gray-300 hidden group-hover:flex'>
                                     <Facebook className='p-[12px] text-[2px] fill-gray-400 bg-white text-gray-400 w-[40px] h-[40px] cursor-pointer hover:fill-white hover:bg-primary hover:text-white' />
                                     <Twitter className='p-[12px] text-[2px] fill-gray-400 bg-white text-gray-400 w-[40px] h-[40px] cursor-pointer hover:fill-white hover:bg-primary hover:text-white' />
@@ -63,7 +63,7 @@ export const Cards = () => {
                     <SwiperSlide>
                         <div className="flex flex-col items-center justify-center text-center">
                             <div className='relative group'>
-                                <img src={About6} alt="" className="w-[360px] h-[395px] transition-transform duration-500 ease-in-out bg-black opacity-100 group-hover:filter group-hover:brightness-50" />
+                                <img src={About6} alt="" className="w-[360px] h-[395px] cursor-pointer transition-transform duration-500 ease-in-out bg-black opacity-100 group-hover:filter group-hover:brightness-50" />
                                 <div className='absolute items-center justify-between gap-3  mx-auto top-[45%] left-[20%] fill-gray-300 hidden group-hover:flex'>
                                     <Facebook className='p-[12px] text-[2px] fill-gray-400 bg-white text-gray-400 w-[40px] h-[40px] cursor-pointer hover:fill-white hover:bg-primary hover:text-white' />
                                     <Twitter className='p-[12px] text-[2px] fill-gray-400 bg-white text-gray-400 w-[40px] h-[40px] cursor-pointer hover:fill-white hover:bg-primary hover:text-white' />
@@ -80,7 +80,7 @@ export const Cards = () => {
                     <SwiperSlide>
                         <div className="flex flex-col items-center justify-center text-center">
                             <div className='relative group'>
-                                <img src={About7} alt="" className="w-[360px] h-[395px] transition-transform duration-500 ease-in-out bg-black opacity-100 group-hover:filter group-hover:brightness-50" />
+                                <img src={About7} alt="" className="w-[360px] h-[395px] cursor-pointer  transition-transform duration-500 ease-in-out bg-black opacity-100 group-hover:filter group-hover:brightness-50" />
                                 <div className='absolute items-center justify-between gap-3  mx-auto top-[45%] left-[20%] fill-gray-300 hidden group-hover:flex'>
                                     <Facebook className='p-[12px] text-[2px] fill-gray-400 bg-white text-gray-400 w-[40px] h-[40px] cursor-pointer hover:fill-white hover:bg-primary hover:text-white' />
                                     <Twitter className='p-[12px] text-[2px] fill-gray-400 bg-white text-gray-400 w-[40px] h-[40px] cursor-pointer hover:fill-white hover:bg-primary hover:text-white' />

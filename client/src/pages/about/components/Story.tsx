@@ -16,12 +16,12 @@ export const Story = () => {
                     <p className="text-[15px] text-gray-400 leading-[1.6] font-normal mt-[15px]"> In dui magna, posuere eget, vestibulum et, tempor auctor, justo. Vivamus consectetuer hendrerit lacus. In hac habitasse platea dictumst. Ut tincidunt tincidunt erat. Lorem <br /> ipsum dolor sit amet, consectetuer adipiscing elit.</p>
                 </div>
                 <div className="w-full relative mx-auto h-auto overflow-hidden z-0  transition-all duration-500 hover:scale-95">
-                    <img src={About1} alt="" className="w-full h-auto relative" />
+                    <img src={About1} alt="" className="w-full h-auto relative cursor-pointer" />
                 </div>
             </div>
             <div className="sm:w-[525px] lg:w-[950px] xl:w-[1170px] mx-auto pt-[60px] grid xs:grid-cols-1 lg:grid-cols-2 gap-x-1 gap-y-4">
                 <div className="w-full relative mx-auto h-auto overflow-hidden z-0  transition-all duration-500 hover:scale-95">
-                    <img src={About2} alt="" className="w-full h-auto relative" />
+                    <img src={About2} alt="" className="w-full h-auto relative cursor-pointer" />
                 </div>
                 <div className="font-sans xs:pt-6 lg:pt-28 ml-6">
                     <h2 className="xs:text-[30px] lg:text-[40px]  font-medium leading-[43px] mb-5">Who We Are ?</h2>

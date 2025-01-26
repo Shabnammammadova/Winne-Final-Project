@@ -27,7 +27,7 @@ export const Location = () => {
                             <img src={PhoneIcon} alt="" className="w-[30px] h-[30px] " />
                             <div>
                                 <h3 className="text-[18px] leading-[18px] font-medium mb-[10px]">Phone</h3>
-                                <p className="text-[15px] leading-5 text-gray-400">
+                                <p className="text-[15px] leading-5 text-gray-400 cursor-pointer">
                                     (310) 479-3731
                                 </p>
                             </div>
@@ -36,7 +36,7 @@ export const Location = () => {
                             <img src={LetterIcon} alt="" className="w-[30px] h-[30px] " />
                             <div>
                                 <h3 className="text-[18px] leading-[18px] font-medium mb-[10px]">Email</h3>
-                                <p className="text-[15px] leading-5 text-gray-400">
+                                <p className="text-[15px] leading-5 text-gray-400 cursor-pointer">
                                     wine@winehouse.com
                                 </p>
                             </div>
@@ -65,7 +65,7 @@ export const Location = () => {
                         <form action="" className="mt-[40px]">
                             <input type="text" placeholder="Your name..." className="w-full h-[60px] text-xs  leading-[60px] py-[10px] px-[20px] mb-5 border-solid border-[1px] border-gray-200 outline-none " />
                             <input type="text" placeholder="Your mail..." className="w-full h-[60px] text-xs  leading-[60px] py-[10px] px-[20px] mb-5 border-solid border-[1px] border-gray-200 outline-none " />
-                            <textarea name="" id="" className="w-full h-[260px] text-xs  leading-[60px] py-[10px] px-[20px] mb-5 border-solid border-[1px] border-gray-200 outline-none"></textarea>
+                            <textarea name="" id="" className="w-full h-[200px] text-xs  leading-[60px] py-[10px] px-[20px] mb-5 border-solid border-[1px] border-gray-200 outline-none"></textarea>
                             <button className="w-full text-lg bg-black text-white uppercase font-semibold leading-[60px]  px-[65px] mb-5 transition-all duration-300 outline-none hover:bg-primary">
                                 Send
                             </button>

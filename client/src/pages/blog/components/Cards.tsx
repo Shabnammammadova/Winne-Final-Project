@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import News1 from "../../../assets/images/news1.webp";
 import News2 from "../../../assets/images/news2.webp";
 import News3 from "../../../assets/images/news3.webp";
@@ -64,6 +65,7 @@ const blogData = [
 ];
 
 export const BlogCards = () => {
+    const navigate = useNavigate()
     return (
         <div className="bg-white pb-[70px] border-b">
             <div className="flex justify-center items-center flex-col font-sans">
@@ -72,7 +74,7 @@ export const BlogCards = () => {
             </div>
             <div className="container pt-[50px] grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 gap-x-2 gap-y-10 lg:gap-x-8 md:gap-x-2">
                 {blogData.map((blog, index) => (
-                    <div key={index} className="relative">
+                    <div key={index} className="relative" onClick={() => navigate("/blog/detail/${id}")}>
                         <img
                             src={blog.img}
                             alt={blog.title}

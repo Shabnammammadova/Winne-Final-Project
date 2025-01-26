@@ -2,6 +2,7 @@ import RootLayout from "@/components/shared/RootLayout";
 import { paths } from "@/constants/paths";
 import { About } from "@/pages/about";
 import { Blog } from "@/pages/blog";
+import { BlogDetail } from "@/pages/blog/components/BlogDetail";
 import { Contact } from "@/pages/contact";
 import { WineProductDetail } from "@/pages/detail";
 import { Faq } from "@/pages/faq";
@@ -33,6 +34,10 @@ export const router = createBrowserRouter([
             {
                 path: paths.BLOGS,
                 element: <Blog />
+            },
+            {
+                path: paths.BLOGDEATIL(),
+                element: <BlogDetail />
             },
             {
                 path: paths.WISHLIST,

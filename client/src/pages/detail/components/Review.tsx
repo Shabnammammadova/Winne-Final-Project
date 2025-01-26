@@ -12,7 +12,6 @@ export const Review = () => {
                         className="w-[24px] h-[24px]  border-2 bg-white border-solid rounded-full cursor-pointer"
 
                     />
-
                 </div>
             </div>
         </div>

@@ -82,12 +82,7 @@ export const Carousel = () => {
             >
                 <ChevronRight className="w-6 h-6" />
             </button>
-            <div className="w-[246px] h-[52px] bg-white absolute top-1/3  left-0 right-0 mx-auto font-sans ">
-                <div className="flex items-center justify-center gap-3  text-center">
-                    <img src={InstagramIcon} alt="" className="w-[28px] h-[28px]" />
-                    <p className="text-black text-base leading-[52px]">Follow Us On Instagram</p>
-                </div>
-            </div>
+
         </div>
     );
 };

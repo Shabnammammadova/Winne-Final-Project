@@ -20,7 +20,7 @@ export const WineProductList = () => {
                 </span>
             </div>
             <section className="container mx-auto grid grid-cols-2 lg:grid-cols-4 md:grid-cols-3 justify-items-center justify-center items-center gap-x-2 lg:gap-x-8 md:gap-x-2 mt-[38px] font-sans">
-                <div className="cursor-pointer relative group">
+                <div className="cursor-pointer relative group" onClick={() => navigate("/detail/${id}")}>
                     <img
                         src={Winne1}
                         alt="Product"

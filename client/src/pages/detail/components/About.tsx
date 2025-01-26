@@ -8,8 +8,8 @@ export const WineAbout = () => {
 
     return (
         <div className="bg-white">
-            <div className="container mx-auto px-4 py-8">
-                <div className="flex lg:flex-row  lg:items-start 2xs:flex-col 2xs:items-center  pt-28">
+            <div className="container mx-auto">
+                <div className="flex lg:flex-row  lg:items-start 2xs:flex-col 2xs:items-center  pt-5">
                     <div className="w-full md:w-1/2 px-4 mb-8">
                         <img
                             src={Winne1}
