@@ -6,7 +6,6 @@ import Instagram4 from "../../../assets/images/instagram4.webp";
 import Instagram5 from "../../../assets/images/instagram5.webp";
 import Instagram6 from "../../../assets/images/instagram6.webp";
 import Instagram7 from "../../../assets/images/instagram7.webp";
-import InstagramIcon from "../../../assets/icons/instagram.svg";
 import { useState } from "react";
 
 const images = [

@@ -1,4 +1,5 @@
 export const paths = {
+    AUTH: "/auth",
     HOME: "/",
     ABOUT: "/about",
     CONTACT: "/contact",
