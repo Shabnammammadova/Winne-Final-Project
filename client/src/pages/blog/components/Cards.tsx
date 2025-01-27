@@ -80,7 +80,7 @@ export const BlogCards = () => {
                             alt={blog.title}
                             className="w-full min-h-[446px] object-cover opacity-1 z-10 transition-opacity duration-300 cursor-pointer hover:brightness-75"
                         />
-                        <div className="absolute p-3 w-[76px] h-[76px] bg-white flex flex-col items-center rounded-full bottom-[80%] left-[16%] font-sans">
+                        <div className="absolute p-3 w-[76px] h-[76px] bg-white flex flex-col items-center rounded-full bottom-[85%] left-[2%] font-sans">
                             <p className="text-xl font-medium font-sans">{blog.date}</p>
                             <span className="border w-12 h-[1px] border-red-700"></span>
                             <p className="text-[14px] font-sans">{blog.month}</p>

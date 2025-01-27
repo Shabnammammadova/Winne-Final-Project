@@ -5,7 +5,7 @@ export const Story = () => {
     return (
         <div className="bg-white">
             <div className="sm:w-[525px] lg:w-[950px] xl:w-[1170px] mx-auto pt-[60px] grid xs:grid-cols-1 lg:grid-cols-2 gap-x-1 gap-y-4">
-                <div className="font-sans pt-28 xs:ml-6">
+                <div className="font-sans xs:ml-6">
                     <h2 className="xs:text-[30px] lg:text-[40px] font-medium leading-[43px] mb-5">Our Story</h2>
                     <div className="flex items-center">
                         <span className="w-[45px] h-[2px] mr-[18px] bg-primary"></span>

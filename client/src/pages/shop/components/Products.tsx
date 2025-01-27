@@ -10,7 +10,7 @@ export const ShopProducts = () => {
 
     return (
         <div>
-            <section className="mx-auto grid grid-cols-1 lg:grid-cols-3 md:grid-cols-3 justify-items-center justify-center items-center gap-x-2 lg:gap-x-8 md:gap-x-2 mt-[38px] font-sans ">
+            <section className="mx-auto grid grid-cols-1 lg:grid-cols-3  md:grid-cols-3 justify-items-center justify-center items-center gap-x-2 lg:gap-x-8 md:gap-x-2 mt-[38px] font-sans ">
                 <div className="cursor-pointer relative group" onClick={() => navigate("/detail/${id}")}>
                     <img
                         src={Winne1}

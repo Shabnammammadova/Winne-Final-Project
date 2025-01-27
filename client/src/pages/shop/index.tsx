@@ -6,7 +6,7 @@ const Shop = () => {
     return (
         <div className='bg-white border-b border-gray-200 pb-6'>
             <ShopHero />
-            <div className='flex container'>
+            <div className='flex xs:flex-col md:flex-row container'>
                 <Filter />
                 <ShopProducts />
             </div>

@@ -4,15 +4,12 @@ import { Link } from "react-router-dom";
 import { Action } from "./Action";
 import Logo from "../../../assets/images/logo.webp";
 import { NavLinks } from "./NavLinks";
-import { AlignLeft, ChevronRight } from "lucide-react";
+import { AlignLeft } from "lucide-react";
 
 export const Navbar = () => {
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-    const [showPageMenu, setShowPageMenu] = useState(false);
 
-    const togglePageMenu = () => {
-        setShowPageMenu((prevState) => !prevState);
-    };
+
     const toggleSidebar = () => {
         setIsSidebarOpen((prev) => !prev);
     };
@@ -59,26 +56,28 @@ export const Navbar = () => {
                     >
                         SHOP
                     </Link>
-                    <div className="flex items-center justify-between">
-                        <li
-                            className="block mb-4 text-black hover:text-gray-700 font-medium"
-                            onClick={() => setShowPageMenu(false)}
-                        >
-                            PAGES
-                        </li>
-                        <ChevronRight onClick={togglePageMenu} />
-                    </div>
-                    {showPageMenu && (
-                        <div className="pb-[15px]">
-                            <div>
-                                <ul className="space-y-2 mt-1">
-                                    <Link to={paths.ABOUT}><li className="text-gray-500 text-[15px] hover:text-red-800">About Us</li></Link>
-                                    <Link to={paths.CONTACT}><li className="text-gray-500 text-[15px] hover:text-red-800">Contact Us</li></Link>
-                                    <Link to={paths.FAQ}><li className="text-gray-500 text-[15px] hover:text-red-800">FAQs</li></Link>
-                                </ul>
-                            </div>
-                        </div>
-                    )}
+                    <Link
+                        to={paths.ABOUT}
+                        className="block mb-4 text-black hover:text-gray-700 font-medium"
+                        onClick={toggleSidebar}
+                    >
+                        ABOUT US
+                    </Link>
+                    <Link
+                        to={paths.CONTACT}
+                        className="block mb-4 text-black hover:text-gray-700 font-medium"
+                        onClick={toggleSidebar}
+                    >
+                        CONTACT US
+                    </Link>
+                    <Link
+                        to={paths.FAQ}
+                        className="block mb-4 text-black hover:text-gray-700 font-medium"
+                        onClick={toggleSidebar}
+                    >
+                        FAQ
+                    </Link>
+
                     <Link
                         to={paths.BLOGS}
                         className="block mb-4 text-black hover:text-gray-700 font-medium"
