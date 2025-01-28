@@ -5,7 +5,7 @@ export const Login = ({ onSwitch }: { onSwitch: any }) => {
     return (
         <div className="min-h-screen bg-gray-100 text-gray-900 flex items-center justify-center px-4 py-7 sm:px-6 lg:px-8">
             <div className="w-full max-w-4xl bg-white shadow-lg rounded-lg flex flex-col md:flex-row">
-                <div className="md:w-1/2 p-6 sm:p-12 flex flex-col justify-center">
+                <div className="md:w-full p-6 sm:p-12 flex flex-col justify-center">
                     <div className="text-center">
                         <img src={Logo} alt="Logo" className="w-32 mx-auto" />
                     </div>
@@ -49,9 +49,7 @@ export const Login = ({ onSwitch }: { onSwitch: any }) => {
                         </p>
                     </div>
                 </div>
-                <div className="hidden md:block md:w-1/2">
-                    <img src="https://img.freepik.com/free-vector/tablet-login-concept-illustration_114360-7863.jpg" alt="Login" className="w-full h-full object-contain rounded-r-lg" />
-                </div>
+
             </div>
         </div>
     );

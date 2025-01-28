@@ -23,7 +23,7 @@ export const Footer = () => {
                             <Instagram className="mr-[.5rem] text-black w-[15px] h-4 hover:text-red-800" />
                         </div>
                     </div>
-                    <div className="2xs:flex-col 2xs:items-center 2xs:gap-y-20 lg:flex-row flex w-full">
+                    <div className="2xs:flex-col 2xs:items-center 2xs:justify-center 2xs:gap-y-20 lg:flex-row flex w-full">
                         <div className="2xs:text-center text-left 2xs:border-none lg:border-solid lg:border-l-[1px] lg:pb-[40px] lg:pl-[30px] lg:pt-[50px] w-full max-w-[360px]">
                             <h4 className="2xs:text-center lg:text-left text-lg text-gray-900 font-semibold">Customer Care</h4>
                             <div className="2xs:text-center flex 2xs:items-center 2xs:justify-center lg:text-left lg:items-start lg:justify-start">
