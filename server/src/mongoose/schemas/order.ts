@@ -24,6 +24,34 @@ const orderSchema = new Schema({
         type: Number,
         required: true
     },
+    pickUpLocation: {
+        type: Types.ObjectId,
+        ref: "Location",
+        required: true
+    },
+    dropOffLocation: {
+        type: Types.ObjectId,
+        ref: "Location",
+        required: true
+    },
+    billing: {
+        name: {
+            type: String,
+            required: true
+        },
+        phoneNumber: {
+            type: String,
+            required: true
+        },
+        address: {
+            type: String,
+            required: true
+        },
+        townCity: {
+            type: String,
+            required: true
+        }
+    },
     status: {
         type: String,
         enum: ["pending",
