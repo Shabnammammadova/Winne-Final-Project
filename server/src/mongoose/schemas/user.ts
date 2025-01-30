@@ -25,7 +25,7 @@ const userSchema = new Schema({
     },
     githubID: {
         type: String,
-        unique: true
+        unique: true,
     },
     isBlocked: {
         type: Boolean,
@@ -52,7 +52,7 @@ const userSchema = new Schema({
 userSchema.set("toJSON", {
     virtuals: true,
     transform: (doc, ret) => {
-        delete ret._v;
+        delete ret.__v;
     }
 })
 

@@ -1,11 +1,22 @@
 import { Request, Response } from "express";
 import Basket from "../mongoose/schemas/basket";
+import { Product as TProduct } from "../types/schema";
 
 
 const getAll = async (req: Request, res: Response) => {
     try {
         const userId = req.user?._id;
+        if (!userId) {
+            res.status(400).json({ message: "User not found" });
+            return
+        }
+
         const basket = await Basket.find({ user: userId }).populate("product", "name price images");
+
+        if (!basket.length) {
+            res.status(404).json({ message: "No items in basket" });
+            return
+        }
 
         res.json({
             message: "Basket retrieved successfully",
@@ -21,12 +32,18 @@ const getAll = async (req: Request, res: Response) => {
 
 const add = async (req: Request, res: Response) => {
     try {
-        const { productId } = req.body;
+        const { productId } = req.matchedData;
         const userId = req.user?._id;
+
+        if (!productId || !userId) {
+            res.status(400).json({ message: "Product ID and User ID are required" });
+            return
+        }
 
         const exists = await Basket.findOne({ user: userId, product: productId });
         if (exists) {
-            return res.status(400).json({ message: "Product is already in basket" });
+            res.status(400).json({ message: "Product is already in basket" });
+            return
         }
 
         const basket = new Basket({ user: userId, product: productId });
@@ -46,12 +63,13 @@ const add = async (req: Request, res: Response) => {
 
 const quantity = async (req: Request, res: Response) => {
     try {
-        const { productId, quantity } = req.body;
+        const { productId, quantity } = req.matchedData;
         const userId = req.user?._id;
 
         const basket = await Basket.findOne({ user: userId, product: productId });
         if (!basket) {
-            return res.status(404).json({ message: "Product not found in basket" });
+            res.status(404).json({ message: "Product not found in basket" });
+            return
         }
 
         basket.quantity = quantity;

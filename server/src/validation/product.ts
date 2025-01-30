@@ -27,7 +27,7 @@ export const getAllProductSchema: Schema = {
     },
     size: {
         in: ["query"],
-        isNumeric: true,
+        isString: true,
         optional: true
     },
 }
@@ -40,17 +40,7 @@ export const createProductSchema: Schema = {
         isString: true,
         notEmpty: true
     },
-    description: {
-        in: ["body"],
-        isString: true,
-        notEmpty: true
-    },
     price: {
-        in: ["body"],
-        isNumeric: true,
-        notEmpty: true
-    },
-    capacity: {
         in: ["body"],
         isNumeric: true,
         notEmpty: true

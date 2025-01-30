@@ -1,0 +1,17 @@
+import { Router } from "express";
+import favoriteController from "../controllers/favorite"
+import { authorize } from "../middlewares/user";
+import validateSchema from "../middlewares/validation";
+import { createFavoriteSchema } from "../validation/favorite";
+
+
+
+const router = Router()
+
+router.get("/", authorize({}), favoriteController.getAll)
+router.post("/", authorize({}), validateSchema(createFavoriteSchema), favoriteController.add);
+
+router.delete("/:id", authorize({}), favoriteController.remove)
+
+
+export default router

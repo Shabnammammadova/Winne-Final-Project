@@ -10,6 +10,10 @@ const productSchema = new Schema({
         type: Number,
         required: true
     },
+    size: {
+        type: String,
+        required: true,
+    },
     category: {
         type: Types.ObjectId,
         ref: "Category",

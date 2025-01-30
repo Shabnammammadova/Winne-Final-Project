@@ -14,9 +14,7 @@ const getAll = async (req: Request, res: Response) => {
         }
 
         const orders = await order.find(filter)
-            .populate("order", "name images price currency")
-            .populate("pickUpLocation")
-            .populate("pickUpLocation")
+            .populate("product", "name images price currency")
 
         orders.forEach((order) => {
             (order.product as TProduct).images = (order.product as TProduct).images.map((image) => {
@@ -41,7 +39,7 @@ const getAll = async (req: Request, res: Response) => {
 
 const create = async (req: Request, res: Response) => {
     try {
-        const { productId, totalPrice, startDate, endDate, dropOffLocation, pickUpLocation, billingName, billingAddress, billingPhoneNumber, billingTownCity } = req.matchedData;
+        const { productId, totalPrice, startDate, endDate } = req.matchedData;
 
 
         const product = await Product.findById(productId);
@@ -62,19 +60,14 @@ const create = async (req: Request, res: Response) => {
         if (exitOrder) {
             res
                 .status(400)
-                .json({ message: "This rent is already between thesw dates" });
+                .json({ message: "This product is already between this dates" });
             return
         }
 
         const dateCount = calculateDateDifference(startDate, endDate)
         const total = dateCount * product.price
         const order = new Order({
-            user: req.user?._id, productId, totalPrice, startDate, endDate, pickUpLocation, dropOffLocation, total, billing: {
-                name: billingName,
-                address: billingAddress,
-                phoneNumber: billingPhoneNumber,
-                townCity: billingTownCity,
-            },
+            user: req.user?._id, product: productId, totalPrice, startDate, endDate, total,
         });
         await order.save();
 

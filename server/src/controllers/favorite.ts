@@ -21,12 +21,13 @@ const getAll = async (req: Request, res: Response) => {
 
 const add = async (req: Request, res: Response) => {
     try {
-        const { productId } = req.body;
+        const { productId } = req.matchedData;
         const userId = req.user?._id;
 
         const exists = await Favorite.findOne({ user: userId, product: productId });
         if (exists) {
-            return res.status(400).json({ message: "Product is already in favorites" });
+            res.status(400).json({ message: "Product is already in favorites" });
+            return
         }
 
         const favorite = new Favorite({ user: userId, product: productId });

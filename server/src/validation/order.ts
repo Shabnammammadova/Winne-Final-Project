@@ -18,36 +18,6 @@ export const createOrderSchema: Schema = {
         isString: true,
         notEmpty: true
     },
-    pickUpLocation: {
-        in: ["body"],
-        isString: true,
-        notEmpty: true,
-    },
-    dropOffLocation: {
-        in: ["body"],
-        isString: true,
-        notEmpty: true
-    },
-    billingName: {
-        in: ["body"],
-        isString: true,
-        notEmpty: true
-    },
-    billingPhoneNumber: {
-        in: ["body"],
-        isString: true,
-        notEmpty: true
-    },
-    billingAddress: {
-        in: ["body"],
-        isString: true,
-        notEmpty: true,
-    },
-    billingTownCity: {
-        in: ["body"],
-        isString: true,
-        notEmpty: true
-    }
 }
 
 export const changeStatusSchema: Schema = {

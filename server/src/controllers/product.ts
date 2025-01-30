@@ -68,6 +68,7 @@ const getById = async (req: Request, res: Response) => {
 
         const product = await Product.findById(id).populate([
             "category",
+            "size",
             "reviews"
         ]);
 
