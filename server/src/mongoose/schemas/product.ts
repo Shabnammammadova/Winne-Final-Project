@@ -12,7 +12,8 @@ const productSchema = new Schema({
     },
     size: {
         type: String,
-        required: true,
+        required: false,
+        enum: ["X", "M", "L", "XXL", "S"]
     },
     category: {
         type: Types.ObjectId,

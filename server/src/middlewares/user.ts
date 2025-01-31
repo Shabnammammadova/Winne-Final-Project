@@ -2,7 +2,6 @@ import { NextFunction, Request, Response } from "express";
 import passport from "passport";
 import { IUser } from "../types/user";
 
-
 export const authorize =
     ({ isAdmin = false }) =>
         (req: Request, res: Response, next: NextFunction) => {
@@ -10,44 +9,44 @@ export const authorize =
                 res.status(401).json({
                     message: "Unauthorized",
                 });
-                return
+                return;
             }
 
-
-            if (
-                isAdmin && req.user.role !== "admin"
-            ) {
+            if (isAdmin && req.user.role !== "admin") {
                 res.status(403).json({
                     message: "Access denied",
                 });
-                return
+                return;
             }
 
             next();
         };
 
 export const authenticate = (req: Request, res: Response, next: NextFunction) =>
-    passport.authenticate("local", (err: Error | null, user: IUser, info: { message: string }) => {
-        if (err) {
-            res.status(500).json({
-                message: err.message,
-            });
-            return
-        }
-        if (!user) {
-            res.status(400).json({
-                message: info.message,
-            });
-            return
-        }
-
-        req.logIn(user, (err) => {
+    passport.authenticate(
+        "local",
+        (err: Error | null, user: IUser, info: { message: string }) => {
             if (err) {
                 res.status(500).json({
                     message: err.message,
                 });
-                return
+                return;
             }
-            next();
-        });
-    })(req, res, next); 
+            if (!user) {
+                res.status(400).json({
+                    message: info.message,
+                });
+                return;
+            }
+
+            req.logIn(user, (err) => {
+                if (err) {
+                    res.status(500).json({
+                        message: err.message,
+                    });
+                    return;
+                }
+                next();
+            });
+        }
+    )(req, res, next);

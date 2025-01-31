@@ -1,4 +1,3 @@
-import Auth from "@/components/shared/auth";
 import AuthLayout from "@/components/shared/AuthLayout";
 import RootLayout from "@/components/shared/RootLayout";
 import { paths } from "@/constants/paths";
@@ -57,12 +56,7 @@ export const router = createBrowserRouter([
             {
                 path: "",
                 element: <AuthLayout />,
-                children: [
-                    {
-                        path: paths.AUTH,
-                        element: <Auth />
-                    }
-                ]
+
             }
         ]
     },

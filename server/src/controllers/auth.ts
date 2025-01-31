@@ -1,23 +1,20 @@
-import crypto from "crypto"
 import { Request, Response } from "express";
+
 import { hashPassword } from "../utils/bcrypt";
-
 import User from "../mongoose/schemas/user";
-import { transporter } from "../utils/mail";
 import { IUser } from "../types/user";
-
+import { transporter } from "../utils/mail";
+import crypto from "crypto";
 
 const login = (req: Request, res: Response) => {
-
     res.json({
         message: "Login successful",
-        user: req.user
-    })
-}
-
+        user: req.user,
+    });
+};
 
 const register = async (req: Request, res: Response) => {
-    const user = req.matchedData;
+    const user = req.body;
     user.password = hashPassword(user.password);
 
     const userExist = await User.findOne({
@@ -36,10 +33,13 @@ const register = async (req: Request, res: Response) => {
 
     const userObj: IUser = newUser.toObject();
     delete userObj.password;
+
     res.json({
         message: "Register successful",
         user: userObj,
     });
+    console.log(user);
+
 };
 
 const logout = (req: Request, res: Response) => {
@@ -47,20 +47,21 @@ const logout = (req: Request, res: Response) => {
         if (err) {
             return res.status(500).json({
                 message: "Something went wrong",
-            })
+            });
         }
+
         res.json({
-            message: "Logout successful"
-        })
-    })
-}
+            message: "Logout successful",
+        });
+    });
+};
 
 const currentUser = (req: Request, res: Response) => {
     res.json({
         message: "Current user",
-        user: req.user
-    })
-}
+        user: req.user,
+    });
+};
 
 const forgotPassword = async (req: Request, res: Response) => {
     try {
@@ -72,7 +73,7 @@ const forgotPassword = async (req: Request, res: Response) => {
             res.status(400).json({
                 message: "User not found with this email",
             });
-            return
+            return;
         }
         const token = crypto.randomBytes(32).toString("hex");
 
@@ -97,11 +98,10 @@ const forgotPassword = async (req: Request, res: Response) => {
     } catch (e) {
         console.log(e);
         res.status(500).json({
-            message: "Something went wrong"
-        })
+            message: "Something went wrong",
+        });
     }
-}
-
+};
 
 const resetPassword = async (req: Request, res: Response) => {
     const { token, password } = req.body;
@@ -126,15 +126,11 @@ const resetPassword = async (req: Request, res: Response) => {
     });
 };
 
-
-
-const authController = {
+export default {
     login,
     register,
     logout,
     currentUser,
     forgotPassword,
-    resetPassword
-}
-
-export default authController
+    resetPassword,
+};

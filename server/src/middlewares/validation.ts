@@ -1,6 +1,10 @@
-import { Request, Response, NextFunction } from "express";
-import { checkSchema, matchedData, Schema, validationResult } from "express-validator";
-
+import { NextFunction, Request, Response } from "express";
+import {
+    checkSchema,
+    validationResult,
+    matchedData,
+    Schema,
+} from "express-validator";
 
 export default function validateSchema(schema: Schema) {
     return async (req: Request, res: Response, next: NextFunction) => {

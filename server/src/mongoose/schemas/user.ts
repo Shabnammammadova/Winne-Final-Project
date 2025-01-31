@@ -19,14 +19,6 @@ const userSchema = new Schema({
         type: String,
         required: true,
     },
-    googleID: {
-        type: String,
-        unique: true,
-    },
-    githubID: {
-        type: String,
-        unique: true,
-    },
     isBlocked: {
         type: Boolean,
         default: false,
@@ -36,9 +28,6 @@ const userSchema = new Schema({
         enum: ["admin", "user"],
         default: "user",
     },
-    avatar: {
-        type: String
-    },
     resetPasswordToken: {
         type: String,
         default: null,
@@ -47,13 +36,17 @@ const userSchema = new Schema({
         type: Date,
         default: null,
     },
+    createdAt: {
+        type: Date,
+        default: Date.now,
+    },
 });
 
 userSchema.set("toJSON", {
     virtuals: true,
     transform: (doc, ret) => {
         delete ret.__v;
-    }
-})
+    },
+});
 
 export default mongoose.model("User", userSchema);

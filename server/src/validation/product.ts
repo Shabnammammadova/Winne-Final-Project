@@ -50,6 +50,11 @@ export const createProductSchema: Schema = {
         isString: true,
         notEmpty: true
     },
+    size: {
+        in: ["query"],
+        isString: true,
+        optional: true
+    },
     currency: {
         in: ["body"],
         isString: true,

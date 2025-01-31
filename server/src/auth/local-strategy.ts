@@ -1,15 +1,17 @@
 import passport from "passport";
-import { Strategy as LocalStrategy } from 'passport-local';
+import { Strategy } from "passport-local";
 import User from "../mongoose/schemas/user";
 import { comparePasswords } from "../utils/bcrypt";
 import { IUser } from "../types/user";
 
-passport.serializeUser((user: any, done) => {
+passport.serializeUser((user, done) => {
     done(null, user._id);
 });
 
 passport.deserializeUser(async (id, done) => {
-    const user = await User.findById(id);
+    const user = await User.findById(id).select(
+        "-resetPasswordToken -resetPasswordTokenExpires"
+    );
     if (!user) {
         return done(new Error("User not found"));
     }
@@ -19,7 +21,7 @@ passport.deserializeUser(async (id, done) => {
 });
 
 export default passport.use(
-    new LocalStrategy(
+    new Strategy(
         {
             usernameField: "email",
         },
@@ -27,7 +29,7 @@ export default passport.use(
             try {
                 const user = await User.findOne({
                     email,
-                }).select("-resetPasswordToken -resetPasswordExpires");
+                }).select("-resetPasswordToken -resetPasswordTokenExpires");
                 if (!user || !comparePasswords(password, user.password)) {
                     return done(null, false, {
                         message: "Invalid email or password",
@@ -38,10 +40,8 @@ export default passport.use(
                         message: "User is blocked",
                     });
                 }
-
                 const userObj: IUser = user.toObject();
                 delete userObj.password;
-
                 done(null, userObj);
             } catch (error) {
                 done(null, false, {
