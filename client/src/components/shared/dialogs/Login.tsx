@@ -27,6 +27,7 @@ import {
 } from "@/components/ui/dialog";
 import { getCurrentUserAsync } from "@/store/features/userSlice";
 import { useAppDispatch } from "@/hooks/redux";
+import { Link, useNavigate } from "react-router-dom";
 
 const formSchema = z.object({
     email: z.string().min(2).max(50),
@@ -43,7 +44,7 @@ export const LoginDialog = () => {
         },
     });
     const dispatch = useAppDispatch();
-
+    const navigate = useNavigate()
     const { mutate, isPending } = useMutation({
         mutationFn: authService.login,
         onSuccess: (response) => {
@@ -67,7 +68,10 @@ export const LoginDialog = () => {
     function onSubmit(values: z.infer<typeof formSchema>) {
         mutate(values);
     }
-
+    const handleForgotPasswordClick = () => {
+        closeDialog();
+        navigate("/forgot-password");
+    };
     return (
         <Dialog open={isOpen} onOpenChange={closeDialog}>
             <DialogContent className="bg-white">
@@ -115,6 +119,7 @@ export const LoginDialog = () => {
                                 </FormItem>
                             )}
                         />
+                        <Link to={"/forgot-password"} className="text-primary m-auto flex justify-center underline" onClick={handleForgotPasswordClick}>Forgot Password?</Link>
                         <Button type="submit" className="w-full" disabled={isPending}>
                             Sign In
                         </Button>

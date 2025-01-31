@@ -7,7 +7,9 @@ import { BlogDetail } from "@/pages/blog/components/BlogDetail";
 import { Contact } from "@/pages/contact";
 import { WineProductDetail } from "@/pages/detail";
 import { Faq } from "@/pages/faq";
+import { ForgotPassword } from "@/pages/forgot-password";
 import HomePage from "@/pages/home";
+import { ResetPassword } from "@/pages/reset-password";
 import Shop from "@/pages/shop";
 import { WishList } from "@/pages/wishlist";
 import { createBrowserRouter } from "react-router-dom";
@@ -20,6 +22,14 @@ export const router = createBrowserRouter([
             {
                 path: paths.HOME,
                 element: <HomePage />
+            },
+            {
+                path: paths.FORGOTPASSWORD,
+                element: <ForgotPassword />
+            },
+            {
+                path: paths.RESETPASSWORD(),
+                element: <ResetPassword />
             },
             {
                 path: paths.ABOUT,

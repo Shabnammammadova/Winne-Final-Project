@@ -1,5 +1,7 @@
 export const paths = {
     AUTH: "/auth",
+    FORGOTPASSWORD: "/forgot-password",
+    RESETPASSWORD: (token = ":token") => `/reset-password/${token}`,
     HOME: "/",
     ABOUT: "/about",
     CONTACT: "/contact",

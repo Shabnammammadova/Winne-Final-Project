@@ -6,6 +6,7 @@ import "./style/global.css"
 import queryClient from './config/queryClient'
 import { Provider } from 'react-redux'
 import { store } from './store'
+import { Toaster } from 'sonner'
 
 
 createRoot(document.getElementById('root')!).render(
@@ -13,6 +14,7 @@ createRoot(document.getElementById('root')!).render(
     <Provider store={store}>
       <QueryClientProvider client={queryClient}>
         <RouterProvider router={router} />
+        <Toaster richColors />
       </QueryClientProvider>
     </Provider>
   </>

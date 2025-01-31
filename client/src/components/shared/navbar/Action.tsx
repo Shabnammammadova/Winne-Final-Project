@@ -13,9 +13,9 @@ import {
     DropdownMenuSeparator,
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { useAppSelector } from "@/hooks/redux"
-import { selectUserData } from "@/store/features/userSlice"
-import { User } from "lucide-react"
+import { useAppDispatch, useAppSelector } from "@/hooks/redux"
+import { logoutAsync, selectUserData } from "@/store/features/userSlice"
+import { LogOut, User } from "lucide-react"
 
 
 
@@ -23,7 +23,11 @@ import { User } from "lucide-react"
 export const Action = () => {
     const { openDialog } = useDialog()
     const { user } = useAppSelector(selectUserData);
+    const dispatch = useAppDispatch();
 
+    const handleLogout = () => {
+        dispatch(logoutAsync())
+    }
 
     return (
         <div className='flex items-center justify-end  cursor-pointer'>
@@ -39,8 +43,8 @@ export const Action = () => {
                         <DropdownMenuItem>
                             <Link to="/profile">Profile</Link>
                         </DropdownMenuItem>
-                        <DropdownMenuItem>
-                            <Link to="/reservations">Reservations</Link>
+                        <DropdownMenuItem className="cursor-pointer" onClick={handleLogout}> <LogOut />
+                            <span>Log out</span>
                         </DropdownMenuItem>
 
                     </DropdownMenuContent>
