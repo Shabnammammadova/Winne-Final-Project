@@ -8,6 +8,7 @@ import {
 import validateSchema from "../middlewares/validation";
 import { authenticate, authorize } from "../middlewares/user";
 import authController from "../controllers/auth";
+import passport from "passport";
 
 const router = Router();
 
@@ -22,6 +23,21 @@ router.post(
 router.post("/logout", authController.logout);
 
 router.get("/current-user", authorize({}), authController.currentUser);
+
+router.get("/google", passport.authenticate("google", { scope: ["profile", "email"] }));
+
+router.get("/", passport.authenticate("google", { failureRedirect: "/login" }), (req, res) => {
+    res.redirect("http://localhost:5173");
+}
+);
+router.get('/github',
+    passport.authenticate('github', { scope: ['user:email'] }));
+
+router.get('/github/callback',
+    passport.authenticate('github', { failureRedirect: '/login' }),
+    function (req, res) {
+        res.redirect('http://localhost:5173');
+    });
 
 router.post(
     "/forgot-password",

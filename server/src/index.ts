@@ -9,6 +9,8 @@ import cors from "cors";
 import { createServer } from 'node:http';
 
 import "./auth/local-strategy"
+import "./auth/google-strategy"
+import "./auth/github-strategy"
 import authRoutes from "./routes/auth";
 import categoryRoutes from "./routes/category"
 import productRoutes from "./routes/product"

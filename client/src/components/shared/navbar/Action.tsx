@@ -39,7 +39,6 @@ export const Action = () => {
                     <DropdownMenuContent>
                         <DropdownMenuLabel>My Account</DropdownMenuLabel>
                         <DropdownMenuSeparator />
-
                         <DropdownMenuItem>
                             <Link to="/profile">Profile</Link>
                         </DropdownMenuItem>

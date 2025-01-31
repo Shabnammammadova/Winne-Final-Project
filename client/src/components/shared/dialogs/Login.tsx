@@ -4,7 +4,6 @@ import { useForm } from "react-hook-form";
 import { AxiosError } from "axios";
 import { toast } from "sonner";
 import { z } from "zod";
-
 import { ModalTypeEnum, useDialog } from "@/hooks/useDialog";
 import { AuthResponseType } from "@/services/auth/types";
 import authService from "@/services/auth/auth";
@@ -28,6 +27,9 @@ import {
 import { getCurrentUserAsync } from "@/store/features/userSlice";
 import { useAppDispatch } from "@/hooks/redux";
 import { Link, useNavigate } from "react-router-dom";
+import GoogleIcon from "../../../assets/images/google-icon.png"
+import GithubIcon from "../../../assets/images/github-icon.png"
+
 
 const formSchema = z.object({
     email: z.string().min(2).max(50),
@@ -125,6 +127,32 @@ export const LoginDialog = () => {
                         </Button>
                     </form>
                 </Form>
+                <div className="my-3 border-b text-center">
+                    <div
+                        className="leading-none px-2 inline-block text-sm text-gray-600 tracking-wide font-medium bg-white transform translate-y-1/2">
+                        Or sign up with
+                    </div>
+                </div>
+                <div className="flex flex-col">
+                    <button
+                        className="w-[300px] mb-2 mt-2 flex mx-auto  justify-center items-center gap-2  p-2 cursor-pointer border border-solid rounded-3xl  border-inherit font-bold"
+                        onClick={() => {
+                            window.location.href = "http://localhost:3000/auth/google";
+                        }}
+                    >
+                        <img src={GoogleIcon} className="w-[1.5rem] h-[1.5rem]" alt="" />
+                        Google
+                    </button>
+                    <button
+                        className="w-[300px] mb-2 mt-2 flex mx-auto  justify-center items-center gap-2 p-2 cursor-pointer border border-solid rounded-3xl  border-inherit font-bold"
+                        onClick={() => {
+                            window.location.href = "http://localhost:3000/auth/github";
+                        }}
+                    >
+                        <img src={GithubIcon} className="w-[1.5rem] h-[1.5rem] " alt="" />
+                        Github
+                    </button>
+                </div>
             </DialogContent>
         </Dialog>
     );

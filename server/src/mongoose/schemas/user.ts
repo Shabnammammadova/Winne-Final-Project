@@ -19,6 +19,14 @@ const userSchema = new Schema({
         type: String,
         required: true,
     },
+    googleID: {
+        type: String,
+        unique: true,
+    },
+    githubID: {
+        type: String,
+        unique: true
+    },
     isBlocked: {
         type: Boolean,
         default: false,
