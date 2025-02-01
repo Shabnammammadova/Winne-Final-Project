@@ -26,7 +26,7 @@ const HomePage = () => {
             <Cards />
             <WineProductList product={products} />
             <WineHero />
-            <SwiperSlides />
+            <SwiperSlides product={products} />
             <HomeBlog />
             <SocialCard />
         </div>

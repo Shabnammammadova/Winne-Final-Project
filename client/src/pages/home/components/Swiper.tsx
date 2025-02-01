@@ -7,9 +7,14 @@ import "swiper/css/pagination";
 import { Autoplay, Navigation, Pagination } from "swiper/modules";
 import ShoppingIcon from "../../../assets/icons/shoppingbag.svg"
 import HeartIcon from "../../../assets/icons/heart.svg"
+import { Product } from "@/types";
 
 
-export const SwiperSlides = () => {
+type Props = {
+    product: Product[]
+}
+
+export const SwiperSlides = ({ product }: Props) => {
     return (
         <div className="bg-white w-full">
             <div className="flex justify-center items-center flex-col pt-[70px] font-sans">
@@ -34,18 +39,18 @@ export const SwiperSlides = () => {
                 }}
                 className="container mx-auto mt-[38px] font-sans"
             >
-                {[1, 2, 3, 4, 5, 6].map((_, index) => (
+                {product?.map((wineproduct, index) => (
                     <SwiperSlide key={index} className="cursor-pointer relative group">
                         <img
-                            src={Winne1}
+                            src={wineproduct.images[0]}
                             alt="Product"
                             className="object-cover pb-[100px]"
                         />
                         <div className="px-4 py-3 bg-white text-center h-[100px] absolute left-0 bottom-0 w-full">
                             <span className="xs:text-[14px] text-black capitalize xl:text-base font-medium pt-5 pb-[10px]">
-                                Alias Secret Red Blend
+                                {wineproduct.name}
                             </span>
-                            <p className="text-[15px] font-bold text-red-800">$70.00</p>
+                            <p className="text-[15px] font-bold text-red-800">${wineproduct.price}</p>
                         </div>
                         <ul className="absolute flex gap-4 justify-center items-center bottom-[30%] left-1/2 transform -translate-x-1/2 translate-y-0 opacity-0 group-hover:opacity-100 group-hover:translate-y-4 transition-all duration-500 ease-in-out">
                             <div className="flex flex-col items-center relative font-sans">
