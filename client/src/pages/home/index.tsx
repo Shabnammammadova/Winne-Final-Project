@@ -9,11 +9,13 @@ import { useQuery } from "@tanstack/react-query"
 import { QUERY_KEYS } from "@/constants/query-keys"
 import wineService from "@/services/wine"
 import { ScrollToTop } from "@/components/shared/ScrollToTop"
+import { RenderIf } from "@/components/shared/RenderIf"
+
 
 
 
 const HomePage = () => {
-    const { data: wineList, } = useQuery({
+    const { data: wineList, isLoading } = useQuery({
         queryKey: [QUERY_KEYS.WINE_LIST],
         queryFn: () => wineService.getAll({})
     })
@@ -25,7 +27,16 @@ const HomePage = () => {
         <div>
             <HomeHero />
             <Cards />
-            <WineProductList product={products} />
+            <RenderIf condition={isLoading}>
+                {
+                    [1].map((index) => (
+                        <WineProductList.Skeleton key={index} />
+                    ))
+                }
+            </RenderIf>
+            <RenderIf condition={!isLoading}>
+                <WineProductList product={products} />
+            </RenderIf>
             <WineHero />
             <SwiperSlides product={products} />
             <HomeBlog />
