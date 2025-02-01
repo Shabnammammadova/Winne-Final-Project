@@ -8,6 +8,7 @@ import { WineProductList } from "@/components/shared/product/ProductList"
 import { useQuery } from "@tanstack/react-query"
 import { QUERY_KEYS } from "@/constants/query-keys"
 import wineService from "@/services/wine"
+import { ScrollToTop } from "@/components/shared/ScrollToTop"
 
 
 
@@ -29,6 +30,7 @@ const HomePage = () => {
             <SwiperSlides product={products} />
             <HomeBlog />
             <SocialCard />
+            <ScrollToTop />
         </div>
     )
 }

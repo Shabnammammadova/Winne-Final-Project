@@ -1,20 +1,28 @@
-import Winne1 from "../../../assets/images/winne1.webp"
 import { Heart } from "lucide-react";
 import { Offer } from "./Offer";
 import { Delivery } from "./Delivery";
 import { AddToCart } from "./AddToCart";
-export const WineAbout = () => {
+import { Product } from "@/types";
 
 
+type Props = {
+    product: Product
+}
+
+
+export const WineAbout = ({ product = { name: '', price: 0, images: [] } }: Props) => {
+
+    const { name, price, images } = product;
     return (
         <div className="bg-white">
             <div className="container mx-auto">
+
                 <div className="flex lg:flex-row  lg:items-start 2xs:flex-col 2xs:items-center  pt-5">
                     <div className="w-full md:w-1/2 px-4 mb-8">
                         <img
-                            src={Winne1}
+                            src={images[0]}
                             alt="Product"
-                            className="w-full h-auto max-w-[600px] max-h-[600px] rounded-lg shadow-md mb-4"
+                            className="w-full h-auto max-w-[600px] max-h-[700px] rounded-lg shadow-md mb-4 cursor-pointer"
                             id="mainImage"
                         />
                     </div>
@@ -22,8 +30,8 @@ export const WineAbout = () => {
                         <div className="flex">
                             <div className="w-full">
                                 <h2 className="text-3xl font-bold mb-2 cursor-pointer">
-                                    Heavyweight Cabernet Sauv</h2>
-                                <p className="text-red-800 font-bold mb-4">$65.00 USD</p>
+                                    {name}</h2>
+                                <p className="text-red-800 font-bold mb-4">$ {price}USD</p>
                             </div>
                             <div className="bg-white p-2 rounded-full transition-all duration-300 ease-in-out w-[40px] h-[40px] hover:bg-primary border-solid border-[1px] border-gray-200 cursor-pointer flex items-center justify-center hover:text-white">
                                 <Heart className=" w-[16px] h-[16px] " />

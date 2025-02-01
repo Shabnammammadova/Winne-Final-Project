@@ -10,7 +10,7 @@ export const Return = () => {
                         <p className="text-base py-[10px] font-normal  text-gray-400">There’s no right way or wrong way to taste wine. It’s this simple — do you like what you’re drinking or do you not like what you’re drinking? That said, there’s a formal way to taste wine that reveals more about the wine in your glass, even before you start drinking. Here at VinePair, we understand that this method of tasting can be intimidating, so we’re going to break it down for you, leaving you feeling comfortable and confident if you wish to use this method.People often romance the drinking of wine and everything about it — for good reason — wine tastes great! That said, things like decanting wine and keeping a bottle at the right temperature absolutely enhance your drinking experience all the way down to your taste buds..Human beings have been drinking wine for quite a long time — archaeologists have discovered evidence of consumption in Georgia dated to circa 6000 BC and production sites in Armenia dated to 4100 BC. As wine has woven its way through all of recorded history we’ve found more than a few interesting facts to share. Want to explore the entire history of wine? Jump over to our interactive timeline — How Wine Colonized The World. Otherwise explore below!</p>
                     </div>
                 </div>
-                <img src="https://i.pinimg.com/736x/12/63/ee/1263eef0a8428dbb79ea657b0b1a6886.jpg" alt="" className="h-[600px]" />
+                <img src="https://i.pinimg.com/736x/a1/21/f9/a121f90db2b45e23abc66820b3b11b98.jpg" alt="" className="h-[600px] cursor-pointer" />
 
             </div>
 

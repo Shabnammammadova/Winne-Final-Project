@@ -1,3 +1,4 @@
+import { ScrollToTop } from '@/components/shared/ScrollToTop'
 import { Filter } from './components/Filter'
 import { ShopHero } from './components/Hero'
 import { ShopProducts } from './components/Products'
@@ -10,6 +11,7 @@ const Shop = () => {
                 <Filter />
                 <ShopProducts />
             </div>
+            <ScrollToTop />
         </div>
     )
 }

@@ -4,6 +4,7 @@ import { BgHero } from "./components/Hero2"
 import { News } from "@/components/shared/news"
 import { Story } from "./components/Story"
 import { Carousel } from "@/components/shared/carousel"
+import { ScrollToTop } from "@/components/shared/ScrollToTop"
 
 
 export const About = () => {
@@ -15,6 +16,7 @@ export const About = () => {
             <Cards />
             <News />
             <Carousel />
+            <ScrollToTop />
         </div>
     )
 }
