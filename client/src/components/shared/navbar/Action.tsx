@@ -34,7 +34,20 @@ export const Action = () => {
             {user ? (
                 <DropdownMenu>
                     <DropdownMenuTrigger asChild>
-                        <User className="w-[24px] h-[24px] mr-[13px]" />
+                        {user.avatar ? (
+                            <button className="rounded-full duration-75 ">
+                                <img
+                                    src={user.avatar}
+                                    alt="User Avatar"
+                                    className="rounded-full w-10 h-10 object-cover"
+                                />
+                            </button>
+
+                        ) : (
+                            <User className="w-[24px] h-[24px] mr-[13px]" />
+                        )}
+
+
                     </DropdownMenuTrigger>
                     <DropdownMenuContent>
                         <DropdownMenuLabel>My Account</DropdownMenuLabel>
@@ -49,7 +62,7 @@ export const Action = () => {
                     </DropdownMenuContent>
                 </DropdownMenu>
             ) : (
-                <Button onClick={() => openDialog(ModalTypeEnum.LOGIN)}>Sign In</Button>
+                <Button onClick={() => openDialog(ModalTypeEnum.LOGIN)} className="mr-[10px]">Sign In</Button>
             )}
             <SearchSide />
             <Link to={paths.WISHLIST}><img src={HeartIcon} alt="" className='w-[24px] h-[24px] mr-[13px] lg:block hidden' /></Link>

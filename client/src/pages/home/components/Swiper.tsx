@@ -1,4 +1,3 @@
-import Winne1 from "../../../assets/images/winne1.webp";
 import { Search } from "lucide-react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
@@ -8,6 +7,7 @@ import { Autoplay, Navigation, Pagination } from "swiper/modules";
 import ShoppingIcon from "../../../assets/icons/shoppingbag.svg"
 import HeartIcon from "../../../assets/icons/heart.svg"
 import { Product } from "@/types";
+import { useNavigate } from "react-router-dom";
 
 
 type Props = {
@@ -15,6 +15,7 @@ type Props = {
 }
 
 export const SwiperSlides = ({ product }: Props) => {
+    const navigate = useNavigate()
     return (
         <div className="bg-white w-full">
             <div className="flex justify-center items-center flex-col pt-[70px] font-sans">
@@ -45,6 +46,7 @@ export const SwiperSlides = ({ product }: Props) => {
                             src={wineproduct.images[0]}
                             alt="Product"
                             className="object-cover pb-[100px]"
+                            onClick={() => navigate(`/detail/${wineproduct._id}`)}
                         />
                         <div className="px-4 py-3 bg-white text-center h-[100px] absolute left-0 bottom-0 w-full">
                             <span className="xs:text-[14px] text-black capitalize xl:text-base font-medium pt-5 pb-[10px]">

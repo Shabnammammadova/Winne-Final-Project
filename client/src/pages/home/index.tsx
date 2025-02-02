@@ -1,7 +1,7 @@
 import { Cards } from "./components/Cards"
 import { HomeHero } from "./components/Hero1"
 import { WineHero } from "./components/Hero2"
-import { HomeBlog } from "./components/Blog"
+
 import { SocialCard } from "./components/SocialCard"
 import { SwiperSlides } from "./components/Swiper"
 import { WineProductList } from "@/components/shared/product/ProductList"
@@ -10,19 +10,27 @@ import { QUERY_KEYS } from "@/constants/query-keys"
 import wineService from "@/services/wine"
 import { ScrollToTop } from "@/components/shared/ScrollToTop"
 import { RenderIf } from "@/components/shared/RenderIf"
+import blogService from "@/services/blog"
+import { BlogList } from "@/components/shared/blog/BlogList"
 
 
 
 
 const HomePage = () => {
-    const { data: wineList, isLoading } = useQuery({
+    const { data: wineList } = useQuery({
         queryKey: [QUERY_KEYS.WINE_LIST],
         queryFn: () => wineService.getAll({})
     })
-
-
-
     const products = wineList?.data.items
+
+    const { data: blogList, isLoading } = useQuery({
+        queryKey: [QUERY_KEYS.BLOG_LIST],
+        queryFn: () => blogService.getAll({})
+    })
+    const blogs = blogList?.data.items
+
+
+
     return (
         <div>
             <HomeHero />
@@ -39,7 +47,7 @@ const HomePage = () => {
             </RenderIf>
             <WineHero />
             <SwiperSlides product={products} />
-            <HomeBlog />
+            <BlogList blog={blogs} />
             <SocialCard />
             <ScrollToTop />
         </div>

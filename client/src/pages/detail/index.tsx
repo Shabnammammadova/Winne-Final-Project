@@ -24,6 +24,7 @@ export const WineProductDetail = () => {
         queryFn: () => wineService.getById(id!)
     })
 
+    const winedetail = wineDetail?.data?.item
 
     if (isLoading) {
         return (
@@ -33,10 +34,7 @@ export const WineProductDetail = () => {
         )
     }
 
-    const winedetail = wineDetail?.data?.item
 
-
-    console.log("winedetail", wineDetail);
     return (
         <div className="bg-white">
             <WineAbout product={winedetail} />

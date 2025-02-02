@@ -14,6 +14,7 @@ import "./auth/github-strategy"
 import authRoutes from "./routes/auth";
 import categoryRoutes from "./routes/category"
 import productRoutes from "./routes/product"
+import blogRoutes from "./routes/blog"
 import orderRoutes from "./routes/order"
 import favoriteRoutes from "./routes/favorite"
 import basketRoutes from "./routes/basket"
@@ -55,6 +56,7 @@ app.use(passport.session());
 app.use("/auth", authRoutes)
 app.use("/category", categoryRoutes)
 app.use("/product", productRoutes)
+app.use("/blog", blogRoutes)
 app.use("/order", orderRoutes)
 app.use("/favorite", favoriteRoutes)
 app.use("/basket", basketRoutes)

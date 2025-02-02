@@ -25,6 +25,13 @@ export type Product = {
     images: string[];
     reviews: Review[]
 }
+export type Blog = {
+    _id: string,
+    name: string,
+    description: string,
+    images: string[],
+    createdAt: string
+}
 
 export type Category = {
     _id: string,

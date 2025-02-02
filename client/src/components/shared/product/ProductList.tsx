@@ -6,16 +6,13 @@ import { Product } from "@/types"
 
 
 
+
 type Props = {
     product: Product[]
 }
 
-
 export const WineProductList = ({ product }: Props) => {
     const navigate = useNavigate()
-    console.log(product);
-
-
 
     return (
         <div className="bg-white w-full">
@@ -35,7 +32,7 @@ export const WineProductList = ({ product }: Props) => {
                             src={wineproduct.images[0]}
                             alt="Product"
                             className="object-cover pb-[100px]"
-                            onClick={() => navigate(`/detail/${wineproduct._id}`)}
+                            onClick={() => navigate(`/wine/detail/${wineproduct._id}`)}
                         />
                         <div className="px-4 py-3 bg-white text-center h-[100px] absolute left-0 bottom-0 w-full">
                             <span className="xs:text-[14px] text-black capitalize xl:text-base font-medium pt-5 pb-[10px]">
@@ -59,7 +56,7 @@ export const WineProductList = ({ product }: Props) => {
                                 />
                             </li>
                             <li className="bg-white p-2 rounded-full shadow-md transition-all duration-300 ease-in-out hover:bg-primary hover:text-white">
-                                <img src={HeartIcon} alt="Heart" className="w-[20px] h-[20px] lg:block hidden" />
+                                <img src={HeartIcon} alt="Heart" className="w-[20px] h-[20px]" />
                             </li>
                         </ul>
                     </div>
