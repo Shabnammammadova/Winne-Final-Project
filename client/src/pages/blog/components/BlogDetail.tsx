@@ -4,6 +4,7 @@ import { Spinner } from "@/components/shared/Spinner";
 import { QUERY_KEYS } from "@/constants/query-keys";
 import blogService from "@/services/blog";
 import { useQuery } from "@tanstack/react-query";
+import { BlogList } from "@/components/shared/blog/BlogList";
 
 
 export const BlogDetail = () => {
@@ -29,7 +30,7 @@ export const BlogDetail = () => {
         <div className="bg-white font-sans pt-5 border-b border-b-gray-200">
             <div className="container mx-auto text-center flex flex-col items-center gap-20">
                 <div className="w-full max-w-[1180px]">
-                    <img src={images[0]} alt={name} className="pb-5 object-cover w-full max-w-[1180px]" />
+                    <img src={images[0]} alt={name} className="pb-5 object-cover w-full max-w-[1180px] cursor-pointer" />
                     <p className="text-[22px] font-medium pb-[10px] text-black hover:text-red-800 cursor-pointer">
                         {name}
                     </p>
@@ -39,7 +40,7 @@ export const BlogDetail = () => {
                     <div className="relative w-full pb-[56.25%]">
                         <iframe
                             src="https://www.youtube.com/embed/yYQOjWlQkxg?rel=0"
-                            className="absolute top-0 left-0 w-full h-full border-0"
+                            className="absolute top-0 left-0 w-full h-full border-0 pt-6 pb-10"
                             allowFullScreen
                             scrolling="no"
                             allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"

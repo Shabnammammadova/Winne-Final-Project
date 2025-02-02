@@ -5,17 +5,16 @@ import { QUERY_KEYS } from '@/constants/query-keys'
 import { useQuery } from '@tanstack/react-query'
 import { useParams } from 'react-router-dom'
 import { Spinner } from '@/components/shared/Spinner'
+import { BlogCards } from './components/Cards'
 
 export const Blog = () => {
     const { id } = useParams<{ id: string }>()
-    const { data: blogDetail, isLoading } = useQuery({
-        queryKey: [QUERY_KEYS.BLOG_DETAIL, id],
-        queryFn: () => blogService.getById(id!)
+    const { data: blogList, isLoading } = useQuery({
+        queryKey: [QUERY_KEYS.BLOG_LIST],
+        queryFn: () => blogService.getAll({})
     })
 
-    const blogdetail = blogDetail?.data?.item
-    console.log("blogdetail", blogdetail);
-    console.log("id", id);
+    const bloglist = blogList?.data.items
 
 
     if (isLoading) {
@@ -29,7 +28,7 @@ export const Blog = () => {
 
     return (
         <div className='bg-white'>
-            {/* <BlogCards blog={blogdetail} /> */}
+            <BlogCards blog={bloglist} />
             <ScrollToTop />
         </div>
     )
