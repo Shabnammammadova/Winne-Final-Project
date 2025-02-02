@@ -4,6 +4,7 @@ import About5 from "../../../assets/images/about1.5.webp"
 import About6 from "../../../assets/images/about1.6.webp"
 import About7 from "../../../assets/images/about1.7.webp"
 import { Facebook, Instagram, Twitter, Youtube } from 'lucide-react';
+import { Autoplay, Navigation, Pagination } from 'swiper/modules';
 
 
 export const Cards = () => {
@@ -17,8 +18,11 @@ export const Cards = () => {
             </div>
             <div className="container mt-10 max-w-[1170px] grid grid-col-3">
                 <Swiper
+                    modules={[Navigation, Pagination, Autoplay]}
                     spaceBetween={4}
                     slidesPerView={1}
+                    autoplay={{ delay: 3000, disableOnInteraction: false }}
+                    loop={true}
                     breakpoints={{
                         768: { slidesPerView: 2 },
                         1024: { slidesPerView: 3 },

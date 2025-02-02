@@ -45,3 +45,40 @@ export const BlogList = ({ blog }: Props) => {
         </div>
     )
 }
+
+
+
+BlogList.Skeleton = function () {
+    return (
+        <section className="bg-white dark:bg-gray-900">
+            <div className="container px-6 py-10 mx-auto animate-pulse">
+                <h1 className="w-64 h-2 mx-auto bg-gray-200 rounded-lg dark:bg-gray-700"></h1>
+                <p className="w-48 h-2 mx-auto mt-4 bg-gray-200 rounded-lg dark:bg-gray-700"></p>
+                <div className="grid grid-cols-1 gap-4 mt-8 xl:mt-12 xl:gap-12 sm:grid-cols-2 xl:grid-cols-3 lg:grid-cols-3">
+                    <div className="w-full">
+                        <div className="w-[456px] h-[304px] bg-gray-300 rounded-lg dark:bg-gray-600 text-center mx-auto"></div>
+                        <h1 className="w-20 h-2 mt-4 bg-gray-200 rounded-lg dark:bg-gray-700 text-center mx-auto"></h1>
+                        <p className="w-56 h-2 mt-4 bg-gray-200 rounded-lg dark:bg-gray-700 text-center mx-auto"></p>
+                        <p className="w-24 h-2 mt-4 bg-gray-200 rounded-lg dark:bg-gray-700 text-center mx-auto"></p>
+                        <h1 className="w-full  h-2 mt-4 bg-gray-200 rounded-lg dark:bg-gray-700 text-center mx-auto"></h1>
+                    </div>
+                    <div className="w-full">
+                        <div className="w-[456px] h-[304px] bg-gray-300 rounded-lg dark:bg-gray-600 text-center mx-auto"></div>
+                        <h1 className="w-20 h-2 mt-4 bg-gray-200 rounded-lg dark:bg-gray-700 text-center mx-auto"></h1>
+                        <p className="w-56 h-2 mt-4 bg-gray-200 rounded-lg dark:bg-gray-700 text-center mx-auto"></p>
+                        <p className="w-24 h-2 mt-4 bg-gray-200 rounded-lg dark:bg-gray-700 text-center mx-auto"></p>
+                        <h1 className="w-full  h-2 mt-4 bg-gray-200 rounded-lg dark:bg-gray-700 text-center mx-auto"></h1>
+                    </div>
+                    <div className="w-full">
+                        <div className="w-[456px] h-[304px] bg-gray-300 rounded-lg dark:bg-gray-600 text-center mx-auto"></div>
+                        <h1 className="w-20 h-2 mt-4 bg-gray-200 rounded-lg dark:bg-gray-700 text-center mx-auto"></h1>
+                        <p className="w-56 h-2 mt-4 bg-gray-200 rounded-lg dark:bg-gray-700 text-center mx-auto"></p>
+                        <p className="w-24 h-2 mt-4 bg-gray-200 rounded-lg dark:bg-gray-700 text-center mx-auto"></p>
+                        <h1 className="w-full  h-2 mt-4 bg-gray-200 rounded-lg dark:bg-gray-700 text-center mx-auto"></h1>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    )
+}

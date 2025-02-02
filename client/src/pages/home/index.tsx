@@ -1,7 +1,6 @@
 import { Cards } from "./components/Cards"
 import { HomeHero } from "./components/Hero1"
 import { WineHero } from "./components/Hero2"
-
 import { SocialCard } from "./components/SocialCard"
 import { SwiperSlides } from "./components/Swiper"
 import { WineProductList } from "@/components/shared/product/ProductList"
@@ -46,8 +45,26 @@ const HomePage = () => {
                 <WineProductList product={products} />
             </RenderIf>
             <WineHero />
-            <SwiperSlides product={products} />
-            <BlogList blog={blogs} />
+            <RenderIf condition={isLoading}>
+                {
+                    [1].map((index) => (
+                        <SwiperSlides.Skeleton key={index} />
+                    ))
+                }
+            </RenderIf>
+            <RenderIf condition={!isLoading}>
+                <SwiperSlides product={products} />
+            </RenderIf>
+            <RenderIf condition={isLoading}>
+                {
+                    [1].map((index) => (
+                        <BlogList.Skeleton key={index} />
+                    ))
+                }
+            </RenderIf>
+            <RenderIf condition={!isLoading}>
+                <BlogList blog={blogs} />
+            </RenderIf>
             <SocialCard />
             <ScrollToTop />
         </div>
