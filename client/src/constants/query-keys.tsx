@@ -3,4 +3,5 @@ export const QUERY_KEYS = {
     WINE_DETAIL: "wineDetail",
     BLOG_LIST: "blogList",
     BLOG_DETAIL: "blogDetail",
+    FAQ: "faq"
 }

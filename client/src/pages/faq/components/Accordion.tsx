@@ -1,36 +1,20 @@
 import { useState } from "react";
 import FaqIcon from "../../../assets/icons/faq.svg"
 import QuestionIcon from "../../../assets/icons/question.svg"
+import { Faq } from "@/types";
 
-export const FaqAccordion = () => {
-    const [openQuestion, setOpenQuestion] = useState(null);
 
-    const toggleAccordion = (questionKey) => {
+type Props = {
+    faq: Faq[]
+}
+
+export const FaqAccordion = ({ faq }: Props) => {
+
+    const [openQuestion, setOpenQuestion] = useState<string | null>(null);
+    const toggleAccordion = (questionKey: string) => {
         setOpenQuestion(openQuestion === questionKey ? null : questionKey);
     };
 
-    const faq = {
-        question1: {
-            question: " How long does it take for home delivery?",
-            answer: "We use Royal mail and DHL to send most of our UK orders.Euro Car Parts reserves the right to use discretion in any circumstance where it makes more sense to use an alternative delivery method."
-        },
-        question2: {
-            question: " Can I collect from a local store?",
-            answer: "We offer a reserve and collect service. This is available on the checkout page. Please be aware, if the product is not available in a local store, you are unable to reserve it."
-        },
-        question3: {
-            question: " Can you confirm you have received my return?",
-            answer: "No, our courier company do not offer the service to deliver on weekends currently."
-        },
-        question4: {
-            question: " Do you offer a VAT discount to non EU customers?",
-            answer: "Customer’s ordering from outside the European Union can contact us via telephone, live chat, or e-mail and quote the order reference number. Our customer services team will go through the process to remove the VAT off of their order."
-        },
-        question5: {
-            question: "Who pays for return postage?",
-            answer: "If you are returning an unsuitable item for a refund we will refund the cost of the item only and not the original delivery cost.Should you be returning a faulty item for a refund we will refund both the original shipping costs and the return delivery costs."
-        }
-    }
 
     return (
         <div className="py-4 bg-white">
@@ -42,41 +26,68 @@ export const FaqAccordion = () => {
                 </div>
                 <div className="mt-20">
                     <ul>
-                        {Object.keys(faq).map((key) => (
-                            <li key={key} className="text-left mb-10">
-                                <div className="flex flex-row items-start mb-5">
-                                    <div
-                                        className="hidden sm:flex items-center justify-center p-3 mr-3 rounded-full bg-primary text-white border-4 border-white text-xl font-semibold cursor-pointer"
-                                        onClick={() => toggleAccordion(key)}
-                                    >
-                                        <img src={QuestionIcon} alt="Question Icon" />
-                                    </div>
-                                    <div className="bg-gray-100 p-5 px-10 w-full flex items-center">
-                                        <h4 className="text-md leading-6 font-medium text-gray-900">
-                                            {faq[key].question}
-                                        </h4>
-                                    </div>
-                                </div>
-
-                                {openQuestion === key && (
-                                    <div className="flex flex-row items-start">
-                                        <div className="bg-red-100 p-5 px-10 w-full flex items-center">
-                                            <p className="text-gray-700 text-sm">{faq[key].answer}</p>
-                                        </div>
+                        {
+                            faq?.map((faqlist) => (
+                                <li key={faqlist._id} className="text-left mb-10">
+                                    <div className="flex flex-row items-start mb-5">
                                         <div
-                                            className="hidden sm:flex items-center justify-center p-3 ml-3 rounded-full bg-primary text-white border-4 border-white text-xl font-semibold cursor-pointer"
+                                            className="hidden sm:flex items-center justify-center p-3 mr-3 rounded-full bg-primary text-white border-4 border-white text-xl font-semibold cursor-pointer"
+                                            onClick={() => toggleAccordion(faqlist._id)}
                                         >
-                                            <img src={FaqIcon} alt="FAQ Icon" />
+                                            <img src={QuestionIcon} alt="Question Icon" />
+                                        </div>
+                                        <div className="bg-gray-100 p-5 px-10 w-full flex items-center">
+                                            <h4 className="text-md leading-6 font-medium text-gray-900">
+                                                {faqlist.question}
+                                            </h4>
                                         </div>
                                     </div>
-                                )}
-                            </li>
-                        ))}
+                                    {openQuestion === faqlist._id && (
+                                        <div className="flex flex-row items-start">
+                                            <div className="bg-red-100 p-5 px-10 w-full flex items-center">
+                                                <p className="text-gray-700 text-sm">
+                                                    {faqlist.answer}
+                                                </p>
+                                            </div>
+                                            <div
+                                                className="hidden sm:flex items-center justify-center p-3 ml-3 rounded-full bg-primary text-white border-4 border-white text-xl font-semibold cursor-pointer"
+                                            >
+                                                <img src={FaqIcon} alt="FAQ Icon" />
+                                            </div>
+                                        </div>
+                                    )}
+                                </li>
+                            ))
+                        }
                     </ul>
                 </div>
             </div>
         </div>
     );
 };
+
+FaqAccordion.Skeleton = function () {
+    return (
+        <div className="max-w-screen-md  mx-auto sm:px-6 lg:px-8 flex flex-col justify-between py-6">
+            <h1 className="w-64 h-2 mx-auto bg-gray-200 rounded-lg dark:bg-gray-700"></h1>
+            <div className="mt-20 bg-white rounded shadow w-[400px] p-4">
+                <div className="animate-pulse flex space-x-4">
+                    <div className="rounded-full bg-gray-300 h-12 w-12"></div>
+                    <div className="flex-1 space-y-4 py-1">
+                        <div className="h-4 bg-gray-300 rounded w-3/4"></div>
+                    </div>
+                </div>
+            </div>
+            <div className="mt-5 bg-white rounded shadow w-[600px] p-4">
+                <div className="animate-pulse flex space-x-4 flex-row-reverse">
+                    <div className="rounded-full bg-gray-300 h-12 w-12"></div>
+                    <div className="flex-1 space-y-4 py-1">
+                        <div className="h-4 bg-gray-300 rounded w-3/4"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    )
+}
 
 

@@ -1,18 +1,14 @@
 import mongoose from "mongoose";
 const { Schema } = mongoose;
 
-const blogSchema = new Schema({
-    name: {
+const faqSchema = new Schema({
+    question: {
         type: String,
         required: true,
     },
-    description: {
+    answer: {
         type: String,
         required: true,
-    },
-    images: {
-        type: [String],
-        required: true
     },
     createdAt: {
         type: Date,
@@ -21,11 +17,11 @@ const blogSchema = new Schema({
 });
 
 
-blogSchema.set("toJSON", {
+faqSchema.set("toJSON", {
     virtuals: true,
     transform: (doc, ret) => {
         delete ret.__v;
     }
 })
 
-export default mongoose.model("Blog", blogSchema);
+export default mongoose.model("FAQ", faqSchema);

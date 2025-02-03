@@ -15,6 +15,7 @@ import authRoutes from "./routes/auth";
 import categoryRoutes from "./routes/category"
 import productRoutes from "./routes/product"
 import blogRoutes from "./routes/blog"
+import faqRoutes from "./routes/faq"
 import orderRoutes from "./routes/order"
 import favoriteRoutes from "./routes/favorite"
 import basketRoutes from "./routes/basket"
@@ -57,6 +58,7 @@ app.use("/auth", authRoutes)
 app.use("/category", categoryRoutes)
 app.use("/product", productRoutes)
 app.use("/blog", blogRoutes)
+app.use("/faq", faqRoutes)
 app.use("/order", orderRoutes)
 app.use("/favorite", favoriteRoutes)
 app.use("/basket", basketRoutes)

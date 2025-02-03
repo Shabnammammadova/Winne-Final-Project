@@ -7,7 +7,7 @@ import Brand5 from "../../../assets/images/brand5.avif"
 
 export const WineBrand = () => {
   return (
-    <div className="container w-full my-[50px] flex">
+    <div className="container w-full my-[50px] flex flex-row">
       <div className="w-full">
         <div className="max-h-[120px] border border-gray-200  py-5">
           <img src={Brand1} alt="" className="cursor-pointer mx-auto text-center" />

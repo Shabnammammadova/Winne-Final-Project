@@ -33,6 +33,13 @@ export type Blog = {
     createdAt: string
 }
 
+export type Faq = {
+    _id: string,
+    question: string,
+    answer: string,
+    createdAt: string
+}
+
 export type Category = {
     _id: string,
     name: string,
