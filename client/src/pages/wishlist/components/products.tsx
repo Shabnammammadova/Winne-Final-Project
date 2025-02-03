@@ -2,7 +2,7 @@ import SmallProduct from "../../../assets/images/small.png";
 
 export const WishListProducts = () => {
     return (
-        <div className="py-10 font-sans">
+        <div className="py-10 font-sans border-b border-gray-200">
             <div className="container">
                 <h3 className="text-5xl text-center font-bold tracking-tight">WishList</h3>
                 <table className="w-full max-w-[1110px] mx-auto mt-10 border-collapse">

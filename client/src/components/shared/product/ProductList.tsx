@@ -1,6 +1,6 @@
-import { Search } from "lucide-react"
-import ShoppingIcon from "../../../assets/icons/shoppingbag.svg"
-import HeartIcon from "../../../assets/icons/heart.svg"
+import { SlBag } from "react-icons/sl";
+import { IoSearchOutline } from "react-icons/io5";
+import { CiHeart } from "react-icons/ci";
 import { useNavigate } from "react-router-dom"
 import { Product } from "@/types"
 
@@ -45,18 +45,18 @@ export const WineProductList = ({ product }: Props) => {
 
                         <ul className="absolute flex gap-4 justify-center items-center bottom-[30%] left-1/2 transform -translate-x-1/2 translate-y-0 opacity-0 group-hover:opacity-100 group-hover:translate-y-4 transition-all duration-500 ease-in-out">
                             <div className="flex flex-col items-center relative font-sans">
-                                <li className="bg-white p-2 rounded-full shadow-md transition-all duration-300 ease-in-out hover:bg-primary hover:fill-white hover:inline">
-                                    <img src={ShoppingIcon} alt="Shopping" className="w-[20px] h-[20px]" />
+                                <li className="bg-white p-2 rounded-full shadow-md transition-all duration-300 ease-in-out hover:bg-primary hover:text-white hover:inline">
+                                    <SlBag className="w-[20px] h-[20px]" />
                                 </li>
                             </div>
-                            <li className="bg-white p-2 rounded-full shadow-md transition-all duration-300 ease-in-out hover:bg-primary">
-                                <Search
+                            <li className="bg-white p-2 rounded-full shadow-md transition-all duration-300 ease-in-out hover:bg-primary hover:text-white">
+                                <IoSearchOutline
                                     className="w-[20px] h-[20px]"
                                     onClick={() => navigate(`/detail/${wineproduct._id}`)}
                                 />
                             </li>
                             <li className="bg-white p-2 rounded-full shadow-md transition-all duration-300 ease-in-out hover:bg-primary hover:text-white">
-                                <img src={HeartIcon} alt="Heart" className="w-[20px] h-[20px]" />
+                                <CiHeart className="w-[20px] h-[20px]" />
                             </li>
                         </ul>
                     </div>
