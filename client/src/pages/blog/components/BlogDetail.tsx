@@ -5,6 +5,7 @@ import { QUERY_KEYS } from "@/constants/query-keys";
 import blogService from "@/services/blog";
 import { useQuery } from "@tanstack/react-query";
 import { BlogList } from "@/components/shared/blog/BlogList";
+import { WineBrand } from "./WineBrand";
 
 
 export const BlogDetail = () => {
@@ -37,6 +38,7 @@ export const BlogDetail = () => {
                     <span className="w-full text-sm text-start font-normal text-gray-400 py-[20px]">
                         {description}
                     </span>
+                    <WineBrand />
                     <div className="relative w-full pb-[56.25%]">
                         <iframe
                             src="https://www.youtube.com/embed/yYQOjWlQkxg?rel=0"
