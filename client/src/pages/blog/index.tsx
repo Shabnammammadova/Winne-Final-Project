@@ -5,9 +5,10 @@ import { useQuery } from '@tanstack/react-query'
 import { Spinner } from '@/components/shared/Spinner'
 import { BlogCards } from './components/Cards'
 import { RenderIf } from '@/components/shared/RenderIf'
+import { NotFound } from '../not-found'
 
 export const Blog = () => {
-    const { data: blogList, isLoading } = useQuery({
+    const { data: blogList, isLoading, isError } = useQuery({
         queryKey: [QUERY_KEYS.BLOG_LIST],
         queryFn: () => blogService.getAll({})
     })
@@ -23,6 +24,11 @@ export const Blog = () => {
         )
     }
 
+    if (isError) {
+        return (
+            <NotFound />
+        )
+    }
 
     return (
         <div className='bg-white'>

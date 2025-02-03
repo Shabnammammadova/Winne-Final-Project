@@ -5,12 +5,13 @@ import { QUERY_KEYS } from "@/constants/query-keys";
 import blogService from "@/services/blog";
 import { useQuery } from "@tanstack/react-query";
 import { WineBrand } from "./WineBrand";
+import { NotFound } from "@/pages/not-found";
 
 
 export const BlogDetail = () => {
     const { id } = useParams();
 
-    const { data: blogDetail, isLoading } = useQuery({
+    const { data: blogDetail, isLoading, isError } = useQuery({
         queryKey: [QUERY_KEYS.BLOG_DETAIL, id],
         queryFn: () => blogService.getById(id!),
         enabled: !!id,
@@ -23,7 +24,11 @@ export const BlogDetail = () => {
             </div>
         );
     }
-
+    if (isError) {
+        return (
+            <NotFound />
+        )
+    }
     const { name, description, images } = blogDetail?.data?.item || { name: "", description: "", images: [] };
 
     return (
