@@ -4,7 +4,6 @@ import { Spinner } from "@/components/shared/Spinner";
 import { QUERY_KEYS } from "@/constants/query-keys";
 import blogService from "@/services/blog";
 import { useQuery } from "@tanstack/react-query";
-import { BlogList } from "@/components/shared/blog/BlogList";
 import { WineBrand } from "./WineBrand";
 
 

@@ -2,6 +2,9 @@ import { Blog } from "@/types"
 import { useNavigate } from "react-router-dom"
 import DateFormatter from "../DateFormatter"
 import MonthFormatter from "../MonthFormatter"
+import { useState } from "react"
+import { FiChevronLeft } from "react-icons/fi";
+import { FiChevronRight } from "react-icons/fi";
 
 type Props = {
     blog: Blog[]
@@ -12,6 +15,16 @@ type Props = {
 export const BlogList = ({ blog }: Props) => {
     const navigate = useNavigate()
 
+    const [currentPage, setCurrentPage] = useState(1);
+    const productsPerPage = 3;
+
+    const indexOfLastProduct = currentPage * productsPerPage;
+    const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
+    const currentProducts = blog.slice(indexOfFirstProduct, indexOfLastProduct);
+
+    const totalPages = Math.ceil(blog.length / productsPerPage);
+    const paginate = (pageNumber: number) => setCurrentPage(pageNumber);
+
     return (
         <div className="bg-white pb-[70px]">
             <div className="flex justify-center items-center flex-col pt-[70px] font-sans">
@@ -21,7 +34,7 @@ export const BlogList = ({ blog }: Props) => {
                 <span className="border-red-800 border-2 w-[75px]"></span>
             </div>
             <div className="container pt-[50px] grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 gap-x-2 gap-y-2 lg:gap-x-8 md:gap-x-2 ">
-                {blog?.map((bloglist) => (
+                {currentProducts?.map((bloglist) => (
                     <div className="relative cursor-pointer" key={bloglist._id}
                         onClick={() => navigate(`/blog/detail/${bloglist._id}`)}>
                         <img src={bloglist.images[0]} alt="" className=" opacity-1 z-10 transition-opacity duration-300 hover:opacity-70" />
@@ -41,6 +54,25 @@ export const BlogList = ({ blog }: Props) => {
                         </div>
                     </div>
                 ))}
+            </div>
+            <div className="flex justify-center mt-4">
+                <button
+                    onClick={() => paginate(currentPage - 1)}
+                    disabled={currentPage === 1}
+                    className="px-4 py-2 bg-primary text-white rounded-md disabled:opacity-50  hover:disabled:cursor-not-allowed flex items-center"
+                >
+                    <FiChevronLeft />
+                    Previous
+                </button>
+                <span className="px-4 py-2">{`Page ${currentPage} of ${totalPages}`}</span>
+                <button
+                    onClick={() => paginate(currentPage + 1)}
+                    disabled={currentPage === totalPages}
+                    className="px-4 py-2 bg-primary text-white rounded-md disabled:opacity-50 hover:disabled:cursor-not-allowed flex items-center"
+                >
+                    Next
+                    <FiChevronRight />
+                </button>
             </div>
         </div>
     )

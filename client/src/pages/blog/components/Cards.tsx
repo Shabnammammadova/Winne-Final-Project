@@ -3,6 +3,7 @@ import MonthFormatter from "@/components/shared/MonthFormatter";
 import { Blog } from "@/types";
 import { useNavigate } from "react-router-dom";
 
+
 type Props = {
     blog: Blog[]
 }
@@ -10,6 +11,8 @@ type Props = {
 export const BlogCards = ({ blog }: Props) => {
 
     const navigate = useNavigate()
+
+
     return (
         <div className="bg-white pb-[70px] border-b  border-gray-200">
             <div className="flex justify-center items-center flex-col font-sans">
