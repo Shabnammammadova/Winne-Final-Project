@@ -1,7 +1,7 @@
 
 export const Offers = () => {
     return (
-        <div className="bg-white mx-auto flex flex-col items-center text-center mt-10 pb-10 border-b font-sans px-4">
+        <div className="bg-white dark:bg-black mx-auto flex flex-col items-center text-center mt-10 pb-10 border-b font-sans px-4">
             <h2 className="text-[30px] font-medium leading-[40px]">
                 Never miss our updates about new arrivals and special <br /> offers
             </h2>
@@ -12,7 +12,7 @@ export const Offers = () => {
                 <input
                     type="text"
                     placeholder="EMAIL ADDRESS"
-                    className="border-b bg-transparent mt-[40px] mb-5 pb-[16px] outline-none text-xs  border-black border-solid w-full placeholder:text-black"
+                    className="border-b placeholder:dark:text-white dark:border-gray-200 bg-transparent mt-[40px] mb-5 pb-[16px] outline-none text-xs  border-black border-solid w-full placeholder:text-black"
                 />
                 <button className="bg-primary text-white text-base py-[14px] font-semibold tracking-[1px] transition-all w-full hover:bg-black">
                     SUBSCRIBE NOW

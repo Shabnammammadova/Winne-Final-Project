@@ -8,6 +8,7 @@ import { getCurrentUserAsync } from "@/store/features/userSlice"
 import { Chat } from "./Chat"
 
 
+
 const RootLayout = () => {
     const dispatch = useAppDispatch();
     const location = useLocation()

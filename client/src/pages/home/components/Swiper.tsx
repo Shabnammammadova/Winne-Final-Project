@@ -13,7 +13,7 @@ type Props = {
 export const SwiperSlides = ({ product }: Props) => {
     const navigate = useNavigate()
     return (
-        <div className="bg-white w-full">
+        <div className="bg-white dark:bg-black dark:text-white w-full">
             <div className="flex justify-center items-center flex-col pt-[70px] font-sans">
                 <p className="text-2xl font-medium pb-2 tracking-[1px] uppercase">
                     New Arrivals
@@ -43,8 +43,8 @@ export const SwiperSlides = ({ product }: Props) => {
                             className="object-cover pb-[100px]"
                             onClick={() => navigate(`/detail/${wineproduct._id}`)}
                         />
-                        <div className="px-4 py-3 bg-white text-center h-[100px] absolute left-0 bottom-0 w-full">
-                            <span className="xs:text-[14px] text-black capitalize xl:text-base font-medium pt-5 pb-[10px]">
+                        <div className="px-4 py-3 bg-white dark:bg-black text-center h-[100px] absolute left-0 bottom-0 w-full">
+                            <span className="xs:text-[14px] text-black capitalize xl:text-base font-medium pt-5 pb-[10px] dark:text-white">
                                 {wineproduct.name}
                             </span>
                             <p className="text-[15px] font-bold text-red-800">${wineproduct.price}</p>
@@ -52,14 +52,14 @@ export const SwiperSlides = ({ product }: Props) => {
                         <ul className="absolute flex gap-4 justify-center items-center bottom-[30%] left-1/2 transform -translate-x-1/2 translate-y-0 opacity-0 group-hover:opacity-100 group-hover:translate-y-4 transition-all duration-500 ease-in-out">
                             <div className="flex flex-col items-center relative font-sans">
                                 <li className="bg-white p-2 rounded-full shadow-md transition-all duration-300 ease-in-out hover:bg-primary hover:text-white hover:inline">
-                                    <SlBag className="w-[20px] h-[20px]" />
+                                    <SlBag className="w-[20px] h-[20px] dark:text-black" />
                                 </li>
                             </div>
                             <li className="bg-white p-2 rounded-full shadow-md transition-all duration-300 ease-in-out hover:bg-primary hover:text-white">
-                                <IoSearchOutline className="w-[20px] h-[20px]" />
+                                <IoSearchOutline className="w-[20px] h-[20px] dark:text-black" />
                             </li>
                             <li className="bg-white p-2 rounded-full shadow-md transition-all duration-300 ease-in-out hover:bg-primary hover:text-white">
-                                <CiHeart className='w-[20px] h-[20px] lg:block hidden' />
+                                <CiHeart className='w-[20px] h-[20px] lg:block dark:text-black' />
                             </li>
                         </ul>
                     </SwiperSlide>

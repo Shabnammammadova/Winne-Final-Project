@@ -3,7 +3,7 @@ import History2 from "../../../assets/images/wineHistory2.webp"
 
 export const History = () => {
     return (
-        <div className=" border-b border-b-gray-100">
+        <div className=" border-b dark:bg-black dark:text-white border-b-gray-100">
             <div className="w-full max-w-[1170px]  mx-auto pt-[40px] pb-[40px] font-sans">
                 <div className="grid 2xs:grid-cols-1 md:grid-cols-2 gap-4">
                     <img src={History1} alt="" />

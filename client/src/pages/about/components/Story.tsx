@@ -3,7 +3,7 @@ import About2 from "../../../assets/images/about1.2.webp"
 
 export const Story = () => {
     return (
-        <div className="bg-white">
+        <div className="bg-white dark:bg-black dark:text-white">
             <div className="sm:w-[525px] lg:w-[950px] xl:w-[1170px] mx-auto pt-[60px] grid xs:grid-cols-1 lg:grid-cols-2 gap-x-1 gap-y-4">
                 <div className="font-sans xs:ml-6">
                     <h2 className="xs:text-[30px] lg:text-[40px] font-medium leading-[43px] mb-5">Our Story</h2>

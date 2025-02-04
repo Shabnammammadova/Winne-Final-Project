@@ -14,9 +14,9 @@ export const BlogCards = ({ blog }: Props) => {
 
 
     return (
-        <div className="bg-white pb-[70px] border-b  border-gray-200">
+        <div className="bg-white dark:bg-black  pb-[70px] border-b  border-gray-200">
             <div className="flex justify-center items-center flex-col font-sans">
-                <p className="text-2xl font-medium pb-2 tracking-[1px] uppercase">News</p>
+                <p className="text-2xl font-medium mt-5 pb-2 tracking-[1px] uppercase dark:text-white">News</p>
                 <span className="border-red-800 border-2 w-[75px]"></span>
             </div>
             <div className="container pt-[50px] grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 gap-x-2 gap-y-10 lg:gap-x-8 md:gap-x-2">
@@ -34,10 +34,10 @@ export const BlogCards = ({ blog }: Props) => {
                             <MonthFormatter month={bloglist.createdAt} />
                         </div>
                         <div className="flex flex-col items-start justify-center font-sans mt-4">
-                            <span className="text-[22px] font-medium pb-[10px] text-black capitalize cursor-pointer hover:text-red-800">{bloglist.name}</span>
+                            <span className="text-[22px] dark:text-white hover:dark:text-red-800 font-medium pb-[10px] text-black capitalize cursor-pointer hover:text-red-800">{bloglist.name}</span>
                             <span className="h-[1px] w-[120px] bg-gray-400"></span>
                             <p className="text-sm text-start font-normal text-gray-400 pt-[10px] line-clamp-3 ">{bloglist.description}</p>
-                            <button className="text-sm mt-[23px] mb-4 font-medium border-b border-black text-black hover:text-red-800 hover:border-red-800">
+                            <button className="text-sm mt-[23px] mb-4 font-medium border-b border-black text-black hover:text-red-800 hover:border-red-800  dark:text-white hover:dark:text-red-800 dark:border-white hover:dark:border-red-800">
                                 Read more
                             </button>
                         </div>

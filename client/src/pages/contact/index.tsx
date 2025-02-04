@@ -8,7 +8,7 @@ import { ScrollToTop } from "@/components/shared/ScrollToTop"
 
 export const Contact = () => {
     return (
-        <div className="bg-white">
+        <div className="bg-white dark:bg-black">
             <ContactHero />
             <Map />
             <Location />

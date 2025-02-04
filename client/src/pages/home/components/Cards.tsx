@@ -5,7 +5,7 @@ import Drink3 from "../../../assets/images/Drink3.jpg";
 
 export const Cards = () => {
     return (
-        <section className="container pt-[30px] pb-[100px] mx-auto grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 justify-items-center gap-x-2 gap-y-2 lg:gap-x-8 md:gap-x-2 mt-10 mb-5 font-sans bg-background">
+        <section className="container pt-[30px] pb-[100px] mx-auto grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 justify-items-center gap-x-2 gap-y-2 lg:gap-x-8 md:gap-x-2 mt-10 mb-5 font-sans bg-background dark:bg-black">
             {[
                 {
                     img: Drink1,

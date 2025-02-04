@@ -14,7 +14,7 @@ export const WineAbout = ({ product = { name: "", price: 0, images: [] } }: Prop
 
     const { name, price, images } = product;
     return (
-        <div className="bg-white">
+        <div className="bg-white dark:bg-black">
             <div className="container mx-auto">
                 <div className="flex lg:flex-row  lg:items-start 2xs:flex-col 2xs:items-center  pt-5">
                     <div className="w-full md:w-1/2 px-4 mb-8">

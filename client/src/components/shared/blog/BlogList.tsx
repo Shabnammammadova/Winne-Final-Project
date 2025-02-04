@@ -13,7 +13,7 @@ export const BlogList = ({ blog }: Props) => {
     const navigate = useNavigate()
 
     return (
-        <div className="bg-white pb-[70px]">
+        <div className="bg-white dark:bg-black pb-[70px]">
             <div className="flex justify-center items-center flex-col pt-[70px] font-sans">
                 <p className="text-2xl font-medium pb-2 tracking-[1px] uppercase">
                     Our Blogs
@@ -33,7 +33,7 @@ export const BlogList = ({ blog }: Props) => {
 
                         <div className="flex flex-col items-center justify-center font-sans mt-4">
                             <p className="text-[16px]  leading-6 font-medium uppercase text-gray-400">News</p>
-                            <span className="text-[22px] font-medium pb-[10px] text-black capitalize transition-all duration-300 hover:text-primary">{bloglist.name}</span>
+                            <span className="text-[22px] font-medium pb-[10px] text-black capitalize transition-all duration-300 hover:text-primary dark:text-white dark:hover:text-primary">{bloglist.name}</span>
                             <span className="h-[2px] w-[50px] bg-primary"></span>
                             <p className="text-base text-center font-normal text-gray-400 pt-[10px] line-clamp-2">
                                 {bloglist.description}
