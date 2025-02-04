@@ -3,6 +3,8 @@ import Hero1 from "../../../assets/images/Hero1.webp";
 import Hero2 from "../../../assets/images/Hero 2.webp";
 import Hero3 from "../../../assets/images/Hero 3.webp";
 import { Autoplay, Navigation, Pagination } from "swiper/modules";
+import { Link } from "react-router-dom";
+import { paths } from "@/constants/paths";
 
 export const HomeHero = () => {
     const images = [Hero1, Hero2, Hero3];
@@ -37,9 +39,11 @@ export const HomeHero = () => {
                 <p className="text-[12px] xs:text-[14px] sm:text-[16px] md:text-[18px] lg:text-[20px] font-medium tracking-[0.5px] pb-4 leading-relaxed text-gray-700">
                     Try Our Exclusive Wine Varieties.
                 </p>
-                <button className="bg-black border-black text-white mt-4 sm:mt-6 md:mt-8 font-medium uppercase tracking-[1.5px] sm:tracking-[2px] text-xs sm:text-sm py-[8px] xs:py-[10px] md:py-[15px] px-[20px] xs:px-[30px] md:px-[40px] border-solid transition-all ease-in duration-300 hover:bg-transparent hover:text-black hover:border-black border-2">
-                    Shop Now
-                </button>
+                <Link to={paths.SHOP}>
+                    <button className="bg-black border-black text-white mt-4 sm:mt-6 md:mt-8 font-medium uppercase tracking-[1.5px] sm:tracking-[2px] text-xs sm:text-sm py-[8px] xs:py-[10px] md:py-[15px] px-[20px] xs:px-[30px] md:px-[40px] border-solid transition-all ease-in duration-300 hover:bg-transparent hover:text-black hover:border-black border-2">
+                        Shop Now
+                    </button>
+                </Link>
             </div>
         </div>
     );

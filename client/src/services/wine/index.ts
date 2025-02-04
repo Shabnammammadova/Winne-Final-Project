@@ -45,6 +45,7 @@ const edit = async (data: CreateWineRequestPayload & { id?: string }) => {
     return await axiosInstance.put(`/product/${data.id}`, formData)
 }
 
+
 const wineService = {
     getAll,
     getById,

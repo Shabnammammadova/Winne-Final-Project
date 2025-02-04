@@ -7,12 +7,15 @@ import { Product } from "@/types"
 
 
 
+
 type Props = {
     product: Product[]
 }
 
+
 export const WineProductList = ({ product }: Props) => {
     const navigate = useNavigate()
+
 
     return (
         <div className="bg-white w-full">

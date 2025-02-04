@@ -39,7 +39,14 @@ export type Faq = {
     answer: string,
     createdAt: string
 }
-
+export type Favorite = {
+    _id: string;
+    productId: {
+        name: string;
+        price: string;
+        images: string[];
+    };
+}
 export type Category = {
     _id: string,
     name: string,

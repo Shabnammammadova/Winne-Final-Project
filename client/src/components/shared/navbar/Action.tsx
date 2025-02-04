@@ -35,7 +35,7 @@ export const Action = () => {
                 <DropdownMenu>
                     <DropdownMenuTrigger asChild>
                         {user.avatar ? (
-                            <button className="rounded-full duration-75 ">
+                            <button className="rounded-full duration-75 mr-[15px]">
                                 <img
                                     src={user.avatar}
                                     alt="User Avatar"

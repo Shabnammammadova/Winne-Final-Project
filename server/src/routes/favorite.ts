@@ -9,7 +9,7 @@ import { createFavoriteSchema } from "../validation/favorite";
 const router = Router()
 
 router.get("/", authorize({}), favoriteController.getAll)
-router.post("/", authorize({}), validateSchema(createFavoriteSchema), favoriteController.add);
+router.post("/add", authorize({}), validateSchema(createFavoriteSchema), favoriteController.add);
 
 router.delete("/:id", authorize({}), favoriteController.remove)
 

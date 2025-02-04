@@ -1,11 +1,12 @@
 import { Request, Response } from "express";
 import Favorite from "../mongoose/schemas/favorite";
+import User from "../mongoose/schemas/user";
 
 
 const getAll = async (req: Request, res: Response) => {
     try {
         const userId = req.user?._id;
-        const favorites = await Favorite.find({ user: userId }).populate("product", "name price images");
+        const favorites = await Favorite.find({ userId: userId }).populate("productId", "name price images");
 
         res.json({
             message: "Favorite retrieved successfully",
@@ -21,17 +22,21 @@ const getAll = async (req: Request, res: Response) => {
 
 const add = async (req: Request, res: Response) => {
     try {
-        const { productId } = req.matchedData;
+        const { productId } = req.body;
         const userId = req.user?._id;
 
-        const exists = await Favorite.findOne({ user: userId, product: productId });
+        const exists = await Favorite.findOne({ userId: userId, productId: productId });
         if (exists) {
             res.status(400).json({ message: "Product is already in favorites" });
             return
         }
 
-        const favorite = new Favorite({ user: userId, product: productId });
+        const favorite = new Favorite({ userId: userId, productId: productId });
         await favorite.save();
+
+
+        await User.findByIdAndUpdate(userId, { $push: { favorites: favorite._id } });
+
 
         res.status(201).json({
             message: "Product added to favorites",
@@ -50,7 +55,7 @@ const remove = async (req: Request, res: Response) => {
         const { productId } = req.params;
         const userId = req.user?._id;
 
-        await Favorite.findOneAndDelete({ user: userId, product: productId });
+        await Favorite.findOneAndDelete({ userId: userId, productId: productId });
 
         res.json({ message: "Product removed from favorites" });
 

@@ -10,7 +10,7 @@ export const createFavoriteSchema: Schema = {
     },
     productId: {
         in: ["body"],
-        isString: true,
+        isMongoId: true,
         notEmpty: true
     },
 }

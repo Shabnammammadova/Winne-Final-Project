@@ -2,6 +2,7 @@ import { Request, Response } from "express";
 import Product from "../mongoose/schemas/product";
 import review from "../mongoose/schemas/review";
 import Category from "../mongoose/schemas/category";
+import User from "../mongoose/schemas/user";
 
 
 const getAll = async (req: Request, res: Response) => {
@@ -216,6 +217,41 @@ const update = async (req: Request, res: Response) => {
     }
 };
 
+
+const getAddFavorite = async (req: Request, res: Response) => {
+    const { _id, productId } = req.body;
+
+    try {
+        const user = await User.findById(_id);
+        if (!user) {
+            res.status(404).json({
+                message: "User not found",
+            });
+            return;
+        }
+        const alreadyAdded = user.favorites.includes(productId);
+        if (alreadyAdded) {
+            res.status(400).json({
+                message: "Product is already in favorite",
+            });
+            return;
+        }
+        user.favorites.push(productId);
+        await user.save();
+
+        res.json({
+            message: "Product added to favorite",
+        });
+
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({
+            message: "Error adding product to favorites",
+        });
+    }
+};
+
+
 const remove = async (req: Request, res: Response) => {
     try {
         const { id } = req.params;
@@ -244,5 +280,6 @@ export default {
     getById,
     create,
     update,
+    getAddFavorite,
     remove,
 };

@@ -47,6 +47,26 @@ const userSchema = new Schema({
         type: Date,
         default: null,
     },
+    favorites: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: "Favorite",
+        }
+    ],
+    basket: [
+        {
+            product: {
+                type: Schema.Types.ObjectId,
+                ref: "Basket",
+                required: true,
+            },
+            quantity: {
+                type: Number,
+                default: 1,
+                min: 1,
+            }
+        }
+    ],
     createdAt: {
         type: Date,
         default: Date.now,
