@@ -7,12 +7,12 @@ import Instagram5 from "../../../assets/images/instagram5.webp"
 
 export const SocialCard = () => {
     return (
-        <div className="container my-[70px] bg-background">
+        <div className="container my-[70px] bg-background dark:bg-black">
             <div className="flex flex-col items-center justify-center">
                 <div className="">
                     <Instagram className="w-[51px] h-[60px] font-sans" />
                 </div>
-                <h3 className="text-2xl font-semibold mt-2 pb-[25px] text-black font-sans capitalize">Follow us on Instagram</h3>
+                <h3 className="text-2xl font-semibold mt-2 pb-[25px] text-black font-sans capitalize dark:text-white">Follow us on Instagram</h3>
             </div>
             <div className="grid xl:grid-cols-2 grid-cols-1 gap-x-6 gap-y-2">
                 <div className="w-full relative group group mx-auto overflow-hidden cursor-pointer">

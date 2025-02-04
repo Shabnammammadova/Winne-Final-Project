@@ -32,11 +32,11 @@ export const BlogDetail = () => {
     const { name, description, images } = blogDetail?.data?.item || { name: "", description: "", images: [] };
 
     return (
-        <div className="bg-white font-sans pt-5 border-b border-b-gray-200">
+        <div className="bg-white dark:bg-black font-sans pt-5 border-b border-b-gray-200">
             <div className="container mx-auto text-center flex flex-col items-center gap-20">
                 <div className="w-full max-w-[1180px]">
                     <img src={images[0]} alt={name} className="pb-5 object-cover w-full max-w-[1180px] cursor-pointer" />
-                    <p className="text-[22px] font-medium pb-[10px] text-black hover:text-red-800 cursor-pointer">
+                    <p className="text-[22px] font-medium pb-[10px] text-black hover:text-red-800 cursor-pointer dark:text-white dark:hover:text-primary">
                         {name}
                     </p>
                     <span className="w-full text-sm text-start font-normal text-gray-400 py-[20px]">

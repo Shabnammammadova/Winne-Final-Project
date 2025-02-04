@@ -27,7 +27,7 @@ export const Faq = () => {
 
 
     return (
-        <div className="bg-white">
+        <div className="bg-white dark:bg-black dark:text-white">
             <FaqHero />
             <RenderIf condition={isLoading}>
                 {

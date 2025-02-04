@@ -9,7 +9,7 @@ import { ScrollToTop } from "@/components/shared/ScrollToTop"
 
 export const About = () => {
     return (
-        <div className="bg-white">
+        <div className="bg-white dark:bg-black">
             <AboutHero />
             <Story />
             <BgHero />

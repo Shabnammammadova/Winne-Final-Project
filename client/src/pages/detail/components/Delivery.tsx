@@ -10,7 +10,7 @@ export function Delivery() {
     return (
         <Dialog>
             <DialogTrigger asChild className="font-sans">
-                <span className="cursor-pointer text-lg font-bold text-black mt-5 hover:text-red-800 transition-all duration-300">Delivery & Returns</span>
+                <span className="cursor-pointer text-lg font-bold text-black mt-5 hover:text-red-800 transition-all duration-300 dark:text-white">Delivery & Returns</span>
             </DialogTrigger>
             <DialogContent className="sm:max-w-[1000px]">
                 <DialogHeader>

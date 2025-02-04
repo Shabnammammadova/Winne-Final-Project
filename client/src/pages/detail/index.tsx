@@ -43,7 +43,7 @@ export const WineProductDetail = () => {
 
 
     return (
-        <div className="bg-white">
+        <div className="bg-white dark:bg-black">
             <ScrollToTop />
             <WineAbout product={winedetail} />
             <Description />

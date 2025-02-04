@@ -3,7 +3,7 @@ import Email from "../../../assets/icons/email.svg"
 
 export const News = () => {
     return (
-        <div className="bg-white pt-[60px]">
+        <div className="bg-white pt-[60px] dark:bg-black">
             <div className="relative w-full h-[359px] pt-[10px]  bg-cover bg-center mx-auto flex flex-col justify-center" style={{ backgroundImage: `url(${Newsimage})` }}>
                 <div className="container max-w-[1170px] flex  2xs:flex-col xs:flex-col md:flex-col lg:flex-col xl:flex-row justify-between items-center">
                     <div className="flex items-center justify-center m-auto gap-4">

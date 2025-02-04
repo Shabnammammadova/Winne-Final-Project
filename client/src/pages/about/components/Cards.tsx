@@ -9,8 +9,8 @@ import { Autoplay, Navigation, Pagination } from 'swiper/modules';
 
 export const Cards = () => {
     return (
-        <div className='bg-white'>
-            <div className="text-black  font-sans flex flex-col items-center justify-center text-center mx-auto">
+        <div className='bg-white dark:bg-black dark:text-white'>
+            <div className="text-black  font-sans flex flex-col items-center justify-center text-center mx-auto dark:text-white">
                 <h2 className="text-[55px] font-medium mb-[.5rem] leading-[1.2]">Behind The Brands</h2>
                 <p className="max-w-[1170px] font-normal text-[1rem]">
                     We are a female-founded, 100% woman-led team of collaborative dreamers who value innovation, curiosity and free-thinking fearlessness in everything that we do. We take immeasurable pride in our work, intentionally stitching love into the very fiber and fabric of our designs. We are small, but we are a mighty group of talented individuals dedicated to bringing you otherworldly designs with imagery to match.</p>
@@ -41,7 +41,7 @@ export const Cards = () => {
                                     <Youtube className='p-[12px] text-[2px]  bg-white text-gray-400 w-[40px] h-[40px] cursor-pointer  hover:bg-primary hover:text-white' />
                                 </div>
                             </div>
-                            <h2 className=" text-black my-[.5rem] text-[22px] font-medium hover:text-red-800 cursor-pointer">Adrian Stone</h2>
+                            <h2 className=" text-black my-[.5rem] text-[22px] font-medium hover:text-red-800 cursor-pointer dark:text-white hover:dark:text-primary">Adrian Stone</h2>
                             <p className="text-[16px] text-gray-400">
                                 Ceo
                             </p>
@@ -58,7 +58,7 @@ export const Cards = () => {
                                     <Youtube className='p-[12px] text-[2px]  bg-white text-gray-400 w-[40px] h-[40px] cursor-pointer  hover:bg-primary hover:text-white' />
                                 </div>
                             </div>
-                            <h2 className=" text-black my-[.5rem] text-[22px] font-medium hover:text-red-800 cursor-pointer">Ferguson</h2>
+                            <h2 className=" text-black my-[.5rem] text-[22px] font-medium hover:text-red-800 cursor-pointer dark:text-white hover:dark:text-primary">Ferguson</h2>
                             <p className="text-[16px] text-gray-400">
                                 Designer
                             </p>
@@ -75,7 +75,7 @@ export const Cards = () => {
                                     <Youtube className='p-[12px] text-[2px]  bg-white text-gray-400 w-[40px] h-[40px] cursor-pointer  hover:bg-primary hover:text-white' />
                                 </div>
                             </div>
-                            <h2 className=" text-black my-[.5rem] text-[22px] font-medium hover:text-red-800 cursor-pointer">Saga Noren</h2>
+                            <h2 className=" text-black my-[.5rem] text-[22px] font-medium hover:text-red-800 cursor-pointer dark:text-white hover:dark:text-primary">Saga Noren</h2>
                             <p className="text-[16px] text-gray-400">
                                 Developer
                             </p>
@@ -92,7 +92,7 @@ export const Cards = () => {
                                     <Youtube className='p-[12px] text-[2px]  bg-white text-gray-400 w-[40px] h-[40px] cursor-pointer  hover:bg-primary hover:text-white' />
                                 </div>
                             </div>
-                            <h2 className=" text-black my-[.5rem] text-[22px] font-medium hover:text-red-800 cursor-pointer">Karen Ryan</h2>
+                            <h2 className=" text-black my-[.5rem] text-[22px] font-medium hover:text-red-800 cursor-pointer dark:text-white hover:dark:text-primary">Karen Ryan</h2>
                             <p className="text-[16px] text-gray-400">
                                 Developer
                             </p>
