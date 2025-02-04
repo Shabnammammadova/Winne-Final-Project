@@ -1,6 +1,8 @@
 import AuthLayout from "@/components/shared/AuthLayout";
+import DashboardLayout from "@/components/shared/DashboardLayout";
 import RootLayout from "@/components/shared/RootLayout";
 import { paths } from "@/constants/paths";
+import DashboardMainPage from "@/pages/(dashboard)/main";
 import { About } from "@/pages/about";
 import { Blog } from "@/pages/blog";
 import { BlogDetail } from "@/pages/blog/components/BlogDetail";
@@ -72,6 +74,16 @@ export const router = createBrowserRouter([
                 path: "",
                 element: <AuthLayout />,
 
+            },
+            {
+                path: "",
+                element: <DashboardLayout />,
+                children: [
+                    {
+                        path: paths.DASHBOARD.MAIN,
+                        element: <DashboardMainPage />
+                    },
+                ]
             }
         ]
     },

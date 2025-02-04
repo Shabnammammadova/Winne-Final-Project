@@ -18,33 +18,36 @@ import { toast } from "sonner";
 import { useNavigate, useParams } from "react-router-dom";
 import { paths } from "@/constants/paths";
 
-const formSchema = z.object({
-    password: z.string().min(2).max(50),
-    confirmPassword: z.string().min(2).max(50),
-}).refine((data) => data.password === data.confirmPassword, {
-    message: "Passwords don't match",
-    path: ["confirm"],
-});
+const formSchema = z
+    .object({
+        password: z.string().min(6, "Password must be at least 6 characters."),
+        confirmPassword: z.string().min(6, "Password must be at least 6 characters."),
+    })
+    .refine((data) => data.password === data.confirmPassword, {
+        message: "Passwords don't match",
+        path: ["confirmPassword"],
+    });
 
 export const ResetPassword = () => {
     const { token } = useParams<{ token: string }>();
-    const navigate = useNavigate()
+    const navigate = useNavigate();
+
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
         defaultValues: {
             password: "",
-            confirmPassword: ""
+            confirmPassword: "",
         },
     });
+
     const { mutate, isPending } = useMutation({
         mutationFn: authService.resetPassword,
-        onSuccess: (response) => {
+        onSuccess: () => {
             toast.success("Password reset successful!");
-            navigate(paths.HOME)
-            console.log(response);
+            navigate(paths.HOME);
         },
         onError: (error: AxiosError) => {
-            const message = error.response?.data?.message ?? "Something went wrong! Please try again.";
+            const message = error.response?.data?.message ?? "Something went wrong!";
             toast.error(message);
         },
     });
@@ -61,9 +64,8 @@ export const ResetPassword = () => {
         <div className="container mx-auto py-16">
             <div className="max-w-md mx-auto bg-white p-8 rounded-lg shadow-lg">
                 <h2 className="text-3xl font-bold text-center mb-4">Reset Password</h2>
-                <p className="text-center mb-8">
-                    Enter a new password for Winne.
-                </p>
+                <p className="text-center mb-8">Enter a new password for Winne.</p>
+
                 <Form {...form}>
                     <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
                         <FormField
@@ -74,12 +76,16 @@ export const ResetPassword = () => {
                                     <FormLabel>Password</FormLabel>
                                     <FormControl>
                                         <Input
-                                            type="password" placeholder="********" {...field} />
+                                            type="password"
+                                            placeholder="********"
+                                            {...field}
+                                        />
                                     </FormControl>
                                     <FormMessage />
                                 </FormItem>
                             )}
                         />
+
                         <FormField
                             control={form.control}
                             name="confirmPassword"
@@ -88,14 +94,18 @@ export const ResetPassword = () => {
                                     <FormLabel>Confirm Password</FormLabel>
                                     <FormControl>
                                         <Input
-                                            type="password" placeholder="********" {...field} />
+                                            type="password"
+                                            placeholder="********"
+                                            {...field}
+                                        />
                                     </FormControl>
                                     <FormMessage />
                                 </FormItem>
                             )}
                         />
+
                         <Button
-                            className="w-full"
+                            className="w-full mt-5"
                             disabled={isPending}
                             type="submit"
                         >

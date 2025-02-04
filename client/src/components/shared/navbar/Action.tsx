@@ -16,6 +16,7 @@ import {
 import { useAppDispatch, useAppSelector } from "@/hooks/redux"
 import { logoutAsync, selectUserData } from "@/store/features/userSlice"
 import { LogOut, User } from "lucide-react"
+import { UserRole } from "@/types"
 
 
 
@@ -50,11 +51,23 @@ export const Action = () => {
 
                     </DropdownMenuTrigger>
                     <DropdownMenuContent>
-                        <DropdownMenuLabel>My Account</DropdownMenuLabel>
+                        {
+                            user.role === UserRole.User && <DropdownMenuItem asChild>
+                                <DropdownMenuLabel>My Account</DropdownMenuLabel>
+                                <DropdownMenuItem>
+                                    <Link to="/profile">Profile</Link>
+                                </DropdownMenuItem>
+                            </DropdownMenuItem>
+                        }
                         <DropdownMenuSeparator />
                         <DropdownMenuItem>
-                            <Link to="/profile">Profile</Link>
+                            {
+                                user.role === UserRole.Admin && <DropdownMenuItem asChild>
+                                    <Link to={paths.DASHBOARD.MAIN} className="cursor-pointer">Dashboard</Link>
+                                </DropdownMenuItem>
+                            }
                         </DropdownMenuItem>
+
                         <DropdownMenuItem className="cursor-pointer" onClick={handleLogout}> <LogOut />
                             <span>Log out</span>
                         </DropdownMenuItem>

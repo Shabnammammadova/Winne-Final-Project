@@ -25,8 +25,13 @@ const forgotPassword = async (payload: ForgotPasswordPayload) => {
 
 
 const resetPassword = async (payload: ResetPasswordPayload) => {
-    return await axiosInstance.post("/auth/reset-password/:token", payload);
+    return await axiosInstance.post(`/auth/reset-password`, {
+        token: payload.token,
+        password: payload.password,
+    });
 };
+
+
 const authService = { login, register, getCurrentUser, logout, forgotPassword, resetPassword };
 
 export default authService;
