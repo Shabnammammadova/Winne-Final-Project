@@ -1,4 +1,4 @@
-import { useMemo } from 'react';
+import { useMemo, useState } from 'react';
 import { SlBag } from "react-icons/sl";
 import { IoSearchOutline } from "react-icons/io5";
 import { CiHeart } from "react-icons/ci";
@@ -13,12 +13,13 @@ type Props = {
 export const ShopProducts = ({ product }: Props) => {
     const navigate = useNavigate();
     const [searchParams] = useSearchParams();
+    const [sortOption, setsortOption] = useState()
 
     const filteredProducts = useMemo(() => {
         const selectedCategories = searchParams.getAll('category');
         const selectedPrices = searchParams.getAll('price');
 
-        return product.filter((p) => {
+        let filtered = product.filter((p) => {
             const matchesCategory = selectedCategories.length
                 ? selectedCategories.includes(p.category._id)
                 : true;
@@ -31,12 +32,33 @@ export const ShopProducts = ({ product }: Props) => {
                 : true;
 
             return matchesCategory && matchesPrice;
+
         });
-    }, [product, searchParams]);
+        if (sortOption === 'alphabetically') {
+            filtered.sort((a, b) => a.name.localeCompare(b.name));
+        }
+        if (sortOption === 'high-to-low') {
+            filtered.sort((a, b) => b.price - a.price);
+        }
+        if (sortOption === 'low-to-high') {
+            filtered.sort((a, b) => a.price - b.price);
+        }
+        return filtered;
+
+    }, [product, searchParams, sortOption]);
 
     return (
         <div>
-            <h1 className='flex items-center gap-3 xs:text-[14px] pt-5 text-black capitalize xl:text-base font-medium dark:text-white cursor-pointer'><img src={BestIcon} alt="" className='w-[26px] h-[26px]' />BEST SELLERS</h1>
+            <div className='flex items-center justify-between'>
+                <h1 className='flex items-center gap-3 xs:text-[14px] pt-5 text-black capitalize xl:text-base font-medium dark:text-white cursor-pointer'><img src={BestIcon} alt="" className='w-[26px] h-[26px]' />BEST SELLERS</h1>
+                <select name="wine" className='border border-gray-200 rounded-lg px-5 py-3 mt-3 cursor-pointer' value={sortOption} onChange={(e) => setsortOption(e.target.value)}>
+                    <option value="" className='cursor-pointer'>Sorting</option>
+                    <option value="alphabetically" className='cursor-pointer'>Alphabetically, A-Z</option>
+                    <option value="high-to-low" className='cursor-pointer'>Price, high to low</option>
+                    <option value="low-to-high" className='cursor-pointer'>Price,low to high</option>
+                </select>
+            </div>
+
             <div className='border-t border-t-gray-200 mt-9'>
                 <section className="mx-auto grid grid-cols-1 lg:grid-cols-4 md:grid-cols-3 justify-items-center justify-center items-center gap-x-2 lg:gap-x-8 md:gap-x-2  font-sans pt-6 ">
                     {filteredProducts.map((wineproduct) => (

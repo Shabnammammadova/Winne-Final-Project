@@ -63,6 +63,31 @@ export const Filter = () => {
                         label: "$100-$200",
                     },
                 ]
+            },
+            {
+                label: "Size",
+                options: [
+                    {
+                        value: "S",
+                        label: "S",
+                    },
+                    {
+                        value: "M",
+                        label: "M",
+                    },
+                    {
+                        value: "L",
+                        label: "L",
+                    },
+                    {
+                        value: "XL",
+                        label: "XL",
+                    },
+                    {
+                        value: "XXL",
+                        label: "XXL",
+                    },
+                ]
             }
         ], [categoryOptions])
     function handleChange(type: string, option: string) {
@@ -91,7 +116,7 @@ export const Filter = () => {
                 Filter
             </button>
 
-            <div className="w-full lg:max-w-[350px] mt-20  px-4 sm:px-6 lg:px-8  flex md:flex-col xs:flex-row xs:items-baseline xs:pr-2 xs:pl-3 border-t border-t-gray-200">
+            <div className="w-full lg:max-w-[350px] mt-24  px-4 sm:px-6 lg:px-8  flex md:flex-col xs:flex-row xs:items-baseline xs:pr-2 xs:pl-3 border-t border-t-gray-200">
                 <div>
                     <div className="flex md:flex-row lg:flex-col  mb-6 gap-2">
                         {
