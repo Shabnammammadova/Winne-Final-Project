@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import { useMemo } from 'react';
 import { SlBag } from "react-icons/sl";
 import { IoSearchOutline } from "react-icons/io5";
 import { CiHeart } from "react-icons/ci";
-import { useNavigate } from "react-router-dom";
+import BestIcon from "../../../assets/icons/icon-bestseller.svg"
+import { useNavigate, useSearchParams } from "react-router-dom";
 import { Product } from "@/types";
-import InfiniteScroll from 'react-infinite-scroll-component';
 
 type Props = {
     product: Product[];
@@ -12,44 +12,46 @@ type Props = {
 
 export const ShopProducts = ({ product }: Props) => {
     const navigate = useNavigate();
+    const [searchParams] = useSearchParams();
 
-    const [currentProducts, setCurrentProducts] = useState<Product[]>([]);
-    const [loading, setLoading] = useState<boolean>(false);
+    const filteredProducts = useMemo(() => {
+        const selectedCategories = searchParams.getAll('category');
+        const selectedPrices = searchParams.getAll('price');
 
-    const productsPerPage = 4;
-    const loadMoreProducts = () => {
-        if (loading) return;
-        setLoading(true);
+        return product.filter((p) => {
+            const matchesCategory = selectedCategories.length
+                ? selectedCategories.includes(p.category._id)
+                : true;
 
-        const nextBatch = product.slice(currentProducts.length, currentProducts.length + productsPerPage);
-        setCurrentProducts((prev) => [...prev, ...nextBatch]);
-        setLoading(false);
-    };
-    React.useEffect(() => {
-        loadMoreProducts();
-    }, []);
+            const matchesPrice = selectedPrices.length
+                ? selectedPrices.some((range) => {
+                    const [min, max] = range.split('-').map(Number);
+                    return p.price >= min && p.price <= max;
+                })
+                : true;
+
+            return matchesCategory && matchesPrice;
+        });
+    }, [product, searchParams]);
 
     return (
         <div>
-            <InfiniteScroll
-                dataLength={currentProducts.length}
-                next={loadMoreProducts}
-                hasMore={currentProducts.length < product.length}
-                loader={<div className="text-center mt-4">Loading...</div>}
-                endMessage={<div className="text-center mt-4">You have seen all the products</div>}
-                scrollThreshold={0.9}
-                scrollableTarget="scrollable-div"
-            >
-                <section className="mx-auto  grid grid-cols-1 lg:grid-cols-4 md:grid-cols-3 justify-items-center justify-center items-center gap-x-2 lg:gap-x-8 md:gap-x-2 mt-[38px] font-sans">
-                    {currentProducts?.map((wineproduct) => (
-                        <div className="cursor-pointer relative group" onClick={() => navigate(`/detail/${wineproduct._id}`)} key={wineproduct._id}>
+            <h1 className='flex items-center gap-3 xs:text-[14px] pt-5 text-black capitalize xl:text-base font-medium dark:text-white cursor-pointer'><img src={BestIcon} alt="" className='w-[26px] h-[26px]' />BEST SELLERS</h1>
+            <div className='border-t border-t-gray-200 mt-9'>
+                <section className="mx-auto grid grid-cols-1 lg:grid-cols-4 md:grid-cols-3 justify-items-center justify-center items-center gap-x-2 lg:gap-x-8 md:gap-x-2  font-sans pt-6 ">
+                    {filteredProducts.map((wineproduct) => (
+                        <div
+                            className="cursor-pointer relative group"
+                            onClick={() => navigate(`/wine/detail/${wineproduct._id}`)}
+                            key={wineproduct._id}
+                        >
                             <img
                                 src={wineproduct.images[0]}
                                 alt="Product"
                                 className="object-cover pb-[100px]"
                             />
                             <div className="px-4 py-3 bg-white dark:bg-black dark:text-white text-center h-[100px] absolute left-0 bottom-0 w-full">
-                                <span className="xs:text-[14px] text-black capitalize xl:text-base font-medium pt-5 pb-[10px]  dark:text-white">
+                                <span className="xs:text-[14px] text-black capitalize xl:text-base font-medium pt-5 pb-[10px] dark:text-white">
                                     {wineproduct.name}
                                 </span>
                                 <p className="text-[15px] font-bold text-red-800">${wineproduct.price}</p>
@@ -61,7 +63,10 @@ export const ShopProducts = ({ product }: Props) => {
                                     </li>
                                 </div>
                                 <li className="bg-white p-2 rounded-full shadow-md transition-all duration-300 ease-in-out hover:bg-primary hover:text-white">
-                                    <IoSearchOutline className="w-[16px] h-[16px] dark:text-black" onClick={() => navigate(`/detail/${wineproduct._id}`)} />
+                                    <IoSearchOutline
+                                        className="w-[16px] h-[16px] dark:text-black"
+                                        onClick={() => navigate(`/wine/detail/${wineproduct._id}`)}
+                                    />
                                 </li>
                                 <li className="bg-white p-2 rounded-full shadow-md transition-all duration-300 ease-in-out hover:bg-primary hover:text-white">
                                     <CiHeart className="w-[16px] h-[16px] dark:text-black" />
@@ -70,8 +75,9 @@ export const ShopProducts = ({ product }: Props) => {
                         </div>
                     ))}
                 </section>
-            </InfiniteScroll>
+            </div>
         </div>
+
     );
 };
 

@@ -1,12 +1,29 @@
+import { useAppSelector } from "@/hooks/redux"
+import { selectUserData } from "@/store/features/userSlice"
+import { Spinner } from "./Spinner"
+import { UserRole } from "@/types"
+import { Navigate } from "react-router-dom"
+import { paths } from "@/constants/paths"
 
 
 const DashboardLayout = () => {
+    const { user, loading } = useAppSelector(selectUserData)
+
+    if (loading) {
+        return (
+            <Spinner />
+        )
+    }
+    if (!user || user.role !== UserRole.Admin) {
+        return <Navigate to={paths.HOME} />
+
+    }
     return (
         <div>
 
-            <div className="relative flex flex-col bg-clip-border  bg-white text-gray-700 h-screen w-full max-w-[20rem] p-4 ">
+            <div className="relative flex flex-col bg-clip-border  bg-white text-gray-700 h-screen w-full max-w-[16rem] p-4 ">
                 <div className="mb-2 p-4">
-                    <h5 className="block antialiased tracking-normal font-sans text-xl font-semibold leading-snug text-gray-900 cursor-pointer">Dashboard</h5>
+                    <h5 className="block antialiased tracking-normal font-sans text-sm font-semibold leading-snug text-gray-900 cursor-pointer">Application</h5>
                 </div>
                 <nav className="flex flex-col gap-1 min-w-[240px] p-2 font-sans text-base font-normal text-gray-700">
                     <div role="button" className="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-red-50 hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-gray-50 active:bg-opacity-80 hover:text-red-900 focus:text-red-900 active:text-red-900 outline-none">

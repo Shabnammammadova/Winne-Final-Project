@@ -55,7 +55,7 @@ export const WineProductList = ({ product }: Props) => {
                             <li className="bg-white p-2 rounded-full shadow-md transition-all duration-300 ease-in-out hover:bg-primary hover:text-white">
                                 <IoSearchOutline
                                     className="w-[20px] h-[20px] dark:text-black"
-                                    onClick={() => navigate(`/detail/${wineproduct._id}`)}
+                                    onClick={() => navigate(`/wine/detail/${wineproduct._id}`)}
                                 />
                             </li>
                             <li className="bg-white p-2 rounded-full shadow-md transition-all duration-300 ease-in-out hover:bg-primary hover:text-white">

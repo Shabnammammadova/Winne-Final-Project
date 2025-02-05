@@ -26,23 +26,25 @@ const Shop = () => {
     }
 
     return (
-        <div className='bg-white dark:bg-black dark:text-white border-b border-gray-200 pb-6'>
+        <div className='bg-white dark:bg-black dark:text-white border-b border-gray-200'>
             <ShopHero />
-            <div className='flex xs:flex-col md:flex-row container'>
-                <Filter />
-                <RenderIf condition={isLoading}>
-                    {
-                        [1, 2, 3, 4].map((index) => (
-                            <ShopProducts.Skeleton key={index} />
-                        ))
-                    }
-                </RenderIf>
-                <RenderIf condition={!isLoading}>
-                    <ShopProducts product={products} />
-                </RenderIf>
-
-            </div>
             <ScrollToTop />
+            <div className='flex lg:flex-row md:flex-col 2xs:flex-col'>
+                <Filter />
+                <div className='flex xs:flex-col md:flex-col gap-10 container max-w-[1170px]'>
+
+                    <RenderIf condition={isLoading}>
+                        {
+                            [1, 2, 3, 4].map((index) => (
+                                <ShopProducts.Skeleton key={index} />
+                            ))
+                        }
+                    </RenderIf>
+                    <RenderIf condition={!isLoading}>
+                        <ShopProducts product={products} />
+                    </RenderIf>
+                </div>
+            </div>
         </div>
     )
 }
