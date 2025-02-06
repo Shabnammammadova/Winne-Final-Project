@@ -8,6 +8,9 @@ import { Product } from "@/types"
 
 
 
+
+
+
 type Props = {
     product: Product[]
 }
@@ -15,6 +18,8 @@ type Props = {
 
 export const WineProductList = ({ product }: Props) => {
     const navigate = useNavigate()
+
+
 
 
     return (
@@ -58,7 +63,8 @@ export const WineProductList = ({ product }: Props) => {
                                     onClick={() => navigate(`/wine/detail/${wineproduct._id}`)}
                                 />
                             </li>
-                            <li className="bg-white p-2 rounded-full shadow-md transition-all duration-300 ease-in-out hover:bg-primary hover:text-white">
+                            <li className="bg-white p-2 rounded-full shadow-md transition-all duration-300 ease-in-out hover:bg-primary hover:text-white"
+                            >
                                 <CiHeart className="w-[20px] h-[20px] dark:text-black" />
                             </li>
                         </ul>
