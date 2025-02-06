@@ -3,7 +3,9 @@ import DashboardLayout from "@/components/shared/DashboardLayout";
 import RootLayout from "@/components/shared/RootLayout";
 import { paths } from "@/constants/paths";
 import DashboardMainPage from "@/pages/(dashboard)/main";
+import DashboardCreateWinePage from "@/pages/(dashboard)/wines/create";
 import DashboardWinesPage from "@/pages/(dashboard)/wines/list";
+import DashboardEditWinePage from "@/pages/(dashboard)/wines/update";
 import { About } from "@/pages/about";
 import { Blog } from "@/pages/blog";
 import { BlogDetail } from "@/pages/blog/components/BlogDetail";
@@ -87,6 +89,14 @@ export const router = createBrowserRouter([
                     {
                         path: paths.DASHBOARD.WINE.LIST,
                         element: <DashboardWinesPage />
+                    },
+                    {
+                        path: paths.DASHBOARD.WINE.CREATE,
+                        element: <DashboardCreateWinePage />
+                    },
+                    {
+                        path: paths.DASHBOARD.WINE.EDIT(),
+                        element: <DashboardEditWinePage />
                     }
                 ]
             }

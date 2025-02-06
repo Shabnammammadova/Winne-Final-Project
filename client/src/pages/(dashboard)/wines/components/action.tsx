@@ -161,8 +161,7 @@ const ActionForm = ({ type }: Props) => {
             <h1 className="text-2xl font -bold text-primary mb-4">Create Rent</h1>
             <Form {...form}>
                 <form onSubmit={form.handleSubmit(onSubmit)} >
-
-                    <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+                    <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-1">
                         <FormField
                             control={form.control}
                             name="name"
@@ -170,7 +169,7 @@ const ActionForm = ({ type }: Props) => {
                                 <FormItem>
                                     <FormLabel>Name</FormLabel>
                                     <FormControl>
-                                        <Input placeholder="Mercedes" {...field} />
+                                        <Input placeholder="Cabernet Sauvignon" {...field} />
                                     </FormControl>
                                     <FormMessage />
                                 </FormItem>
@@ -186,7 +185,7 @@ const ActionForm = ({ type }: Props) => {
                                     <FormControl>
                                         <Input
                                             type="number"
-                                            placeholder="100"
+                                            placeholder="$30"
                                             {...field}
                                             value={field.value || ""}
                                             onChange={(e) => {
@@ -247,7 +246,7 @@ const ActionForm = ({ type }: Props) => {
                         <FormMessage />
                     </div>
                     <RenderIf condition={!!editItem?.images.length && !form.watch("images")?.length}>
-                        <h4>
+                        <h4 className="mt-3">
                             Existing Images
                         </h4>
 

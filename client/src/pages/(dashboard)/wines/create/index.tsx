@@ -1,8 +1,8 @@
 import ActionForm from "../components/action"
 
 
-const CreateWinePage = () => {
+const DashboardCreateWinePage = () => {
     return <ActionForm type={"create"} />
 }
 
-export default CreateWinePage
+export default DashboardCreateWinePage

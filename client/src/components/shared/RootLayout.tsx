@@ -24,7 +24,7 @@ const RootLayout = () => {
             <Outlet />
             <Dialogs />
             {!isDashboardPage && <Chat />}
-            <Footer />
+            {!isDashboardPage && <Footer />}
         </div>
     )
 }
