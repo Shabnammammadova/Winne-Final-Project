@@ -64,31 +64,6 @@ export const Filter = () => {
                     },
                 ]
             },
-            {
-                label: "Size",
-                options: [
-                    {
-                        value: "S",
-                        label: "S",
-                    },
-                    {
-                        value: "M",
-                        label: "M",
-                    },
-                    {
-                        value: "L",
-                        label: "L",
-                    },
-                    {
-                        value: "XL",
-                        label: "XL",
-                    },
-                    {
-                        value: "XXL",
-                        label: "XXL",
-                    },
-                ]
-            }
         ], [categoryOptions])
     function handleChange(type: string, option: string) {
         const params = searchParams.getAll(type.toLowerCase());
@@ -137,23 +112,7 @@ export const Filter = () => {
                                         }
                                     </div>
                                 </div>
-
                             ))}
-                        <div className="mt-6">
-                            <div className="flex items-center mb-6">
-                                <p className="pr-4 text-lg sm:text-xl font-medium tracking-widest uppercase">Size</p>
-                            </div>
-                            <div className="flex flex-wrap gap-3">
-                                {["S", "M", "L", "XL", "XXL"].map((size) => (
-                                    <button
-                                        key={size}
-                                        className="w-[40px] text-center text-sm sm:text-base font-medium md:m-0 xs:ml-3 border border-black transition-all duration-300 leading-[40px] hover:bg-primary hover:border-primary hover:text-white"
-                                    >
-                                        {size}
-                                    </button>
-                                ))}
-                            </div>
-                        </div>
                         <div className="mt-6">
                             <div className="flex items-center mb-6">
                                 <p className="pr-4 text-lg sm:text-xl font-medium tracking-widest uppercase">Brand</p>

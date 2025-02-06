@@ -15,5 +15,11 @@ export const paths = {
     DETAIL: (id = ":id") => `/wine/detail/${id}`,
     DASHBOARD: {
         MAIN: "/dashboard",
+        WINE: {
+            LIST: "/dashboard/wines",
+            CREATE: "/dashboard/wines/create",
+            EDIT: (id = ":id") => `/dashboard/wines/edit/${id}`,
+            REMOVE: (id = ":id") => `/dashboard/wines/remove/${id}`
+        },
     }
 }

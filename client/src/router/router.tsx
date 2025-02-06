@@ -3,6 +3,7 @@ import DashboardLayout from "@/components/shared/DashboardLayout";
 import RootLayout from "@/components/shared/RootLayout";
 import { paths } from "@/constants/paths";
 import DashboardMainPage from "@/pages/(dashboard)/main";
+import DashboardWinesPage from "@/pages/(dashboard)/wines/list";
 import { About } from "@/pages/about";
 import { Blog } from "@/pages/blog";
 import { BlogDetail } from "@/pages/blog/components/BlogDetail";
@@ -83,6 +84,10 @@ export const router = createBrowserRouter([
                         path: paths.DASHBOARD.MAIN,
                         element: <DashboardMainPage />
                     },
+                    {
+                        path: paths.DASHBOARD.WINE.LIST,
+                        element: <DashboardWinesPage />
+                    }
                 ]
             }
         ]
