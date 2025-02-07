@@ -21,5 +21,6 @@ export const paths = {
             EDIT: (id = ":id") => `/dashboard/wines/edit/${id}`,
             REMOVE: (id = ":id") => `/dashboard/wines/remove/${id}`
         },
+        CATEGORY: "/dashboard/categories"
     }
 }

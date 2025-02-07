@@ -20,7 +20,6 @@ import { z } from "zod";
 
 const getformSchema = (isEdit: boolean) => z.object({
     name: z.string().min(2),
-    description: z.string().min(2, { message: 'Description is required' }),
     price: z
         .number({
             invalid_type_error: 'Price must be a number',
@@ -36,7 +35,7 @@ const getformSchema = (isEdit: boolean) => z.object({
     images: isEdit ? z.any().optional() :
         z
             .instanceof(FileList, { message: "Images are required" })
-            .refine((list) => list.length > 2, "Minimum 1 files required")
+            .refine((list) => list.length > 1, "Minimum 2 files required")
             .transform((list) => Array.from(list))
             .refine(
                 (files) => {
@@ -66,6 +65,7 @@ const getformSchema = (isEdit: boolean) => z.object({
 type Props = {
     type: "create" | "update"
 }
+
 const ActionForm = ({ type }: Props) => {
     const isEdit = type === "update";
     const { id } = useParams();
@@ -106,8 +106,6 @@ const ActionForm = ({ type }: Props) => {
 
 
 
-
-
     const formSchema = getformSchema(isEdit)
 
     const form = useForm<z.infer<typeof formSchema>>
@@ -115,12 +113,10 @@ const ActionForm = ({ type }: Props) => {
             resolver: zodResolver(formSchema),
             defaultValues: {
                 name: '',
-                description: '',
                 price: 0,
                 discount: 0,
                 categoryId: '',
                 images: undefined,
-
             },
         });
 
@@ -158,10 +154,10 @@ const ActionForm = ({ type }: Props) => {
 
     return (
         <div>
-            <h1 className="text-2xl font -bold text-primary mb-4">Create Rent</h1>
+            <h1 className="text-2xl font -bold text-primary mb-4">Create Wine</h1>
             <Form {...form}>
                 <form onSubmit={form.handleSubmit(onSubmit)} >
-                    <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-1">
+                    <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3">
                         <FormField
                             control={form.control}
                             name="name"
@@ -169,13 +165,12 @@ const ActionForm = ({ type }: Props) => {
                                 <FormItem>
                                     <FormLabel>Name</FormLabel>
                                     <FormControl>
-                                        <Input placeholder="Cabernet Sauvignon" {...field} />
+                                        <Input placeholder="Suspendisse Urna" {...field} />
                                     </FormControl>
                                     <FormMessage />
                                 </FormItem>
                             )}
                         />
-
                         <FormField
                             control={form.control}
                             name="price"
@@ -185,7 +180,7 @@ const ActionForm = ({ type }: Props) => {
                                     <FormControl>
                                         <Input
                                             type="number"
-                                            placeholder="$30"
+                                            placeholder="100"
                                             {...field}
                                             value={field.value || ""}
                                             onChange={(e) => {
@@ -243,24 +238,41 @@ const ActionForm = ({ type }: Props) => {
                                 </FormItem>
                             )}
                         />
+                        <FormField
+                            control={form.control}
+                            name="images"
+                            render={({ field }) => (
+                                <FormItem>
+                                    <FormLabel>Images</FormLabel>
+                                    <FormControl>
+                                        <Input multiple type="file" accept="image/*"
+                                            onChange={(e) => {
+                                                field.onChange(e.target.files)
+                                            }}
+                                        />
+                                    </FormControl>
+                                    <FormMessage />
+                                </FormItem>
+                            )}
+                        />
                         <FormMessage />
                     </div>
                     <RenderIf condition={!!editItem?.images.length && !form.watch("images")?.length}>
-                        <h4 className="mt-3">
+                        <h4 className="mt-5">
                             Existing Images
                         </h4>
 
                         <div className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8">
                             {
                                 editItem?.images.map((image: string) => (
-                                    <img src={image} alt="Rent Image" className="w-full object-contain rounded-lg" />
+                                    <img src={image} alt="Wine Image" className="w-full object-contain rounded-lg mt-3" />
                                 ))
                             }
                         </div>
                     </RenderIf>
                     <div className="flex justify-end mt-4">
                         <Button asChild variant="secondary"  >
-                            <Link to="/dashboard/wines" className="mr-2">
+                            <Link to="/dashboard/wines" className="mr-2 border border-gray-300">
                                 Back
                             </Link>
                         </Button>
@@ -271,5 +283,7 @@ const ActionForm = ({ type }: Props) => {
         </div>
     )
 }
+
+
 
 export default ActionForm
