@@ -126,7 +126,7 @@ export const RegisterDialog = () => {
                                 <FormItem>
                                     <FormLabel>Email</FormLabel>
                                     <FormControl>
-                                        <Input placeholder="johndoe@example.com" {...field} />
+                                        <Input placeholder="john@gmail.com" {...field} />
                                     </FormControl>
                                     <FormMessage />
                                 </FormItem>

@@ -47,7 +47,14 @@ export const SwiperSlides = ({ product }: Props) => {
                             <span className="xs:text-[14px] text-black capitalize xl:text-base font-medium pt-5 pb-[10px] dark:text-white">
                                 {wineproduct.name}
                             </span>
-                            <p className="text-[15px] font-bold text-red-800">${wineproduct.price}</p>
+                            <div className="flex items-center justify-center gap-1 text-[15px]">
+                                <p className=" font-bold text-gray-500 line-through">
+                                    ${wineproduct.price}
+                                </p>
+                                <p className=" font-bold text-red-800">
+                                    ${wineproduct.price - wineproduct.discount}
+                                </p>
+                            </div>
                         </div>
                         <ul className="absolute flex gap-4 justify-center items-center bottom-[30%] left-1/2 transform -translate-x-1/2 translate-y-0 opacity-0 group-hover:opacity-100 group-hover:translate-y-4 transition-all duration-500 ease-in-out">
                             <div className="flex flex-col items-center relative font-sans">

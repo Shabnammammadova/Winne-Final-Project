@@ -46,20 +46,18 @@ export const Action = () => {
                             </button>
 
                         ) : (
-                            <User className="w-[24px] h-[24px] mr-[13px]" />
+                            <button> <User className="w-[24px] h-[24px] mr-[13px]" /></button>
                         )}
 
 
                     </DropdownMenuTrigger>
                     <DropdownMenuContent>
-                        {
-                            user.role === UserRole.User && <DropdownMenuItem asChild>
-                                <DropdownMenuLabel>My Account</DropdownMenuLabel>
-                                <DropdownMenuItem>
-                                    <Link to="/profile">Profile</Link>
-                                </DropdownMenuItem>
+                        <DropdownMenuItem asChild>
+                            <DropdownMenuLabel>My Account</DropdownMenuLabel>
+                            <DropdownMenuItem>
+                                <Link to="/profile">Profile</Link>
                             </DropdownMenuItem>
-                        }
+                        </DropdownMenuItem>
                         <DropdownMenuSeparator />
                         <DropdownMenuItem>
                             {

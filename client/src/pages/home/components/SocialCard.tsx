@@ -16,8 +16,8 @@ export const SocialCard = () => {
             </div>
             <div className="grid xl:grid-cols-2 grid-cols-1 gap-x-6 gap-y-2">
                 <div className="w-full relative group group mx-auto overflow-hidden cursor-pointer">
-                    <img src={Instagram1} alt="" className="w-full h-auto transition-all duration-300 group-hover:scale-105" />
-                    <div className="absolute inset-0 bg-black bg-opacity-0 transition-opacity duration-300 group-hover:bg-opacity-70 group-hover:flex hidden  flex-col items-center justify-center ">
+                    <img src={Instagram1} alt="" className="w-full h-auto transition-all duration-700 group-hover:scale-105" />
+                    <div className="absolute inset-0 bg-black bg-opacity-0 transition-opacity duration-700 group-hover:bg-opacity-70 group-hover:flex hidden  flex-col items-center justify-center ">
                         <div className="text-center">
                             <Instagram className="w-[40px] h-[40px] font-sans text-white" />
                         </div>
@@ -27,8 +27,8 @@ export const SocialCard = () => {
 
                 <div className="grid xl:grid-cols-2 lg:grid-cols-2 md:grid-cols-2  gap-x-2 gap-y-4 lg:gap-x-4 md:gap-x-2">
                     <div className="w-auto relative group group mx-auto h-auto overflow-hidden cursor-pointer">
-                        <img src={Instagram2} alt="" className="w-full h-auto transition-all duration-300 group-hover:scale-105" />
-                        <div className="absolute inset-0 bg-black bg-opacity-0 transition-opacity duration-300 group-hover:bg-opacity-70 group-hover:flex hidden  flex-col items-center justify-center ">
+                        <img src={Instagram2} alt="" className="w-full h-auto transition-all duration-700 group-hover:scale-105" />
+                        <div className="absolute inset-0 bg-black bg-opacity-0 transition-opacity duration-700 group-hover:bg-opacity-70 group-hover:flex hidden  flex-col items-center justify-center ">
                             <div className="text-center">
                                 <Instagram className="w-[40px] h-[40px] font-sans text-white" />
                             </div>
@@ -36,8 +36,8 @@ export const SocialCard = () => {
                         </div>
                     </div>
                     <div className="w-auto relative group group mx-auto h-auto overflow-hidden cursor-pointer">
-                        <img src={Instagram3} alt="" className="w-full h-auto transition-all duration-300 group-hover:scale-105" />
-                        <div className="absolute inset-0 bg-black bg-opacity-0 transition-opacity duration-300 group-hover:bg-opacity-70 group-hover:flex hidden  flex-col items-center justify-center ">
+                        <img src={Instagram3} alt="" className="w-full h-auto transition-all duration-700 group-hover:scale-105" />
+                        <div className="absolute inset-0 bg-black bg-opacity-0 transition-opacity duration-700 group-hover:bg-opacity-70 group-hover:flex hidden  flex-col items-center justify-center ">
                             <div className="text-center">
                                 <Instagram className="w-[40px] h-[40px] font-sans text-white" />
                             </div>
@@ -45,8 +45,8 @@ export const SocialCard = () => {
                         </div>
                     </div>
                     <div className="w-auto relative group group mx-auto h-auto overflow-hidden cursor-pointer">
-                        <img src={Instagram4} alt="" className="w-full h-auto transition-all duration-300 group-hover:scale-105" />
-                        <div className="absolute inset-0 bg-black bg-opacity-0 transition-opacity duration-300 group-hover:bg-opacity-70 group-hover:flex hidden  flex-col items-center justify-center ">
+                        <img src={Instagram4} alt="" className="w-full h-auto transition-all duration-700 group-hover:scale-105" />
+                        <div className="absolute inset-0 bg-black bg-opacity-0 transition-opacity duration-700 group-hover:bg-opacity-70 group-hover:flex hidden  flex-col items-center justify-center ">
                             <div className="text-center">
                                 <Instagram className="w-[40px] h-[40px] font-sans text-white" />
                             </div>
@@ -54,8 +54,8 @@ export const SocialCard = () => {
                         </div>
                     </div>
                     <div className="w-auto relative group group mx-auto h-auto overflow-hidden cursor-pointer">
-                        <img src={Instagram5} alt="" className="w-full h-auto transition-all duration-300 group-hover:scale-105" />
-                        <div className="absolute inset-0 bg-black bg-opacity-0 transition-opacity duration-300 group-hover:bg-opacity-70 group-hover:flex hidden  flex-col items-center justify-center ">
+                        <img src={Instagram5} alt="" className="w-full h-auto transition-all duration-700 group-hover:scale-105" />
+                        <div className="absolute inset-0 bg-black bg-opacity-0 transition-opacity duration-700 group-hover:bg-opacity-70 group-hover:flex hidden  flex-col items-center justify-center ">
                             <div className="text-center">
                                 <Instagram className="w-[40px] h-[40px] font-sans text-white" />
                             </div>

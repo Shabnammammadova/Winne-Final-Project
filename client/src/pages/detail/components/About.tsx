@@ -10,9 +10,9 @@ type Props = {
 }
 
 
-export const WineAbout = ({ product = { name: "", price: 0, images: [] } }: Props) => {
+export const WineAbout = ({ product = { name: "", price: 0, discount: 0, images: [] } }: Props) => {
 
-    const { name, price, images } = product;
+    const { name, price, discount, images } = product;
     return (
         <div className="bg-white dark:bg-black">
             <div className="container mx-auto">
@@ -30,7 +30,14 @@ export const WineAbout = ({ product = { name: "", price: 0, images: [] } }: Prop
                             <div className="w-full">
                                 <h2 className="text-3xl font-bold mb-2 cursor-pointer">
                                     {name}</h2>
-                                <p className="text-red-800 font-bold mb-4">${price}  USD</p>
+                                <div className="flex items-center gap-1 mb-2">
+                                    <p className="text-[15px] font-bold text-gray-500 line-through">
+                                        ${price} USD
+                                    </p>
+                                    <p className="text-[15px] font-bold text-red-800">
+                                        ${price - discount} USD
+                                    </p>
+                                </div>
                             </div>
                             <div className="bg-white p-2 rounded-full transition-all duration-300 ease-in-out w-[40px] h-[40px] hover:bg-primary border-solid border-[1px] border-gray-200 cursor-pointer flex items-center justify-center hover:text-white">
                                 <Heart className=" w-[16px] h-[16px] " />

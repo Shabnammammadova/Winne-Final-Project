@@ -7,10 +7,6 @@ import { Product } from "@/types"
 
 
 
-
-
-
-
 type Props = {
     product: Product[]
 }
@@ -46,9 +42,14 @@ export const WineProductList = ({ product }: Props) => {
                             <span className="xs:text-[14px] text-black dark:text-white capitalize xl:text-base font-medium pt-5 pb-[10px]">
                                 {wineproduct.name}
                             </span>
-                            <p className="text-[15px] font-bold text-red-800">
-                                ${wineproduct.price}
-                            </p>
+                            <div className="flex items-center justify-center gap-1">
+                                <p className="text-[15px] font-bold text-gray-500 line-through">
+                                    ${wineproduct.price}
+                                </p>
+                                <p className="text-[15px] font-bold text-red-800">
+                                    ${wineproduct.price - wineproduct.discount}
+                                </p>
+                            </div>
                         </div>
 
                         <ul className="absolute flex gap-4 justify-center items-center bottom-[30%] left-1/2 transform -translate-x-1/2 translate-y-0 opacity-0 group-hover:opacity-100 group-hover:translate-y-4 transition-all duration-500 ease-in-out">
@@ -69,6 +70,7 @@ export const WineProductList = ({ product }: Props) => {
                             </li>
                         </ul>
                     </div>
+
                 ))}
             </section>
         </div>

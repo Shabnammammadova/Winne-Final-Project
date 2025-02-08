@@ -5,6 +5,7 @@ import Hero3 from "../../../assets/images/Hero 3.webp";
 import { Autoplay, Navigation, Pagination } from "swiper/modules";
 import { Link } from "react-router-dom";
 import { paths } from "@/constants/paths";
+import { motion } from "framer-motion"
 
 export const HomeHero = () => {
     const images = [Hero1, Hero2, Hero3];
@@ -29,7 +30,12 @@ export const HomeHero = () => {
                 ))}
             </Swiper>
 
-            <div className="absolute top-1/2 left-[5%] xs:left-[8%] sm:left-[10%] md:left-[14%] translate-y-[-50%] z-10 font-sans capitalize max-w-[90%] lg:max-w-[50%]">
+            <motion.div
+                initial={{ opacity: 0, x: 200 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 1, ease: "easeOut" }}
+                className="absolute top-1/3 left-[5%] xs:left-[8%] sm:left-[10%] md:left-[14%] translate-y-[-50%] z-10 font-sans capitalize max-w-[90%] lg:max-w-[50%]"
+            >
                 <p className="text-[10px] xs:text-[12px] sm:text-[14px] md:text-[16px] font-medium tracking-[3px] sm:tracking-[4px] text-gray-700">
                     Maybe you need
                 </p>
@@ -44,7 +50,8 @@ export const HomeHero = () => {
                         Shop Now
                     </button>
                 </Link>
-            </div>
+            </motion.div>
         </div>
+
     );
 };

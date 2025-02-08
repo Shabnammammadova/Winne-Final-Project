@@ -45,12 +45,17 @@ const edit = async (data: CreateWineRequestPayload & { id?: string }) => {
     return await axiosInstance.put(`/product/${data.id}`, formData)
 }
 
+const remove = async (id: string) => {
+    return await axiosInstance.delete(`/product/${id}`);
+}
+
 
 const wineService = {
     getAll,
     getById,
     create,
-    edit
+    edit,
+    remove
 }
 
 export default wineService

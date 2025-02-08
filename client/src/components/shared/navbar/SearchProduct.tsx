@@ -29,7 +29,14 @@ export const SearchProduct = ({ product }: Props) => {
                         />
                         <div className="flex flex-col">
                             <h3>{wineproduct.name}</h3>
-                            <p className="font-semibold text-md text-red-800">${wineproduct.price} USD</p>
+                            <div className="flex items-center gap-1 text-xs">
+                                <p className=" font-bold text-gray-500 line-through">
+                                    ${wineproduct.price}
+                                </p>
+                                <p className=" font-bold text-red-800">
+                                    ${wineproduct.price - wineproduct.discount}
+                                </p>
+                            </div>
                         </div>
                     </div>
                 ))

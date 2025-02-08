@@ -2,10 +2,8 @@ import { Blog } from "@/types";
 import { useNavigate } from "react-router-dom";
 import DateFormatter from "../DateFormatter";
 import MonthFormatter from "../MonthFormatter";
-import ReactPaginate from "react-paginate";
-import { useState } from "react";
 
-const itemsPerPage = 3;
+
 
 type Props = {
     blog: Blog[];
@@ -13,15 +11,6 @@ type Props = {
 
 export const BlogList = ({ blog }: Props) => {
     const navigate = useNavigate();
-    const [currentPage, setCurrentPage] = useState(0);
-
-    const pageCount = Math.ceil(blog.length / itemsPerPage);
-    const offset = currentPage * itemsPerPage;
-    const currentItems = blog.slice(offset, offset + itemsPerPage);
-
-    const handlePageClick = (event) => {
-        setCurrentPage(event.selected);
-    };
 
     return (
         <div className="bg-white dark:bg-black pb-[70px]">
@@ -30,7 +19,7 @@ export const BlogList = ({ blog }: Props) => {
                 <span className="border-red-800 border-2 w-[75px]"></span>
             </div>
             <div className="container pt-[50px] grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 gap-x-2 gap-y-2 lg:gap-x-8 lg:gap-y-8 md:gap-x-2">
-                {currentItems.map((bloglist) => (
+                {blog.map((bloglist) => (
                     <div
                         className="relative cursor-pointer"
                         key={bloglist._id}
@@ -57,25 +46,10 @@ export const BlogList = ({ blog }: Props) => {
                             </p>
                         </div>
                     </div>
+
                 ))}
             </div>
-            <div className="flex justify-center mt-6">
-                <ReactPaginate
-                    previousLabel={"←"}
-                    nextLabel={"→"}
-                    breakLabel={"..."}
-                    pageCount={pageCount}
-                    marginPagesDisplayed={2}
-                    pageRangeDisplayed={3}
-                    onPageChange={handlePageClick}
-                    containerClassName={"pagination flex space-x-2"}
-                    activeClassName={"bg-primary text-white px-3 py-1 rounded"}
-                    pageClassName={"border px-3 py-1 rounded cursor-pointer"}
-                    previousClassName={"border px-3 py-1 rounded cursor-pointer"}
-                    nextClassName={"border px-3 py-1 rounded cursor-pointer"}
-                    disabledClassName={"opacity-50 cursor-not-allowed"}
-                />
-            </div>
+
         </div>
     );
 };

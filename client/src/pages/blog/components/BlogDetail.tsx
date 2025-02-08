@@ -45,12 +45,13 @@ export const BlogDetail = () => {
                     <WineBrand />
                     <div className="relative w-full pb-[56.25%]">
                         <iframe
-                            src="https://www.youtube.com/embed/yYQOjWlQkxg?rel=0"
+                            src="https://www.youtube.com/embed/yYQOjWlQkxg?rel=0&autoplay=1&loop=1&mute=1&playlist=yYQOjWlQkxg"
                             className="absolute top-0 left-0 w-full h-full border-0 pt-6 pb-10"
                             allowFullScreen
-                            scrolling="no"
-                            allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            referrerPolicy="strict-origin-when-cross-origin"
                         ></iframe>
+
                     </div>
                 </div>
             </div>

@@ -34,7 +34,7 @@ export function Delivery() {
                     <DialogTitle className="text-lg font-semibold text-black mb-2">Help</DialogTitle>
                     <div className="flex flex-col gap-2 text-gray-500">
                         <p>Give us a shout if you have any other questions and/or concerns.</p>
-                        <p>Email: <u className=" text-black hover:text-red-800 cursor-pointer"> help@example.com</u></p>
+                        <p>Email: <u className=" text-black hover:text-red-800 cursor-pointer"> help@gmail.com</u></p>
                         <p>Phone: +1 (23) 456 789</p>
                     </div>
                 </DialogHeader>
