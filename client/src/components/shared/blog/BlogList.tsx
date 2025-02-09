@@ -2,6 +2,7 @@ import { Blog } from "@/types";
 import { useNavigate } from "react-router-dom";
 import DateFormatter from "../DateFormatter";
 import MonthFormatter from "../MonthFormatter";
+import { useEffect, useState } from "react";
 
 
 
@@ -11,7 +12,23 @@ type Props = {
 
 export const BlogList = ({ blog }: Props) => {
     const navigate = useNavigate();
+    const [visibleBlogs, setVisibleBlogs] = useState<Blog[]>([]);
+    const [hasMore, setHasMore] = useState<boolean>(false);
 
+    useEffect(() => {
+        if (blog && blog.length > 0) {
+            setVisibleBlogs(blog.slice(0, 3));
+            setHasMore(blog.length > 3);
+        }
+    }, [blog]);
+
+    const loadMoreBlogs = () => {
+        const newVisibleBlogs = blog.slice(0, visibleBlogs.length + 3);
+        setVisibleBlogs(newVisibleBlogs);
+        if (newVisibleBlogs.length >= blog.length) {
+            setHasMore(false);
+        }
+    };
     return (
         <div className="bg-white dark:bg-black pb-[70px]">
             <div className="flex justify-center items-center flex-col pt-[70px] font-sans">
@@ -19,7 +36,7 @@ export const BlogList = ({ blog }: Props) => {
                 <span className="border-red-800 border-2 w-[75px]"></span>
             </div>
             <div className="container pt-[50px] grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 gap-x-2 gap-y-2 lg:gap-x-8 lg:gap-y-8 md:gap-x-2">
-                {blog.map((bloglist) => (
+                {visibleBlogs.map((bloglist) => (
                     <div
                         className="relative cursor-pointer"
                         key={bloglist._id}
@@ -49,7 +66,19 @@ export const BlogList = ({ blog }: Props) => {
 
                 ))}
             </div>
-
+            {hasMore && (
+                <button
+                    onClick={loadMoreBlogs}
+                    className="text-white text-center font-sans flex items-center justify-center mx-auto p-2 rel relative top-5 bg-primary rounded-lg"
+                >
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="mr-1 h-4 w-4">
+                        <path fill-rule="evenodd"
+                            d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+                            clip-rule="evenodd" />
+                    </svg>
+                    View more
+                </button>
+            )}
         </div>
     );
 };

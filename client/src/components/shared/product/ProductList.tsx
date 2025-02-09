@@ -1,27 +1,24 @@
 import { SlBag } from "react-icons/sl";
 import { IoSearchOutline } from "react-icons/io5";
 import { CiHeart } from "react-icons/ci";
-import { useNavigate } from "react-router-dom"
-import { Product } from "@/types"
+import { useNavigate } from "react-router-dom";
+import { Product } from "@/types";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import favoriteService from "@/services/favorite";
 import { toast } from "sonner";
 import { useSelector } from "react-redux";
 import { selectUserData } from "@/store/features/userSlice";
-
-
-
+import { useState, useEffect } from "react";
 
 type Props = {
-    product: Product[]
-}
-
+    product: Product[];
+};
 
 export const WineProductList = ({ product }: Props) => {
-    const user = useSelector(selectUserData)
+    const user = useSelector(selectUserData);
 
-    const navigate = useNavigate()
-    const queryClient = useQueryClient()
+    const navigate = useNavigate();
+    const queryClient = useQueryClient();
     const { mutate } = useMutation({
         mutationFn: favoriteService.add,
         onSuccess: () => {
@@ -31,10 +28,28 @@ export const WineProductList = ({ product }: Props) => {
         onError: () => {
             toast.info("The product is now a favorite.");
         },
-    })
+    });
+
+    const [visibleProducts, setVisibleProducts] = useState<Product[]>([]);
+    const [hasMore, setHasMore] = useState<boolean>(false);
+
+    useEffect(() => {
+        if (product && product.length > 0) {
+            setVisibleProducts(product.slice(0, 4));
+            setHasMore(product.length > 4);
+        }
+    }, [product]);
+
+    const loadMoreProducts = () => {
+        const newVisibleProducts = product.slice(0, visibleProducts.length + 4);
+        setVisibleProducts(newVisibleProducts);
+        if (newVisibleProducts.length >= product.length) {
+            setHasMore(false);
+        }
+    };
 
     function onSubmit(productId: string) {
-        mutate({ userId: user.user?._id!, productId: productId })
+        mutate({ userId: user.user?._id!, productId: productId });
     }
 
     return (
@@ -48,8 +63,8 @@ export const WineProductList = ({ product }: Props) => {
                     Best Seller Product This Week!
                 </span>
             </div>
-            <section className="container mx-auto grid grid-cols-2 lg:grid-cols-4 md:grid-cols-3 justify-items-center justify-center items-center gap-x-2 lg:gap-x-8 md:gap-x-2 mt-[38px] font-sans">
-                {product?.map((wineproduct) => (
+            <section className="container mx-auto grid grid-cols-2 lg:grid-cols-4 md:grid-cols-3 justify-items-center justify-center items-center gap-x-2 lg:gap-x-8 md:gap-x-2 mt-[38px]  font-sans">
+                {visibleProducts.map((wineproduct) => (
                     <div key={wineproduct._id} className="cursor-pointer relative group">
                         <img
                             src={wineproduct.images[0]}
@@ -83,18 +98,29 @@ export const WineProductList = ({ product }: Props) => {
                                     onClick={() => navigate(`/wine/detail/${wineproduct._id}`)}
                                 />
                             </li>
-                            <li onClick={() => onSubmit(wineproduct._id)} className="bg-white p-2 rounded-full shadow-md transition-all duration-300 ease-in-out hover:bg-primary hover:text-white"
-                            >
+                            <li onClick={() => onSubmit(wineproduct._id)} className="bg-white p-2 rounded-full shadow-md transition-all duration-300 ease-in-out hover:bg-primary hover:text-white">
                                 <CiHeart className="w-[20px] h-[20px] dark:text-black" />
                             </li>
                         </ul>
                     </div>
-
                 ))}
             </section>
+            {hasMore && (
+                <button
+                    onClick={loadMoreProducts}
+                    className="text-white text-center font-sans flex items-center justify-center mx-auto p-2 rel relative bottom-5 bg-primary rounded-lg"
+                >
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="mr-1 h-4 w-4">
+                        <path fill-rule="evenodd"
+                            d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+                            clip-rule="evenodd" />
+                    </svg>
+                    View more
+                </button>
+            )}
         </div>
-    )
-}
+    );
+};
 
 
 
