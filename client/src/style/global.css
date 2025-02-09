@@ -73,21 +73,15 @@
   }
   @font-face {
     font-family: "Jost";
-    src: url("/client/public/fonts/Jost.ttf") format("truetype");
+    src: url("/fonts/Jost.ttf") format("truetype");
     font-weight: 100 900;
     font-style: normal;
   }
   @font-face {
     font-family: "Jost";
-    src: url("/client/public/fonts/Jost-Italic.ttf") format("truetype");
-    font-weight: 400;
+    src: url("/fonts/Jost-Italic.ttf") format("truetype");
+    font-weight: 100 900;
     font-style: italic;
-  }
-  @font-face {
-    font-family: "Dancing Script";
-    src: url("/client/public/customFonts/DancingScript.ttf") format("truetype");
-    font-weight: 400;
-    font-style: normal;
   }
 }
 @layer base {
@@ -109,12 +103,6 @@ body {
 body[data-scroll-locked] {
   margin: 0 !important;
   margin-right: 0 !important;
-}
-
-.dancing-script {
-  font-family: "Dancing Script", cursive;
-  font-weight: 400;
-  font-size: 32px;
 }
 
 .swiper-button-next,

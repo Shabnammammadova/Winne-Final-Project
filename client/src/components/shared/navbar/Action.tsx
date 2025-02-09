@@ -18,7 +18,7 @@ import { logoutAsync, selectUserData } from "@/store/features/userSlice"
 import { LogOut, User } from "lucide-react"
 import { UserRole } from "@/types"
 import ThemeToggle from "../ThemeToggle"
-
+import { MdOutlineLanguage } from "react-icons/md"
 
 
 
@@ -72,6 +72,7 @@ export const Action = () => {
                 <Button onClick={() => openDialog(ModalTypeEnum.LOGIN)} className="mr-[10px]">Sign In</Button>
             )}
             <SearchSide />
+            <MdOutlineLanguage className="w-[24px] h-[24px]" />
             <ThemeToggle />
             <Link to={paths.WISHLIST}><img src={HeartIcon} alt="" className='w-[24px] h-[24px] mr-[13px] lg:block hidden' /></Link>
             <ShoppingCart />

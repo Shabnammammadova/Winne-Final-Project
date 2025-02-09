@@ -9,11 +9,14 @@ export default {
     container: {
       center: "true",
       padding: {
-        xl: "3px",
-        lg: "4px",
-        md: "2px",
+        xl: "1px",
+        lg: "1px",
+        md: "1px",
         sm: "1px",
         DEFAULT: "0.5rem",
+      },
+      margin: {
+        DEFAULT: "1px",
       },
     },
     screens: {

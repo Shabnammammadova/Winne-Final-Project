@@ -45,35 +45,35 @@ export const Navbar = () => {
                 <nav className="p-4">
                     <Link
                         to={paths.HOME}
-                        className="block mb-4 text-black hover:text-gray-700 font-medium"
+                        className="block mb-4 text-black hover:text-red-800 font-medium"
                         onClick={toggleSidebar}
                     >
                         HOME
                     </Link>
                     <Link
                         to={paths.SHOP}
-                        className="block mb-4 text-black hover:text-gray-700 font-medium"
+                        className="block mb-4 text-black hover:text-red-800 font-medium"
                         onClick={toggleSidebar}
                     >
                         SHOP
                     </Link>
                     <Link
                         to={paths.ABOUT}
-                        className="block mb-4 text-black hover:text-gray-700 font-medium"
+                        className="block mb-4 text-black hover:text-red-800 font-medium"
                         onClick={toggleSidebar}
                     >
                         ABOUT US
                     </Link>
                     <Link
                         to={paths.CONTACT}
-                        className="block mb-4 text-black hover:text-gray-700 font-medium"
+                        className="block mb-4 text-black hover:text-red-800 font-medium"
                         onClick={toggleSidebar}
                     >
                         CONTACT US
                     </Link>
                     <Link
                         to={paths.FAQ}
-                        className="block mb-4 text-black hover:text-gray-700 font-medium"
+                        className="block mb-4 text-black hover:text-red-800 font-medium"
                         onClick={toggleSidebar}
                     >
                         FAQ
@@ -81,7 +81,7 @@ export const Navbar = () => {
 
                     <Link
                         to={paths.BLOGS}
-                        className="block mb-4 text-black hover:text-gray-700 font-medium"
+                        className="block mb-4 text-black hover:text-red-800 font-medium"
                         onClick={toggleSidebar}
                     >
                         BLOGS
