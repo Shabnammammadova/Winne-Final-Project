@@ -7,7 +7,7 @@ import queryClient from './config/queryClient'
 import { Provider } from 'react-redux'
 import { store } from './store'
 import { Toaster } from 'sonner'
-
+// import "../../client/src/types/multiLang"
 
 createRoot(document.getElementById('root')!).render(
   <>

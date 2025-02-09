@@ -104,6 +104,8 @@ const forgotPassword = async (req: Request, res: Response) => {
 };
 
 const resetPassword = async (req: Request, res: Response) => {
+    console.log(req.body);
+
     const { token, password } = req.body;
 
     const user = await User.findOne({

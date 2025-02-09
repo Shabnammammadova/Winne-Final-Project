@@ -3,6 +3,11 @@ import { IoSearchOutline } from "react-icons/io5";
 import { CiHeart } from "react-icons/ci";
 import { useNavigate } from "react-router-dom"
 import { Product } from "@/types"
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import favoriteService from "@/services/favorite";
+import { toast } from "sonner";
+import { useSelector } from "react-redux";
+import { selectUserData } from "@/store/features/userSlice";
 
 
 
@@ -13,10 +18,24 @@ type Props = {
 
 
 export const WineProductList = ({ product }: Props) => {
+    const user = useSelector(selectUserData)
+
     const navigate = useNavigate()
+    const queryClient = useQueryClient()
+    const { mutate } = useMutation({
+        mutationFn: favoriteService.add,
+        onSuccess: () => {
+            toast.success("Wine added to favorite!");
+            queryClient.invalidateQueries();
+        },
+        onError: () => {
+            toast.info("The product is now a favorite.");
+        },
+    })
 
-
-
+    function onSubmit(productId: string) {
+        mutate({ userId: user.user?._id!, productId: productId })
+    }
 
     return (
         <div className="bg-white dark:bg-black dark:text-white w-full">
@@ -64,7 +83,7 @@ export const WineProductList = ({ product }: Props) => {
                                     onClick={() => navigate(`/wine/detail/${wineproduct._id}`)}
                                 />
                             </li>
-                            <li className="bg-white p-2 rounded-full shadow-md transition-all duration-300 ease-in-out hover:bg-primary hover:text-white"
+                            <li onClick={() => onSubmit(wineproduct._id)} className="bg-white p-2 rounded-full shadow-md transition-all duration-300 ease-in-out hover:bg-primary hover:text-white"
                             >
                                 <CiHeart className="w-[20px] h-[20px] dark:text-black" />
                             </li>

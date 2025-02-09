@@ -52,21 +52,16 @@ export const Action = () => {
 
                     </DropdownMenuTrigger>
                     <DropdownMenuContent>
+                        <DropdownMenuLabel>My Account</DropdownMenuLabel>
                         <DropdownMenuItem asChild>
-                            <DropdownMenuLabel>My Account</DropdownMenuLabel>
-                            <DropdownMenuItem>
-                                <Link to="/profile">Profile</Link>
-                            </DropdownMenuItem>
+                            <Link to="/profile">Profile</Link>
                         </DropdownMenuItem>
                         <DropdownMenuSeparator />
-                        <DropdownMenuItem>
-                            {
-                                user.role === UserRole.Admin && <DropdownMenuItem asChild>
-                                    <Link to={paths.DASHBOARD.MAIN} className="cursor-pointer">Dashboard</Link>
-                                </DropdownMenuItem>
-                            }
-                        </DropdownMenuItem>
-
+                        {
+                            user.role === UserRole.Admin && <DropdownMenuItem asChild >
+                                <Link to={paths.DASHBOARD.MAIN} className="cursor-pointer">Dashboard</Link>
+                            </DropdownMenuItem>
+                        }
                         <DropdownMenuItem className="cursor-pointer" onClick={handleLogout}> <LogOut />
                             <span>Log out</span>
                         </DropdownMenuItem>

@@ -42,6 +42,7 @@ const getformSchema = (isEdit: boolean) => z.object({
                     const allowedTypes: { [key: string]: boolean } = {
                         "image/jpeg": true,
                         "image/png": true,
+                        "image/webp": true,
                         "application/pdf": true,
                         "application/msword": true,
                         "application/vnd.openxmlformats-officedocument.wordprocessingml.document":

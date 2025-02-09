@@ -1,5 +1,5 @@
 import { Product } from "@/types";
-import { useSearchParams } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 
 type Props = {
     product: Product[];
@@ -7,6 +7,7 @@ type Props = {
 
 export const SearchProduct = ({ product }: Props) => {
     const [searchParams] = useSearchParams();
+    const navigate = useNavigate()
     const searchText = searchParams.get("search")?.toLowerCase() || "";
     const filteredProducts = searchText
         ? Array.isArray(product)
@@ -17,15 +18,20 @@ export const SearchProduct = ({ product }: Props) => {
         : [];
 
     return (
-        <div className={`flex flex-wrap items-start xs:gap-x-10 md:gap-x-20 gap-y-6 pt-6 max-w-[900px] h-auto ${filteredProducts.length === 1 ? 'justify-start items-start text-start relative -left-[22%]' : 'justify-start'
-            }`}>
+        <div
+            className={`flex flex-wrap items-start xs:gap-x-10 md:gap-x-20 gap-y-6 pt-6 max-w-[600px] mx-auto h-auto ${filteredProducts.length > 1
+                ? "justify-start h-[104px] overflow-y-scroll"
+                : "justify-start items-start text-start relative"
+                }`}
+        >
+
             {filteredProducts.length > 0 && (
                 filteredProducts?.map((wineproduct) => (
-                    <div key={wineproduct._id} className="flex items-start gap-3 cursor-pointer">
+                    <div key={wineproduct._id} className="flex items-start gap-3 cursor-pointer" onClick={() => navigate(`/wine/detail/${wineproduct._id}`)}>
                         <img
                             src={wineproduct.images[0]}
                             alt={wineproduct.name}
-                            className="w-[80px] h-[90px] border border-solid"
+                            className="w-[50px] h-[70px] border border-solid"
                         />
                         <div className="flex flex-col">
                             <h3>{wineproduct.name}</h3>

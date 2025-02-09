@@ -30,12 +30,12 @@ export const WineAbout = ({ product = { name: "", price: 0, discount: 0, images:
                             <div className="w-full">
                                 <h2 className="text-3xl font-bold mb-2 cursor-pointer">
                                     {name}</h2>
-                                <div className="flex items-center gap-1 mb-2">
+                                <div className="flex items-center gap-1 mb-2 text-lg">
                                     <p className="text-[15px] font-bold text-gray-500 line-through">
-                                        ${price} USD
+                                        ${price}
                                     </p>
                                     <p className="text-[15px] font-bold text-red-800">
-                                        ${price - discount} USD
+                                        ${price - discount}
                                     </p>
                                 </div>
                             </div>

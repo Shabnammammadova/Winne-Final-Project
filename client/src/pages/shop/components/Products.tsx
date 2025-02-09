@@ -54,7 +54,7 @@ export const ShopProducts = ({ product }: Props) => {
                 <select name="wine" className='border border-gray-200 rounded-lg px-5 py-3 mt-3 cursor-pointer' value={sortOption} onChange={(e) => setsortOption(e.target.value)}>
                     <option value="" className='cursor-pointer'>Sorting</option>
                     <option value="alphabetically" className='cursor-pointer'>Alphabetically, A-Z</option>
-                    <option value="high-to-low" className='cursor-pointer'>Price, high to low</option>
+                    <option value="high-to-low" className='cursor-pointer'>Price,high to low</option>
                     <option value="low-to-high" className='cursor-pointer'>Price,low to high</option>
                 </select>
             </div>

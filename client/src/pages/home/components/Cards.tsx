@@ -1,36 +1,30 @@
-import Drink1 from "../../../assets/images/Drink1.jpg";
-import Drink2 from "../../../assets/images/Drink2.jpg";
-import Drink3 from "../../../assets/images/Drink3.jpg";
-
+import Drink7 from "../../../assets/images/Drink7.jpg";
+import Drink8 from "../../../assets/images/Drink8.jpg";
+import Drink9 from "../../../assets/images/Drink9.jpg";
+import Drink10 from "../../../assets/images/Drink10.jpg";
 
 export const Cards = () => {
+    const cards = [
+        { img: Drink7, title: "New Collection" },
+        { img: Drink8, title: "Best Selling Collection" },
+        { img: Drink9, title: "Popular Collection" },
+        { img: Drink10, title: "Trending Collection" },
+    ];
+
     return (
-        <section className="container pt-[30px] pb-[100px] mx-auto grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 justify-items-center gap-x-2 gap-y-2 lg:gap-x-8 md:gap-x-2 mt-10 mb-5 font-sans bg-background dark:bg-black">
-            {[
-                {
-                    img: Drink1,
-                    title: "New Collection",
-                },
-                {
-                    img: Drink3,
-                    title: "Best Selling Collection",
-                },
-                {
-                    img: Drink2,
-                    title: "Popular Collection",
-                },
-            ].map((card, index) => (
+        <section className="container pt-[30px] pb-[100px] mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            {cards.map((card, index) => (
                 <div
                     key={index}
-                    className="group cursor-pointer overflow-hidden relative z-10 hover:transition-all hover:duration-500 ease-out"
+                    className="group cursor-pointer overflow-hidden relative rounded-xl shadow-lg transition-shadow duration-500 hover:shadow-2xl"
                 >
                     <img
                         src={card.img}
                         alt="Product"
-                        className="object-cover transition-transform duration-500 group-hover:scale-105"
+                        className="object-cover w-full h-72 md:h-80 lg:h-96 rounded-xl"
                     />
-                    <div className="absolute inset-0 bg-black bg-opacity-40 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                        <span className="text-white text-lg lg:text-2xl font-semibold mb-[10px]">
+                    <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent flex flex-col items-center justify-end pb-4 opacity-90 transition-opacity duration-500">
+                        <span className="text-white text-lg lg:text-2xl font-semibold bg-black bg-opacity-50 px-4 py-2 rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-500">
                             {card.title}
                         </span>
                     </div>
