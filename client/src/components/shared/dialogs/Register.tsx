@@ -1,3 +1,6 @@
+import { useState } from "react";
+import { AiOutlineEyeInvisible } from "react-icons/ai"
+import { AiOutlineEye } from "react-icons/ai";
 import {
     Dialog,
     DialogContent,
@@ -9,6 +12,7 @@ import { ModalTypeEnum, useDialog } from "@/hooks/useDialog";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { Button } from "@/components/ui/button";
+
 import {
     Form,
     FormControl,
@@ -36,11 +40,17 @@ const formSchema = z
     })
     .refine((data) => data.password === data.confirmPassword, {
         message: "Passwords don't match",
-        path: ["confirm"],
+        path: ["confirmPassword"],
     });
 
 export const RegisterDialog = () => {
     const { isOpen, closeDialog, type, openDialog } = useDialog();
+    const [showPassword, setShowPassword] = useState(false);
+
+
+    const togglePasswordVisibility = () => setShowPassword((prev) => !prev);
+
+
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
         defaultValues: {
@@ -51,6 +61,7 @@ export const RegisterDialog = () => {
             confirmPassword: "",
         },
     });
+
     const { mutate, isPending } = useMutation({
         mutationFn: authService.register,
         onSuccess: (response) => {
@@ -59,8 +70,7 @@ export const RegisterDialog = () => {
         },
         onError: (error: AxiosError<AuthResponseType>) => {
             const message =
-                error.response?.data?.message ??
-                "Something went wrong! Please try again.";
+                error.response?.data?.message ?? "Something went wrong! Please try again.";
             toast.error(message);
         },
     });
@@ -69,7 +79,6 @@ export const RegisterDialog = () => {
         return null;
     }
 
-    // 2. Define a submit handler.
     function onSubmit(values: z.infer<typeof formSchema>) {
         mutate(values);
     }
@@ -138,13 +147,22 @@ export const RegisterDialog = () => {
                             render={({ field }) => (
                                 <FormItem>
                                     <FormLabel>Password</FormLabel>
-                                    <FormControl>
-                                        <Input
-                                            type="password"
-                                            placeholder="***********"
-                                            {...field}
-                                        />
-                                    </FormControl>
+                                    <div className="relative">
+                                        <FormControl>
+                                            <Input
+                                                type={showPassword ? "text" : "password"}
+                                                placeholder="***********"
+                                                {...field}
+                                            />
+                                        </FormControl>
+                                        <button
+                                            type="button"
+                                            onClick={togglePasswordVisibility}
+                                            className="absolute right-3 top-2 text-gray-500"
+                                        >
+                                            {showPassword ? <AiOutlineEyeInvisible size={20} /> : <AiOutlineEye size={20} />}
+                                        </button>
+                                    </div>
                                     <FormMessage />
                                 </FormItem>
                             )}

@@ -9,6 +9,8 @@ import { AuthResponseType } from "@/services/auth/types";
 import authService from "@/services/auth/auth";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { AiOutlineEyeInvisible } from "react-icons/ai"
+import { AiOutlineEye } from "react-icons/ai";
 import {
     Form,
     FormControl,
@@ -29,6 +31,7 @@ import { useAppDispatch } from "@/hooks/redux";
 import { Link, useNavigate } from "react-router-dom";
 import GoogleIcon from "../../../assets/images/google-icon.png"
 import GithubIcon from "../../../assets/images/github-icon.png"
+import { useState } from "react";
 
 
 const formSchema = z.object({
@@ -38,6 +41,10 @@ const formSchema = z.object({
 
 export const LoginDialog = () => {
     const { isOpen, closeDialog, type, openDialog } = useDialog();
+    const [showPassword, setShowPassword] = useState(false);
+
+
+    const togglePasswordVisibility = () => setShowPassword((prev) => !prev);
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
         defaultValues: {
@@ -66,7 +73,7 @@ export const LoginDialog = () => {
         return null;
     }
 
-    // 2. Define a submit handler.
+
     function onSubmit(values: z.infer<typeof formSchema>) {
         mutate(values);
     }
@@ -110,13 +117,22 @@ export const LoginDialog = () => {
                             render={({ field }) => (
                                 <FormItem>
                                     <FormLabel>Password</FormLabel>
-                                    <FormControl>
-                                        <Input
-                                            type="password"
-                                            placeholder="***********"
-                                            {...field}
-                                        />
-                                    </FormControl>
+                                    <div className="relative">
+                                        <FormControl>
+                                            <Input
+                                                type={showPassword ? "text" : "password"}
+                                                placeholder="***********"
+                                                {...field}
+                                            />
+                                        </FormControl>
+                                        <button
+                                            type="button"
+                                            onClick={togglePasswordVisibility}
+                                            className="absolute right-3 top-2 text-gray-500"
+                                        >
+                                            {showPassword ? <AiOutlineEyeInvisible size={20} /> : <AiOutlineEye size={20} />}
+                                        </button>
+                                    </div>
                                     <FormMessage />
                                 </FormItem>
                             )}
