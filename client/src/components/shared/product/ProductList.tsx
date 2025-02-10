@@ -10,15 +10,17 @@ import { useSelector } from "react-redux";
 import { selectUserData } from "@/store/features/userSlice";
 import { useState, useEffect } from "react";
 
+
+
 type Props = {
     product: Product[];
 };
 
 export const WineProductList = ({ product }: Props) => {
     const user = useSelector(selectUserData);
-
     const navigate = useNavigate();
     const queryClient = useQueryClient();
+
     const { mutate } = useMutation({
         mutationFn: favoriteService.add,
         onSuccess: () => {
@@ -30,8 +32,23 @@ export const WineProductList = ({ product }: Props) => {
         },
     });
 
+
     const [visibleProducts, setVisibleProducts] = useState<Product[]>([]);
     const [hasMore, setHasMore] = useState<boolean>(false);
+    const [favoriteStatus, setFavoriteStatus] = useState<{ [key: string]: boolean }>({});
+
+
+    useEffect(() => {
+        const storedFavorites = localStorage.getItem('favorites');
+        if (storedFavorites) {
+            const parsedFavorites = JSON.parse(storedFavorites);
+            setFavoriteStatus(parsedFavorites);
+        }
+    }, []);
+
+    useEffect(() => {
+        localStorage.setItem('favorites', JSON.stringify(favoriteStatus));
+    }, [favoriteStatus]);
 
     useEffect(() => {
         if (product && product.length > 0) {
@@ -49,8 +66,20 @@ export const WineProductList = ({ product }: Props) => {
     };
 
     function onSubmit(productId: string) {
-        mutate({ userId: user.user?._id!, productId: productId });
+        mutate({ userId: user.user?._id!, productId });
+        toggleFavorite(productId);
     }
+
+    function toggleFavorite(productId: string) {
+        setFavoriteStatus((prev) => {
+            const newStatus = {
+                ...prev,
+                [productId]: !prev[productId],
+            };
+            return newStatus;
+        });
+    }
+
 
     return (
         <div className="bg-white dark:bg-black dark:text-white w-full">
@@ -63,7 +92,7 @@ export const WineProductList = ({ product }: Props) => {
                     Best Seller Product This Week!
                 </span>
             </div>
-            <section className="container mx-auto grid grid-cols-2 lg:grid-cols-4 md:grid-cols-3 justify-items-center justify-center items-center gap-x-2 lg:gap-x-8 md:gap-x-2 mt-[38px]  font-sans">
+            <section className="container mx-auto grid grid-cols-2 lg:grid-cols-4 md:grid-cols-3 justify-items-center justify-center items-center gap-x-2 lg:gap-x-8 md:gap-x-2 mt-[38px] font-sans">
                 {visibleProducts.map((wineproduct) => (
                     <div key={wineproduct._id} className="cursor-pointer relative group">
                         <img
@@ -98,8 +127,16 @@ export const WineProductList = ({ product }: Props) => {
                                     onClick={() => navigate(`/wine/detail/${wineproduct._id}`)}
                                 />
                             </li>
-                            <li onClick={() => onSubmit(wineproduct._id)} className="bg-white p-2 rounded-full shadow-md transition-all duration-300 ease-in-out hover:bg-primary hover:text-white">
-                                <CiHeart className="w-[20px] h-[20px] dark:text-black" />
+                            <li
+                                onClick={() => onSubmit(wineproduct._id)}
+                                className={`p-2 rounded-full shadow-md transition-all duration-300 ease-in-out cursor-pointer hover:bg-primary hover:text-white ${favoriteStatus[wineproduct._id] ? "bg-primary text-white" : "bg-white"
+                                    }`}
+                            >
+
+                                <CiHeart
+                                    className={`w-[20px] h-[20px] ${favoriteStatus[wineproduct._id] ? "text-white" : "dark:text-black"
+                                        }`}
+                                />
                             </li>
                         </ul>
                     </div>
@@ -108,12 +145,14 @@ export const WineProductList = ({ product }: Props) => {
             {hasMore && (
                 <button
                     onClick={loadMoreProducts}
-                    className="text-white text-center font-sans flex items-center justify-center mx-auto p-2 rel relative bottom-5 bg-primary rounded-lg"
+                    className="text-white text-center font-sans flex items-center justify-center mx-auto p-2 relative bottom-6 bg-primary rounded-lg"
                 >
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="mr-1 h-4 w-4">
-                        <path fill-rule="evenodd"
+                        <path
+                            fillRule="evenodd"
                             d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
-                            clip-rule="evenodd" />
+                            clipRule="evenodd"
+                        />
                     </svg>
                     View more
                 </button>
@@ -121,6 +160,8 @@ export const WineProductList = ({ product }: Props) => {
         </div>
     );
 };
+
+
 
 
 

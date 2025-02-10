@@ -8,5 +8,6 @@ export const QUERY_KEYS = {
     BLOG_DETAIL: "blogDetail",
     FAQ: "faq",
     WISHLIST: "wishList",
+    SHOP: "shop",
     ADD_WISHLIST: "addWishlist"
 }

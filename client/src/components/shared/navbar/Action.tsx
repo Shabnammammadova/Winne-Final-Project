@@ -19,6 +19,11 @@ import { LogOut, User } from "lucide-react"
 import { UserRole } from "@/types"
 import ThemeToggle from "../ThemeToggle"
 import { MdOutlineLanguage } from "react-icons/md"
+import { useQuery } from "@tanstack/react-query"
+import { QUERY_KEYS } from "@/constants/query-keys"
+import basketService from "@/services/basket"
+
+
 
 
 
@@ -26,6 +31,14 @@ export const Action = () => {
     const { openDialog } = useDialog()
     const { user } = useAppSelector(selectUserData);
     const dispatch = useAppDispatch();
+
+    const { data: basketList } = useQuery({
+        queryKey: [QUERY_KEYS.SHOP],
+        queryFn: () => basketService.getAll()
+    })
+
+    const basket = basketList?.data.items
+    console.log("basketList", basketList);
 
     const handleLogout = () => {
         dispatch(logoutAsync())
@@ -75,7 +88,7 @@ export const Action = () => {
             <MdOutlineLanguage className="w-[24px] h-[24px]" />
             <ThemeToggle />
             <Link to={paths.WISHLIST}><img src={HeartIcon} alt="" className='w-[24px] h-[24px] mr-[13px] lg:block hidden' /></Link>
-            <ShoppingCart />
+            <ShoppingCart basket={basket} />
         </div>
     )
 }

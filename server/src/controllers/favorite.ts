@@ -6,7 +6,7 @@ import User from "../mongoose/schemas/user";
 const getAll = async (req: Request, res: Response) => {
     try {
         const userId = req.user?._id;
-        const favorites = await Favorite.find({ userId: userId }).populate("productId", "name price images");
+        const favorites = await Favorite.find({ userId: userId }).populate("productId", "name price discount images");
 
         res.json({
             message: "Favorite retrieved successfully",

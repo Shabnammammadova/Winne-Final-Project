@@ -8,9 +8,9 @@ import { createBasketSchema } from "../validation/basket"
 const router = Router()
 
 router.get("/", authorize({}), basketController.getAll)
-router.post("/", authorize({}), validateSchema(createBasketSchema), basketController.add);
+router.post("/add", authorize({}), validateSchema(createBasketSchema), basketController.add);
 router.put("/quantity", authorize({}), basketController.quantity);
-router.delete("/:id", authorize({}), basketController.remove)
+router.delete("/:productId", authorize({}), basketController.remove)
 
 
 export default router

@@ -44,6 +44,16 @@ export type Favorite = {
     productId: {
         name: string;
         price: string;
+        discount: string;
+        images: string[];
+    };
+}
+export type Basket = {
+    _id: string;
+    productId: {
+        name: string;
+        price: string;
+        discount: string;
         images: string[];
     };
 }
