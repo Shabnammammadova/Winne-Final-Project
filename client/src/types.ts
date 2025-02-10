@@ -56,6 +56,7 @@ export type Basket = {
         discount: string;
         images: string[];
     };
+    quantity: string
 }
 export type Category = {
     _id: string,

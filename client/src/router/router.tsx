@@ -15,6 +15,7 @@ import { Faq } from "@/pages/faq";
 import { ForgotPassword } from "@/pages/forgot-password";
 import HomePage from "@/pages/home";
 import { NotFound } from "@/pages/not-found";
+import { UserProfile } from "@/pages/profile";
 import { ResetPassword } from "@/pages/reset-password";
 import Shop from "@/pages/shop";
 import { WishList } from "@/pages/wishlist";
@@ -44,6 +45,11 @@ export const router = createBrowserRouter([
             {
                 path: paths.CONTACT,
                 element: <Contact />
+            },
+            {
+                path: paths.PROFILE,
+                element: <UserProfile />
+
             },
             {
                 path: paths.FAQ,

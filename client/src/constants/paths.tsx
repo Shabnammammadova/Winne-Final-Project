@@ -5,6 +5,7 @@ export const paths = {
     HOME: "/",
     ABOUT: "/about",
     CONTACT: "/contact",
+    PROFILE: "/profile",
     FAQ: "/faq",
     SHOP: "/shop",
     NOTFOUND: "/not-found",

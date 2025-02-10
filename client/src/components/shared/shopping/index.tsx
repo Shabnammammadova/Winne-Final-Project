@@ -33,7 +33,7 @@ export function ShoppingCart({ basket }: Props) {
                             transition={{ duration: 0.3 }}
                         ></motion.div>
                         <motion.div
-                            className="fixed top-0 right-0 z-50 w-[300px] sm:w-[400px] h-full bg-white shadow-lg"
+                            className="fixed top-0 right-0 z-50 w-[300px] sm:w-[400px] h-full bg-white dark:bg-black shadow-lg"
                             initial={{ x: "100%" }}
                             animate={{ x: 0 }}
                             exit={{ x: "100%" }}
@@ -65,6 +65,9 @@ export function ShoppingCart({ basket }: Props) {
                                                                     <p className="hover:text-red-800 transition-all duration-300">
                                                                         {winebasket.productId.name}
                                                                     </p>
+                                                                    <p className="text-black transition-all duration-300 dark:text-white">
+                                                                        QTY: {winebasket.quantity}
+                                                                    </p>
                                                                     <span>${winebasket.productId.price}</span>
                                                                 </div>
                                                             </div>
@@ -79,7 +82,7 @@ export function ShoppingCart({ basket }: Props) {
                                             <div className="p-4 border-t uppercase tracking-widest relative">
                                                 <button
                                                     onClick={handleClose}
-                                                    className="w-full text-lg px-4 py-2 bg-black text-white rounded hover:bg-primary"
+                                                    className="w-full text-lg px-4 py-2 transition-all duration-300 bg-black text-white rounded hover:bg-primary dark:bg-white dark:text-black dark:hover:bg-primary dark:hover:text-white"
                                                 >
                                                     Checkout
                                                 </button>

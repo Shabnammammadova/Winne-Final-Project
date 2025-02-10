@@ -56,19 +56,6 @@ export const SwiperSlides = ({ product }: Props) => {
                                 </p>
                             </div>
                         </div>
-                        <ul className="absolute flex gap-4 justify-center items-center bottom-[30%] left-1/2 transform -translate-x-1/2 translate-y-0 opacity-0 group-hover:opacity-100 group-hover:translate-y-4 transition-all duration-500 ease-in-out">
-                            <div className="flex flex-col items-center relative font-sans">
-                                <li className="bg-white p-2 rounded-full shadow-md transition-all duration-300 ease-in-out hover:bg-primary hover:text-white hover:inline">
-                                    <SlBag className="w-[20px] h-[20px] dark:text-black" />
-                                </li>
-                            </div>
-                            <li className="bg-white p-2 rounded-full shadow-md transition-all duration-300 ease-in-out hover:bg-primary hover:text-white">
-                                <IoSearchOutline className="w-[20px] h-[20px] dark:text-black" />
-                            </li>
-                            <li className="bg-white p-2 rounded-full shadow-md transition-all duration-300 ease-in-out hover:bg-primary hover:text-white">
-                                <CiHeart className='w-[20px] h-[20px] lg:block dark:text-black' />
-                            </li>
-                        </ul>
                     </SwiperSlide>
                 ))}
             </Swiper>
