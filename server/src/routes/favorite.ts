@@ -10,8 +10,7 @@ const router = Router()
 
 router.get("/", authorize({}), favoriteController.getAll)
 router.post("/add", authorize({}), validateSchema(createFavoriteSchema), favoriteController.add);
-
-router.delete("/:id", authorize({}), favoriteController.remove)
+router.delete("/:productId", authorize({}), favoriteController.remove)
 
 
 export default router

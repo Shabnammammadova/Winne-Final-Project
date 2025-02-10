@@ -55,15 +55,15 @@ const remove = async (req: Request, res: Response) => {
         const { productId } = req.params;
         const userId = req.user?._id;
 
-        await Favorite.findOneAndDelete({ userId: userId, productId: productId });
+        await Favorite.findOneAndDelete({ userId, _id: productId });
 
         res.json({ message: "Product removed from favorites" });
-
     } catch (error) {
         console.error(error);
         res.status(500).json({ message: "An error occurred while removing from favorites" });
     }
 };
+
 
 
 export default {

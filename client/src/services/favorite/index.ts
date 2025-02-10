@@ -13,9 +13,20 @@ const add = async (payload: { userId: string, productId: string }) => {
     }
 };
 
+const remove = async (productId: string) => {
+    try {
+        const response = await axiosInstance.delete(`/favorite/${productId}`);
+        return response;
+    } catch (error) {
+        console.error("Error:", error);
+        throw error;
+    }
+};
+
 const favoriteService = {
     getAll,
-    add
+    add,
+    remove
 };
 
 export default favoriteService;
