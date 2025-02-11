@@ -42,6 +42,7 @@ export type Faq = {
 export type Favorite = {
     _id: string;
     productId: {
+        _id: string;
         name: string;
         price: string;
         discount: string;

@@ -66,8 +66,8 @@ export const Action = () => {
                     </DropdownMenuTrigger>
                     <DropdownMenuContent>
                         <DropdownMenuLabel>My Account</DropdownMenuLabel>
-                        <DropdownMenuItem asChild>
-                            <Link to="/profile">Profile</Link>
+                        <DropdownMenuItem>
+                            <Link to="/profile"></Link>
                         </DropdownMenuItem>
                         <DropdownMenuSeparator />
                         {

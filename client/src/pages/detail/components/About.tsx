@@ -1,8 +1,16 @@
-import { Heart } from "lucide-react";
 import { Offer } from "./Offer";
 import { Delivery } from "./Delivery";
 import { AddToCart } from "./AddToCart";
-import { Product } from "@/types";
+import { Basket, Product } from "@/types";
+import { useMutation } from "@tanstack/react-query";
+import favoriteService from "@/services/favorite";
+import { toast } from "sonner";
+import queryClient from "@/config/queryClient";
+import { useState } from "react";
+import { ModalTypeEnum, useDialog } from "@/hooks/useDialog";
+import { useSelector } from "react-redux";
+import { selectUserData } from "@/store/features/userSlice";
+import { CiHeart } from "react-icons/ci";
 
 
 type Props = {
@@ -10,9 +18,46 @@ type Props = {
 }
 
 
-export const WineAbout = ({ product = { name: "", price: 0, discount: 0, images: [] } }: Props) => {
+export const WineAbout = ({ product = { _id: "", name: "", price: 0, discount: 0, images: [] } }: Props) => {
+    const user = useSelector(selectUserData);
+    const [favoriteStatus, setFavoriteStatus] = useState<{ [key: string]: boolean }>({});
+    const { openDialog } = useDialog()
+    const [basket, setBasket] = useState<Basket[]>([]);
 
-    const { name, price, discount, images } = product;
+    const updateBasket = (newProduct: Basket) => {
+        setBasket((prevBasket) => [...prevBasket, newProduct]);
+    };
+
+    const { mutate: favoriteadd } = useMutation({
+        mutationFn: favoriteService.add,
+        onSuccess: () => {
+            toast.success("Wine added to favorite!");
+            queryClient.invalidateQueries();
+        },
+        onError: () => {
+            toast.info("The product is now a favorite.");
+        },
+    });
+    function toggleFavorite(productId: string) {
+        setFavoriteStatus((prev) => {
+            const newStatus = {
+                ...prev,
+                [productId]: !prev[productId],
+            };
+            return newStatus;
+        });
+    }
+
+    function onFavSubmit(productId: string) {
+        if (!user?.user?._id) {
+            openDialog(ModalTypeEnum.LOGIN);
+            toast.message("Please create an account.")
+            return;
+        }
+        favoriteadd({ userId: user.user?._id!, productId });
+        toggleFavorite(productId);
+    }
+    const { _id, name, price, discount, images } = product;
     return (
         <div className="bg-white dark:bg-black">
             <div className="container mx-auto">
@@ -39,8 +84,15 @@ export const WineAbout = ({ product = { name: "", price: 0, discount: 0, images:
                                     </p>
                                 </div>
                             </div>
-                            <div className="bg-white p-2 rounded-full transition-all duration-300 ease-in-out w-[40px] h-[40px] hover:bg-primary border-solid border-[1px] border-gray-200 cursor-pointer flex items-center justify-center hover:text-white">
-                                <Heart className=" w-[16px] h-[16px] " />
+                            <div
+                                onClick={() => onFavSubmit(_id)}
+                                className={`p-2 rounded-full transition-all duration-300 ease-in-out w-[40px] h-[40px] 
+                                    border-solid border-[1px] border-gray-200 cursor-pointer flex items-center justify-center hover:bg-primary hover:text-white
+                                    ${favoriteStatus[_id] ? "bg-primary text-white" : "bg-white text-black"}
+                                    hover:bg-primary hover:text-white
+                                `}
+                            >
+                                <CiHeart className={`w-[16px] h-[16px] ${favoriteStatus[_id] ? "text-white" : "text-black dark:text-black"}`} />
                             </div>
                         </div>
                         <p className="border-t-[1px] text-gray-500 text-sm  border-solid border-t-gray-200 pt-4">
@@ -48,7 +100,7 @@ export const WineAbout = ({ product = { name: "", price: 0, discount: 0, images:
                         </p>
                         <Offer />
                         <Delivery />
-                        <AddToCart />
+                        <AddToCart updateBasket={updateBasket} productId={product._id} />
                     </div>
                 </div>
             </div>

@@ -18,19 +18,25 @@ const getAll = async (req: Request, res: Response) => {
     }
 };
 
+
 const add = async (req: Request, res: Response) => {
     try {
         const { productId } = req.body;
         const userId = req.user?._id;
 
+        const existingBasket = await Basket.findOne({ userId, productId });
 
-        const exists = await Basket.findOne({ user: userId, product: productId });
-        if (exists) {
-            res.status(400).json({ message: "Product is already in basket" });
+        if (existingBasket) {
+            existingBasket.quantity += 1;
+            await existingBasket.save();
+            res.status(200).json({
+                message: "Product quantity updated in basket",
+                item: existingBasket
+            });
             return
         }
 
-        const basket = new Basket({ userId: userId, productId: productId });
+        const basket = new Basket({ userId, productId });
         await basket.save();
 
         await User.findByIdAndUpdate(userId, { $push: { basket: basket._id } });
@@ -72,12 +78,36 @@ const quantity = async (req: Request, res: Response) => {
     }
 };
 
+const update = async (req: Request, res: Response) => {
+    try {
+        const { productId, quantity } = req.body;
+        const userId = req.user?._id;
+
+        const basket = await Basket.findOne({ userId, productId });
+        if (!basket) {
+            res.status(404).json({ message: "Product not found in basket" });
+            return;
+        }
+        basket.quantity = quantity;
+        await basket.save();
+
+        res.json({
+            message: "Product quantity updated in basket",
+            item: basket
+        });
+
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: "An error occurred while updating basket quantity" });
+    }
+};
+
 const remove = async (req: Request, res: Response) => {
     try {
         const { productId } = req.params;
         const userId = req.user?._id;
 
-        await Basket.findOneAndDelete({ user: userId, _id: productId });
+        await Basket.findOneAndDelete({ userId, _id: productId });
 
         res.json({ message: "Product removed from basket" });
 
@@ -91,6 +121,7 @@ const remove = async (req: Request, res: Response) => {
 export default {
     getAll,
     add,
+    update,
     remove,
     quantity
 }

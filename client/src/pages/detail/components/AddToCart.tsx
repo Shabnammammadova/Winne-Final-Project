@@ -1,24 +1,81 @@
-import { ChevronDown, ChevronUp } from "lucide-react"
+import queryClient from "@/config/queryClient";
+import { ModalTypeEnum, useDialog } from "@/hooks/useDialog";
+import basketService from "@/services/basket";
+import { selectUserData } from "@/store/features/userSlice";
+import { Basket } from "@/types";
+import { useMutation } from "@tanstack/react-query";
+import { useState } from "react"
+import { useSelector } from "react-redux";
+import { toast } from "sonner";
+
+type Props = {
+    updateBasket: (newProduct: Basket) => void;
+    productId: string,
+};
+
+export const AddToCart = ({ updateBasket, productId }: Props) => {
+    const [quantity, setQuantity] = useState(1);
+    const user = useSelector(selectUserData);
+    const { openDialog } = useDialog()
+    const increaseQuantity = () => {
+        setQuantity(prev => prev + 1);
+    };
+
+    const decreaseQuantity = () => {
+        if (quantity > 1) {
+            setQuantity(prev => prev - 1);
+        }
+    };
+
+    const { mutate: basketadd } = useMutation({
+        mutationFn: basketService.add,
+        onSuccess: (newProduct) => {
+            toast.success("Wine added to basket.");
+            queryClient.invalidateQueries();
+            updateBasket(newProduct);
+        },
+        onError: () => {
+            toast.info("The product is already in the basket.");
+        },
+    });
 
 
-export const AddToCart = () => {
+    function onBasketSubmit(productId: string) {
+        if (!user?.user?._id) {
+            openDialog(ModalTypeEnum.LOGIN);
+            toast.message("Please create an account.");
+            return;
+        }
+        basketadd({ userId: user.user?._id!, productId });
+    }
+
+
     return (
         <div>
             <div className="flex items-center gap-5 mt-4">
-                <div className="flex items-center gap-2 border border-gray-300 rounded-lg shadow-sm p-1 bg-white">
-                    <button className="flex items-center justify-center w-8 h-8 transition-all">
-                        <ChevronUp className="text-gray-600" />
+                <div className="flex items-center rounded-lg shadow-sm bg-white">
+                    <button onClick={decreaseQuantity}
+                        className="bg-white rounded-l border text-gray-600 hover:bg-gray-100 active:bg-gray-200 disabled:opacity-50 inline-flex items-center px-2 py-1 border-r border-gray-200">
+                        <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-4" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 12H4" />
+                        </svg>
                     </button>
-                    <span className="font-medium text-gray-700 px-4 py-2 rounded-md bg-white">
-                        1
-                    </span>
-                    <button className="flex items-center justify-center w-8 h-8 transition-all">
-                        <ChevronDown className="text-gray-600" />
+                    <div
+                        className="bg-gray-100 border-t border-b border-gray-100 text-gray-600 hover:bg-gray-100 inline-flex items-center px-4 py-1 select-none">
+                        {quantity}
+                    </div>
+                    <button onClick={increaseQuantity}
+                        className="bg-white rounded-r border text-gray-600 hover:bg-gray-100 active:bg-gray-200 disabled:opacity-50 inline-flex items-center px-2 py-1 border-r border-gray-200">
+                        <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-4" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+                        </svg>
                     </button>
                 </div>
             </div>
             <div className="flex flex-col mt-4 mb-4">
-                <button className="w-full h-[55px]  text-white bg-primary font-semibold text-sm uppercase hover:bg-black transition-all duration-300 dark:bg-primary">Add to cart</button>
+                <button className="w-full h-[55px]  text-white bg-primary font-semibold text-sm uppercase hover:bg-black transition-all duration-300 dark:bg-primary" onClick={() => onBasketSubmit(productId)} >Add to cart</button>
                 <button className="w-full h-[55px] mt-5 text-white bg-black font-semibold text-sm uppercase hover:bg-primary transition-all duration-300 dark:bg-primary">Buy it now</button>
             </div>
         </div>

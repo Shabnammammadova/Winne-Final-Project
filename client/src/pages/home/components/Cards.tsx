@@ -37,7 +37,6 @@ export const Cards = () => {
                             </div>
                             <p className="font-sans text-primary text-base mt-4 flex items-center justify-center" onClick={() => navigate("/shop")}>View more<ChevronsRight /></p>
                         </span>
-                        <p>View more</p>
                     </div>
                 </div>
             ))}

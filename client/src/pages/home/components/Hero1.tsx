@@ -52,7 +52,7 @@ export const HomeHero = () => {
                             initial={{ opacity: 0, x: 200 }}
                             animate={{ opacity: 1, x: 0 }}
                             transition={{ duration: 1, ease: "easeOut" }}
-                            className="absolute top-1/3 left-[8%] sm:left-[10%] md:left-[12%] lg:left-[15%] z-10 
+                            className="absolute xs:top-[5%] lg:top-1/3 left-[8%] sm:left-[10%] md:left-[12%] lg:left-[15%] z-10 
                             font-medium max-w-[90%] lg:max-w-[50%] 
                             dancing-script text-[32px] italic text-left md:text-left"
                         >

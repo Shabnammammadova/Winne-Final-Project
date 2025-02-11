@@ -6,3 +6,10 @@ export type GetAllBasketResponseType = {
 export type GetAddBasket = {
     productId: string
 }
+
+export type GetUpdateBasketResponseType = {
+    id: string;
+    userId: string;
+    productId: string;
+    quantity: number;
+};

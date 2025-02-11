@@ -9,6 +9,8 @@ import { toast } from "sonner";
 import { useSelector } from "react-redux";
 import { selectUserData } from "@/store/features/userSlice";
 import { useState, useEffect } from "react";
+import basketService from "@/services/basket";
+import { ModalTypeEnum, useDialog } from "@/hooks/useDialog";
 
 
 
@@ -21,7 +23,7 @@ export const WineProductList = ({ product }: Props) => {
     const navigate = useNavigate();
     const queryClient = useQueryClient();
 
-    const { mutate } = useMutation({
+    const { mutate: favoriteadd } = useMutation({
         mutationFn: favoriteService.add,
         onSuccess: () => {
             toast.success("Wine added to favorite!");
@@ -32,23 +34,22 @@ export const WineProductList = ({ product }: Props) => {
         },
     });
 
+    const { mutate: basketadd } = useMutation({
+        mutationFn: basketService.add,
+        onSuccess: () => {
+            toast.success("Wine added to basket.");
+            queryClient.invalidateQueries()
+        },
+        onError: () => {
+            toast.info("The product is now a basket")
+        }
+    })
 
     const [visibleProducts, setVisibleProducts] = useState<Product[]>([]);
     const [hasMore, setHasMore] = useState<boolean>(false);
     const [favoriteStatus, setFavoriteStatus] = useState<{ [key: string]: boolean }>({});
-
-
-    useEffect(() => {
-        const storedFavorites = localStorage.getItem('favorites');
-        if (storedFavorites) {
-            const parsedFavorites = JSON.parse(storedFavorites);
-            setFavoriteStatus(parsedFavorites);
-        }
-    }, []);
-
-    useEffect(() => {
-        localStorage.setItem('favorites', JSON.stringify(favoriteStatus));
-    }, [favoriteStatus]);
+    const [basketStatus, setBasketStatus] = useState<{ [key: string]: boolean }>({});
+    const { openDialog } = useDialog()
 
     useEffect(() => {
         if (product && product.length > 0) {
@@ -65,11 +66,25 @@ export const WineProductList = ({ product }: Props) => {
         }
     };
 
-    function onSubmit(productId: string) {
-        mutate({ userId: user.user?._id!, productId });
+    function onFavSubmit(productId: string) {
+        if (!user?.user?._id) {
+            openDialog(ModalTypeEnum.LOGIN);
+            toast.message("Please create an account.")
+            return;
+        }
+        favoriteadd({ userId: user.user?._id!, productId });
         toggleFavorite(productId);
     }
 
+    function onBasketSubmit(productId: string) {
+        if (!user?.user?._id) {
+            openDialog(ModalTypeEnum.LOGIN);
+            toast.message("Please create an account.")
+            return;
+        }
+        basketadd({ userId: user.user?._id!, productId });
+        toggleBasket(productId)
+    }
     function toggleFavorite(productId: string) {
         setFavoriteStatus((prev) => {
             const newStatus = {
@@ -79,7 +94,15 @@ export const WineProductList = ({ product }: Props) => {
             return newStatus;
         });
     }
-
+    function toggleBasket(productId: string) {
+        setBasketStatus((prev) => {
+            const newStatus = {
+                ...prev,
+                [productId]: !prev[productId],
+            };
+            return newStatus;
+        });
+    }
 
     return (
         <div className="bg-white dark:bg-black dark:text-white w-full">
@@ -117,7 +140,8 @@ export const WineProductList = ({ product }: Props) => {
 
                         <ul className="absolute flex gap-4 justify-center items-center bottom-[30%] left-1/2 transform -translate-x-1/2 translate-y-0 opacity-0 group-hover:opacity-100 group-hover:translate-y-4 transition-all duration-500 ease-in-out">
                             <div className="flex flex-col items-center relative font-sans">
-                                <li className="bg-white p-2 rounded-full shadow-md transition-all duration-300 ease-in-out hover:bg-primary hover:text-white hover:inline">
+                                <li onClick={() => onBasketSubmit(wineproduct._id)} className={`p-2 rounded-full shadow-md transition-all duration-300 ease-in-out cursor-pointer hover:bg-primary hover:text-white ${basketStatus[wineproduct._id] ? "bg-primary text-white" : "bg-white"
+                                    }`}>
                                     <SlBag className="w-[20px] h-[20px] dark:text-black" />
                                 </li>
                             </div>
@@ -128,7 +152,7 @@ export const WineProductList = ({ product }: Props) => {
                                 />
                             </li>
                             <li
-                                onClick={() => onSubmit(wineproduct._id)}
+                                onClick={() => onFavSubmit(wineproduct._id)}
                                 className={`p-2 rounded-full shadow-md transition-all duration-300 ease-in-out cursor-pointer hover:bg-primary hover:text-white ${favoriteStatus[wineproduct._id] ? "bg-primary text-white" : "bg-white"
                                     }`}
                             >
