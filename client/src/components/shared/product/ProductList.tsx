@@ -11,6 +11,7 @@ import { selectUserData } from "@/store/features/userSlice";
 import { useState, useEffect } from "react";
 import basketService from "@/services/basket";
 import { ModalTypeEnum, useDialog } from "@/hooks/useDialog";
+import { useTranslation } from "react-i18next";
 
 
 
@@ -22,6 +23,8 @@ export const WineProductList = ({ product }: Props) => {
     const user = useSelector(selectUserData);
     const navigate = useNavigate();
     const queryClient = useQueryClient();
+    const { t } = useTranslation();
+
 
     const { mutate: favoriteadd } = useMutation({
         mutationFn: favoriteService.add,
@@ -108,11 +111,11 @@ export const WineProductList = ({ product }: Props) => {
         <div className="bg-white dark:bg-black dark:text-white w-full">
             <div className="flex justify-center items-center flex-col pt-[70px] font-sans">
                 <p className="text-2xl font-medium pb-2 tracking-[1px] uppercase">
-                    Best Seller
+                    {t("best seller")}
                 </p>
                 <span className="border-red-800 border-2 w-[75px]"></span>
                 <span className="text-[17px] font-medium pt-5 text-gray-500">
-                    Best Seller Product This Week!
+                    {t("Best Seller Product This Week!")}
                 </span>
             </div>
             <section className="container mx-auto grid grid-cols-2 lg:grid-cols-4 md:grid-cols-3 justify-items-center justify-center items-center gap-x-2 lg:gap-x-8 md:gap-x-2 mt-[38px] font-sans">
@@ -178,7 +181,7 @@ export const WineProductList = ({ product }: Props) => {
                             clipRule="evenodd"
                         />
                     </svg>
-                    View more
+                    {t("view more")}
                 </button>
             )}
         </div>

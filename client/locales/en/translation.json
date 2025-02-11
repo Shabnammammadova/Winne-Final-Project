@@ -1,0 +1,55 @@
+{
+  "home": "home",
+  "shop": "shop",
+  "about us": "about us",
+  "contact us": "contact us",
+  "faq": "faq",
+  "blogs": "blogs",
+  "sign in": "sign in",
+  "menu": "menu",
+  "my account": "my account",
+  "profile": "profile",
+  "dashboard": "dashboard",
+  "log out": "log out",
+  "exclusive red wine": "exclusive red wine",
+  "slides": [
+    {
+      "title": "Exclusive Red Wine",
+      "subtitle": "Discover the finest selection of wines, crafted for the perfect sip every time. Rich flavors, unforgettable moments. Each bottle tells a story of passion."
+    },
+    {
+      "title": "Crisp White Elegance",
+      "subtitle": "From bold reds to crisp whites – explore our curated selection of premium wines. Indulge in the artistry of winemaking with every glass."
+    },
+    {
+      "title": "Luxury Rosé Collection",
+      "subtitle": "Each bottle tells a story. Experience the rich flavors of tradition and craftsmanship."
+    },
+    {
+      "title": "Crisp Red Elegance",
+      "subtitle": "Indulge in the artistry of winemaking with every glass. Handpicked from the best vineyards, crafted for true wine lovers."
+    }
+  ],
+  "shop now": "shop now",
+  "cards": {
+    "card1": {
+      "title": "From $50",
+      "des": "Red wine"
+    },
+    "card2": {
+      "title": "From $60",
+      "des": "Grape wine"
+    }
+  },
+  "view more": "view more",
+  "Luxury Wine From France": "Luxury Wine From France",
+  "Wine is an alcoholic beverage fermented from grapes. The natural chemical balance allows grapes to ferment without added sugar": "Wine is an alcoholic beverage fermented from grapes. The natural chemical balance allows grapes to ferment without added sugar",
+  "best seller": "best seller",
+  "Best Seller Product This Week!": "Best Seller Product This Week!",
+  "new arrivals": "new arrivals",
+  "our blogs": "our blogs",
+  "news": "news",
+  "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose .": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose .",
+  "follow us on instagram": "follow us on instagram",
+  "shop it": "shop it"
+}

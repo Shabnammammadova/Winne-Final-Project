@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import DateFormatter from "../DateFormatter";
 import MonthFormatter from "../MonthFormatter";
 import { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 
 
 
@@ -14,7 +15,7 @@ export const BlogList = ({ blog }: Props) => {
     const navigate = useNavigate();
     const [visibleBlogs, setVisibleBlogs] = useState<Blog[]>([]);
     const [hasMore, setHasMore] = useState<boolean>(false);
-
+    const { t } = useTranslation()
     useEffect(() => {
         if (blog && blog.length > 0) {
             setVisibleBlogs(blog.slice(0, 3));
@@ -32,7 +33,7 @@ export const BlogList = ({ blog }: Props) => {
     return (
         <div className="bg-white dark:bg-black pb-[70px]">
             <div className="flex justify-center items-center flex-col pt-[70px] font-sans">
-                <p className="text-2xl font-medium pb-2 tracking-[1px] uppercase">Our Blogs</p>
+                <p className="text-2xl font-medium pb-2 tracking-[1px] uppercase">{t("our blogs")}</p>
                 <span className="border-red-800 border-2 w-[75px]"></span>
             </div>
             <div className="container pt-[50px] grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 gap-x-2 gap-y-2 lg:gap-x-8 lg:gap-y-8 md:gap-x-2">
@@ -53,7 +54,7 @@ export const BlogList = ({ blog }: Props) => {
                             <MonthFormatter month={bloglist.createdAt} />
                         </div>
                         <div className="flex flex-col items-center justify-center font-sans mt-4">
-                            <p className="text-[16px] leading-6 font-medium uppercase text-gray-400">News</p>
+                            <p className="text-[16px] leading-6 font-medium uppercase text-gray-400">{t("news")}</p>
                             <span className="text-[22px] font-medium pb-[10px] text-black capitalize transition-all duration-300 hover:text-primary dark:text-white dark:hover:text-primary">
                                 {bloglist.name}
                             </span>
@@ -76,7 +77,7 @@ export const BlogList = ({ blog }: Props) => {
                             d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
                             clip-rule="evenodd" />
                     </svg>
-                    View more
+                    {t("view more")}
                 </button>
             )}
         </div>

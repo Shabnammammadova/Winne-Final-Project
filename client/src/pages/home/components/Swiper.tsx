@@ -2,9 +2,8 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Navigation, Pagination } from "swiper/modules";
 import { Product } from "@/types";
 import { useNavigate } from "react-router-dom";
-import { SlBag } from "react-icons/sl";
-import { IoSearchOutline } from "react-icons/io5";
-import { CiHeart } from "react-icons/ci";
+import { useTranslation } from "react-i18next";
+
 
 type Props = {
     product: Product[]
@@ -12,11 +11,12 @@ type Props = {
 
 export const SwiperSlides = ({ product }: Props) => {
     const navigate = useNavigate()
+    const { t } = useTranslation()
     return (
         <div className="bg-white dark:bg-black dark:text-white w-full">
             <div className="flex justify-center items-center flex-col pt-[70px] font-sans">
                 <p className="text-2xl font-medium pb-2 tracking-[1px] uppercase">
-                    New Arrivals
+                    {t("new arrivals")}
                 </p>
                 <span className="border-red-800 border-2 w-[75px]"></span>
             </div>

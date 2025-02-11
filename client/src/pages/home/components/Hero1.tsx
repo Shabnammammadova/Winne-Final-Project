@@ -7,31 +7,14 @@ import Hero4 from "../../../assets/images/Hero4.webp";
 import { Link } from "react-router-dom";
 import { paths } from "@/constants/paths";
 import { motion } from "framer-motion";
+import { useTranslation } from "react-i18next";
 
-const slides = [
-    {
-        image: Hero1,
-        title: "Exclusive Red Wine",
-        subtitle: "Discover the finest selection of wines, crafted for the perfect sip every time..Rich flavors, unforgettable moments.Each bottle tells a story of passion."
-    },
-    {
-        image: Hero2,
-        title: "Crisp White Elegance",
-        subtitle: "From bold reds to crisp whites – explore our curated selection of premium wines.Indulge in the artistry of winemaking with every glass."
-    },
-    {
-        image: Hero3,
-        title: "Luxury Rosé Collection",
-        subtitle: "Each bottle tells a story. Experience the rich flavors of tradition and craftsmanship."
-    },
-    {
-        image: Hero4,
-        title: "Crisp Red Elegance",
-        subtitle: "Indulge in the artistry of winemaking with every glass.Handpicked from the best vineyards, crafted for true wine lovers."
-    }
-];
 
 export const HomeHero = () => {
+    const { t } = useTranslation();
+
+    const slides = t("slides", { returnObjects: true });
+
     return (
         <div className="relative w-full">
             <Swiper
@@ -41,12 +24,12 @@ export const HomeHero = () => {
                 autoplay={{ delay: 3000, disableOnInteraction: false }}
                 loop={true}
             >
-                {slides.map((slide, index) => (
+                {slides?.map((slide: { image: string; title: string; subtitle: string }, index: number) => (
                     <SwiperSlide key={index}>
                         <img
-                            src={slide.image}
+                            src={[Hero1, Hero2, Hero3, Hero4][index]}
                             alt={`Slide ${index}`}
-                            className="w-full :h-auto bg-no-repeat bg-contain object-cover block cursor-pointer"
+                            className="w-full h-auto bg-no-repeat bg-contain object-cover block cursor-pointer"
                         />
                         <motion.div
                             initial={{ opacity: 0, x: 200 }}
@@ -66,7 +49,7 @@ export const HomeHero = () => {
                                 <button className="bg-black text-white font-medium uppercase tracking-[1.5px] sm:tracking-[2px] 
                                 text-sm py-3 sm:py-4 px-6 sm:px-8 border-2 border-black 
                                 transition-all ease-in duration-300 hover:bg-transparent hover:text-black">
-                                    Shop Now
+                                    {t("shop now")}
                                 </button>
                             </Link>
                         </motion.div>

@@ -5,10 +5,11 @@ import { Action } from "./Action";
 import Logo from "../../../assets/images/logo.webp";
 import { NavLinks } from "./NavLinks";
 import { AlignLeft } from "lucide-react";
+import { useTranslation } from "react-i18next"
 
 export const Navbar = () => {
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-
+    const { t } = useTranslation();
 
     const toggleSidebar = () => {
         setIsSidebarOpen((prev) => !prev);
@@ -40,51 +41,51 @@ export const Navbar = () => {
                     } transition-transform duration-300 ease-in-out z-50 lg:hidden`}
             >
                 <div className="flex justify-between items-center p-6 bg-primary border-b border-gray-200">
-                    <h6 className="text-2xl flex items-center gap-2">  <AlignLeft />Menu</h6>
+                    <h6 className="text-2xl flex items-center gap-2 capitalize">  <AlignLeft />{t("menu")}</h6>
                 </div>
                 <nav className="p-4">
                     <Link
                         to={paths.HOME}
-                        className="block mb-4 text-black hover:text-red-800 font-medium"
+                        className="block mb-4 text-black hover:text-red-800 font-medium uppercase"
                         onClick={toggleSidebar}
                     >
-                        HOME
+                        {t("home")}
                     </Link>
                     <Link
                         to={paths.SHOP}
-                        className="block mb-4 text-black hover:text-red-800 font-medium"
+                        className="block mb-4 text-black hover:text-red-800 font-medium uppercase"
                         onClick={toggleSidebar}
                     >
-                        SHOP
+                        {t("shop")}
                     </Link>
                     <Link
                         to={paths.ABOUT}
-                        className="block mb-4 text-black hover:text-red-800 font-medium"
+                        className="block mb-4 text-black hover:text-red-800 font-medium uppercase"
                         onClick={toggleSidebar}
                     >
-                        ABOUT US
+                        {t("about us")}
                     </Link>
                     <Link
                         to={paths.CONTACT}
-                        className="block mb-4 text-black hover:text-red-800 font-medium"
+                        className="block mb-4 text-black hover:text-red-800 font-medium uppercase"
                         onClick={toggleSidebar}
                     >
-                        CONTACT US
+                        {t("contact us")}
                     </Link>
                     <Link
                         to={paths.FAQ}
-                        className="block mb-4 text-black hover:text-red-800 font-medium"
+                        className="block mb-4 text-black hover:text-red-800 font-medium uppercase"
                         onClick={toggleSidebar}
                     >
-                        FAQ
+                        {t("faq")}
                     </Link>
 
                     <Link
                         to={paths.BLOGS}
-                        className="block mb-4 text-black hover:text-red-800 font-medium"
+                        className="block mb-4 text-black hover:text-red-800 font-medium uppercase"
                         onClick={toggleSidebar}
                     >
-                        BLOGS
+                        {t("blogs")}
                     </Link>
                 </nav>
             </div>

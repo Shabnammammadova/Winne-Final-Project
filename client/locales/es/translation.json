@@ -1,0 +1,55 @@
+{
+  "home": "Inicio",
+  "shop": "comercio",
+  "about us": "sobre nosotras",
+  "contact us": "Contacta con nosotras",
+  "faq": "Preguntas frecuentes",
+  "blogs": "blogs",
+  "sign in": "iniciar sesión",
+  "menu": "menú",
+  "my account": "mi cuenta",
+  "profile": "perfil",
+  "dashboard": "panel",
+  "log out": "cerrar sesión",
+  "exclusive red wine": "vino tinto exclusivo",
+  "slides": [
+    {
+      "title": "Vino Tinto Exclusivo",
+      "subtitle": "Descubre la mejor selección de vinos, elaborados para el sorbo perfecto cada vez. Sabores ricos, momentos inolvidables. Cada botella cuenta una historia de pasión."
+    },
+    {
+      "title": "Elegancia Blanca y Fresca",
+      "subtitle": "Desde tintos intensos hasta blancos frescos: explora nuestra selección curada de vinos premium. Disfruta del arte de la vinificación en cada copa."
+    },
+    {
+      "title": "Colección de Rosado de Lujo",
+      "subtitle": "Cada botella cuenta una historia. Experimenta los ricos sabores de la tradición y la artesanía."
+    },
+    {
+      "title": "Elegancia Roja Fresca",
+      "subtitle": "Disfruta del arte de la vinificación en cada copa. Seleccionado a mano de los mejores viñedos, elaborado para verdaderos amantes del vino."
+    }
+  ],
+  "shop now": "compra ahora",
+  "cards": {
+    "card1": {
+      "title": "Desde $50",
+      "des": "Vino tinto"
+    },
+    "card2": {
+      "title": "Desde $60",
+      "des": "Vino de uva"
+    }
+  },
+  "view more": "ver más",
+  "Luxury Wine From France": "Vino de lujo de Francia",
+  "Wine is an alcoholic beverage fermented from grapes. The natural chemical balance allows grapes to ferment without added sugar": "El vino es una bebida alcohólica fermentada a partir de uvas. El equilibrio químico natural permite que las uvas fermenten sin azúcar añadido.",
+  "best seller": "Mejor vendido",
+  "Best Seller Product This Week!": "¡El producto más vendido de esta semana!",
+  "new arrivals": "Recién llegados",
+  "our blogs": "Nuestros blogs",
+  "news": "noticias",
+  "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose .": "Es un hecho establecido hace mucho tiempo que un lector se distraerá con el contenido legible de una página cuando observe su diseño. El objetivo de usar Lorem Ipsum es que tiene una distribución más o menos normal de letras, a diferencia de usar 'Contenido aquí, contenido aquí', lo que hace que parezca un inglés legible. Muchos paquetes de autoedición y editores de páginas web ahora usan Lorem Ipsum como su modelo de texto predeterminado, y una búsqueda de 'lorem ipsum' descubrirá muchos sitios web que aún están en sus inicios. Varias versiones han evolucionado a lo largo de los años, a veces por accidente, a veces a propósito.",
+  "follow us on instagram": "Síguenos en Instagram",
+  "shop it": "Cómpralo"
+}

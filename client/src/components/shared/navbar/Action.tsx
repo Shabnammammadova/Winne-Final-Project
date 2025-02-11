@@ -18,12 +18,11 @@ import { logoutAsync, selectUserData } from "@/store/features/userSlice"
 import { LogOut, User } from "lucide-react"
 import { UserRole } from "@/types"
 import ThemeToggle from "../ThemeToggle"
-import { MdOutlineLanguage } from "react-icons/md"
 import { useQuery } from "@tanstack/react-query"
 import { QUERY_KEYS } from "@/constants/query-keys"
 import basketService from "@/services/basket"
-
-
+import LanguageSwitcher from "../LanguageSwitcher"
+import { useTranslation } from "react-i18next"
 
 
 
@@ -31,6 +30,8 @@ export const Action = () => {
     const { openDialog } = useDialog()
     const { user } = useAppSelector(selectUserData);
     const dispatch = useAppDispatch();
+    const { t } = useTranslation();
+
 
     const { data: basketList } = useQuery({
         queryKey: [QUERY_KEYS.SHOP],
@@ -65,27 +66,27 @@ export const Action = () => {
 
                     </DropdownMenuTrigger>
                     <DropdownMenuContent>
-                        <DropdownMenuLabel>My Account</DropdownMenuLabel>
-                        <DropdownMenuItem>
-                            <Link to="/profile"></Link>
+                        <DropdownMenuLabel className="capitalize">{t("my account")}</DropdownMenuLabel>
+                        <DropdownMenuItem className="capitalize">
+                            <Link to="/profile">{t("profile")}</Link>
                         </DropdownMenuItem>
                         <DropdownMenuSeparator />
                         {
                             user.role === UserRole.Admin && <DropdownMenuItem asChild >
-                                <Link to={paths.DASHBOARD.MAIN} className="cursor-pointer">Dashboard</Link>
+                                <Link to={paths.DASHBOARD.MAIN} className="cursor-pointer capitalize">{t("dashboard")}</Link>
                             </DropdownMenuItem>
                         }
-                        <DropdownMenuItem className="cursor-pointer" onClick={handleLogout}> <LogOut />
-                            <span>Log out</span>
+                        <DropdownMenuItem className="cursor-pointer capitalize" onClick={handleLogout}> <LogOut />
+                            <span>{t("log out")}</span>
                         </DropdownMenuItem>
 
                     </DropdownMenuContent>
                 </DropdownMenu>
             ) : (
-                <Button onClick={() => openDialog(ModalTypeEnum.LOGIN)} className="mr-[10px]">Sign In</Button>
+                <Button onClick={() => openDialog(ModalTypeEnum.LOGIN)} className="mr-[10px] capitalize">{t("sign in")}</Button>
             )}
             <SearchSide />
-            <MdOutlineLanguage className="w-[24px] h-[24px]" />
+            <LanguageSwitcher />
             <ThemeToggle />
             <Link to={paths.WISHLIST}><img src={HeartIcon} alt="" className='w-[24px] h-[24px] mr-[13px] lg:block hidden' /></Link>
             <ShoppingCart basket={basket} />
