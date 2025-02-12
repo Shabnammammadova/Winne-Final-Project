@@ -2,6 +2,8 @@ export const QUERY_KEYS = {
     ADMIN_WINES: "adminWines",
     ADMIN_WINE_DETAIL: "adminWineDetail",
     ADMIN_CATEGORY: "adminCategory",
+    ADMIN_BLOG: "adminBlog",
+    ADMIN_BLOG_DETAIL: "adminBlogDetail",
     CATEGORIES: "categories",
     WINE_LIST: "wineList",
     WINE_DETAIL: "wineDetail",

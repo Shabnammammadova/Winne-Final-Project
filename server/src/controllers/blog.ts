@@ -111,30 +111,34 @@ const create = async (req: Request, res: Response) => {
     }
 };
 
-
 const update = async (req: Request, res: Response) => {
     try {
         const { id } = req.params;
-        const data = { ...req.matchedData };
-
-
-        if (req.files && (req.files as any).length > 0) {
-            data.images = (req.files as any).map((file: any) => file.filename)
-        }
-
-        const blog = await Blog.findById(id)
-        if (!blog) {
-            res.status(404).json({
-                message: "Not Found"
-            })
+        const data = { ...req.body };
+        if (!id) {
+            res.status(400).json({ message: "Blog ID is required" });
             return
         }
 
+        const blog = await Blog.findById(id);
+        if (!blog) {
+            res.status(404).json({ message: "Not Found" });
+            return
+        }
+
+        if (!data.name || !data.description) {
+            res.status(400).json({ message: "Name and description are required" });
+            return
+        }
 
         blog.name = data.name;
-        if (data.images) blog.images = data.images;
+        blog.description = data.description;
 
-        await blog.save()
+        if (req.files && (req.files as any).length > 0) {
+            blog.images = (req.files as any).map((file: any) => file.filename);
+        }
+
+        await blog.save();
 
         res.json({
             message: "success",
@@ -142,12 +146,9 @@ const update = async (req: Request, res: Response) => {
         });
     } catch (error) {
         console.error(error);
-        res.status(500).json({
-            message: "Internal server error",
-        });
+        res.status(500).json({ message: "Internal server error" });
     }
 };
-
 
 
 const remove = async (req: Request, res: Response) => {

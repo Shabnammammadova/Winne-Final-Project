@@ -28,5 +28,11 @@ export const paths = {
             EDIT: (id = ":id") => `/dashboard/categories/edit/${id}`,
             REMOVE: "/dashboard/categories"
         },
+        BLOG: {
+            LIST: "/dashboard/blogs",
+            CREATE: "/dashboard/blogs/create",
+            EDIT: (id = ":id") => `/dashboard/blogs/edit/${id}`,
+            REMOVE: "/dashboard/blogs"
+        }
     }
 }

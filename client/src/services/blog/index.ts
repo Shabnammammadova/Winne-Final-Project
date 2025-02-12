@@ -26,25 +26,48 @@ const create = async (data: CreateBlogRequestPayload) => {
     return await axiosInstance.post("/blog", formData)
 }
 
-const edit = async (data: CreateBlogRequestPayload & { id?: string }) => {
-    const formData = new FormData();
+// const edit = async (data: CreateBlogRequestPayload & { id?: string }) => {
 
+//     const formData = new FormData();
+//     formData.append("name", data.name);
+//     formData.append("description", data.description);
+
+//     if (data.images)
+//         Array.from(data.images).forEach((image) => {
+//             formData.append(`images`, image)
+//         });
+
+//     return await axiosInstance.put(`/blog/${data.id}`, formData)
+// }
+const edit = async (data: CreateBlogRequestPayload & { id?: string }) => {
+    if (!data.id) {
+        throw new Error("Blog ID is required for editing.");
+    }
+
+    const formData = new FormData();
     formData.append("name", data.name);
     formData.append("description", data.description);
 
-    if (data.images)
+    if (data.images && data.images.length > 0) {
         Array.from(data.images).forEach((image) => {
-            formData.append(`images`, image)
+            formData.append("images", image);
         });
+    }
 
-    return await axiosInstance.put(`/blog/${data.id}`, formData)
+    return await axiosInstance.put(`/blog/${data.id}`, formData,);
+};
+
+
+const remove = async (id: string) => {
+    return await axiosInstance.delete(`/blog/${id}`);
 }
 
 const blogService = {
     getAll,
     getById,
     create,
-    edit
+    edit,
+    remove
 }
 
 export default blogService

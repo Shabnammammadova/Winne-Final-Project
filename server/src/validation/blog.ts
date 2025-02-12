@@ -43,7 +43,7 @@ export const editBlogSchema: Schema = {
         isString: true,
         notEmpty: true
     },
-    dewscription: {
+    description: {
         in: ["body"],
         isString: true,
         notEmpty: true

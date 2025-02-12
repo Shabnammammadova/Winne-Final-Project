@@ -72,34 +72,40 @@ const CategoryForm = ({ type }: Props) => {
     }
 
     return (
-        <div>
-            <h1 className="text-2xl font-bold text-primary mb-4 pt-6">
+        <div className="p-6 bg-white rounded-md shadow-lg mx-auto">
+            <h1 className="text-2xl font-bold text-primary mb-6 text-center">
                 {isEdit ? "Edit" : "Create"} Category
             </h1>
             <Form {...form}>
-                <form onSubmit={form.handleSubmit(onSubmit)}>
-                    <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+                <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+                    <div>
                         <FormField
                             control={form.control}
                             name="name"
                             render={({ field }) => (
                                 <FormItem>
-                                    <FormLabel>Name</FormLabel>
+                                    <FormLabel className="text-sm text-gray-700">Name</FormLabel>
                                     <FormControl>
-                                        <Input placeholder="Category" {...field} />
+                                        <Input
+                                            placeholder="Enter category name"
+                                            {...field}
+                                            className="w-full p-3 border rounded-md border-gray-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-primary"
+                                        />
                                     </FormControl>
-                                    <FormMessage />
+                                    <FormMessage className="text-xs text-red-600 mt-1" />
                                 </FormItem>
                             )}
                         />
                     </div>
-                    <div className="flex justify-start mt-4">
-                        <Button asChild variant="secondary" className="bg-white">
-                            <Link to={paths.DASHBOARD.CATEGORY.LIST} className="mr-2">
+                    <div className="flex  items-center space-x-1">
+                        <Button asChild variant="secondary">
+                            <Link to={paths.DASHBOARD.CATEGORY.LIST} className="mr-2 text-sm text-gray-500 hover:text-primary">
                                 Back
                             </Link>
                         </Button>
-                        <Button type="submit">{isEdit ? "Update" : "Submit"}</Button>
+                        <Button type="submit" className="px-6 py-3 text-sm text-white bg-primary rounded-md hover:bg-primary-dark">
+                            {isEdit ? "Update" : "Submit"}
+                        </Button>
                     </div>
                 </form>
             </Form>

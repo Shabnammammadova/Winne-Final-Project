@@ -2,6 +2,9 @@ import AuthLayout from "@/components/shared/AuthLayout";
 import DashboardLayout from "@/components/shared/DashboardLayout";
 import RootLayout from "@/components/shared/RootLayout";
 import { paths } from "@/constants/paths";
+import DashboardCreateBlogPage from "@/pages/(dashboard)/blog/create";
+import DashboardBlogPage from "@/pages/(dashboard)/blog/list";
+import DashboardEditBlogPage from "@/pages/(dashboard)/blog/update";
 import DashboardCreateCategoryPage from "@/pages/(dashboard)/category/create";
 import DashboardCategoryPage from "@/pages/(dashboard)/category/list";
 import DashboardEditCategoryPage from "@/pages/(dashboard)/category/update";
@@ -118,7 +121,19 @@ export const router = createBrowserRouter([
                     {
                         path: paths.DASHBOARD.CATEGORY.EDIT(),
                         element: <DashboardEditCategoryPage />
-                    }
+                    },
+                    {
+                        path: paths.DASHBOARD.BLOG.LIST,
+                        element: <DashboardBlogPage />
+                    },
+                    {
+                        path: paths.DASHBOARD.BLOG.CREATE,
+                        element: <DashboardCreateBlogPage />
+                    },
+                    {
+                        path: paths.DASHBOARD.BLOG.EDIT(),
+                        element: <DashboardEditBlogPage />
+                    },
                 ]
             }
         ]

@@ -3,15 +3,13 @@ import { Spinner } from "@/components/shared/Spinner";
 import { Button } from "@/components/ui/button";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { MAX_FILE_SIZE } from "@/constants";
 import { paths } from "@/constants/paths";
 import { QUERY_KEYS } from "@/constants/query-keys";
-import categoryService from "@/services/category";
-import wineService from "@/services/wine";
+import blogService from "@/services/blog";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useMutation, useQuery } from "@tanstack/react-query";
-import { useEffect, useMemo } from "react";
+import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { toast } from "sonner";
@@ -20,22 +18,11 @@ import { z } from "zod";
 
 const getformSchema = (isEdit: boolean) => z.object({
     name: z.string().min(2),
-    price: z
-        .number({
-            invalid_type_error: 'Price must be a number',
-            required_error: 'Price is required',
-        })
-        .positive(),
-    discount: z
-        .number({
-            invalid_type_error: 'Discount must be a number',
-            required_error: 'Discount  is required',
-        }),
-    categoryId: z.string().min(2, { message: 'Category is required' }),
+    description: z.string().min(10),
     images: isEdit ? z.any().optional() :
         z
             .instanceof(FileList, { message: "Images are required" })
-            .refine((list) => list.length > 1, "Minimum 2 files required")
+            .refine((list) => list.length > 0, "Minimum 1 files required")
             .transform((list) => Array.from(list))
             .refine(
                 (files) => {
@@ -67,12 +54,12 @@ type Props = {
     type: "create" | "update"
 }
 
-const ActionForm = ({ type }: Props) => {
+const BlogForm = ({ type }: Props) => {
     const isEdit = type === "update";
     const { id } = useParams();
     const { data, isLoading } = useQuery({
-        queryKey: [QUERY_KEYS.ADMIN_WINE_DETAIL],
-        queryFn: () => wineService.getById(id!),
+        queryKey: [QUERY_KEYS.ADMIN_BLOG_DETAIL],
+        queryFn: () => blogService.getById(id!),
         enabled: isEdit
     })
 
@@ -81,28 +68,16 @@ const ActionForm = ({ type }: Props) => {
 
     const navigate = useNavigate()
     const { mutateAsync } = useMutation({
-        mutationFn: isEdit ? wineService.edit : wineService.create,
+        mutationFn: isEdit ? blogService.edit : blogService.create,
         onSuccess: () => {
-            navigate(paths.DASHBOARD.WINE.LIST)
+            navigate(paths.DASHBOARD.BLOG.LIST)
         },
         onError: (error) => {
             console.log("error", error);
 
         }
     })
-    const { data: categoryData } = useQuery({
-        queryKey: [QUERY_KEYS.CATEGORIES],
-        queryFn: categoryService.getAll
-    })
 
-    const categoryOptions = useMemo(() => {
-        if (!categoryData?.data.items) return [];
-
-        return categoryData.data.items.map((category) => ({
-            value: category._id,
-            label: category.name
-        }))
-    }, [categoryData])
 
 
 
@@ -114,9 +89,7 @@ const ActionForm = ({ type }: Props) => {
             resolver: zodResolver(formSchema),
             defaultValues: {
                 name: '',
-                price: 0,
-                discount: 0,
-                categoryId: '',
+                description: '',
                 images: undefined,
             },
         });
@@ -125,23 +98,23 @@ const ActionForm = ({ type }: Props) => {
         const payload = {
             ...data,
             ...(isEdit ? { id } : {})
+
         }
 
 
         const promise = mutateAsync(payload)
         toast.promise(promise, {
-            loading: 'Creating wine...',
-            success: 'Wine created successfully',
-            error: 'Failed to create wine',
+            loading: 'Creating blog...',
+            success: 'Blog created successfully',
+            error: 'Failed to create blog',
         });
     }
 
     useEffect(() => {
         if (editItem) {
             form.setValue('name', editItem.name)
-            form.setValue('price', editItem.price)
-            form.setValue('discount', editItem.discount)
-            form.setValue('categoryId', editItem.category._id)
+            form.setValue('description', editItem.description)
+
         }
     }, [editItem])
 
@@ -156,7 +129,7 @@ const ActionForm = ({ type }: Props) => {
     return (
         <div className="p-6 bg-white rounded-md shadow-lg mx-auto">
             <h1 className="text-2xl font-bold text-primary mb-6 text-center">
-                {isEdit ? "Edit" : "Create"} Wine
+                {isEdit ? "Edit" : "Create"} Blog
             </h1>
 
             <Form {...form}>
@@ -169,7 +142,7 @@ const ActionForm = ({ type }: Props) => {
                                 <FormItem>
                                     <FormLabel>Name</FormLabel>
                                     <FormControl>
-                                        <Input placeholder="Wine Name" {...field} className="w-full p-3 border rounded-md shadow-sm" />
+                                        <Input placeholder="Blog Name" {...field} className="w-full p-3 border rounded-md shadow-sm" />
                                     </FormControl>
                                     <FormMessage />
                                 </FormItem>
@@ -177,60 +150,17 @@ const ActionForm = ({ type }: Props) => {
                         />
                         <FormField
                             control={form.control}
-                            name="price"
+                            name="description"
                             render={({ field }) => (
                                 <FormItem>
-                                    <FormLabel>Price</FormLabel>
+                                    <FormLabel>Description</FormLabel>
                                     <FormControl>
                                         <Input
-                                            type="number"
-                                            placeholder="100"
+                                            placeholder="Blog Description"
                                             {...field}
                                             className="w-full p-3 border rounded-md shadow-sm"
                                         />
                                     </FormControl>
-                                    <FormMessage />
-                                </FormItem>
-                            )}
-                        />
-                        <FormField
-                            control={form.control}
-                            name="discount"
-                            render={({ field }) => (
-                                <FormItem>
-                                    <FormLabel>Discount</FormLabel>
-                                    <FormControl>
-                                        <Input
-                                            type="number"
-                                            placeholder="10"
-                                            {...field}
-                                            className="w-full p-3 border rounded-md shadow-sm"
-                                        />
-                                    </FormControl>
-                                    <FormMessage />
-                                </FormItem>
-                            )}
-                        />
-                        <FormField
-                            control={form.control}
-                            name="categoryId"
-                            render={({ field }) => (
-                                <FormItem>
-                                    <FormLabel>Category</FormLabel>
-                                    <Select onValueChange={field.onChange} value={field.value} >
-                                        <FormControl>
-                                            <SelectTrigger>
-                                                <SelectValue placeholder="Select Category" />
-                                            </SelectTrigger>
-                                        </FormControl>
-                                        <SelectContent>
-                                            {categoryOptions.map((category) => (
-                                                <SelectItem key={category.value} value={category.value}>
-                                                    {category.label}
-                                                </SelectItem>
-                                            ))}
-                                        </SelectContent>
-                                    </Select>
                                     <FormMessage />
                                 </FormItem>
                             )}
@@ -274,7 +204,7 @@ const ActionForm = ({ type }: Props) => {
 
                     <div className="flex justify-end mt-6 space-x-4">
                         <Button asChild variant="secondary">
-                            <Link to="/dashboard/wines" className="text-sm text-gray-500 hover:text-primary">
+                            <Link to="/dashboard/blogs" className="text-sm text-gray-500 hover:text-primary">
                                 Back
                             </Link>
                         </Button>
@@ -290,4 +220,4 @@ const ActionForm = ({ type }: Props) => {
 
 
 
-export default ActionForm
+export default BlogForm
