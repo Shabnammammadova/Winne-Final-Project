@@ -8,6 +8,9 @@ import DashboardEditBlogPage from "@/pages/(dashboard)/blog/update";
 import DashboardCreateCategoryPage from "@/pages/(dashboard)/category/create";
 import DashboardCategoryPage from "@/pages/(dashboard)/category/list";
 import DashboardEditCategoryPage from "@/pages/(dashboard)/category/update";
+import DashboardCreateFaqPage from "@/pages/(dashboard)/faq/create";
+import DashboardFaqPage from "@/pages/(dashboard)/faq/list";
+import DashboardEditFaqPage from "@/pages/(dashboard)/faq/update";
 import DashboardMainPage from "@/pages/(dashboard)/main";
 import DashboardCreateWinePage from "@/pages/(dashboard)/wines/create";
 import DashboardWinesPage from "@/pages/(dashboard)/wines/list";
@@ -134,6 +137,18 @@ export const router = createBrowserRouter([
                         path: paths.DASHBOARD.BLOG.EDIT(),
                         element: <DashboardEditBlogPage />
                     },
+                    {
+                        path: paths.DASHBOARD.FAQ.LIST,
+                        element: <DashboardFaqPage />
+                    },
+                    {
+                        path: paths.DASHBOARD.FAQ.CREATE,
+                        element: <DashboardCreateFaqPage />
+                    },
+                    {
+                        path: paths.DASHBOARD.FAQ.EDIT(),
+                        element: <DashboardEditFaqPage />
+                    }
                 ]
             }
         ]

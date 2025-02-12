@@ -8,6 +8,7 @@ import { createFaqSchema, editFaqSchema } from "../validation/faq";
 const router = Router()
 
 router.get("/", faqController.getAll);
+router.get("/:id", faqController.getById);
 router.post("/", authorize({ isAdmin: true }),
     validateSchema(createFaqSchema),
     faqController.create),

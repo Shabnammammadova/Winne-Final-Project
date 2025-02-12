@@ -16,6 +16,33 @@ const getAll = async (_req: Request, res: Response) => {
     });
 };
 
+const getById = async (req: Request, res: Response) => {
+    try {
+        const { id } = req.params;
+
+        const faq = await FAQ.findById(id)
+
+        if (!faq) {
+            res.status(404).json({
+                message: "Not Found"
+            });
+            return
+        }
+
+
+        res.json({
+            message: "success",
+            item: faq
+        });
+
+    } catch (err) {
+        console.log(err);
+        res.status(500).send({
+            message: "Internal Server Error"
+        })
+    }
+}
+
 const create = async (req: Request, res: Response) => {
     const { question, answer } = req.body;
 
@@ -71,6 +98,7 @@ const remove = async (req: Request, res: Response) => {
 export default {
     getAll,
     create,
+    getById,
     update,
     remove
 };
