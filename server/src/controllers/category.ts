@@ -17,6 +17,27 @@ const getAll = async (_req: Request, res: Response) => {
     })
 }
 
+const getById = async (req: Request, res: Response) => {
+    const { id } = req.params;
+    const category = await Category.findById(id);
+
+    if (!category) {
+        res.status(404).json({
+            message: "Category not found"
+        });
+        return
+    }
+    res.json({
+        message: "Category retrieved successfully",
+        item: {
+            _id: category._id,
+            name: category.name,
+            count: Array.isArray(category.products) ? category.products.length : 0,
+            createdAt: category.createdAt
+        }
+    });
+};
+
 const create = async (req: Request, res: Response) => {
     const { name } = req.matchedData;
 
@@ -71,6 +92,7 @@ const remove = async (req: Request, res: Response) => {
 export default {
     getAll,
     create,
+    getById,
     update,
     remove
 }

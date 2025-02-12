@@ -2,6 +2,9 @@ import AuthLayout from "@/components/shared/AuthLayout";
 import DashboardLayout from "@/components/shared/DashboardLayout";
 import RootLayout from "@/components/shared/RootLayout";
 import { paths } from "@/constants/paths";
+import DashboardCreateCategoryPage from "@/pages/(dashboard)/category/create";
+import DashboardCategoryPage from "@/pages/(dashboard)/category/list";
+import DashboardEditCategoryPage from "@/pages/(dashboard)/category/update";
 import DashboardMainPage from "@/pages/(dashboard)/main";
 import DashboardCreateWinePage from "@/pages/(dashboard)/wines/create";
 import DashboardWinesPage from "@/pages/(dashboard)/wines/list";
@@ -103,6 +106,18 @@ export const router = createBrowserRouter([
                     {
                         path: paths.DASHBOARD.WINE.EDIT(),
                         element: <DashboardEditWinePage />
+                    },
+                    {
+                        path: paths.DASHBOARD.CATEGORY.LIST,
+                        element: <DashboardCategoryPage />
+                    },
+                    {
+                        path: paths.DASHBOARD.CATEGORY.CREATE,
+                        element: <DashboardCreateCategoryPage />
+                    },
+                    {
+                        path: paths.DASHBOARD.CATEGORY.EDIT(),
+                        element: <DashboardEditCategoryPage />
                     }
                 ]
             }

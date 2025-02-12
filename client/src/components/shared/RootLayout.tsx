@@ -28,7 +28,7 @@ const RootLayout = () => {
 
     return (
         <div>
-            <Navbar />
+            {!isDashboardPage && <Navbar />}
             <Outlet />
             <Dialogs />
             {!isDashboardPage && <Chat />}

@@ -12,7 +12,8 @@ import { TbWritingSign } from "react-icons/tb"
 import { TbShoppingBagCheck } from "react-icons/tb";
 import { ScrollToTop } from "./ScrollToTop";
 import { useState } from "react";
-import { IoMenu, IoClose } from "react-icons/io5";
+import { IoMenu } from "react-icons/io5";
+import { HiOutlineHome } from "react-icons/hi2"
 
 const DashboardLayout = () => {
     const { user, loading } = useAppSelector(selectUserData);
@@ -27,6 +28,7 @@ const DashboardLayout = () => {
     }
 
     const menuItems = [
+        { name: "Home", icon: <HiOutlineHome />, path: "/" },
         { name: "Wines", icon: <GiWineBottle />, path: "/dashboard/wines" },
         { name: "Category", icon: <BiCategory />, path: "/dashboard/categories" },
         { name: "Blogs", icon: <TbWritingSign />, path: "/dashboard/blogs" },
@@ -44,7 +46,7 @@ const DashboardLayout = () => {
                     className="text-white mb-4 text-2xl focus:outline-none"
                     onClick={() => setSidebarOpen(!sidebarOpen)}
                 >
-                    {sidebarOpen ? <IoClose /> : <IoMenu />}
+                    {sidebarOpen ? <IoMenu /> : <IoMenu />}
                 </button>
                 <nav className="flex flex-col gap-2">
                     {menuItems.map((item, index) => (

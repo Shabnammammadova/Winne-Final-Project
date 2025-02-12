@@ -7,6 +7,7 @@ import { categorySchema } from "../validation/category";
 const router = Router()
 
 router.get("/", categoryController.getAll);
+router.get("/:id", categoryController.getById)
 router.post("/", authorize({ isAdmin: true }),
     validateSchema(categorySchema),
     categoryController.create),

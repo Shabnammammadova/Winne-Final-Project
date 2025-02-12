@@ -37,13 +37,16 @@ const edit = async (data: CreateWineRequestPayload & { id?: string }) => {
     formData.append("discount", data.discount.toString());
     formData.append("categoryId", data.categoryId);
 
-    if (data.images)
-        Array.from(data.images).forEach((image) => {
-            formData.append(`images`, image)
+    if (data.images && Array.isArray(data.images)) {
+        data.images.forEach((image) => {
+            if (image instanceof File) {
+                formData.append("images", image);
+            }
         });
+    }
 
-    return await axiosInstance.put(`/product/${data.id}`, formData)
-}
+    return await axiosInstance.put(`/product/${data.id}`, formData);
+};
 
 const remove = async (id: string) => {
     return await axiosInstance.delete(`/product/${id}`);

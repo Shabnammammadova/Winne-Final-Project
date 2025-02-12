@@ -277,7 +277,7 @@ const ActionForm = ({ type }: Props) => {
                                 Back
                             </Link>
                         </Button>
-                        <Button type="submit">Submit</Button>
+                        <Button type="submit">{isEdit ? "Update" : "Submit"}</Button>
                     </div>
                 </form>
             </Form>

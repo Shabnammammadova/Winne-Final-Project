@@ -162,58 +162,43 @@ const update = async (req: Request, res: Response) => {
         const { id } = req.params;
         const data = { ...req.matchedData };
 
-        const { categoryId } = data
-        const category = await Category.findById(categoryId)
-
+        const { categoryId } = data;
+        const category = await Category.findById(categoryId);
 
         if (!category) {
-            res.status(404).json({
-                message: "Category Not Found"
-            });
+            res.status(404).json({ message: "Category Not Found" });
             return
         }
 
         if (req.files && (req.files as any).length > 0) {
-            data.images = (req.files as any).map((file: any) => file.filename)
+            data.images = (req.files as any).map((file: any) => file.filename);
         }
 
-        const product = await Product.findById(id)
+        const product = await Product.findById(id);
         if (!product) {
-            res.status(404).json({
-                message: "Not Found"
-            })
+            res.status(404).json({ message: "Not Found" });
             return
         }
 
-        const oldCategoryId = product.category
-
+        const oldCategoryId = product.category;
         await Category.findByIdAndUpdate(oldCategoryId, {
-            $pull: {
-                products: id
-            }
+            $pull: { products: id }
         });
-        category.products.push(product._id)
-        await category.save()
 
-
-
-        product.name = data.name;
-        product.category = data.category;
-        product.price = data.price;
-        product.discount = data.discount;
+        category.products.push(product._id);
+        await category.save();
+        if (data.name) product.name = data.name;
+        if (data.category) product.category = data.category;
+        if (data.price) product.price = data.price;
+        if (data.discount) product.discount = data.discount;
         if (data.images) product.images = data.images;
 
-        await product.save()
+        await product.save();
 
-        res.json({
-            message: "success",
-            item: product,
-        });
+        res.json({ message: "success", item: product });
     } catch (error) {
-        console.error(error);
-        res.status(500).json({
-            message: "Internal server error",
-        });
+        console.error("Update error:", error);
+        res.status(500).json({ message: "Internal server error" });
     }
 };
 

@@ -5,7 +5,10 @@ export type GetAllCategoryResponseType = {
     items: Category[];
     message: string
 }
-
+export type GetByIdCategoryResponseType = {
+    item: Category;
+    message: string
+}
 export type CreateCategoryRequestPayload = {
     name: string;
 }
