@@ -2,7 +2,8 @@ import passport from "passport";
 import { Strategy as GitHubStrategy, Profile } from "passport-github2";
 import dotenv from "dotenv";
 import crypto from "crypto";
-import bcrypt from "bcrypt";
+// import bcrypt from "bcrypt";
+import bcrypt from 'bcryptjs';
 import { IUser } from "../types/user";
 import User from "../mongoose/schemas/user";
 

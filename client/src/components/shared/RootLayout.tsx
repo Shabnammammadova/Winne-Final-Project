@@ -5,9 +5,11 @@ import { Navbar } from "./navbar/Navbar"
 import { Outlet, useLocation } from "react-router-dom"
 import { useEffect } from "react"
 import { getCurrentUserAsync } from "@/store/features/userSlice"
-import { Chat } from "./Chat"
+
 import "../../i18"
 import { useTranslation } from 'react-i18next'
+import { HelpPopover } from "../shared/chat/index"
+
 
 
 const RootLayout = () => {
@@ -31,7 +33,7 @@ const RootLayout = () => {
             {!isDashboardPage && <Navbar />}
             <Outlet />
             <Dialogs />
-            {!isDashboardPage && <Chat />}
+            {!isDashboardPage && <HelpPopover />}
             {!isDashboardPage && <Footer />}
         </div>
     )

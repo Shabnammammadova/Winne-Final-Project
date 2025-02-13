@@ -82,3 +82,21 @@ export enum ReviewStatus {
     Approved = "approved",
     Rejected = "rejected",
 }
+export type Conversation = {
+    _id: string
+    userName: string;
+    userEmail: string;
+    userId: string;
+    messages: Message[];
+    createdAt: string;
+    updatedAt: string;
+}
+export type Message = {
+    _id: string
+    text: string;
+    userId: string;
+    userName: string;
+    conversation: string | Conversation;
+    createdAt: string;
+    updatedAt: string;
+}

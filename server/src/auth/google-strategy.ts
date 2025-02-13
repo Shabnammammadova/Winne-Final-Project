@@ -2,7 +2,9 @@ import passport from "passport";
 import { Strategy as GoogleStrategy } from "passport-google-oauth20";
 import dotenv from "dotenv";
 import crypto from "crypto";
-import bcrypt from "bcrypt";
+// import bcrypt from "bcrypt";
+import bcrypt from 'bcryptjs';
+
 import { IUser } from "../types/user";
 import User from "../mongoose/schemas/user";
 

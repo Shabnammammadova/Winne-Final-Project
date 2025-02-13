@@ -35,7 +35,7 @@ const getformSchema = (isEdit: boolean) => z.object({
     images: isEdit ? z.any().optional() :
         z
             .instanceof(FileList, { message: "Images are required" })
-            .refine((list) => list.length > 1, "Minimum 2 files required")
+            .refine((list) => list.length > 0, "Minimum 1 files required")
             .transform((list) => Array.from(list))
             .refine(
                 (files) => {

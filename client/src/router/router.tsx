@@ -8,6 +8,7 @@ import DashboardEditBlogPage from "@/pages/(dashboard)/blog/update";
 import DashboardCreateCategoryPage from "@/pages/(dashboard)/category/create";
 import DashboardCategoryPage from "@/pages/(dashboard)/category/list";
 import DashboardEditCategoryPage from "@/pages/(dashboard)/category/update";
+import ChatPage from "@/pages/(dashboard)/chat";
 import DashboardCreateFaqPage from "@/pages/(dashboard)/faq/create";
 import DashboardFaqPage from "@/pages/(dashboard)/faq/list";
 import DashboardEditFaqPage from "@/pages/(dashboard)/faq/update";
@@ -148,7 +149,15 @@ export const router = createBrowserRouter([
                     {
                         path: paths.DASHBOARD.FAQ.EDIT(),
                         element: <DashboardEditFaqPage />
-                    }
+                    },
+                    {
+                        path: paths.DASHBOARD.CHAT.VIEW,
+                        element: <ChatPage />
+                    },
+                    {
+                        path: paths.DASHBOARD.CHAT.USER(),
+                        element: <ChatPage />
+                    },
                 ]
             }
         ]

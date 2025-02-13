@@ -1,4 +1,6 @@
-import bcrypt from "bcrypt";
+// import bcrypt from "bcrypt";
+import bcrypt from 'bcryptjs';
+
 import { SALT_ROUNDS } from "./constants";
 
 export function hashPassword(password: string) {

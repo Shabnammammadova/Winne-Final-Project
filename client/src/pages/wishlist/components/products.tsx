@@ -1,5 +1,4 @@
 import { paths } from "@/constants/paths";
-import basketService from "@/services/basket";
 // import basketService from "@/services/basket";
 import favoriteService from "@/services/favorite";
 import { selectUserData } from "@/store/features/userSlice";

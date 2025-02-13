@@ -19,7 +19,7 @@ export const SearchProduct = ({ product }: Props) => {
 
     return (
         <div
-            className={`flex flex-wrap items-start xs:gap-x-10 md:gap-x-20 gap-y-6 pt-6 max-w-[600px] mx-auto h-[100px] ${filteredProducts.length > 1
+            className={`flex flex-wrap items-start xs:gap-x-10 md:gap-x-20 gap-y-6 pt-6 max-w-[600px] mx-auto h-[100px] overflow-hidden ${filteredProducts.length > 1
                 ? "justify-start h-[100px] overflow-y-scroll"
                 : "justify-start items-start text-start relative"
                 }`}

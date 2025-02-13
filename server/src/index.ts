@@ -19,7 +19,9 @@ import faqRoutes from "./routes/faq"
 import orderRoutes from "./routes/order"
 import favoriteRoutes from "./routes/favorite"
 import basketRoutes from "./routes/basket"
+import conversationRoutes from "./routes/conversation"
 import path from "path";
+import { connectSocket } from "./socket";
 
 
 
@@ -31,7 +33,7 @@ const app = express();
 const server = createServer(app);
 
 
-
+connectSocket(server)
 
 app.use(express.json());
 app.use(cookieParser());
@@ -62,6 +64,7 @@ app.use("/faq", faqRoutes)
 app.use("/order", orderRoutes)
 app.use("/favorite", favoriteRoutes)
 app.use("/basket", basketRoutes)
+app.use("/conversation", conversationRoutes)
 app.use("/public",
     express.static(path.join(__dirname, "../public"))
 )

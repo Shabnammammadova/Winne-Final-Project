@@ -39,6 +39,10 @@ export const paths = {
             CREATE: "/dashboard/faqs/create",
             EDIT: (id = ":id") => `/dashboard/faqs/edit/${id}`,
             REMOVE: "/dashboard/faqs"
-        }
+        },
+        CHAT: {
+            VIEW: "/dashboard/chat",
+            USER: (id = ":id") => `/dashboard/chat/${id}`
+        },
     }
 }

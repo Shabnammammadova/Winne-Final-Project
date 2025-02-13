@@ -5,6 +5,9 @@ export const QUERY_KEYS = {
     ADMIN_BLOG: "adminBlog",
     ADMIN_BLOG_DETAIL: "adminBlogDetail",
     ADMIN_FAQ: "adminFaq",
+    USER_CONVERSATION: "userConversation",
+    ADMIN_CONVERSATIONS: "adminConversations",
+    ADMIN_CHAT: "adminChat",
     CATEGORIES: "categories",
     WINE_LIST: "wineList",
     WINE_DETAIL: "wineDetail",
@@ -13,5 +16,5 @@ export const QUERY_KEYS = {
     FAQ: "faq",
     WISHLIST: "wishList",
     SHOP: "shop",
-    ADD_WISHLIST: "addWishlist"
+    ADD_WISHLIST: "addWishlist",
 }

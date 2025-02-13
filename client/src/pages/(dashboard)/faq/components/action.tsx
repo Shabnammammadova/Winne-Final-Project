@@ -57,10 +57,8 @@ const FaqForm = ({ type }: Props) => {
 
     useEffect(() => {
         if (isEdit && data?.data?.item) {
-            form.reset({
-                question: data.data.item.question,
-                answer: data.data.item.answer,
-            });
+            form.setValue("question", data.data.item.question);
+            form.setValue("answer", data.data.item.answer);
         }
     }, [isEdit, data, form]);
 

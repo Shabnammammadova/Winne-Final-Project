@@ -17,6 +17,8 @@ export const AddToCart = ({ updateBasket, productId }: Props) => {
     const [quantity, setQuantity] = useState(1);
     const user = useSelector(selectUserData);
     const { openDialog } = useDialog()
+
+
     const increaseQuantity = () => {
         setQuantity(prev => prev + 1);
     };
@@ -48,6 +50,7 @@ export const AddToCart = ({ updateBasket, productId }: Props) => {
         }
         basketadd({ userId: user.user?._id!, productId });
     }
+
 
 
     return (
