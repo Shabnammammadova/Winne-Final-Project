@@ -7,6 +7,7 @@ import { paths } from "@/constants/paths";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import basketService from "@/services/basket";
 import { toast } from "sonner";
+import getStripe from "@/utils/stripe";
 
 
 type Props = {
@@ -40,6 +41,29 @@ export function ShoppingCart({ basket, setBasket }: Props) {
     function onSubmit(id: string) {
         mutate(id)
     }
+
+    const handleCheckout = async () => {
+        try {
+            const response = await fetch(`${import.meta.env.VITE_APP_API_BASE_URL}/checkout`, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ items: basket }),
+            });
+
+            const { sessionId } = await response.json();
+            const stripe = await getStripe();
+
+            if (stripe && sessionId) {
+                await stripe.redirectToCheckout({ sessionId });
+                setBasket([]);
+            }
+        } catch (error) {
+            toast.error("Checkout failed.");
+            console.error(error);
+        }
+    };
+
+
     return (
         <>
             <button onClick={handleOpen}>
@@ -69,11 +93,11 @@ export function ShoppingCart({ basket, setBasket }: Props) {
                             {
                                 !isBasketLoaded ? (
                                     <div className="flex flex-col items-center justify-center gap-2 mx-auto absolute top-1/3 w-full">
-                                        <p className="text-center text-xl text-black font-bold mt-8">
+                                        <p className="text-center text-xl text-black font-bold mt-8 dark:text-white">
                                             Your shopping bag is empty.
                                         </p>
                                         <Link to={paths.SHOP}>
-                                            <button className="text-sm font-semibold text-white bg-black hover:bg-primary uppercase tracking-[.2em] px-[10px] py-[10px]" onClick={goToShop}>
+                                            <button className="text-sm font-semibold text-white bg-black hover:bg-primary uppercase tracking-[.2em] px-[10px] py-[10px] dark:bg-white dark:text-black dark:hover:bg-primary" onClick={goToShop}>
                                                 Go to the shop
                                             </button>
                                         </Link>
@@ -122,7 +146,7 @@ export function ShoppingCart({ basket, setBasket }: Props) {
                                         </div>
                                         <div className="p-4 border-t uppercase tracking-widest">
                                             <button
-                                                onClick={handleClose}
+                                                onClick={handleCheckout}
                                                 className="w-full text-lg px-4 py-2 transition-all duration-300 bg-black text-white rounded hover:bg-primary dark:bg-white dark:text-black dark:hover:bg-primary dark:hover:text-white"
                                             >
                                                 Checkout

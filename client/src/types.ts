@@ -82,6 +82,12 @@ export enum ReviewStatus {
     Approved = "approved",
     Rejected = "rejected",
 }
+export enum OrderStatus {
+    Pending = "pending",
+    Approved = "approved",
+    Rejected = "rejected",
+    Canceled = "canceled"
+}
 export type Conversation = {
     _id: string
     userName: string;

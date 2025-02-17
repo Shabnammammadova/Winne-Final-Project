@@ -51,5 +51,8 @@
   "news": "noticias",
   "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose .": "Es un hecho establecido hace mucho tiempo que un lector se distraerá con el contenido legible de una página cuando observe su diseño. El objetivo de usar Lorem Ipsum es que tiene una distribución más o menos normal de letras, a diferencia de usar 'Contenido aquí, contenido aquí', lo que hace que parezca un inglés legible. Muchos paquetes de autoedición y editores de páginas web ahora usan Lorem Ipsum como su modelo de texto predeterminado, y una búsqueda de 'lorem ipsum' descubrirá muchos sitios web que aún están en sus inicios. Varias versiones han evolucionado a lo largo de los años, a veces por accidente, a veces a propósito.",
   "follow us on instagram": "Síguenos en Instagram",
-  "shop it": "Cómpralo"
+  "shop it": "Cómpralo",
+  "products": {
+    "rose_wine": "Vino Rosado"
+  }
 }

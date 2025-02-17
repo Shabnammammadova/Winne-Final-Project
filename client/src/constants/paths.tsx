@@ -14,6 +14,8 @@ export const paths = {
     WISHLIST: "/wishlist",
     LIST: "/list",
     DETAIL: (id = ":id") => `/wine/detail/${id}`,
+    SUCCESS: "/success",
+    FAILED: "/failed",
     DASHBOARD: {
         MAIN: "/dashboard",
         WINE: {

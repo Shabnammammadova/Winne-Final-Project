@@ -21,6 +21,7 @@ import { Blog } from "@/pages/blog";
 import { BlogDetail } from "@/pages/blog/components/BlogDetail";
 import { Contact } from "@/pages/contact";
 import { WineProductDetail } from "@/pages/detail";
+import FailedPage from "@/pages/failed";
 import { Faq } from "@/pages/faq";
 import { ForgotPassword } from "@/pages/forgot-password";
 import HomePage from "@/pages/home";
@@ -28,6 +29,7 @@ import { NotFound } from "@/pages/not-found";
 import { UserProfile } from "@/pages/profile";
 import { ResetPassword } from "@/pages/reset-password";
 import Shop from "@/pages/shop";
+import SuccessPage from "@/pages/success";
 import { WishList } from "@/pages/wishlist";
 import { createBrowserRouter } from "react-router-dom";
 
@@ -84,6 +86,14 @@ export const router = createBrowserRouter([
             {
                 path: paths.SHOP,
                 element: <Shop />
+            },
+            {
+                path: paths.SUCCESS,
+                element: <SuccessPage />
+            },
+            {
+                path: paths.FAILED,
+                element: <FailedPage />
             },
             {
                 path: "*",

@@ -128,8 +128,7 @@ export const WineProductList = ({ product }: Props) => {
                             onClick={() => navigate(`/wine/detail/${wineproduct._id}`)}
                         />
                         <div className="px-4 py-3 bg-white dark:bg-black text-center h-[100px] absolute left-0 bottom-0 w-full">
-                            <span className="xs:text-[14px] text-black dark:text-white capitalize xl:text-base font-medium pt-5 pb-[10px]">
-                                {wineproduct.name}
+                            <span className="xs:text-[14px] text-black dark:text-white capitalize xl:text-base font-medium pt-5 pb-[10px]"> {t(`products.${wineproduct.name.replace(/\s+/g, "_").toLowerCase()}`)}
                             </span>
                             <div className="flex items-center justify-center gap-1">
                                 <p className="text-[15px] font-bold text-gray-500 line-through">
