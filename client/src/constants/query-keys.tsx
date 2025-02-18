@@ -17,4 +17,5 @@ export const QUERY_KEYS = {
     WISHLIST: "wishList",
     SHOP: "shop",
     ADD_WISHLIST: "addWishlist",
+    ORDERS: "orders"
 }

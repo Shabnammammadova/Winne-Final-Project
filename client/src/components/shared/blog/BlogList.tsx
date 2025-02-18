@@ -56,7 +56,7 @@ export const BlogList = ({ blog }: Props) => {
                         <div className="flex flex-col items-center justify-center font-sans mt-4">
                             <p className="text-[16px] leading-6 font-medium uppercase text-gray-400">{t("news")}</p>
                             <span className="text-[22px] font-medium pb-[10px] text-black capitalize transition-all duration-300 hover:text-primary dark:text-white dark:hover:text-primary">
-                                {bloglist.name}
+                                {t(`blog.${bloglist.name.replace(/\s+/g, "_").toLowerCase()}`)}
                             </span>
                             <span className="h-[2px] w-[50px] bg-primary"></span>
                             <p className="text-base text-center font-normal text-gray-400 pt-[10px] line-clamp-2">

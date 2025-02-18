@@ -5,15 +5,17 @@ import About6 from "../../../assets/images/about1.6.webp"
 import About7 from "../../../assets/images/about1.7.webp"
 import { Facebook, Instagram, Twitter, Youtube } from 'lucide-react';
 import { Autoplay, Navigation, Pagination } from 'swiper/modules';
+import { useTranslation } from 'react-i18next';
 
 
 export const Cards = () => {
+    const { t } = useTranslation()
     return (
         <div className='bg-white dark:bg-black dark:text-white'>
             <div className="text-black  font-sans flex flex-col items-center justify-center text-center mx-auto dark:text-white">
-                <h2 className="text-[55px] font-medium mb-[.5rem] leading-[1.2]">Behind The Brands</h2>
+                <h2 className="text-[55px] font-medium mb-[.5rem] leading-[1.2] capitalize">{t("behind the brands")}</h2>
                 <p className="max-w-[1170px] font-normal text-[1rem]">
-                    We are a female-founded, 100% woman-led team of collaborative dreamers who value innovation, curiosity and free-thinking fearlessness in everything that we do. We take immeasurable pride in our work, intentionally stitching love into the very fiber and fabric of our designs. We are small, but we are a mighty group of talented individuals dedicated to bringing you otherworldly designs with imagery to match.</p>
+                    {t("We are a female-founded, 100% woman-led team of collaborative dreamers who value innovation, curiosity and free-thinking fearlessness in everything that we do. We take immeasurable pride in our work, intentionally stitching love into the very fiber and fabric of our designs. We are small, but we are a mighty group of talented individuals dedicated to bringing you otherworldly designs with imagery to match.")}</p>
                 <span className="w-[50px] h-[1.6px] bg-primary mt-[20px]"></span>
             </div>
             <div className="container mt-10 max-w-[1170px] grid grid-col-3">
@@ -42,8 +44,8 @@ export const Cards = () => {
                                 </div>
                             </div>
                             <h2 className=" text-black my-[.5rem] text-[22px] font-medium hover:text-red-800 cursor-pointer dark:text-white hover:dark:text-primary">Adrian Stone</h2>
-                            <p className="text-[16px] text-gray-400">
-                                Ceo
+                            <p className="text-[16px] text-gray-400 capitalize">
+                                {t("ceo")}
                             </p>
                         </div>
                     </SwiperSlide>
@@ -59,8 +61,8 @@ export const Cards = () => {
                                 </div>
                             </div>
                             <h2 className=" text-black my-[.5rem] text-[22px] font-medium hover:text-red-800 cursor-pointer dark:text-white hover:dark:text-primary">Ferguson</h2>
-                            <p className="text-[16px] text-gray-400">
-                                Designer
+                            <p className="text-[16px] text-gray-400 capitalize">
+                                {t("designer")}
                             </p>
                         </div>
                     </SwiperSlide>
@@ -76,8 +78,8 @@ export const Cards = () => {
                                 </div>
                             </div>
                             <h2 className=" text-black my-[.5rem] text-[22px] font-medium hover:text-red-800 cursor-pointer dark:text-white hover:dark:text-primary">Saga Noren</h2>
-                            <p className="text-[16px] text-gray-400">
-                                Developer
+                            <p className="text-[16px] text-gray-400 capitalize">
+                                {t("developer")}
                             </p>
                         </div>
                     </SwiperSlide>
@@ -93,8 +95,8 @@ export const Cards = () => {
                                 </div>
                             </div>
                             <h2 className=" text-black my-[.5rem] text-[22px] font-medium hover:text-red-800 cursor-pointer dark:text-white hover:dark:text-primary">Karen Ryan</h2>
-                            <p className="text-[16px] text-gray-400">
-                                Developer
+                            <p className="text-[16px] text-gray-400 capitalize">
+                                {t("developer")}
                             </p>
                         </div>
                     </SwiperSlide>

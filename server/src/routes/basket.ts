@@ -11,6 +11,7 @@ router.get("/", authorize({}), basketController.getAll)
 router.post("/add", authorize({}), validateSchema(createBasketSchema), basketController.add);
 router.put("/quantity", authorize({}), basketController.quantity);
 router.delete("/:productId", authorize({}), basketController.remove)
+router.delete("/basket/clear", basketController.removeAll);
 
 
 export default router

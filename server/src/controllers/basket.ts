@@ -117,11 +117,31 @@ const remove = async (req: Request, res: Response) => {
     }
 };
 
+const removeAll = async (req: Request, res: Response) => {
+    try {
+        const userId = req.user?._id;
+        if (!userId) {
+            res.status(401).json({ message: "Unauthorized" });
+            return
+        }
+
+        await Basket.deleteMany({ userId })
+
+        res.json({ message: "All products removed from basket" });
+
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: "An error occurred while clearing the basket" });
+    }
+};
+
+
 
 export default {
     getAll,
     add,
     update,
     remove,
+    removeAll,
     quantity
 }

@@ -5,23 +5,58 @@ import Order from "../mongoose/schemas/order"
 import { calculateDateDifference } from "../utils/date";
 import { Product as TProduct } from "../types/schema";
 
+// const getAll = async (req: Request, res: Response) => {
+//     try {
+//         const user = req.user;
+//         const filter: Record<string, any> = {};
+//         if (user?.role !== "admin") {
+//             filter.user = user?._id.toString() ?? ""
+//         }
+
+//         const orders = await order.find(filter)
+//             .populate("product", "name images price currency")
+
+//         orders.forEach((order) => {
+//             (order.product as TProduct).images = (order.product as TProduct).images.map((image) => {
+//                 if (image.includes(process.env.BASE_URL!)) return image;
+//                 return `${process.env.BASE_URL}/public/product/${image}`
+//             })
+//         })
+
+//         res.json({
+//             message: "Orders retrieved successfully",
+//             items: orders
+//         });
+
+//     } catch (error) {
+//         console.error(error);
+//         res.status(500).json({
+//             message: "Internal server error"
+//         });
+//     }
+// };
+
+
 const getAll = async (req: Request, res: Response) => {
     try {
         const user = req.user;
         const filter: Record<string, any> = {};
         if (user?.role !== "admin") {
-            filter.user = user?._id.toString() ?? ""
+            filter.user = user?._id.toString() ?? "";
         }
 
         const orders = await order.find(filter)
-            .populate("product", "name images price currency")
+            .populate("product", "name images price currency");
 
         orders.forEach((order) => {
-            (order.product as TProduct).images = (order.product as TProduct).images.map((image) => {
-                if (image.includes(process.env.BASE_URL!)) return image;
-                return `${process.env.BASE_URL}/public/product/${image}`
-            })
-        })
+            const product = order.product as TProduct;
+            if (product && product.images) {
+                product.images = product.images.map((image) => {
+                    if (image.includes(process.env.BASE_URL!)) return image;
+                    return `${process.env.BASE_URL}/public/product/${image}`;
+                });
+            }
+        });
 
         res.json({
             message: "Orders retrieved successfully",

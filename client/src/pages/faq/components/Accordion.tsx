@@ -2,6 +2,7 @@ import { useState } from "react";
 import FaqIcon from "../../../assets/icons/faq.svg"
 import QuestionIcon from "../../../assets/icons/question.svg"
 import { Faq } from "@/types";
+import { useTranslation } from "react-i18next";
 
 
 type Props = {
@@ -9,7 +10,7 @@ type Props = {
 }
 
 export const FaqAccordion = ({ faq }: Props) => {
-
+    const { t } = useTranslation()
     const [openQuestion, setOpenQuestion] = useState<string | null>(null);
     const toggleAccordion = (questionKey: string) => {
         setOpenQuestion(openQuestion === questionKey ? null : questionKey);
@@ -21,7 +22,7 @@ export const FaqAccordion = ({ faq }: Props) => {
             <div className="max-w-screen-md  mx-auto sm:px-6 lg:px-8 flex flex-col justify-between">
                 <div className="text-center">
                     <h3 className="text-3xl sm:text-4xl leading-normal font-extrabold tracking-tight text-gray-900 dark:text-white">
-                        Frequently Asked <span className="text-red-800">Questions</span>
+                        {t("Frequently Asked ")} <span className="text-red-800 ml-[2px]">{t("Questions")}</span>
                     </h3>
                 </div>
                 <div className="mt-20">

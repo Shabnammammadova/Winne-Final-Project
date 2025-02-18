@@ -21,5 +21,6 @@ export async function createCheckoutSession(amount: number): Promise<{ url: stri
         cancel_url: `${process.env.BASE_URL}/cancel`,
     });
 
+
     return { url: session.url };
 }

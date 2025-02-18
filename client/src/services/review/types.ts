@@ -3,8 +3,8 @@ import { ReviewStatus } from "@/types";
 export type CreateReviewRequestPayload = {
     rating: number;
     content: string;
-    rentId: string;
-    reservationId: string
+    productId: string;
+    orderId: string
 }
 
 export type ChangeStatusRequestPayload = {

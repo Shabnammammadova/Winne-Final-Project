@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useAppSelector } from "@/hooks/redux";
 import { selectUserData } from "@/store/features/userSlice";
-import { PlusCircle } from "lucide-react";
+import OrderPage from "../order";
 
 export const UserProfile = () => {
     const { user } = useAppSelector(selectUserData);
@@ -47,9 +47,6 @@ export const UserProfile = () => {
                                 alt="User Avatar"
                                 className="w-24 h-24 rounded-full mx-auto"
                             />
-                            <label htmlFor="avatar-upload" className="absolute -bottom-1 right-[100px] text-white  rounded-full cursor-pointer w-[30px] h-[30px]">
-                                <PlusCircle className="fill-primary" />
-                            </label>
                             <input
                                 id="avatar-upload"
                                 type="file"
@@ -69,7 +66,7 @@ export const UserProfile = () => {
                     </div>
                 </div>
                 <div className="text-2xl font-medium">
-                    Orders
+                    <OrderPage />
                 </div>
             </div>
         </div>

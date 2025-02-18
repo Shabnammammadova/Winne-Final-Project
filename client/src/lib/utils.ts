@@ -10,7 +10,11 @@ export function cn(...inputs: ClassValue[]) {
 export function formatDate(date: string, format = "DD/MM/YYYY") {
   return moment(date).format(format)
 }
-
+export function calculateDateDifference(startDate: Date | string, endDate: Date | string) {
+  const start = moment(startDate);
+  const end = moment(endDate);
+  return end.diff(start, "days")
+}
 
 export function getUserId(user?: User | null) {
   if (user) return user._id;

@@ -1,6 +1,7 @@
 import DateFormatter from "@/components/shared/DateFormatter";
 import MonthFormatter from "@/components/shared/MonthFormatter";
 import { Blog } from "@/types";
+import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 
 
@@ -11,12 +12,12 @@ type Props = {
 export const BlogCards = ({ blog }: Props) => {
 
     const navigate = useNavigate()
-
+    const { t } = useTranslation()
 
     return (
         <div className="bg-white dark:bg-black  pb-[70px] border-b  border-gray-200">
             <div className="flex justify-center items-center flex-col font-sans">
-                <p className="text-2xl font-medium mt-5 pb-2 tracking-[1px] uppercase dark:text-white">News</p>
+                <p className="text-2xl font-medium mt-5 pb-2 tracking-[1px] uppercase dark:text-white">{t("news")}</p>
                 <span className="border-red-800 border-2 w-[75px]"></span>
             </div>
             <div className="container pt-[50px] grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 gap-x-2 gap-y-10 lg:gap-x-8 md:gap-x-2">
@@ -32,13 +33,14 @@ export const BlogCards = ({ blog }: Props) => {
                             <DateFormatter date={bloglist.createdAt} />
                             <span className="border w-12 h-[1px] border-red-700"></span>
                             <MonthFormatter month={bloglist.createdAt} />
+
                         </div>
                         <div className="flex flex-col items-start justify-center font-sans mt-4">
-                            <span className="text-[22px] dark:text-white hover:dark:text-red-800 font-medium pb-[10px] text-black capitalize cursor-pointer hover:text-red-800">{bloglist.name}</span>
+                            <span className="text-[22px] dark:text-white hover:dark:text-red-800 font-medium pb-[10px] text-black capitalize cursor-pointer hover:text-red-800">{t(`blog.${bloglist.name.replace(/\s+/g, "_").toLowerCase()}`)}</span>
                             <span className="h-[1px] w-[120px] bg-gray-400"></span>
-                            <p className="text-sm text-start font-normal text-gray-400 pt-[10px] line-clamp-3 ">{bloglist.description}</p>
-                            <button className="text-sm mt-[23px] mb-4 font-medium border-b border-black text-black hover:text-red-800 hover:border-red-800  dark:text-white hover:dark:text-red-800 dark:border-white hover:dark:border-red-800">
-                                Read more
+                            <p className="text-sm text-start font-normal text-gray-400 pt-[10px] line-clamp-3 ">{t("It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose")}</p>
+                            <button className="text-sm mt-[23px] mb-4 font-medium border-b border-black text-black  capitalize hover:text-red-800 hover:border-red-800  dark:text-white hover:dark:text-red-800 dark:border-white hover:dark:border-red-800">
+                                {t("read more")}
                             </button>
                         </div>
                     </div>

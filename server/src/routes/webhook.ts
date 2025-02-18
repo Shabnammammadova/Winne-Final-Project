@@ -6,25 +6,61 @@ dotenv.config();
 const router = express.Router();
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY as string, {
     apiVersion: "2025-01-27.acacia",
-});
-router.post("/", express.raw({ type: "application/json" }), async (req: Request, res: Response): Promise<void> => {
-    try {
-        const sig = req.headers["stripe-signature"];
-        if (!sig) {
-            res.status(400).send("Missing stripe signature");
-            return;
+}); router.post(
+    "/",
+    express.json({ type: "application/json" }),
+    async (req: any, res: any) => {
+        let data;
+        let eventType;
+        let webhookSecret;
+
+        if (webhookSecret) {
+            // Retrieve the event by verifying the signature using the raw body and secret.
+            let event;
+            let signature: any = req.headers["stripe-signature"];
+            try {
+                event = stripe.webhooks.constructEvent(
+                    req.body,
+                    signature,
+                    webhookSecret
+                );
+
+            } catch (err) {
+                console.log(`⚠️  Webhook signature verification failed:  ${err}`);
+                return res.sendStatus(400);
+            }
+            // Extract the object from the event.
+            data = event.data.object;
+            eventType = event.type;
+        } else {
+            // Webhook signing is recommended, but if the secret is not configured in `config.js`,
+            // retrieve the event data directly from the request body.
+            data = req.body.data.object;
+            eventType = req.body.type;
         }
 
-        const event = await stripe.webhooks.constructEvent(req.body, sig, process.env.STRIPE_WEBHOOK_SECRET!);
+        // Handle the checkout.session.completed event
+        if (eventType === "checkout.session.completed") {
+            stripe.customers
+                .retrieve(data.customer)
+                .then(async (customer) => {
+                    try {
+                        // CREATE ORDER
+                        // const order=new Order
+                        // createOrder(customer, data);
+                        console.log("Ordered");
+                        res.status(200).json({ message: 'Order created', data: data })
+                        res.status(200).send("Order created")
+                    } catch (err) {
+                        console.log(err);
+                    }
+                })
+                .catch((err) => console.log(err.message));
+        }
 
-        console.log("Received event:", event);
-
-        res.status(200).json({ received: true });
-    } catch (error: any) {
-        console.error("Webhook error:", error.message);
-        res.status(400).send(`Webhook Error: ${error.message}`);
+        res.status(200).end();
     }
-});
+);
 
 
 export default router;

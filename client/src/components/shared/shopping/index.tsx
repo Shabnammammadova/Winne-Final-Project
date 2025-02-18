@@ -8,6 +8,7 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import basketService from "@/services/basket";
 import { toast } from "sonner";
 import getStripe from "@/utils/stripe";
+import { QUERY_KEYS } from "@/constants/query-keys";
 
 
 type Props = {
@@ -42,15 +43,28 @@ export function ShoppingCart({ basket, setBasket }: Props) {
         mutate(id)
     }
 
+
     const handleCheckout = async () => {
         try {
+            console.log("Basket before checkout:", basket);
+
             const response = await fetch(`${import.meta.env.VITE_APP_API_BASE_URL}/checkout`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ items: basket }),
             });
 
-            const { sessionId } = await response.json();
+            const data = await response.json();
+            console.log("Response from API:", data);
+
+            const { sessionId, order } = data;
+
+            if (order) {
+                console.log("Order received:", order);
+                queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.ORDERS] });
+
+            }
+
             const stripe = await getStripe();
 
             if (stripe && sessionId) {
@@ -58,10 +72,12 @@ export function ShoppingCart({ basket, setBasket }: Props) {
                 setBasket([]);
             }
         } catch (error) {
-            toast.error("Checkout failed.");
+            toast.error("Checkout error.");
             console.error(error);
         }
     };
+
+
 
 
     return (

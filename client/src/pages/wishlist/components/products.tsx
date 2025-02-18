@@ -1,11 +1,12 @@
 import { paths } from "@/constants/paths";
+import basketService from "@/services/basket";
 // import basketService from "@/services/basket";
 import favoriteService from "@/services/favorite";
 import { selectUserData } from "@/store/features/userSlice";
 import { Favorite } from "@/types";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { toast } from "sonner";
 
 type Props = {
@@ -17,6 +18,7 @@ export const WishListProducts = ({ favorites }: Props) => {
     const isFavoritesLoaded = favorites && favorites.length > 0;
     const queryClient = useQueryClient();
     const user = useSelector(selectUserData);
+    const navigate = useNavigate()
     const { mutate } = useMutation({
         mutationFn: favoriteService.remove,
         onSuccess: async () => {
@@ -31,19 +33,19 @@ export const WishListProducts = ({ favorites }: Props) => {
     function onSubmit(id: string) {
         mutate(id);
     }
-    // const { mutate: basketadd } = useMutation({
-    //     mutationFn: basketService.add,
-    //     onSuccess: () => {
-    //         toast.success("Wine added to basket.");
-    //         queryClient.invalidateQueries()
-    //     },
-    //     onError: () => {
-    //         toast.info("The product is now a basket")
-    //     }
-    // })
-    // function onBasketSubmit(productId: string) {
-    //     basketadd({ userId: user.user?._id!, productId });
-    // }
+    const { mutate: basketadd } = useMutation({
+        mutationFn: basketService.add,
+        onSuccess: () => {
+            toast.success("Wine added to basket.");
+            queryClient.invalidateQueries()
+        },
+        onError: () => {
+            toast.info("The product is now a basket")
+        }
+    })
+    function onBasketSubmit(productId: string) {
+        basketadd({ userId: user.user?._id!, productId });
+    }
 
     return (
         <div className="py-10 font-sans border-b border-gray-200 dark:bg-black dark:text-white">
@@ -76,6 +78,7 @@ export const WishListProducts = ({ favorites }: Props) => {
                                             src={`http://localhost:3000/public/product/${favorite.productId.images[0]}`}
                                             alt="Product"
                                             className="w-[80px] h-[100px] cursor-pointer"
+                                            onClick={() => navigate(`/wine/detail/${favorite.productId._id}`)}
                                         />
                                         <span className="text-gray-300 xs:text-xs sm:text-base cursor-pointer transition-all duration-300 hover:text-red-800 ">
                                             {favorite.productId.name}
@@ -85,7 +88,7 @@ export const WishListProducts = ({ favorites }: Props) => {
                                         <span>${Number(favorite.productId.price) - Number(favorite.productId.discount || 0)}</span>
                                     </td>
                                     <td className="p-2 flex items-center gap-4 relative bottom-12">
-                                        <button className="bg-black dark:bg-white dark:text-black text-white xs:px-3 md:px-6 xs:py-1 md:py-2 xs:text-xs md:text-sm mx-auto text-center font-medium uppercase tracking-wide transition-all duration-300 hover:bg-primary dark:hover:bg-primary dark:hover:text-white" >
+                                        <button className="bg-black dark:bg-white dark:text-black text-white xs:px-3 md:px-6 xs:py-1 md:py-2 xs:text-xs md:text-sm mx-auto text-center font-medium uppercase tracking-wide transition-all duration-300 hover:bg-primary dark:hover:bg-primary dark:hover:text-white" onClick={() => onBasketSubmit(favorite.productId._id)}>
                                             Add to Cart
                                         </button>
                                     </td>

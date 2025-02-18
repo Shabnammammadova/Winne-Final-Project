@@ -82,6 +82,19 @@ export enum ReviewStatus {
     Approved = "approved",
     Rejected = "rejected",
 }
+export type Order = {
+    createdAt: string;
+    id: string;
+    product: Product | string;
+    startDate: string;
+    endDate: string;
+    status: OrderStatus;
+    total: number;
+    updatedAt: string;
+    user: string;
+    _id: string;
+    hasReview: boolean
+}
 export enum OrderStatus {
     Pending = "pending",
     Approved = "approved",
