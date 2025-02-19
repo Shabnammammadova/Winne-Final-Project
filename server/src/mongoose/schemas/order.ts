@@ -7,6 +7,13 @@ const orderSchema = new Schema({
         ref: "Product",
         required: true
     },
+    customer: {
+        type: Types.ObjectId,
+        required: true,
+    },
+    payment: {
+        type: String,
+    },
     user: {
         type: Types.ObjectId,
         ref: "User",

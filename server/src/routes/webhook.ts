@@ -1,66 +1,44 @@
 import express, { Request, Response } from "express";
 import Stripe from "stripe";
 import dotenv from "dotenv";
+import order from "../mongoose/schemas/order";
 
 dotenv.config();
 const router = express.Router();
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY as string, {
     apiVersion: "2025-01-27.acacia",
-}); router.post(
-    "/",
-    express.json({ type: "application/json" }),
-    async (req: any, res: any) => {
-        let data;
-        let eventType;
-        let webhookSecret;
+});
+router.post("/", express.raw({ type: "application/json" }), async (req: any, res: any) => {
+    const sig = req.headers["stripe-signature"];
 
-        if (webhookSecret) {
-            // Retrieve the event by verifying the signature using the raw body and secret.
-            let event;
-            let signature: any = req.headers["stripe-signature"];
-            try {
-                event = stripe.webhooks.constructEvent(
-                    req.body,
-                    signature,
-                    webhookSecret
-                );
+    try {
+        const event = stripe.webhooks.constructEvent(req.body, sig, process.env.STRIPE_WEBHOOK_SECRET as string);
+        console.log("Event received:", event.type);
 
-            } catch (err) {
-                console.log(`⚠️  Webhook signature verification failed:  ${err}`);
-                return res.sendStatus(400);
-            }
-            // Extract the object from the event.
-            data = event.data.object;
-            eventType = event.type;
-        } else {
-            // Webhook signing is recommended, but if the secret is not configured in `config.js`,
-            // retrieve the event data directly from the request body.
-            data = req.body.data.object;
-            eventType = req.body.type;
+        if (event.type === "checkout.session.completed") {
+            const session = event.data.object;
+            const items = session.metadata?.cart ? JSON.parse(session.metadata.cart) : [];
+            const totalAmount = session.amount_total ? session.amount_total / 100 : 0;
+
+            const newOrder = new order({
+                user: session.metadata?.userId,
+                products: items,
+                total: totalAmount,
+                status: "approved",
+                createdAt: new Date(),
+            });
+
+            await newOrder.save();
+            console.log("✅ Order created:", newOrder);
         }
 
-        // Handle the checkout.session.completed event
-        if (eventType === "checkout.session.completed") {
-            stripe.customers
-                .retrieve(data.customer)
-                .then(async (customer) => {
-                    try {
-                        // CREATE ORDER
-                        // const order=new Order
-                        // createOrder(customer, data);
-                        console.log("Ordered");
-                        res.status(200).json({ message: 'Order created', data: data })
-                        res.status(200).send("Order created")
-                    } catch (err) {
-                        console.log(err);
-                    }
-                })
-                .catch((err) => console.log(err.message));
-        }
-
-        res.status(200).end();
+        res.status(200).send("Webhook received");
+    } catch (err: any) {
+        console.error("❌ Webhook Error:", err);
+        res.status(400).send(`Webhook Error: ${err.message}`);
     }
-);
+});
+
 
 
 export default router;
