@@ -40,8 +40,8 @@ const OrderPage = () => {
 
 
     return (
-        <div className="container pt-4 lg:pt-8 pb-8 lg:pb-16 flex flex-col gap-y-4 text-center mx-a">
-            <h2 className="text-2xl font-semibold text-muted-foreground">
+        <div className="pt-4 lg:pt-8 pb-8 lg:pb-16 flex flex-col gap-y-4 text-center mx-a">
+            <h2 className="text-2xl font-semibold  dark:text-white text-black">
                 Your Orders
             </h2>
             {
@@ -50,7 +50,7 @@ const OrderPage = () => {
                         <OrderCard key={order._id} order={order} />
                     ))
                 ) : (
-                    <div className="text-center text-lg text-muted-foreground">No order found</div>
+                    <div className="text-center text-lg m-auto dark:text-white text-black">No order found</div>
                 )
             }
         </div>
@@ -73,7 +73,7 @@ const OrderCard = ({ order }: { order: Order }) => {
     }
     const showReview = !order.hasReview && order.status === OrderStatus.Approved && new Date(order.endDate) < new Date()
     return (
-        <div className="bg-white shadow-md rounded-lg p-4 relative">
+        <div className="bg-white dark:bg-black dark:text-white shadow-md rounded-lg p-4 relative">
             <div className="flex items-end justify-between">
                 <div className="flex items-center">
                     <img src={product.images[0]} alt="" className="w-24 h-24 object-contain rounded-lg" />

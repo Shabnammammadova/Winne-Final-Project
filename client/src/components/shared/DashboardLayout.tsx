@@ -38,7 +38,7 @@ const DashboardLayout = () => {
     ];
 
     return (
-        <div className="flex h-screen bg-gray-100">
+        <div className="flex h-screen bg-gray-100 dark:bg-black dark:text-black">
             <div
                 className={`bg-primary text-white p-4 transition-all duration-300 ${sidebarOpen ? "w-64" : "w-20"}`}
             >

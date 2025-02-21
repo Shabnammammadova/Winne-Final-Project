@@ -92,7 +92,7 @@
     @apply bg-background text-foreground;
   }
   .dark body {
-    @apply bg-black;
+    @apply bg-black text-white;
   }
 }
 

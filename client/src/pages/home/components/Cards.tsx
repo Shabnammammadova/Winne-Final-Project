@@ -30,7 +30,7 @@ export const Cards = () => {
                         className="object-cover w-full"
                     />
                     <div className="absolute m-auto inset-0 bg-gradient-to-t from-black via-transparent to-transparent flex flex-col items-center justify-end pb-4 opacity-90 transition-opacity duration-500 text-center">
-                        <span className="text-black text-lg lg:text-3xl font-semibold mb-5 px-48 py-32 opacity-0 group-hover:opacity-85 transition-opacity duration-1000 mx-auto bg-white">
+                        <span className="text-black text-lg lg:text-3xl font-semibold mb-5 md:px-48 md:py-32 xs:px-32 xs:py-20 opacity-0 group-hover:opacity-85 transition-opacity duration-1000 mx-auto bg-white">
                             {card.title}
                             <br />
                             <div className="text-4xl">

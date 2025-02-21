@@ -2,9 +2,9 @@
 
 const FailedPage = () => {
     return (
-        <div className="bg-white mx-auto border border-gray-200">
-            <img className="m-auto w-[700px] h-[400px]" src="https://mckeeversdirect.com/media/wysiwyg/Payment_Failed.png" alt="" />
-        </div>
+        <div className="bg-white mx-auto py-10 border border-gray-200 text-center font-sans dark:bg-black">
+            <img src="https://cdn.printme.online/wp-content/uploads/2020/04/payment_fail_icon.png" alt="" className="w-[300px] text-center m-auto" />
+            <p className="text-2xl font-semibold dark:text-white">Your payment failed</p></div>
     )
 }
 

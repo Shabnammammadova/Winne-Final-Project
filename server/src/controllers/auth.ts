@@ -1,5 +1,4 @@
 import { Request, Response } from "express";
-
 import { hashPassword } from "../utils/bcrypt";
 import User from "../mongoose/schemas/user";
 import { IUser } from "../types/user";

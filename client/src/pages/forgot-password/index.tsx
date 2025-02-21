@@ -16,6 +16,7 @@ import authService from "@/services/auth/auth";
 import { AxiosError } from "axios";
 import { toast } from "sonner";
 import { Link } from "react-router-dom";
+import { ScrollToTop } from "@/components/shared/ScrollToTop";
 
 const formSchema = z.object({
     email: z.string().email("Please enter a valid email address"),
@@ -30,7 +31,7 @@ export const ForgotPassword = () => {
     });
 
     const { mutate, isPending } = useMutation({
-        mutationFn: authService.forgotPassword, // Ensure you have this method in your `authService`
+        mutationFn: authService.forgotPassword,
         onSuccess: (response) => {
             toast.success("Password reset email sent! Please check your inbox.");
             console.log(response);
@@ -49,8 +50,8 @@ export const ForgotPassword = () => {
     return (
         <div className="container mx-auto py-16">
             <div className="max-w-md mx-auto bg-white p-8 rounded-lg shadow-lg">
-                <h2 className="text-3xl font-bold text-center mb-4">Forgot Password</h2>
-                <p className="text-center mb-8">
+                <h2 className="text-3xl font-bold text-center mb-4 dark:text-black">Forgot Password</h2>
+                <p className="text-center mb-8 dark:text-black">
                     Enter your email address and we’ll send you a link to reset your password.
                 </p>
                 <Form {...form}>
@@ -60,7 +61,7 @@ export const ForgotPassword = () => {
                             name="email"
                             render={({ field }) => (
                                 <FormItem>
-                                    <FormLabel>Email</FormLabel>
+                                    <FormLabel className="dark:text-black">Email</FormLabel>
                                     <FormControl>
                                         <Input placeholder="john@gmail.com" {...field} />
                                     </FormControl>
@@ -83,6 +84,7 @@ export const ForgotPassword = () => {
                     </Link>
                 </div>
             </div>
+            <ScrollToTop />
         </div>
     );
 };

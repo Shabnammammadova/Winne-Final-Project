@@ -1,5 +1,4 @@
 import { useState } from "react";
-import ShoppingIcon from "../../../assets/icons/shoppingbag.svg";
 import { motion, AnimatePresence } from "framer-motion";
 import { Basket } from "@/types";
 import { Link, useNavigate } from "react-router-dom";
@@ -9,7 +8,8 @@ import basketService from "@/services/basket";
 import { toast } from "sonner";
 import getStripe from "@/utils/stripe";
 import { QUERY_KEYS } from "@/constants/query-keys";
-
+import { SlBag } from "react-icons/sl";
+import { useTranslation } from "react-i18next";
 
 type Props = {
     basket: Basket[]
@@ -23,7 +23,7 @@ export function ShoppingCart({ basket, setBasket }: Props) {
     const handleClose = () => setIsOpen(false);
     const queryClient = useQueryClient();
     const navigate = useNavigate()
-
+    const { t } = useTranslation()
     const goToShop = () => {
         handleClose();
         navigate(paths.SHOP);
@@ -83,7 +83,7 @@ export function ShoppingCart({ basket, setBasket }: Props) {
     return (
         <>
             <button onClick={handleOpen}>
-                <img src={ShoppingIcon} alt="" className="w-[24px] h-[24px]" />
+                <SlBag className="w-[24px] h-[24px]  dark:text-white" />
             </button>
             <AnimatePresence>
                 {isOpen && (
@@ -104,17 +104,17 @@ export function ShoppingCart({ basket, setBasket }: Props) {
                             transition={{ type: "spring", stiffness: 300, damping: 30 }}
                         >
                             <div className="p-4 border-b">
-                                <h2 className="text-2xl text-center font-semibold">Shopping Cart</h2>
+                                <h2 className="text-2xl text-center font-semibold">{t("Shopping Cart")}</h2>
                             </div>
                             {
                                 !isBasketLoaded ? (
                                     <div className="flex flex-col items-center justify-center gap-2 mx-auto absolute top-1/3 w-full">
                                         <p className="text-center text-xl text-black font-bold mt-8 dark:text-white">
-                                            Your shopping bag is empty.
+                                            {t("Your shopping bag is empty.")}
                                         </p>
                                         <Link to={paths.SHOP}>
                                             <button className="text-sm font-semibold text-white bg-black hover:bg-primary uppercase tracking-[.2em] px-[10px] py-[10px] dark:bg-white dark:text-black dark:hover:bg-primary" onClick={goToShop}>
-                                                Go to the shop
+                                                {t("Go to the shop")}
                                             </button>
                                         </Link>
                                     </div>
@@ -155,7 +155,7 @@ export function ShoppingCart({ basket, setBasket }: Props) {
                                             </div>
                                         </div>
                                         <div className="flex items-start font-semibold text-lg px-6">
-                                            Total:${basket.reduce((total, winebasket) => {
+                                            {t("Total")}:${basket.reduce((total, winebasket) => {
                                                 const productPrice = Number(winebasket.productId.price) - (Number(winebasket.productId.discount) || 0);
                                                 return total + (productPrice * Number(winebasket.quantity));
                                             }, 0).toFixed(2)}
@@ -165,7 +165,7 @@ export function ShoppingCart({ basket, setBasket }: Props) {
                                                 onClick={handleCheckout}
                                                 className="w-full text-lg px-4 py-2 transition-all duration-300 bg-black text-white rounded hover:bg-primary dark:bg-white dark:text-black dark:hover:bg-primary dark:hover:text-white"
                                             >
-                                                Checkout
+                                                {t("Checkout")}
                                             </button>
                                         </div>
                                     </div>

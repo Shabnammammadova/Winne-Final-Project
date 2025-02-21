@@ -15,7 +15,7 @@ const LanguageSwitcher = () => {
     return (
         <div className="relative flex items-center">
             <MdOutlineLanguage
-                className="w-[24px] h-[24px] cursor-pointer text-black "
+                className="w-[24px] h-[24px] cursor-pointer text-black dark:text-white "
                 onClick={() => setShowButtons(!showButtons)}
             />
 

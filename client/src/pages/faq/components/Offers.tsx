@@ -14,7 +14,7 @@ export const Offers = () => {
                 <input
                     type="text"
                     placeholder={t("Email adress")}
-                    className="border-b placeholder:dark:text-white dark:border-gray-200 bg-transparent mt-[40px] mb-5 pb-[16px] outline-none text-xs  border-black border-solid w-full placeholder:text-black"
+                    className="border-b placeholder:dark:text-white dark:border-gray-200 bg-transparent mt-[40px] mb-5 pb-[16px] outline-none text-xs  border-black border-solid w-full placeholder:text-black dark:text-white"
                 />
                 <button className="bg-primary text-white text-base py-[14px] font-semibold tracking-[1px] transition-all w-full hover:bg-black uppercase">
                     {t("subscribe now")}

@@ -34,7 +34,7 @@ export function UserDropdown() {
                 <div className="absolute right-0 mt-2 w-40 bg-white border border-gray-200 rounded-lg shadow-md z-10">
                     <div className="font-sans">
                         <button
-                            className="w-full text-left px-4 py-2 text-black hover:bg-gray-100"
+                            className="w-full text-left px-4 py-2 text-black dark:text-white hover:bg-gray-100"
                             onClick={() => console.log("Profile clicked")}
                         >
                             Profile

@@ -1,6 +1,4 @@
 import { useState } from "react";
-import FaqIcon from "../../../assets/icons/faq.svg"
-import QuestionIcon from "../../../assets/icons/question.svg"
 import { Faq } from "@/types";
 import { useTranslation } from "react-i18next";
 
@@ -19,49 +17,48 @@ export const FaqAccordion = ({ faq }: Props) => {
 
     return (
         <div className="py-4 bg-white dark:bg-black">
-            <div className="max-w-screen-md  mx-auto sm:px-6 lg:px-8 flex flex-col justify-between">
+            <div className="max-w-screen-md mx-auto sm:px-6 lg:px-8 flex flex-col justify-between">
                 <div className="text-center">
                     <h3 className="text-3xl sm:text-4xl leading-normal font-extrabold tracking-tight text-gray-900 dark:text-white">
-                        {t("Frequently Asked ")} <span className="text-red-800 ml-[2px]">{t("Questions")}</span>
+                        {t("Frequently Asked ")}{" "}
+                        <span className="text-red-800 ml-[2px]">{t("Questions")}</span>
                     </h3>
                 </div>
-                <div className="mt-20">
-                    <ul>
-                        {
-                            faq?.map((faqlist) => (
-                                <li key={faqlist._id} className="text-left mb-10">
-                                    <div className="flex flex-row items-start mb-5">
-                                        <div
-                                            className="hidden sm:flex items-center justify-center p-3 mr-3 rounded-full bg-primary text-white border-4 border-white text-xl font-semibold cursor-pointer"
-                                            onClick={() => toggleAccordion(faqlist._id)}
+                <div className="mt-6">
+                    <ul className="max-w-3xl mx-auto mt-1 divide-y shadow shadow-primary rounded-xl">
+                        {faq?.map((faqlist) => (
+                            <li key={faqlist._id}>
+                                <details className="group" >
+                                    <summary className="flex items-center gap-3 px-4 py-5 font-medium marker:content-none hover:cursor-pointer">
+                                        <svg
+                                            className="w-5 h-5 text-black dark:text-white transition group-open:rotate-90"
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            width="16"
+                                            height="16"
+                                            fill="currentColor"
+                                            viewBox="0 0 16 16"
                                         >
-                                            <img src={QuestionIcon} alt="Question Icon" />
-                                        </div>
-                                        <div className="bg-gray-100 p-5 px-10 w-full flex items-center">
-                                            <h4 className="text-md leading-6 font-medium text-gray-900">
-                                                {faqlist.question}
-                                            </h4>
-                                        </div>
-                                    </div>
-                                    {openQuestion === faqlist._id && (
-                                        <div className="flex flex-row items-start">
-                                            <div className="bg-red-100 p-5 px-10 w-full flex items-center">
-                                                <p className="text-gray-700 text-sm">
-                                                    {faqlist.answer}
-                                                </p>
-                                            </div>
-                                            <div
-                                                className="hidden sm:flex items-center justify-center p-3 ml-3 rounded-full bg-primary text-white border-4 border-white text-xl font-semibold cursor-pointer"
-                                            >
-                                                <img src={FaqIcon} alt="FAQ Icon" />
-                                            </div>
-                                        </div>
-                                    )}
-                                </li>
-                            ))
-                        }
+                                            <path
+                                                fillRule="evenodd"
+                                                d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"
+                                            ></path>
+                                        </svg>
+                                        <span className="text-md leading-6 font-medium text-black dark:text-white">
+                                            {t(`faqs.${faqlist.question.replace(/\s+/g, "_").toLowerCase()}`)}
+                                        </span>
+                                    </summary>
+
+                                    <article className="px-4 pb-4 border border-t-gray-100 pt-2">
+                                        <p className="text-black dark:text-white text-sm ">
+                                            {t(`faqs.${faqlist.answer.replace(/\s+/g, "_").toLowerCase()}`)}
+                                        </p>
+                                    </article>
+                                </details>
+                            </li>
+                        ))}
                     </ul>
                 </div>
+
             </div>
         </div>
     );

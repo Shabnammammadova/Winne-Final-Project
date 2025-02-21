@@ -62,9 +62,9 @@ export const Location = () => {
                     <h2 className="pb-[15px] text-[34px] font-medium">{t("Send us an message")}</h2>
                     <div className="flex items-center flex-col w-full">
                         <form action="" className="mt-[40px]">
-                            <input type="text" placeholder={t("Your name")} className="w-full h-[60px] text-xs  leading-[60px] py-[10px] px-[20px] mb-5 border-solid border-[1px] border-gray-200 outline-none " />
-                            <input type="text" placeholder={t("Your mail")} className="w-full h-[60px] text-xs  leading-[60px] py-[10px] px-[20px] mb-5 border-solid border-[1px] border-gray-200 outline-none " />
-                            <textarea name="" id="" className="w-full h-[200px] text-xs  leading-[60px] py-[10px] px-[20px] mb-5 border-solid border-[1px] border-gray-200 outline-none"></textarea>
+                            <input type="text" placeholder={t("Your name")} className="w-full h-[60px] text-xs  leading-[60px] py-[10px] px-[20px] mb-5 border-solid border-[1px] border-gray-200 outline-none dark:text-black " />
+                            <input type="text" placeholder={t("Your mail")} className="w-full h-[60px] text-xs  leading-[60px] py-[10px] px-[20px] mb-5 border-solid border-[1px] border-gray-200 outline-none dark:text-black " />
+                            <textarea name="" id="" className="w-full h-[200px] text-xs  leading-[60px] py-[10px] px-[20px] mb-5 border-solid border-[1px] border-gray-200 outline-none dark:text-black"></textarea>
                             <button className="w-full text-lg bg-black text-white uppercase font-semibold leading-[60px]  px-[65px] mb-5 transition-all duration-300 outline-none hover:bg-primary dark:bg-white dark:text-black hover:dark:bg-primary">
                                 {t("send")}
                             </button>

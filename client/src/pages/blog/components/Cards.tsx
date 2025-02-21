@@ -29,7 +29,7 @@ export const BlogCards = ({ blog }: Props) => {
                             alt="blog"
                             className="w-full min-h-[446px] object-cover opacity-1 z-10 transition-opacity duration-300 cursor-pointer hover:brightness-75"
                         />
-                        <div className="absolute p-3 w-[76px] h-[76px] bg-white flex flex-col items-center rounded-full bottom-[85%] left-[2%] font-sans">
+                        <div className="absolute p-3 w-[76px] h-[76px] bg-white flex flex-col items-center rounded-full bottom-[85%] left-[2%] font-sans dark:text-black">
                             <DateFormatter date={bloglist.createdAt} />
                             <span className="border w-12 h-[1px] border-red-700"></span>
                             <MonthFormatter month={bloglist.createdAt} />

@@ -20,13 +20,13 @@ import { z } from "zod";
 
 const getformSchema = (isEdit: boolean) => z.object({
     name: z.string().min(2),
-    price: z
+    price: z.coerce
         .number({
             invalid_type_error: 'Price must be a number',
             required_error: 'Price is required',
         })
         .positive(),
-    discount: z
+    discount: z.coerce
         .number({
             invalid_type_error: 'Discount must be a number',
             required_error: 'Discount  is required',
@@ -130,10 +130,11 @@ const ActionForm = ({ type }: Props) => {
 
         const promise = mutateAsync(payload)
         toast.promise(promise, {
-            loading: 'Creating wine...',
-            success: 'Wine created successfully',
-            error: 'Failed to create wine',
+            loading: isEdit ? 'Updating wine...' : 'Creating wine...',
+            success: isEdit ? 'Wine updated successfully' : 'Wine created successfully',
+            error: isEdit ? 'Failed to update wine' : 'Failed to create wine',
         });
+
     }
 
     useEffect(() => {

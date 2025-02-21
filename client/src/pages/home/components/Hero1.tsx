@@ -39,10 +39,10 @@ export const HomeHero = () => {
                             font-medium max-w-[90%] lg:max-w-[50%] 
                             dancing-script text-[32px] italic text-left md:text-left"
                         >
-                            <span className="text-[32px] xs:text-[20px] sm:text-[20px] md:text-[35px] lg:text-[40px] font-semibold pb-4 leading-tight">
+                            <span className="text-[32px] xs:text-[20px] sm:text-[20px] md:text-[35px] lg:text-[40px] font-semibold pb-4 leading-tight text-black">
                                 {slide.title}
                             </span>
-                            <p className="text-[12px] xs:text-[14px] sm:text-[16px] md:text-[14px]  lg:text-[20px] w-full max-w-500 font-medium tracking-[0.5px] pb-4 mt-2 leading-relaxed text-gray-700">
+                            <p className="text-[12px] xs:text-[14px] sm:text-[16px] md:text-[14px]  lg:text-[20px] w-full max-w-500 font-medium tracking-[0.5px] pb-4 mt-2 leading-relaxed text-black">
                                 {slide.subtitle}
                             </p>
                             <Link to={paths.SHOP}>

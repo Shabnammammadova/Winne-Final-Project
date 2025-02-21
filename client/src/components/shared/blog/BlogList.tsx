@@ -48,7 +48,7 @@ export const BlogList = ({ blog }: Props) => {
                             alt=""
                             className="opacity-1 z-10 transition-opacity duration-300 hover:opacity-70"
                         />
-                        <div className="absolute p-3 w-[68px] h-[68px] bg-white flex flex-col items-center bottom-[80%] left-[6%] font-sans">
+                        <div className="absolute p-3 w-[68px] h-[68px] bg-white flex flex-col items-center bottom-[80%] left-[6%] font-sans dark:text-black">
                             <DateFormatter date={bloglist.createdAt} />
                             <span className="border w-8 border-black"></span>
                             <MonthFormatter month={bloglist.createdAt} />

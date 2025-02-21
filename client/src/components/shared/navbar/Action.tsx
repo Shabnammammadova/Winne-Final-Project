@@ -1,4 +1,3 @@
-import HeartIcon from "../../../assets/icons/heart.svg"
 import { SearchSide } from "./Search"
 import { Link } from "react-router-dom"
 import { paths } from "@/constants/paths"
@@ -23,7 +22,7 @@ import { QUERY_KEYS } from "@/constants/query-keys"
 import basketService from "@/services/basket"
 import LanguageSwitcher from "../LanguageSwitcher"
 import { useTranslation } from "react-i18next"
-
+import { LuHeart } from "react-icons/lu";
 
 
 export const Action = () => {
@@ -88,7 +87,7 @@ export const Action = () => {
             <SearchSide />
             <LanguageSwitcher />
             <ThemeToggle />
-            <Link to={paths.WISHLIST}><img src={HeartIcon} alt="" className='w-[24px] h-[24px] mr-[13px] lg:block hidden' /></Link>
+            <Link to={paths.WISHLIST}><LuHeart className='w-[24px] h-[24px] mr-[13px]  dark:text-white ' /></Link>
             <ShoppingCart basket={basket} />
         </div>
     )

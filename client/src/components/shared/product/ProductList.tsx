@@ -132,10 +132,10 @@ export const WineProductList = ({ product }: Props) => {
                             </span>
                             <div className="flex items-center justify-center gap-1">
                                 <p className="text-[15px] font-bold text-gray-500 line-through">
-                                    ${wineproduct.price}
+                                    {wineproduct.discount ? `$${wineproduct.price}` : null}
                                 </p>
                                 <p className="text-[15px] font-bold text-red-800">
-                                    ${wineproduct.price - wineproduct.discount}
+                                    ${wineproduct.discount ? wineproduct.price - wineproduct.discount : wineproduct.price}
                                 </p>
                             </div>
                         </div>

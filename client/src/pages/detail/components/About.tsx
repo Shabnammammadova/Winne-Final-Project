@@ -11,6 +11,7 @@ import { ModalTypeEnum, useDialog } from "@/hooks/useDialog";
 import { useSelector } from "react-redux";
 import { selectUserData } from "@/store/features/userSlice";
 import { CiHeart } from "react-icons/ci";
+import { useTranslation } from "react-i18next";
 
 
 type Props = {
@@ -23,7 +24,7 @@ export const WineAbout = ({ product = { _id: "", name: "", price: 0, discount: 0
     const [favoriteStatus, setFavoriteStatus] = useState<{ [key: string]: boolean }>({});
     const { openDialog } = useDialog()
     const [basket, setBasket] = useState<Basket[]>([]);
-
+    const { t } = useTranslation()
     const updateBasket = (newProduct: Basket) => {
         setBasket((prevBasket) => [...prevBasket, newProduct]);
     };
@@ -73,30 +74,30 @@ export const WineAbout = ({ product = { _id: "", name: "", price: 0, discount: 0
                     <div className="flex flex-col  pl-[20px] w-full max-w-[600px]">
                         <div className="flex">
                             <div className="w-full">
-                                <h2 className="text-3xl font-bold mb-2 cursor-pointer">
-                                    {name}</h2>
-                                <div className="flex items-center gap-1 mb-2 text-lg">
+                                <h2 className="text-3xl font-bold mb-2 cursor-pointer capitalize">
+                                    {t(`products.${name.replace(/\s+/g, "_").toLowerCase()}`)}</h2>
+                                <div className="flex items-center gap-1">
                                     <p className="text-[15px] font-bold text-gray-500 line-through">
-                                        ${price}
+                                        {discount ? `$${price}` : null}
                                     </p>
                                     <p className="text-[15px] font-bold text-red-800">
-                                        ${price - discount}
+                                        ${discount ? price - discount : price}
                                     </p>
                                 </div>
                             </div>
                             <div
                                 onClick={() => onFavSubmit(_id)}
                                 className={`p-2 rounded-full transition-all duration-300 ease-in-out w-[40px] h-[40px] 
-                                    border-solid border-[1px] border-gray-200 cursor-pointer flex items-center justify-center hover:bg-primary hover:text-white
+                                    border-solid border-[1px] border-gray-200 cursor-pointer flex items-center justify-center hover:bg-primary dark:bg-primary hover:text-white
                                     ${favoriteStatus[_id] ? "bg-primary text-white" : "bg-white text-black"}
                                     hover:bg-primary hover:text-white
                                 `}
                             >
-                                <CiHeart className={`w-[16px] h-[16px] ${favoriteStatus[_id] ? "text-white" : "text-black dark:text-black"}`} />
+                                <CiHeart className={`w-[16px] h-[16px] dark:text-white ${favoriteStatus[_id] ? "text-white" : "text-black dark:text-black"}`} />
                             </div>
                         </div>
                         <p className="border-t-[1px] text-gray-500 text-sm  border-solid border-t-gray-200 pt-4">
-                            Wine history Wine is an alcoholic beverage fermented from grapes. The natural chemical balance allows grapes to ferment without the need for added sugars, acids, enzymes, water or other nutrients. Yeast consumes the sugars in the grapes and converts them into alcohol and carbon dioxide. Different grape varieties and different...
+                            {t("wine_history_wine_is_an_alcoholic_beverage_fermented_from_ grapes._The_natural_chemical_balance_allows_grapes_to_ferment_ without_the_need_for_added_sugars,_acids,_enzymes,_water_or_ other_nutrients._Yeast_consumes_the_sugars_in_the_grapes_and_ converts_them_into_alcohol_and_carbon_dioxide._Different_grape_ varieties_and_different...")}
                         </p>
                         <Offer />
                         <Delivery />

@@ -37,9 +37,9 @@ export const UserProfile = () => {
     };
 
     return (
-        <div className="bg-gray-100 flex justify-center items-center p-4">
-            <div className="bg-white w-full flex gap-6">
-                <div className="p-6 bg-blue-50 rounded-lg">
+        <div className="bg-gray-100 flex justify-center items-center p-4 dark:bg-black dark:text-white ">
+            <div className="bg-white w-full flex gap-6 dark:bg-black dark:text-white container ">
+                <div className="p-6 bg-red-50 dark:bg-red-900 rounded-lg dark:text-white">
                     <div className="text-center">
                         <div className="relative">
                             <img
@@ -58,8 +58,8 @@ export const UserProfile = () => {
                         <div className="p-6 md:col-span-2">
                             <form onSubmit={handleSubmit} className="flex">
                                 <div>
-                                    <label className="text-md font-medium text-black flex"><p className="text-primary font-semibold">Full Name:</p>{name}  {surname}</label>
-                                    <label className="text-md font-medium text-black flex"><p className="text-primary">Email:</p>{email}</label>
+                                    <label className="text-md font-medium text-black flex"><p className="text-primary font-semibold dark:text-white">Full Name:</p>{name}  {surname}</label>
+                                    <label className="text-md font-medium text-black flex"><p className="text-primary dark:text-white">Email:</p>{email}</label>
                                 </div>
                             </form>
                         </div>

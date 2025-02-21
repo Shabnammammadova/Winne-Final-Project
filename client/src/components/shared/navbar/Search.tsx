@@ -86,16 +86,16 @@ export function SearchSide() {
                 <SheetTrigger asChild>
                     <Search className="transition-all" />
                 </SheetTrigger>
-                <SheetContent className="bg-white">
+                <SheetContent className="bg-white dark:bg-black">
                     <SheetHeader className="flex flex-col items-center justify-center w-full max-w-[600px] mx-auto">
                         <div className="flex items-center w-full border-b border-gray-200 pb-2">
                             <input
                                 type="text"
                                 placeholder={text}
-                                className="w-full px-3 py-2 text-sm text-gray-800 outline-none bg-transparent"
+                                className="w-full px-3 py-2 text-sm text-gray-800 outline-none bg-transparent dark:text-white"
                                 onChange={(e) => handleSearch(e.target.value.trim())}
                             />
-                            <img src={Searchbar} alt="Search Icon" className="w-4 h-4 cursor-pointer ml-2" />
+                            <img src={Searchbar} alt="Search Icon" className="w-4 h-4 cursor-pointer ml-2 filter dark:invert" />
                         </div>
                         <div className="w-full mt-4">
                             <SearchProduct product={products} />

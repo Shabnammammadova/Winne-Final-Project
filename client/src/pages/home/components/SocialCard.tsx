@@ -12,7 +12,7 @@ export const SocialCard = () => {
         <div className="container my-[70px] bg-background dark:bg-black">
             <div className="flex flex-col items-center justify-center">
                 <div className="">
-                    <Instagram className="w-[51px] h-[60px] font-sans" />
+                    <Instagram className="w-[51px] h-[60px] font-sans dark:text-white" />
                 </div>
                 <h3 className="text-2xl font-semibold mt-2 pb-[25px] text-black font-sans capitalize dark:text-white">{t("follow us on instagram")}</h3>
             </div>

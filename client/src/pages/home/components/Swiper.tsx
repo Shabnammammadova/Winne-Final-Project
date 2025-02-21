@@ -47,12 +47,12 @@ export const SwiperSlides = ({ product }: Props) => {
                             <span className="xs:text-[14px] text-black capitalize xl:text-base font-medium pt-5 pb-[10px] dark:text-white">
                                 {t(`products.${wineproduct.name.replace(/\s+/g, "_").toLowerCase()}`)}
                             </span>
-                            <div className="flex items-center justify-center gap-1 text-[15px]">
-                                <p className=" font-bold text-gray-500 line-through">
-                                    ${wineproduct.price}
+                            <div className="flex items-center justify-center gap-1">
+                                <p className="text-[15px] font-bold text-gray-500 line-through">
+                                    {wineproduct.discount ? `$${wineproduct.price}` : null}
                                 </p>
-                                <p className=" font-bold text-red-800">
-                                    ${wineproduct.price - wineproduct.discount}
+                                <p className="text-[15px] font-bold text-red-800">
+                                    ${wineproduct.discount ? wineproduct.price - wineproduct.discount : wineproduct.price}
                                 </p>
                             </div>
                         </div>

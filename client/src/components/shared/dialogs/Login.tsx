@@ -83,7 +83,7 @@ export const LoginDialog = () => {
     };
     return (
         <Dialog open={isOpen} onOpenChange={closeDialog}>
-            <DialogContent className="bg-white">
+            <DialogContent className="bg-white dark:bg-black dark:text-white">
                 <DialogHeader>
                     <DialogTitle className="text-xl lg:text-3xl">Sign In</DialogTitle>
                     <DialogDescription>
@@ -145,7 +145,7 @@ export const LoginDialog = () => {
                 </Form>
                 <div className="my-3 border-b text-center">
                     <div
-                        className="leading-none px-2 inline-block text-sm text-gray-600 tracking-wide font-medium bg-white transform translate-y-1/2">
+                        className="leading-none px-2 inline-block text-sm text-gray-600 tracking-wide font-medium bg-white dark:bg-black dark:text-white transform translate-y-1/2">
                         Or sign up with
                     </div>
                 </div>

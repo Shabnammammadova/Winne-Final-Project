@@ -104,10 +104,11 @@ const BlogForm = ({ type }: Props) => {
 
         const promise = mutateAsync(payload)
         toast.promise(promise, {
-            loading: 'Creating blog...',
-            success: 'Blog created successfully',
-            error: 'Failed to create blog',
+            loading: isEdit ? 'Updating blog...' : 'Creating blog...',
+            success: isEdit ? 'Blog updated successfully' : 'Blog created successfully',
+            error: isEdit ? 'Failed to update blog' : 'Failed to create blog',
         });
+
     }
 
     useEffect(() => {

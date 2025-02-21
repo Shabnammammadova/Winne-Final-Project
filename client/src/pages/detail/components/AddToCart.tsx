@@ -7,6 +7,7 @@ import { Basket } from "@/types";
 import { selectUserData } from "@/store/features/userSlice";
 import { useSelector } from "react-redux";
 import queryClient from "@/config/queryClient";
+import { useTranslation } from "react-i18next";
 
 type Props = {
     updateBasket: (newProduct: Basket) => void;
@@ -17,7 +18,7 @@ export const AddToCart = ({ updateBasket, productId }: Props) => {
     const [quantity, setQuantity] = useState(1);
     const user = useSelector(selectUserData);
     const { openDialog } = useDialog();
-
+    const { t } = useTranslation()
     const increaseQuantity = () => {
         setQuantity(prev => prev + 1);
     };
@@ -58,7 +59,7 @@ export const AddToCart = ({ updateBasket, productId }: Props) => {
                         className="bg-white rounded-l border text-gray-600 hover:bg-gray-100 active:bg-gray-200 disabled:opacity-50 inline-flex items-center px-2 py-1 border-r border-gray-200"
                     >
                         <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 12H4" />
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M20 12H4" />
                         </svg>
                     </button>
                     <div className="bg-gray-100 border-t border-b border-gray-100 text-gray-600 hover:bg-gray-100 inline-flex items-center px-4 py-1 select-none">
@@ -69,7 +70,7 @@ export const AddToCart = ({ updateBasket, productId }: Props) => {
                         className="bg-white rounded-r border text-gray-600 hover:bg-gray-100 active:bg-gray-200 disabled:opacity-50 inline-flex items-center px-2 py-1 border-r border-gray-200"
                     >
                         <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 4v16m8-8H4" />
                         </svg>
                     </button>
                 </div>
@@ -79,10 +80,10 @@ export const AddToCart = ({ updateBasket, productId }: Props) => {
                     className="w-full h-[55px] text-white bg-primary font-semibold text-sm uppercase hover:bg-black transition-all duration-300 dark:bg-primary"
                     onClick={() => onBasketSubmit(productId)}
                 >
-                    Add to cart
+                    {t("add to cart")}
                 </button>
                 <button className="w-full h-[55px] mt-5 text-white bg-black font-semibold text-sm uppercase hover:bg-primary transition-all duration-300 dark:bg-primary">
-                    Buy it now
+                    {t("buy it now")}
                 </button>
             </div>
         </div>

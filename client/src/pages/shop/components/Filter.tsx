@@ -4,6 +4,7 @@ import { useQuery } from "@tanstack/react-query";
 import { useMemo } from "react";
 import { useSearchParams } from "react-router-dom";
 import { CiFilter } from "react-icons/ci"
+import { useTranslation } from "react-i18next";
 
 
 type Filter = {
@@ -17,6 +18,7 @@ type Filter = {
 
 export const Filter = () => {
     const [searchParams, setSearchParams] = useSearchParams()
+    const { t } = useTranslation()
     const { data: categoryResponse } = useQuery({
         queryKey: ["categories"],
         queryFn: categoryService.getAll
@@ -36,11 +38,11 @@ export const Filter = () => {
     const filters: Filter = useMemo(
         () => [
             {
-                label: "Category",
+                label: t("Category"),
                 options: categoryOptions,
             },
             {
-                label: "Price",
+                label: t("Price"),
                 options: [
                     {
                         value: "10-20",
@@ -88,7 +90,7 @@ export const Filter = () => {
                 className="container w-[100px]  absolute left-5 mt-3 bg-primary black flex items-center  gap-y-2 py-2 px-4 font-semibold text-lg transition duration-700 text-white"
             >
                 <CiFilter />
-                Filter
+                {t("Filter")}
             </button>
 
             <div className="w-full lg:max-w-[350px] mt-24  px-4 sm:px-6 lg:px-8  flex md:flex-col xs:flex-row xs:items-baseline xs:pr-2 xs:pl-3 border-t border-t-gray-200">
@@ -106,7 +108,7 @@ export const Filter = () => {
                                                         onClick={() => handleChange(filter.label, option.value)}
                                                         defaultChecked={searchParams.getAll(filter.label.toLowerCase()).includes(option.value)}
                                                     />
-                                                    <label htmlFor={`${filter.label}-${option.value}`} className="text-sm sm:text-base font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">{option.label}{""} {option.count && <span className="text-black">({option.count})</span>}</label>
+                                                    <label htmlFor={`${filter.label}-${option.value}`} className="text-sm sm:text-base font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">{option.label}{""} </label>
                                                 </div>
                                             ))
                                         }
@@ -115,10 +117,14 @@ export const Filter = () => {
                             ))}
                         <div className="mt-6">
                             <div className="flex items-center mb-6">
-                                <p className="pr-4 text-lg sm:text-xl font-medium tracking-widest uppercase">Brand</p>
+                                <p className="pr-4 text-lg sm:text-xl font-medium  tracking-widest uppercase">{t("Brand")}</p>
                             </div>
                             <div className="flex flex-col gap-2">
-                                {["Balfour", "Bat Gara", "Castano", "Clos Des Fous", "Font-Mars"].map((brand) => (
+                                {[t("Balfour"),
+                                t("Bat Gara"),
+                                t("Castano"),
+                                t("Clos Des Fous"),
+                                t("Font-Mars")].map((brand) => (
                                     <button
                                         key={brand}
                                         className="text-left text-sm sm:text-base font-medium cursor-pointer hover:text-red-800"
@@ -130,13 +136,16 @@ export const Filter = () => {
                         </div>
                         <div className="mt-6">
                             <div className="flex items-center mb-6">
-                                <p className="pr-4 text-lg sm:text-xl font-medium tracking-widest uppercase">Tags</p>
+                                <p className="pr-4 text-lg sm:text-xl font-medium tracking-widest uppercase">{t("Tags")}</p>
                             </div>
                             <div className="flex flex-wrap gap-3">
-                                {["new", "trend", "hot", "wine"].map((tag) => (
+                                {[t("new"),
+                                t("trend"),
+                                t("hot"),
+                                t("wine")].map((tag) => (
                                     <button
                                         key={tag}
-                                        className="p-[10px] text-center text-sm sm:text-base font-medium md:m-0 xs:ml-3 border border-black transition-all duration-300 leading-[40px] hover:bg-primary hover:border-primary hover:text-white"
+                                        className="p-[10px] text-center text-sm sm:text-base font-medium md:m-0 xs:ml-3 border border-black dark:border-white dark:hover:border-primary transition-all duration-300 leading-[40px] hover:bg-primary hover:border-primary hover:text-white"
                                     >
                                         {tag}
                                     </button>

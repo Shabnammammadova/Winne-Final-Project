@@ -85,7 +85,7 @@ export const RegisterDialog = () => {
 
     return (
         <Dialog open={isOpen} onOpenChange={closeDialog}>
-            <DialogContent className="bg-white">
+            <DialogContent className="bg-white dark:bg-black dark:text-white">
                 <DialogHeader>
                     <DialogTitle className="text-xl lg:text-3xl">
                         Create An Account

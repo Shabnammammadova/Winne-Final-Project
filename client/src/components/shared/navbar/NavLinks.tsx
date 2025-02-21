@@ -11,32 +11,32 @@ export const NavLinks = () => {
             <ul className="lg:flex hidden flex-wrap flex-row items-center no-underline gap-x-[15px] text-[17px] font-semibold text-black">
                 <li className="px-[.5rem] group relative w-max">
                     <Link to={paths.HOME} className="relative group">
-                        <span className="relative z-10 transition-colors duration-300 group-hover:text-red-800 uppercase">{t("home")}</span>
+                        <span className="relative z-10 transition-colors duration-300 group-hover:text-red-800 uppercase dark:text-white">{t("home")}</span>
                     </Link>
                 </li>
                 <li className="px-[.5rem] group relative w-max h-max">
                     <Link to={paths.SHOP} className="relative">
-                        <span className="relative z-10 transition-colors duration-300 group-hover:text-red-800 uppercase">{t("shop")}</span>
+                        <span className="relative z-10 transition-colors duration-300 group-hover:text-red-800 uppercase dark:text-white">{t("shop")}</span>
                     </Link>
                 </li>
                 <li className="px-[.5rem] group relative w-max h-max">
                     <Link to={paths.ABOUT} className="relative">
-                        <span className="relative z-10 transition-colors duration-300 group-hover:text-red-800 uppercase">{t("about us")}</span>
+                        <span className="relative z-10 transition-colors duration-300 group-hover:text-red-800 uppercase dark:text-white">{t("about us")}</span>
                     </Link>
                 </li>
                 <li className="px-[.5rem] group relative w-max h-max">
                     <Link to={paths.CONTACT} className="relative">
-                        <span className="relative z-10 transition-colors duration-300 group-hover:text-red-800 uppercase">{t("contact us")}</span>
+                        <span className="relative z-10 transition-colors duration-300 group-hover:text-red-800 uppercase dark:text-white">{t("contact us")}</span>
                     </Link>
                 </li>
                 <li className="px-[.5rem] group relative w-max h-max">
                     <Link to={paths.FAQ} className="relative">
-                        <span className="relative z-10 transition-colors duration-300 group-hover:text-red-800 uppercase">{t("faq")}</span>
+                        <span className="relative z-10 transition-colors duration-300 group-hover:text-red-800 uppercase dark:text-white">{t("faq")}</span>
                     </Link>
                 </li>
                 <li className="px-[.5rem] group relative w-max">
                     <Link to={paths.BLOGS} className="relative group">
-                        <span className="relative z-10 transition-colors duration-300 group-hover:text-red-800 uppercase">{t("blogs")}</span>
+                        <span className="relative z-10 transition-colors duration-300 group-hover:text-red-800 uppercase dark:text-white">{t("blogs")}</span>
                     </Link>
                 </li>
             </ul>

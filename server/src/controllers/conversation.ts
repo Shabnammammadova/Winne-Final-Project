@@ -10,7 +10,7 @@ const getAll = async (_: Request, res: Response) => {
             message: "Conversations fetched successfully",
             items: conversation
         });
-        console.log("Fetched conversation:", conversation);
+
     } catch (err) {
         console.log(err);
         res.status(500).send("Internal server error")
