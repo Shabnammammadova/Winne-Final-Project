@@ -218,10 +218,11 @@ const ActionForm = ({ type }: Props) => {
                             render={({ field }) => (
                                 <FormItem>
                                     <FormLabel>Category</FormLabel>
-                                    <Select onValueChange={field.onChange} value={field.value} >
+                                    <Select onValueChange={field.onChange} defaultValue={field.value}
+                                        value={field.value}>
                                         <FormControl>
                                             <SelectTrigger>
-                                                <SelectValue placeholder="Select Category" />
+                                                <SelectValue placeholder="Select category" />
                                             </SelectTrigger>
                                         </FormControl>
                                         <SelectContent>

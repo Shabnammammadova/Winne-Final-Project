@@ -29,6 +29,7 @@ import authService from "@/services/auth/auth";
 import { AxiosError } from "axios";
 import { AuthResponseType } from "@/services/auth/types";
 import { toast } from "sonner";
+import { useTranslation } from "react-i18next";
 
 const formSchema = z
     .object({
@@ -46,7 +47,7 @@ const formSchema = z
 export const RegisterDialog = () => {
     const { isOpen, closeDialog, type, openDialog } = useDialog();
     const [showPassword, setShowPassword] = useState(false);
-
+    const { t } = useTranslation()
 
     const togglePasswordVisibility = () => setShowPassword((prev) => !prev);
 
@@ -87,16 +88,16 @@ export const RegisterDialog = () => {
         <Dialog open={isOpen} onOpenChange={closeDialog}>
             <DialogContent className="bg-white dark:bg-black dark:text-white">
                 <DialogHeader>
-                    <DialogTitle className="text-xl lg:text-3xl">
-                        Create An Account
+                    <DialogTitle className="text-xl lg:text-3xl capitalize">
+                        {t("Create an account")}
                     </DialogTitle>
                     <DialogDescription>
-                        Already have an account?{" "}
+                        {t("Already have an account?")}{" "}
                         <button
                             onClick={() => openDialog(ModalTypeEnum.LOGIN)}
                             className="text-primary"
                         >
-                            Sign In
+                            {t("Sign In")}
                         </button>
                     </DialogDescription>
                 </DialogHeader>
@@ -107,7 +108,7 @@ export const RegisterDialog = () => {
                             name="name"
                             render={({ field }) => (
                                 <FormItem>
-                                    <FormLabel>First Name</FormLabel>
+                                    <FormLabel>{t("First Name")}</FormLabel>
                                     <FormControl>
                                         <Input placeholder="John" {...field} />
                                     </FormControl>
@@ -120,7 +121,7 @@ export const RegisterDialog = () => {
                             name="surname"
                             render={({ field }) => (
                                 <FormItem>
-                                    <FormLabel>Last Name</FormLabel>
+                                    <FormLabel>{t("Last Name")}</FormLabel>
                                     <FormControl>
                                         <Input placeholder="Doe" {...field} />
                                     </FormControl>
@@ -133,7 +134,7 @@ export const RegisterDialog = () => {
                             name="email"
                             render={({ field }) => (
                                 <FormItem>
-                                    <FormLabel>Email</FormLabel>
+                                    <FormLabel>{t("Email")}</FormLabel>
                                     <FormControl>
                                         <Input placeholder="john@gmail.com" {...field} />
                                     </FormControl>
@@ -146,7 +147,7 @@ export const RegisterDialog = () => {
                             name="password"
                             render={({ field }) => (
                                 <FormItem>
-                                    <FormLabel>Password</FormLabel>
+                                    <FormLabel>{t("Password")}</FormLabel>
                                     <div className="relative">
                                         <FormControl>
                                             <Input
@@ -172,7 +173,7 @@ export const RegisterDialog = () => {
                             name="confirmPassword"
                             render={({ field }) => (
                                 <FormItem>
-                                    <FormLabel>Confirm Password</FormLabel>
+                                    <FormLabel>{t("Confirm Password")}</FormLabel>
                                     <FormControl>
                                         <Input
                                             type="password"
@@ -185,7 +186,7 @@ export const RegisterDialog = () => {
                             )}
                         />
                         <Button type="submit" className="w-full" disabled={isPending}>
-                            Register
+                            {t("Register")}
                         </Button>
                     </form>
                 </Form>

@@ -17,6 +17,7 @@ import { AxiosError } from "axios";
 import { toast } from "sonner";
 import { Link } from "react-router-dom";
 import { ScrollToTop } from "@/components/shared/ScrollToTop";
+import { useTranslation } from "react-i18next";
 
 const formSchema = z.object({
     email: z.string().email("Please enter a valid email address"),
@@ -43,6 +44,7 @@ export const ForgotPassword = () => {
         },
     });
 
+    const { t } = useTranslation()
     function onSubmit(values: z.infer<typeof formSchema>) {
         mutate(values);
     }
@@ -50,9 +52,9 @@ export const ForgotPassword = () => {
     return (
         <div className="container mx-auto py-16">
             <div className="max-w-md mx-auto bg-white p-8 rounded-lg shadow-lg">
-                <h2 className="text-3xl font-bold text-center mb-4 dark:text-black">Forgot Password</h2>
+                <h2 className="text-3xl font-bold text-center mb-4 dark:text-black capitalize">{t("Forgot Password")}</h2>
                 <p className="text-center mb-8 dark:text-black">
-                    Enter your email address and we’ll send you a link to reset your password.
+                    {t("Enter your email address and we’ll send you a link to reset your password.")}
                 </p>
                 <Form {...form}>
                     <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
@@ -61,7 +63,7 @@ export const ForgotPassword = () => {
                             name="email"
                             render={({ field }) => (
                                 <FormItem>
-                                    <FormLabel className="dark:text-black">Email</FormLabel>
+                                    <FormLabel className="dark:text-black">{t("Email")}</FormLabel>
                                     <FormControl>
                                         <Input placeholder="john@gmail.com" {...field} />
                                     </FormControl>
@@ -70,17 +72,17 @@ export const ForgotPassword = () => {
                             )}
                         />
                         <Button
-                            className="w-full"
+                            className="w-full capitalize"
                             disabled={isPending}
                             type="submit"
                         >
-                            Send Reset Link
+                            {t("Send Reset Link")}
                         </Button>
                     </form>
                 </Form>
                 <div className="mt-4 text-center">
-                    <Link to="/" className="text-primary underline">
-                        Back to Home
+                    <Link to="/" className="text-primary underline capitalize">
+                        {t("Back to Home")}
                     </Link>
                 </div>
             </div>

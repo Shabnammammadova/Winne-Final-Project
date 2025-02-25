@@ -32,6 +32,7 @@ import { Link, useNavigate } from "react-router-dom";
 import GoogleIcon from "../../../assets/images/google-icon.png"
 import GithubIcon from "../../../assets/images/github-icon.png"
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 
 
 const formSchema = z.object({
@@ -42,7 +43,7 @@ const formSchema = z.object({
 export const LoginDialog = () => {
     const { isOpen, closeDialog, type, openDialog } = useDialog();
     const [showPassword, setShowPassword] = useState(false);
-
+    const { t } = useTranslation()
 
     const togglePasswordVisibility = () => setShowPassword((prev) => !prev);
     const form = useForm<z.infer<typeof formSchema>>({
@@ -85,14 +86,14 @@ export const LoginDialog = () => {
         <Dialog open={isOpen} onOpenChange={closeDialog}>
             <DialogContent className="bg-white dark:bg-black dark:text-white">
                 <DialogHeader>
-                    <DialogTitle className="text-xl lg:text-3xl">Sign In</DialogTitle>
+                    <DialogTitle className="text-xl lg:text-3xl">{t("Sign In")}</DialogTitle>
                     <DialogDescription>
-                        Don't have an account?{"  "}
+                        {t("Don't have an account?")}{"  "}
                         <button
                             onClick={() => openDialog(ModalTypeEnum.REGISTER)}
                             className="text-primary"
                         >
-                            Create an account
+                            {t("Create an account")}
                         </button>
                     </DialogDescription>
                 </DialogHeader>
@@ -103,7 +104,7 @@ export const LoginDialog = () => {
                             name="email"
                             render={({ field }) => (
                                 <FormItem>
-                                    <FormLabel>Email</FormLabel>
+                                    <FormLabel>{t("Email")}</FormLabel>
                                     <FormControl>
                                         <Input placeholder="john@gmail.com" {...field} />
                                     </FormControl>
@@ -116,7 +117,7 @@ export const LoginDialog = () => {
                             name="password"
                             render={({ field }) => (
                                 <FormItem>
-                                    <FormLabel>Password</FormLabel>
+                                    <FormLabel>{t("Password")}</FormLabel>
                                     <div className="relative">
                                         <FormControl>
                                             <Input
@@ -137,16 +138,16 @@ export const LoginDialog = () => {
                                 </FormItem>
                             )}
                         />
-                        <Link to={"/forgot-password"} className="text-primary m-auto flex justify-center underline" onClick={handleForgotPasswordClick}>Forgot Password?</Link>
+                        <Link to={"/forgot-password"} className="text-primary m-auto flex justify-center underline" onClick={handleForgotPasswordClick}>{t("Forgot Password?")}</Link>
                         <Button type="submit" className="w-full" disabled={isPending}>
-                            Sign In
+                            {t("Sign In")}
                         </Button>
                     </form>
                 </Form>
                 <div className="my-3 border-b text-center">
                     <div
                         className="leading-none px-2 inline-block text-sm text-gray-600 tracking-wide font-medium bg-white dark:bg-black dark:text-white transform translate-y-1/2">
-                        Or sign up with
+                        {t("Or sign up with")}
                     </div>
                 </div>
                 <div className="flex flex-col">

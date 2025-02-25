@@ -13,6 +13,7 @@ import DashboardCreateFaqPage from "@/pages/(dashboard)/faq/create";
 import DashboardFaqPage from "@/pages/(dashboard)/faq/list";
 import DashboardEditFaqPage from "@/pages/(dashboard)/faq/update";
 import DashboardMainPage from "@/pages/(dashboard)/main";
+import DashboardOrdersPage from "@/pages/(dashboard)/order/list";
 import DashboardCreateWinePage from "@/pages/(dashboard)/wines/create";
 import DashboardWinesPage from "@/pages/(dashboard)/wines/list";
 import DashboardEditWinePage from "@/pages/(dashboard)/wines/update";
@@ -168,6 +169,10 @@ export const router = createBrowserRouter([
                         path: paths.DASHBOARD.CHAT.USER(),
                         element: <ChatPage />
                     },
+                    {
+                        path: paths.DASHBOARD.ORDER.LIST,
+                        element: <DashboardOrdersPage />
+                    }
                 ]
             }
         ]

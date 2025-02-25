@@ -1,5 +1,5 @@
-import StarFilledImg from "@/assets/icons/star-filled.svg"
-import StarOutlinedImg from "@/assets/icons/star-outlined.svg"
+import StarFilledImg from "../../assets/icons/staroutlined.png"
+import StarOutlinedImg from "../../assets/icons/starfilled.png"
 
 type Props = {
     rating: number;

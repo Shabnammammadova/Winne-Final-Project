@@ -166,7 +166,7 @@ export const ShopProducts = ({ product }: Props) => {
                                 </div>
                                 <ul className="absolute flex gap-1 justify-center items-center bottom-[35%] left-1/2 transform -translate-x-1/2 translate-y-0 opacity-0 group-hover:opacity-100 group-hover:translate-y-4 transition-all duration-500 ease-in-out">
                                     <div className="flex flex-col items-center relative font-sans">
-                                        <li className={`bg-white p-2 rounded-full shadow-md transition-all duration-300 ease-in-out hover:bg-primary hover:text-white hover:inline ${basketStatus[wineproduct._id] ? "bg-primary text-white" : "bg-white"
+                                        <li className={`bg-white p-2 rounded-full shadow-md transition-all duration-300 ease-in-out hover:bg-primary hover:text-white ${basketStatus[wineproduct._id] ? "bg-primary text-white" : "bg-white text-black"
                                             }`} onClick={() => onBasketSubmit(wineproduct._id)} >
                                             <SlBag className="w-[16px] h-[16px] dark:text-black" />
                                         </li>

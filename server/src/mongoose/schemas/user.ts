@@ -57,7 +57,7 @@ const userSchema = new Schema({
         {
             product: {
                 type: Schema.Types.ObjectId,
-                ref: "Basket",
+                ref: "Product",
                 required: true,
             },
             quantity: {

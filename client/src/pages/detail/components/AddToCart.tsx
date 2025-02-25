@@ -47,7 +47,14 @@ export const AddToCart = ({ updateBasket, productId }: Props) => {
             toast.message("Please create an account.");
             return;
         }
-        basketadd({ userId: user.user?._id!, productId, quantity });
+        const newProduct = {
+            userId: user.user?._id!,
+            productId,
+            quantity,
+        };
+
+        basketadd(newProduct);
+        updateBasket(newProduct);
     }
 
     return (

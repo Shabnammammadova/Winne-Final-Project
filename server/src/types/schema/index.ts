@@ -7,3 +7,8 @@ export type Product = {
     discount: number;
     images: string[];
 }
+
+export type CartItem = {
+    productId: Product;
+    quantity: number;
+};

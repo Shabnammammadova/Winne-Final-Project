@@ -3,6 +3,10 @@ import { History } from "./History";
 import { Return } from "./Return";
 import { Review } from "./Review";
 import { useTranslation } from "react-i18next";
+import { useQuery } from "@tanstack/react-query";
+import { QUERY_KEYS } from "@/constants/query-keys";
+import reviewService from "@/services/review";
+import { Spinner } from "@/components/shared/Spinner";
 
 export const Information = () => {
     const [activeTab, setActiveTab] = useState("description");
@@ -10,7 +14,19 @@ export const Information = () => {
     const handleTabClick = (tab) => {
         setActiveTab(tab);
     };
+    const { data: review, isLoading } = useQuery({
+        queryKey: [QUERY_KEYS.REVIEW],
+        queryFn: () => reviewService.getAll,
+    })
+    if (isLoading) {
+        return (
+            <div className="flex justify-center items-center mt-28">
+                <Spinner />
+            </div>
+        );
+    }
 
+    const reviews = review?.length
     return (
         <div className="font-sans">
             <div className="flex flex-row items-center justify-center border border-solid border-t border-b">
@@ -43,7 +59,7 @@ export const Information = () => {
             </div>
             {activeTab === "description" && <History />}
             {activeTab === "information" && <Return />}
-            {activeTab === "review" && <Review />}
+            {activeTab === "review" && <Review review={reviews} />}
         </div>
     );
 };

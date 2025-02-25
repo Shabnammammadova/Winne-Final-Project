@@ -171,7 +171,7 @@ export const WineProductList = ({ product }: Props) => {
             {hasMore && (
                 <button
                     onClick={loadMoreProducts}
-                    className="text-white text-center font-sans flex items-center justify-center mx-auto p-2 relative bottom-6 bg-primary rounded-lg"
+                    className="text-white text-center font-sans flex items-center justify-center mx-auto p-2 relative bottom-6 bg-primary rounded-lg capitalize"
                 >
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="mr-1 h-4 w-4">
                         <path

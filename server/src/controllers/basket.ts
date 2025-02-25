@@ -21,22 +21,21 @@ const getAll = async (req: Request, res: Response) => {
 
 const add = async (req: Request, res: Response) => {
     try {
-        const { productId } = req.body;
+        const { productId, quantity = 1 } = req.body;
         const userId = req.user?._id;
 
         const existingBasket = await Basket.findOne({ userId, productId });
 
         if (existingBasket) {
-            existingBasket.quantity += 1;
+            existingBasket.quantity += quantity;
             await existingBasket.save();
             res.status(200).json({
                 message: "Product quantity updated in basket",
                 item: existingBasket
             });
-            return
+            return;
         }
-
-        const basket = new Basket({ userId, productId });
+        const basket = new Basket({ userId, productId, quantity });
         await basket.save();
 
         await User.findByIdAndUpdate(userId, { $push: { basket: basket._id } });

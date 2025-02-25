@@ -17,7 +17,7 @@ export const WineHero = () => {
                         {t("Luxury Wine From France")}
                     </span>
                     <p className="text-[12px] xs:text-[14px] sm:text-[16px] md:text-[16px] lg:text-[17px] font-normal tracking-[0.5px] pb-4 leading-relaxed text-black xs:w-[300px] sm:w-[450px] md:w-[620px]">
-                        {t(" Wine is an alcoholic beverage fermented from grapes. The natural chemical balance allows grapes to ferment without added sugar")}
+                        {t("Wine is an alcoholic beverage fermented from grapes. The natural chemical balance allows grapes to ferment without added sugar")}
                     </p>
                     <button className="bg-black border-black text-white mt-2 sm:mt-2 md:mt-2 font-medium uppercase tracking-[1.5px] sm:tracking-[2px] text-xs sm:text-sm py-[8px] xs:py-[10px] md:py-[9px] px-[20px] xs:px-[30px] md:px-[30px] border-solid transition-all ease-in duration-300 hover:bg-transparent hover:text-black hover:border-white hover:bg-white border-2">
                         {t("shop now")}

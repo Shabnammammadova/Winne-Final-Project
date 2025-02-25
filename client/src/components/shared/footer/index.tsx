@@ -29,7 +29,7 @@ export const Footer = () => {
                         <div className="2xs:text-center text-left 2xs:border-none lg:border-solid lg:border-l-[1px] lg:pb-[40px] lg:pl-[30px] lg:pt-[50px] w-full max-w-[360px]">
                             <h4 className="2xs:text-center lg:text-left text-lg text-gray-900 font-semibold capitalize dark:text-white">{t("customer_care")}</h4>
                             <div className="2xs:text-center flex 2xs:items-center 2xs:justify-center lg:text-left lg:items-start lg:justify-start">
-                                <span className="w-[30px] h-[2px] mt-5 bg-black block"></span>
+                                <span className="w-[30px] h-[2px] mt-5 bg-black block dark:bg-white"></span>
                             </div>
                             <ul className=" 2xs:text-center lg:text-left text-2xs 2xs:mt-[10px] lg:mt-[30px] transition-all duration-500 font-sans capitalize">
                                 <li><a href="" className="text-2xs font-normal leading-[32px] hover:text-red-800">{t("pagination")}</a></li>
@@ -42,7 +42,7 @@ export const Footer = () => {
                         <div className="2xs:text-center text-left 2xs:border-none lg:border-solid lg:border-l-[1px] lg:pb-[40px] lg:pl-[30px] lg:pt-[50px] w-full max-w-[360px]">
                             <h4 className="2xs:text-center lg:text-left text-lg text-gray-900 font-semibold capitalize dark:text-white">{t("quick_shop")}</h4>
                             <div className="2xs:text-center flex 2xs:items-center 2xs:justify-center lg:text-left lg:items-start lg:justify-start">
-                                <span className="w-[30px] h-[2px] mt-5 bg-black block"></span>
+                                <span className="w-[30px] h-[2px] mt-5 bg-black block dark:bg-white"></span>
                             </div>
                             <ul className="2xs:text-center lg:text-left text-2xs 2xs:mt-[10px] lg:mt-[30px] transition-all duration-500 font-sans capitalize">
                                 <li><a href="" className="text-2xs font-normal leading-[32px] hover:text-red-800">{t("help_center")}</a></li>
@@ -55,7 +55,7 @@ export const Footer = () => {
                         <div className="2xs:text-center text-left 2xs:border-none lg:border-solid lg:border-l-[1px] lg:pb-[40px] lg:pl-[30px] lg:pt-[50px] w-full max-w-[360px]">
                             <h4 className="2xs:text-center lg:text-left text-lg text-gray-900 font-semibold capitalize dark:text-white">{t("company")}</h4>
                             <div className="2xs:text-center flex 2xs:items-center 2xs:justify-center lg:text-left lg:items-start lg:justify-start">
-                                <span className="w-[30px] h-[2px] mt-5 bg-black block"></span>
+                                <span className="w-[30px] h-[2px] mt-5 bg-black block dark:bg-white"></span>
                             </div>
                             <ul className="2xs:text-center lg:text-left text-2xs  2xs:mt-[10px] lg:mt-[30px] transition-all duration-500 font-sans capitalize">
                                 <li><a href="" className="text-2xs font-normal leading-[32px] hover:text-red-800">{t("delivery")}</a></li>

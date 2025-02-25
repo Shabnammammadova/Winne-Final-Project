@@ -2,67 +2,74 @@ import { useState } from "react";
 import { Faq } from "@/types";
 import { useTranslation } from "react-i18next";
 
-
 type Props = {
-    faq: Faq[]
-}
+    faq: Faq[];
+};
 
 export const FaqAccordion = ({ faq }: Props) => {
-    const { t } = useTranslation()
+    const { t } = useTranslation();
     const [openQuestion, setOpenQuestion] = useState<string | null>(null);
+
     const toggleAccordion = (questionKey: string) => {
         setOpenQuestion(openQuestion === questionKey ? null : questionKey);
     };
 
-
     return (
-        <div className="py-4 bg-white dark:bg-black">
-            <div className="max-w-screen-md mx-auto sm:px-6 lg:px-8 flex flex-col justify-between">
-                <div className="text-center">
-                    <h3 className="text-3xl sm:text-4xl leading-normal font-extrabold tracking-tight text-gray-900 dark:text-white">
-                        {t("Frequently Asked ")}{" "}
-                        <span className="text-red-800 ml-[2px]">{t("Questions")}</span>
+        <div className="py-10 dark:bg-black dark:text-white">
+            <div className="max-w-2xl mx-auto px-6 lg:px-8">
+
+                <div className="text-center mb-8">
+                    <h3 className="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white">
+                        {t("Frequently Asked")}
+                        <span className="text-primary ml-2">{t("Questions")}</span>
                     </h3>
                 </div>
-                <div className="mt-6">
-                    <ul className="max-w-3xl mx-auto mt-1 divide-y shadow shadow-primary rounded-xl">
-                        {faq?.map((faqlist) => (
-                            <li key={faqlist._id}>
-                                <details className="group" >
-                                    <summary className="flex items-center gap-3 px-4 py-5 font-medium marker:content-none hover:cursor-pointer">
-                                        <svg
-                                            className="w-5 h-5 text-black dark:text-white transition group-open:rotate-90"
-                                            xmlns="http://www.w3.org/2000/svg"
-                                            width="16"
-                                            height="16"
-                                            fill="currentColor"
-                                            viewBox="0 0 16 16"
-                                        >
-                                            <path
-                                                fillRule="evenodd"
-                                                d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"
-                                            ></path>
-                                        </svg>
-                                        <span className="text-md leading-6 font-medium text-black dark:text-white">
-                                            {t(`faqs.${faqlist.question.replace(/\s+/g, "_").toLowerCase()}`)}
-                                        </span>
-                                    </summary>
 
-                                    <article className="px-4 pb-4 border border-t-gray-100 pt-2">
-                                        <p className="text-black dark:text-white text-sm ">
-                                            {t(`faqs.${faqlist.answer.replace(/\s+/g, "_").toLowerCase()}`)}
-                                        </p>
-                                    </article>
-                                </details>
+                <ul className="space-y-4">
+                    {faq?.map((faqlist) => {
+                        const isOpen = openQuestion === faqlist._id;
+
+                        return (
+                            <li key={faqlist._id} className="rounded-lg shadow-lg bg-white dark:bg-gray-800 transition-all">
+                                <button
+                                    onClick={() => toggleAccordion(faqlist._id)}
+                                    className="w-full flex items-center justify-between px-6 py-5 text-left font-medium border border-gray-200 text-gray-900 dark:bg-red-50 dark:text-black hover:bg-gray-100 dark:hover:bg-gray-50 rounded-lg transition-all"
+                                >
+                                    <span className="text-lg">
+                                        {t(`faqs.${faqlist.question.replace(/\s+/g, "_").toLowerCase()}`)}
+                                    </span>
+                                    <svg
+                                        className={`w-6 h-6 text-primary transform transition-transform ${isOpen ? "rotate-180" : "rotate-0"
+                                            }`}
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        viewBox="0 0 20 20"
+                                        fill="currentColor"
+                                    >
+                                        <path
+                                            fillRule="evenodd"
+                                            d="M5.23 7.21a.75.75 0 011.06 0L10 10.94l3.71-3.73a.75.75 0 111.06 1.06l-4.24 4.25a.75.75 0 01-1.06 0L5.23 8.27a.75.75 0 010-1.06z"
+                                            clipRule="evenodd"
+                                        />
+                                    </svg>
+                                </button>
+
+                                <div
+                                    className={`overflow-hidden dark:bg-red-50 transition-all duration-300 ${isOpen ? "max-h-40 opacity-100 py-4 px-6" : "max-h-0 opacity-0"
+                                        }`}
+                                >
+                                    <p className="text-gray-700 dark:text-black text-md">
+                                        {t(`faqs.${faqlist.answer.replace(/\s+/g, "_").toLowerCase()}`)}
+                                    </p>
+                                </div>
                             </li>
-                        ))}
-                    </ul>
-                </div>
-
+                        );
+                    })}
+                </ul>
             </div>
         </div>
     );
 };
+
 
 FaqAccordion.Skeleton = function () {
     return (

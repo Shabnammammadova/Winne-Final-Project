@@ -82,6 +82,19 @@ export enum ReviewStatus {
     Approved = "approved",
     Rejected = "rejected",
 }
+// export type Order = {
+//     createdAt: string;
+//     id: string;
+//     product: Product | string;
+//     startDate: string;
+//     endDate: string;
+//     status: OrderStatus;
+//     total: number;
+//     updatedAt: string;
+//     user: string;
+//     _id: string;
+//     hasReview: boolean
+// }
 export type Order = {
     createdAt: string;
     id: string;
@@ -93,8 +106,10 @@ export type Order = {
     updatedAt: string;
     user: string;
     _id: string;
-    hasReview: boolean
+    hasReview: boolean;
+    paymentIntentId: string;
 }
+
 export enum OrderStatus {
     Pending = "pending",
     Approved = "approved",
@@ -118,4 +133,10 @@ export type Message = {
     conversation: string | Conversation;
     createdAt: string;
     updatedAt: string;
+}
+
+
+export type CartItem = {
+    productId: Product;
+    quantity: number;
 }

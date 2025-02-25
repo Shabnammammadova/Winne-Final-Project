@@ -8,6 +8,7 @@ export const QUERY_KEYS = {
     USER_CONVERSATION: "userConversation",
     ADMIN_CONVERSATIONS: "adminConversations",
     ADMIN_CHAT: "adminChat",
+    ADMIN_ORDERS: "adminOrders",
     CATEGORIES: "categories",
     WINE_LIST: "wineList",
     WINE_DETAIL: "wineDetail",
@@ -17,5 +18,7 @@ export const QUERY_KEYS = {
     WISHLIST: "wishList",
     SHOP: "shop",
     ADD_WISHLIST: "addWishlist",
-    ORDERS: "orders"
+    ORDERS: "orders",
+    BASKET: "basket",
+    REVIEW: "review"
 }

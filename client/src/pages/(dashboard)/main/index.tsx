@@ -13,7 +13,6 @@ const DashboardMainPage = () => {
                             Welcome <strong className="text-primary">Dash</strong>
                         </h2>
                     </div>
-
                     <div className="flex-1 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded-xl p-8 shadow-lg transition-transform duration-300  flex flex-col justify-between">
                         <div>
                             <h2 className="text-4xl md:text-5xl text-gray-900 dark:text-white font-bold">
@@ -39,7 +38,7 @@ const DashboardMainPage = () => {
                     { label: "Servers a week", value: "4.9K", icon: FaServer }].map((stat, index) => (
                         <div
                             key={index}
-                            className="bg-white dark:bg-gray-800 rounded-xl shadow-xl p-6 h-64 transition-transform duration-300 hover:scale-105 flex flex-col items-center justify-center text-center">
+                            className="bg-white dark:bg-gray-800 rounded-xl shadow-xl p-6 h-64 flex flex-col items-center justify-center text-center">
                             <stat.icon className="text-primary dark:text-indigo-400 text-4xl mb-4" />
                             <dt className="text-lg font-medium text-gray-500 dark:text-gray-400">{stat.label}</dt>
                             <dd className="mt-2 text-4xl font-bold text-primary dark:text-indigo-400">{stat.value}</dd>

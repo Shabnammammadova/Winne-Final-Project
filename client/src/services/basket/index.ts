@@ -5,7 +5,7 @@ import { GetAddBasket, GetAllBasketResponseType, GetUpdateBasketResponseType } f
 const getAll = async () => {
     return await axiosInstance.get<GetAllBasketResponseType>("/basket");
 };
-const add = async (payload: { userId: string, productId: string }) => {
+const add = async (payload: { userId: string, productId: string, quantity: number }) => {
     try {
         return await axiosInstance.post<GetAddBasket>("/basket/add", payload)
     } catch (error) {

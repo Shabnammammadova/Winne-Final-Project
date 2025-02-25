@@ -1,14 +1,19 @@
 import { Review as TReview } from "@/types"
 import { Review } from "./Review"
 
-
-
 type Props = {
     reviews: TReview[]
 }
 
 const ReviewsSection = ({ reviews }: Props) => {
-    if (reviews.length === 0) return null;
+    if (reviews.length === 0) {
+        return (
+            <div className="my-6 lg:my-8 bg-white rounded-[10px] p-5 lg:p-6 flex justify-center items-center text-center">
+                <p className="text-gray-500">No reviews found</p>
+            </div>
+        );
+    }
+
     return (
         <div className="my-6 lg:my-8 bg-white rounded-[10px] p-5 lg:p-6">
             <div className="flex items-center gap-x-3">
@@ -25,8 +30,7 @@ const ReviewsSection = ({ reviews }: Props) => {
                 }
             </div>
         </div>
-
-    )
+    );
 }
 
-export default ReviewsSection
+export default ReviewsSection;

@@ -71,7 +71,7 @@ app.use("/basket", basketRoutes)
 app.use("/review", reviewRoutes)
 app.use("/conversation", conversationRoutes)
 app.use("/checkout", checkoutRoutes);
-app.use("/webhook", webhookRoute);
+app.use("/api/stripe", webhookRoute);
 app.use("/public",
     express.static(path.join(__dirname, "../public"))
 )
@@ -92,3 +92,4 @@ async function connecToDb() {
 connecToDb()
     .then(() => console.log("Connected to database"))
     .catch((err) => console.log(err));
+

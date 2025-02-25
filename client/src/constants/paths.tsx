@@ -46,5 +46,8 @@ export const paths = {
             VIEW: "/dashboard/chat",
             USER: (id = ":id") => `/dashboard/chat/${id}`
         },
+        ORDER: {
+            LIST: "/dashboard/orders"
+        }
     }
 }

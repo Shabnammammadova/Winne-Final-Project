@@ -81,10 +81,10 @@ export function SearchSide() {
     const products = wineList?.data.items;
 
     return (
-        <div className="transition-all mr-[13px]">
+        <div className="mr-[13px]">
             <Sheet open={open} onOpenChange={setOpen}>
                 <SheetTrigger asChild>
-                    <Search className="transition-all" />
+                    <Search className="" />
                 </SheetTrigger>
                 <SheetContent className="bg-white dark:bg-black">
                     <SheetHeader className="flex flex-col items-center justify-center w-full max-w-[600px] mx-auto">

@@ -46,7 +46,7 @@ export function ShoppingCart({ basket, setBasket }: Props) {
 
     const handleCheckout = async () => {
         try {
-            console.log("Basket before checkout:", basket);
+            console.log("Basket checkout:", basket);
 
             const response = await fetch(`${import.meta.env.VITE_APP_API_BASE_URL}/checkout`, {
                 method: "POST",
@@ -55,14 +55,13 @@ export function ShoppingCart({ basket, setBasket }: Props) {
             });
 
             const data = await response.json();
-            console.log("Response from API:", data);
+            console.log("API-data", data);
 
             const { sessionId, order } = data;
 
             if (order) {
-                console.log("Order received:", order);
+                console.log(order);
                 queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.ORDERS] });
-
             }
 
             const stripe = await getStripe();
@@ -76,8 +75,6 @@ export function ShoppingCart({ basket, setBasket }: Props) {
             console.error(error);
         }
     };
-
-
 
 
     return (
@@ -134,8 +131,8 @@ export function ShoppingCart({ basket, setBasket }: Props) {
                                                                 className="w-[80px] h-[100px] cursor-pointer"
                                                             />
                                                             <div className="flex flex-col gap-2 pl-2">
-                                                                <p className="hover:text-red-800 transition-all duration-300">
-                                                                    {winebasket.productId.name}
+                                                                <p className="hover:text-red-800 transition-all duration-300 capitalize">
+                                                                    {t(`products.${winebasket.productId.name.replace(/\s+/g, "_").toLowerCase()}`)}
                                                                 </p>
                                                                 <p className="text-black transition-all duration-300 dark:text-white">
                                                                     QTY: {winebasket.quantity}
