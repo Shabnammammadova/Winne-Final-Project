@@ -19,16 +19,12 @@ import { Order, OrderStatus, Product } from "@/types";
 import { calculateDateDifference, formatDate } from "@/lib/utils";
 
 const OrderPage = () => {
-    const { data: orderlist, isLoading, isError } = useQuery({
+    const { data: orderlist, isError } = useQuery({
         queryKey: [QUERY_KEYS.ORDERS],
         queryFn: orderService.getAll
     });
 
-    if (isLoading) {
-        return (
-            <Spinner />
-        )
-    }
+
 
     if (isError) {
         return <div>Error...</div>

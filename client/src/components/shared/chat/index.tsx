@@ -136,7 +136,7 @@ export const HelpPopover = () => {
                             <div className="pt-2">
                                 <form onSubmit={handleSubmit} className="flex items-center space-x-2">
                                     <input ref={inputRef}
-                                        className="flex-1 h-9 rounded-md border px-3 py-1 text-sm placeholder-gray-400 focus:ring-2 focus:ring-gray-300"
+                                        className="flex-1 h-9 rounded-md border px-3 py-1 text-sm placeholder-gray-400 focus:ring-2 focus:ring-gray-300 dark:text-black"
                                         placeholder="Type your message" />
                                     <button className="bg-black dark:bg-white dark:text-black text-white rounded-md px-4 py-1 h-9">Send</button>
                                 </form>

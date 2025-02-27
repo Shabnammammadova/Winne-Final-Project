@@ -19,10 +19,10 @@ export const Footer = () => {
                             <button type="submit" className=" absolute  top-0 right-0 bg-black text-white dark:text-black dark:bg-primary dark:hover:bg-primary  w-[40px] h-[40px] flex items-center justify-center hover:bg-primary"><img src={Message} alt="" className="w-[15px] h-[12px] !text-white !fill-white" /></button>
                         </div>
                         <div className="flex items-center gap-3 mt-[30px] cursor-pointer">
-                            <Twitter className="mr-[.5rem] text-black dark:text-white w-[15px] h-4 fill-black hover:text-red-800 hover:fill-red-800" />
-                            <Dribbble className="mr-[.5rem] text-black dark:text-white w-[15px] h-4 hover:text-red-800" />
-                            <Youtube className="mr-[.5rem] text-black dark:text-white w-[15px] h-4 hover:text-red-800" />
-                            <Instagram className="mr-[.5rem] text-black dark:text-white w-[15px] h-4 hover:text-red-800" />
+                            <Twitter className="mr-[.5rem] text-black dark:text-white w-[15px] h-4 fill-black hover:text-red-800 hover:fill-red-800 dark:hover:fill-red-800 dark:hover:text-red-800" />
+                            <Dribbble className="mr-[.5rem] text-black dark:text-white w-[15px] h-4 hover:text-red-800 dark:hover:text-red-800" />
+                            <Youtube className="mr-[.5rem] text-black dark:text-white w-[15px] h-4 hover:text-red-800 dark:hover:text-red-800" />
+                            <Instagram className="mr-[.5rem] text-black dark:text-white w-[15px] h-4 hover:text-red-800 dark:hover:text-red-800" />
                         </div>
                     </div>
                     <div className="2xs:flex-col 2xs:items-center 2xs:justify-center 2xs:gap-y-20 lg:flex-row flex w-full">

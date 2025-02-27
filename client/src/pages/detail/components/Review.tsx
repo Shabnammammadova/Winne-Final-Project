@@ -4,14 +4,14 @@ import { Review as TReview } from "@/types";
 import { User2Icon } from "lucide-react"
 
 type Props = {
-    review: TReview | null; // Allowing review to be null
+    review: TReview | null;
 }
 
 export const Review = ({ review }: Props) => {
 
     if (!review) {
         return (
-            <div className="text-center text-lg text-secondary-500 mt-5">
+            <div className="text-center text-lg text-secondary-500 mt-5 border border-b-gray-200 p-3">
                 <p className="font-semibold text-2xl">No review found.</p>
             </div>
         );

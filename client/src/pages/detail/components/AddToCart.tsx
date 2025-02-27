@@ -89,7 +89,7 @@ export const AddToCart = ({ updateBasket, productId }: Props) => {
                 >
                     {t("add to cart")}
                 </button>
-                <button className="w-full h-[55px] mt-5 text-white bg-black font-semibold text-sm uppercase hover:bg-primary transition-all duration-300 dark:bg-primary">
+                <button className="w-full h-[55px] mt-5 text-white bg-black font-semibold text-sm uppercase hover:bg-primary transition-all duration-300 dark:bg-white dark:text-black dark:hover:bg-primary dark:hover:text-white">
                     {t("buy it now")}
                 </button>
             </div>

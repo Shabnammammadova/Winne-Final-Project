@@ -16,7 +16,7 @@ export function Delivery() {
             </DialogTrigger>
             <DialogContent className="sm:max-w-[1000px]">
                 <DialogHeader>
-                    <DialogTitle className="text-lg font-semibold text-black mb-2">{t("Delivery")}</DialogTitle>
+                    <DialogTitle className="text-lg font-semibold text-black mb-2 dark:text-white">{t("Delivery")}</DialogTitle>
                     <div className="flex flex-col gap-2 text-gray-500">
                         <p>{t("All orders shipped with UPS Express.")}</p>
                         <p>{t("Always free shipping for orders over US $250.")}</p>
