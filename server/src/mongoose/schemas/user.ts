@@ -55,7 +55,7 @@ const userSchema = new Schema({
     ],
     basket: [
         {
-            product: {
+            productId: {
                 type: Schema.Types.ObjectId,
                 ref: "Product",
                 required: true,
@@ -65,6 +65,12 @@ const userSchema = new Schema({
                 default: 1,
                 min: 1,
             }
+        }
+    ],
+    orders: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: "Order",
         }
     ],
     createdAt: {

@@ -12,6 +12,8 @@ export const paths = {
     BLOGS: "/blog",
     BLOGDETAIL: (id = ":id") => `/blog/detail/${id}`,
     WISHLIST: "/wishlist",
+    ORDERS: "/orders",
+    PAYMENT: (id = ":id") => `/payment/${id}`,
     LIST: "/list",
     DETAIL: (id = ":id") => `/wine/detail/${id}`,
     SUCCESS: "/success",

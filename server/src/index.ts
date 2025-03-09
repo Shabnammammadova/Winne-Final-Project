@@ -22,7 +22,7 @@ import basketRoutes from "./routes/basket"
 import reviewRoutes from "./routes/review"
 import conversationRoutes from "./routes/conversation"
 import checkoutRoutes from "./routes/checkout"
-import webhookRoute from "./routes/webhook";
+import paymentRoute from "./routes/payment";
 import path from "path";
 import { connectSocket } from "./socket";
 
@@ -71,7 +71,7 @@ app.use("/basket", basketRoutes)
 app.use("/review", reviewRoutes)
 app.use("/conversation", conversationRoutes)
 app.use("/checkout", checkoutRoutes);
-app.use("/api/stripe", webhookRoute);
+app.use("/api/payment", paymentRoute);
 app.use("/public",
     express.static(path.join(__dirname, "../public"))
 )

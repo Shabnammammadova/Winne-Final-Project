@@ -127,7 +127,7 @@ export const HelpPopover = () => {
 
                         <RenderIf condition={!!conversationData}>
                             <div ref={wrapperRef}
-                                className="pr-3 h-[250px] overflow-y-auto space-y-3">
+                                className="pr-3 h-[250px] overflow-y-auto space-y-3 text-black">
                                 {messages.map((message, index) => (
                                     <MessageItem key={index} owner={message.userId === userId ? "You" : "Admin"} message={message.text} />
                                 ))}

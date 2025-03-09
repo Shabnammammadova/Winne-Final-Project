@@ -5,57 +5,52 @@ const orderSchema = new Schema({
     product: {
         type: Types.ObjectId,
         ref: "Product",
-        required: true
+        required: true,
     },
     customer: {
         type: Types.ObjectId,
-        required: true,
+        ref: "User",
     },
     payment: {
         type: String,
+        enum: ["pending", "completed", "failed"],
+        default: "pending",
     },
     user: {
         type: Types.ObjectId,
         ref: "User",
-        required: true
+        required: true,
     },
     startDate: {
         type: Date,
-        required: true
+        required: true,
     },
     endDate: {
         type: Date,
-        required: true
+        required: true,
     },
     total: {
         type: Number,
-        required: true
+        required: true,
     },
     status: {
         type: String,
-        enum: ["pending",
-            "approved", "rejected", "cancelled"],
-        default: "pending"
+        enum: ["pending", "approved", "rejected", "cancelled"],
+        default: "pending",
     },
     hasReview: {
         type: Boolean,
         default: false,
     },
-    createdAt: {
-        type: Date,
-        default: Date.now
-    },
-    updatedAt: {
-        type: Date,
-        default: Date.now
-    }
+}, {
+    timestamps: true,
 });
 
 orderSchema.set("toJSON", {
     virtuals: true,
     transform: (doc, ret) => {
         delete ret.__v;
-    }
-})
+    },
+});
 
 export default mongoose.model("Order", orderSchema);

@@ -15,7 +15,7 @@ import { HelpPopover } from "../shared/chat/index"
 const RootLayout = () => {
     const dispatch = useAppDispatch();
     const location = useLocation()
-    const { t, i18n } = useTranslation()
+    const { i18n } = useTranslation()
     useEffect(() => {
         const changeLanguage = async () => {
             await i18n.changeLanguage(navigator.language);

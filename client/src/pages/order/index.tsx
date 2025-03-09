@@ -4,19 +4,18 @@ import { Button } from "@/components/ui/button";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 import { QUERY_KEYS } from "@/constants/query-keys"
 
-
-import reviewService from "@/services/review";
-
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query"
-import { useRef, useState } from "react";
-import { toast } from "sonner";
+
 
 //@ts-ignore
 import ReactStars from "react-rating-stars-component"
 import orderService from "@/services/order";
 import { Spinner } from "@/components/shared/Spinner";
 import { Order, OrderStatus, Product } from "@/types";
-import { calculateDateDifference, formatDate } from "@/lib/utils";
+import { useRef, useState } from "react";
+import reviewService from "@/services/review";
+import { toast } from "sonner";
+
 
 const OrderPage = () => {
     const { data: orderlist, isError } = useQuery({
@@ -31,7 +30,7 @@ const OrderPage = () => {
     }
 
 
-    const items = orderlist?.data || []
+    const items = orderlist?.data.items || []
     console.log("orderitems", items);
 
 
@@ -76,13 +75,10 @@ const OrderCard = ({ order }: { order: Order }) => {
                     <div className="ml-4">
                         <div className="flex items-center gap-x-4">
                             <h2 className="text-lg font-semibold">{product.name}</h2>
-                            <p className="text-xs text-gray-400 translate -y-0.5">
-                                {formatDate(order.startDate)} -{""} {formatDate(order.endDate)}
-                            </p>
+
                         </div>
 
-                        <p className="text-muted-foreground">{product.price}
-                            <span className="text-sm">{product.currency}</span>x{""}{calculateDateDifference(order.startDate, order.endDate)} days</p>
+
                     </div>
                 </div>
                 <div className="absolute right-3 top-3">
@@ -104,7 +100,7 @@ const OrderCard = ({ order }: { order: Order }) => {
                             <RenderIf condition={isPending}>
                                 <Spinner />
                             </RenderIf>
-                            Cancel Reservation
+                            Cancel Order
                         </Button>
                     </div>
                 </RenderIf>

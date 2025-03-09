@@ -13,6 +13,11 @@ export enum UserRole {
     Admin = "admin",
     User = "user",
 }
+export type Location = {
+    _id: string,
+    name: string,
+    createdAt: string
+}
 
 export type Product = {
     _id: string,
@@ -52,6 +57,7 @@ export type Favorite = {
 export type Basket = {
     _id: string;
     productId: {
+        _id: string,
         name: string;
         price: string;
         discount: string;
@@ -82,19 +88,6 @@ export enum ReviewStatus {
     Approved = "approved",
     Rejected = "rejected",
 }
-// export type Order = {
-//     createdAt: string;
-//     id: string;
-//     product: Product | string;
-//     startDate: string;
-//     endDate: string;
-//     status: OrderStatus;
-//     total: number;
-//     updatedAt: string;
-//     user: string;
-//     _id: string;
-//     hasReview: boolean
-// }
 export type Order = {
     createdAt: string;
     id: string;
@@ -104,7 +97,7 @@ export type Order = {
     status: OrderStatus;
     total: number;
     updatedAt: string;
-    user: string;
+    user: User | string;
     _id: string;
     hasReview: boolean;
     paymentIntentId: string;
@@ -140,3 +133,4 @@ export type CartItem = {
     productId: Product;
     quantity: number;
 }
+

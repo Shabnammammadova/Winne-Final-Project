@@ -96,3 +96,5 @@ export const AddToCart = ({ updateBasket, productId }: Props) => {
         </div>
     );
 };
+
+

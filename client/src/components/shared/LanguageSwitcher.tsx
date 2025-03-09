@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import EnFlag from "../../assets/images/united-states-of-america.png";
 import EsFlag from "../../assets/images/espano.png";
+import FrFlag from "../../assets/images/FrFlag.png";
 import { MdOutlineLanguage } from "react-icons/md";
 
 const LanguageSwitcher = () => {
@@ -9,14 +10,15 @@ const LanguageSwitcher = () => {
     const [showButtons, setShowButtons] = useState(false);
     const [selectedLanguage, setSelectedLanguage] = useState<string>("en");
 
+
     useEffect(() => {
         i18n.changeLanguage(selectedLanguage);
     }, [selectedLanguage, i18n]);
 
-    const changeLanguage = (lang: string) => {
-        localStorage.setItem("language", lang);
-        setSelectedLanguage(lang);
-        setShowButtons(false);
+    const changeLanguage = (language: string) => {
+        i18n.changeLanguage(language); // Change language in i18n
+        setSelectedLanguage(language);  // Update selected language state
+        localStorage.setItem("language", language); // Save selected language in localStorage
     };
 
     return (
@@ -43,6 +45,14 @@ const LanguageSwitcher = () => {
                     >
                         <img src={EsFlag} alt="Spanish Flag" className="w-5 h-5" />
                         ES
+                    </button>
+                    <button
+                        onClick={() => changeLanguage("fr")}
+                        className={`flex items-center justify-center gap-2 w-full text-sm font-semibold text-gray-700 px-3 py-2 rounded-md transition ${selectedLanguage === "fr" ? "bg-gray-200" : "hover:bg-gray-100"
+                            }`}
+                    >
+                        <img src={FrFlag} alt="Spanish Flag" className="w-5 h-5" />
+                        FR
                     </button>
                 </div>
             )}

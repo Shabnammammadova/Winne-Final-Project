@@ -27,6 +27,8 @@ import { Faq } from "@/pages/faq";
 import { ForgotPassword } from "@/pages/forgot-password";
 import HomePage from "@/pages/home";
 import { NotFound } from "@/pages/not-found";
+import OrderPage from "@/pages/order";
+import PaymentPage from "@/pages/payment";
 import { UserProfile } from "@/pages/profile";
 import { ResetPassword } from "@/pages/reset-password";
 import Shop from "@/pages/shop";
@@ -103,7 +105,16 @@ export const router = createBrowserRouter([
             {
                 path: "",
                 element: <AuthLayout />,
-
+                children: [
+                    {
+                        path: paths.PAYMENT(),
+                        element: <PaymentPage />
+                    },
+                    {
+                        path: paths.ORDERS,
+                        element: <OrderPage />
+                    }
+                ],
             },
             {
                 path: "",

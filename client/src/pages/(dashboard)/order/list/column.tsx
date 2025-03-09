@@ -61,7 +61,7 @@ export const columns: ColumnDef<Order>[] = [
         header: "Total",
         cell: (data) => {
             return <div className="text-secondary-500">
-                {data.row.original.total} <span className="text-secondary-300">{(data.row.original.product as Product).currency}</span>
+                {data.row.original.total}
             </div>
         }
     },

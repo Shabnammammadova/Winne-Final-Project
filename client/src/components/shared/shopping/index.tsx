@@ -6,10 +6,12 @@ import { paths } from "@/constants/paths";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import basketService from "@/services/basket";
 import { toast } from "sonner";
-import getStripe from "@/utils/stripe";
-import { QUERY_KEYS } from "@/constants/query-keys";
 import { SlBag } from "react-icons/sl";
 import { useTranslation } from "react-i18next";
+import { QUERY_KEYS } from "@/constants/query-keys";
+import getStripe from "@/utils/stripe";
+import { useAppSelector } from "@/hooks/redux";
+import { selectUserData } from "@/store/features/userSlice";
 
 type Props = {
     basket: Basket[]
@@ -24,6 +26,11 @@ export function ShoppingCart({ basket, setBasket }: Props) {
     const queryClient = useQueryClient();
     const navigate = useNavigate()
     const { t } = useTranslation()
+    const { user } = useAppSelector(selectUserData);
+
+
+    const userID = user?._id;
+
     const goToShop = () => {
         handleClose();
         navigate(paths.SHOP);
@@ -51,7 +58,7 @@ export function ShoppingCart({ basket, setBasket }: Props) {
             const response = await fetch(`${import.meta.env.VITE_APP_API_BASE_URL}/checkout`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ items: basket }),
+                body: JSON.stringify({ items: basket, userID }),
             });
 
             const data = await response.json();
@@ -75,6 +82,8 @@ export function ShoppingCart({ basket, setBasket }: Props) {
             console.error(error);
         }
     };
+
+
 
 
     return (
@@ -162,7 +171,9 @@ export function ShoppingCart({ basket, setBasket }: Props) {
                                                 onClick={handleCheckout}
                                                 className="w-full text-lg px-4 py-2 transition-all duration-300 bg-black text-white rounded hover:bg-primary dark:bg-white dark:text-black dark:hover:bg-primary dark:hover:text-white"
                                             >
+
                                                 {t("Checkout")}
+
                                             </button>
                                         </div>
                                     </div>
