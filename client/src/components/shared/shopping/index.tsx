@@ -51,9 +51,11 @@ export function ShoppingCart({ basket, setBasket }: Props) {
     }
 
 
+
     const handleCheckout = async () => {
         try {
             console.log("Basket checkout:", basket);
+
 
             const response = await fetch(`${import.meta.env.VITE_APP_API_BASE_URL}/checkout`, {
                 method: "POST",
@@ -73,8 +75,12 @@ export function ShoppingCart({ basket, setBasket }: Props) {
 
             const stripe = await getStripe();
 
+
             if (stripe && sessionId) {
                 await stripe.redirectToCheckout({ sessionId });
+
+
+                await clearBasket();
                 setBasket([]);
             }
         } catch (error) {
@@ -84,6 +90,21 @@ export function ShoppingCart({ basket, setBasket }: Props) {
     };
 
 
+    const clearBasket = async () => {
+        try {
+            const response = await fetch(`${import.meta.env.VITE_APP_API_BASE_URL}/basket/clear`, {
+                method: "DELETE",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+            });
+
+            const data = await response.json();
+            console.log("Basket cleared on backend:", data);
+        } catch (error) {
+            console.error("Error clearing the basket on backend:", error);
+        }
+    };
 
 
     return (

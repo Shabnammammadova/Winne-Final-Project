@@ -14,6 +14,7 @@ import { ScrollToTop } from "./ScrollToTop";
 import { useState } from "react";
 import { IoMenu } from "react-icons/io5";
 import { HiOutlineHome } from "react-icons/hi2"
+import { MdRateReview } from "react-icons/md";
 
 const DashboardLayout = () => {
     const { user, loading } = useAppSelector(selectUserData);
@@ -34,6 +35,7 @@ const DashboardLayout = () => {
         { name: "Blogs", icon: <TbWritingSign />, path: "/dashboard/blogs" },
         { name: "FAQs", icon: <FaQuestion />, path: "/dashboard/faqs" },
         { name: "Orders", icon: <TbShoppingBagCheck />, path: "/dashboard/orders" },
+        { name: "Review", icon: <MdRateReview />, path: "/dashboard/reviews" },
         { name: "Chat", icon: <IoChatboxEllipsesOutline />, path: "/dashboard/chat" }
     ];
 

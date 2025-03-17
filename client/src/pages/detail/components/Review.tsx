@@ -8,6 +8,12 @@ type Props = {
 }
 
 export const Review = ({ review }: Props) => {
+    console.log("Review data:", review);
+    console.log("Author:", review?.author);
+    console.log("Created At:", review?.createdAt);
+    console.log("Rating:", review?.rating);
+    console.log("Content:", review?.content);
+
 
     if (!review) {
         return (
@@ -17,8 +23,19 @@ export const Review = ({ review }: Props) => {
         );
     }
 
-    const { author, createdAt, rating, content } = review;
-    const fullName = author ? `${author.name}` : "Anonymous";
+
+    const { author, createdAt, rating, content } = review || {};
+
+    console.log("Author object:", author);
+
+    const fullName = author && typeof author === "object"
+        ? `${author.name ?? ""} ${author.surname ?? ""}`.trim() || "Anonymous"
+        : "Anonymous";
+
+    console.log("Author:", fullName);
+    console.log("Created At:", createdAt);
+    console.log("Rating:", rating);
+    console.log("Content:", content);
 
     return (
         <div className="max-w-[800px] mx-auto flex gap-x-4 mt-5">

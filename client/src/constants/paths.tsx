@@ -50,6 +50,9 @@ export const paths = {
         },
         ORDER: {
             LIST: "/dashboard/orders"
-        }
+        },
+        REVIEWS: {
+            LIST: "/dashboard/reviews"
+        },
     }
 }

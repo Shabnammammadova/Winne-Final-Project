@@ -38,9 +38,9 @@ export const UserProfile = () => {
 
     return (
         <div className="bg-gray-100 flex justify-center items-center p-4 dark:bg-black dark:text-white ">
-            <div className="bg-white w-full flex md:flex-row  2xs:flex-col gap-6 dark:bg-black dark:border border-gray-200 rounded-lg dark:text-white container ">
+            <div className="bg-white w-full flex  2xs:flex-col gap-6 dark:bg-black dark:border border-gray-200 rounded-lg dark:text-white container ">
                 <div className="p-6 bg-red-50 dark:bg-primary dark:border border-primary rounded-lg dark:text-white">
-                    <div className="text-center">
+                    <div className="text-start flex items-center">
                         <div className="relative">
                             <img
                                 src={avatarPreview}
@@ -65,7 +65,7 @@ export const UserProfile = () => {
                         </div>
                     </div>
                 </div>
-                <div className="text-2xl font-medium">
+                <div className="text-2xl font-medium mx-6">
                     <OrderPage />
                 </div>
             </div>

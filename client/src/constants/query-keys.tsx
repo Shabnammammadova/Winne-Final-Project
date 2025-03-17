@@ -9,6 +9,7 @@ export const QUERY_KEYS = {
     ADMIN_CONVERSATIONS: "adminConversations",
     ADMIN_CHAT: "adminChat",
     ADMIN_ORDERS: "adminOrders",
+    ADMIN_REVIEW: "adminReviews",
     CATEGORIES: "categories",
     WINE_LIST: "wineList",
     WINE_DETAIL: "wineDetail",

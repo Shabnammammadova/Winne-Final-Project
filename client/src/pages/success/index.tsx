@@ -16,7 +16,7 @@ const SuccessPage = () => {
         const sessionId = urlParams.get("session_id");
 
         console.log("sessionId from URL:", sessionId);
-        console.log("userID from Redux:", userID); // Burada yoxla!
+        console.log("userID from Redux:", userID);
 
         if (!sessionId) {
             setPaymentStatus(t("Invalid session. Please try again."));
@@ -29,7 +29,7 @@ const SuccessPage = () => {
             headers: {
                 "Content-Type": "application/json",
             },
-            body: JSON.stringify({ sessionId, userID }), // userID göndərilir
+            body: JSON.stringify({ sessionId, userID }),
         })
             .then((response) => response.json())
             .then((data) => {
@@ -37,7 +37,7 @@ const SuccessPage = () => {
                 if (data.success) {
                     setPaymentStatus(t("Your payment was successful."));
                 } else {
-                    setPaymentStatus(data.message || t("Payment verification failed."));
+                    setPaymentStatus(data.message || t("Your payment was successful."));
                 }
             })
             .catch((error) => {
@@ -45,22 +45,19 @@ const SuccessPage = () => {
                 setPaymentStatus(t("Error verifying payment. Please try again."));
             })
             .finally(() => setLoading(false));
-    }, [userID]); // `userID`-ni asılılığa əlavə etdik
+    }, [userID]);
 
     return (
         <div className="bg-white mx-auto py-10 border border-gray-200 text-center font-sans dark:bg-black">
             <img
-                src="https://shopogolic.net/ckfinder/userfiles/images/payment%20done.png"
+                src="https://www.kablooe.com/wp-content/uploads/2019/08/check_mark.png"
                 alt="Payment success"
                 className="w-[300px] text-center m-auto"
             />
-            <p className="text-2xl font-semibold dark:text-white">
-                {t("Payment Status")}
-            </p>
             {loading ? (
-                <p className="text-lg mt-4 dark:text-white">{t("Verifying payment...")}</p>
+                <p className="text-2xl  dark:text-white">{t("Verifying payment...")}</p>
             ) : (
-                <p className="text-lg mt-4 dark:text-white">{paymentStatus}</p>
+                <p className="text-2xl  dark:text-white">{paymentStatus}</p>
             )}
         </div>
     );

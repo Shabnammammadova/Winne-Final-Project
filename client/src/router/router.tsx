@@ -14,6 +14,7 @@ import DashboardFaqPage from "@/pages/(dashboard)/faq/list";
 import DashboardEditFaqPage from "@/pages/(dashboard)/faq/update";
 import DashboardMainPage from "@/pages/(dashboard)/main";
 import DashboardOrdersPage from "@/pages/(dashboard)/order/list";
+import DashboardReviewListPage from "@/pages/(dashboard)/review";
 import DashboardCreateWinePage from "@/pages/(dashboard)/wines/create";
 import DashboardWinesPage from "@/pages/(dashboard)/wines/list";
 import DashboardEditWinePage from "@/pages/(dashboard)/wines/update";
@@ -62,11 +63,6 @@ export const router = createBrowserRouter([
                 element: <Contact />
             },
             {
-                path: paths.PROFILE,
-                element: <UserProfile />
-
-            },
-            {
                 path: paths.FAQ,
                 element: <Faq />
             },
@@ -109,6 +105,11 @@ export const router = createBrowserRouter([
                     {
                         path: paths.PAYMENT(),
                         element: <PaymentPage />
+                    },
+                    {
+                        path: paths.PROFILE,
+                        element: <UserProfile />
+
                     },
                     {
                         path: paths.ORDERS,
@@ -183,6 +184,10 @@ export const router = createBrowserRouter([
                     {
                         path: paths.DASHBOARD.ORDER.LIST,
                         element: <DashboardOrdersPage />
+                    },
+                    {
+                        path: paths.DASHBOARD.REVIEWS.LIST,
+                        element: <DashboardReviewListPage />
                     }
                 ]
             }

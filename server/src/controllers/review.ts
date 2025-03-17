@@ -7,6 +7,10 @@ import Product from "../mongoose/schemas/product";
 const getAll = async (req: Request, res: Response) => {
     try {
         const reviews = await Review.find().populate("author").populate("product");
+        console.log("review", reviews);
+        console.log("Populated authors:", reviews.map(r => r.author));
+
+
         res.status(200).json({
             message: "Reviews fetched successfully",
             items: reviews
@@ -16,18 +20,20 @@ const getAll = async (req: Request, res: Response) => {
     }
 };
 
+
+
 const create = async (req: Request, res: Response) => {
     try {
         const user = req.user;
-        const { reservationId, productId, content, rating } = req.matchedData;
-        const reservation = await Order.findById(reservationId);
+        const { orderId, productId, content, rating } = req.matchedData;
+        const order = await Order.findById(orderId);
 
-        if (!reservation) {
-            res.status(404).json({ message: "Reservation not found" })
+        if (!order) {
+            res.status(404).json({ message: "Order not found" })
             return
         }
-        if (reservation.hasReview) {
-            res.status(400).json({ message: "Reservation already has a review" })
+        if (order.hasReview) {
+            res.status(400).json({ message: "Order already has a review" })
             return
         }
 
@@ -46,9 +52,9 @@ const create = async (req: Request, res: Response) => {
             content,
             rating
         });
-
-        reservation.hasReview = true;
-        await reservation.save();
+        // console.log("Created review:", review);
+        order.hasReview = true;
+        await order.save();
 
         product.reviews.push(review._id)
         await product.save()
@@ -90,7 +96,7 @@ const getByProductId = async (req: Request, res: Response) => {
         const { productId } = req.params;
         const reviews = await Review.find({
             product: productId, status: "approved"
-        }).populate("author")
+        }).populate("author", 'name surname avatar email')
 
         res.status(200).json({
             message: "Review fetched successfully",

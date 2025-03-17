@@ -1,5 +1,4 @@
 import { RenderIf } from "@/components/shared/RenderIf";
-
 import { Button } from "@/components/ui/button";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 import { QUERY_KEYS } from "@/constants/query-keys"
@@ -15,6 +14,7 @@ import { Order, OrderStatus, Product } from "@/types";
 import { useRef, useState } from "react";
 import reviewService from "@/services/review";
 import { toast } from "sonner";
+import { useNavigate } from "react-router-dom";
 
 
 const OrderPage = () => {
@@ -26,7 +26,7 @@ const OrderPage = () => {
 
 
     if (isError) {
-        return <div>Error...</div>
+        return <div>Not order found</div>
     }
 
 
@@ -67,18 +67,24 @@ const OrderCard = ({ order }: { order: Order }) => {
         mutate({ id: order.id })
     }
     const showReview = !order.hasReview && order.status === OrderStatus.Approved && new Date(order.endDate) < new Date()
+    const navigate = useNavigate();
     return (
-        <div className="bg-white dark:bg-black dark:text-white shadow-md rounded-lg p-4 relative">
+        <div className="bg-white  dark:text-white shadow-md rounded-lg p-4 relative font-sans">
             <div className="flex items-end justify-between">
                 <div className="flex items-center">
-                    <img src={product.images[0]} alt="" className="w-24 h-24 object-contain rounded-lg" />
+                    <img src={product.images[0]} alt="" className="w-24 h-24 object-contain rounded-lg cursor-pointer" onClick={() => navigate(`/wine/detail/${product._id}`)} />
                     <div className="ml-4">
-                        <div className="flex items-center gap-x-4">
-                            <h2 className="text-lg font-semibold">{product.name}</h2>
-
+                        <div className=" items-start flex flex-col gap-x-4">
+                            <h2 className="text-lg font-semibold text-primary">{product.name}</h2>
+                            <div className=" gap-1 text-black">
+                                <p className="text-sm  text-gray-500 line-through">
+                                    {product.discount ? `$${product.price}` : null}
+                                </p>
+                                <p className="text-sm text-black">
+                                    ${product.discount ? product.price - product.discount : product.price}
+                                </p>
+                            </div>
                         </div>
-
-
                     </div>
                 </div>
                 <div className="absolute right-3 top-3">
@@ -138,7 +144,7 @@ const WriteReview = ({ productId, orderId }: {
     const { mutate, isPending } = useMutation({
         mutationFn: reviewService.create,
         onSuccess: () => {
-            toast.success("Review submitted succesfully.It will be published soon");
+            toast.success("Review submitted succesfully.");
             queryClient.invalidateQueries({
                 queryKey: [QUERY_KEYS.ORDERS],
             })
@@ -172,7 +178,7 @@ const WriteReview = ({ productId, orderId }: {
                         activeColor="#ffd700"
                     />
                 </div>
-                <textarea ref={contentRef} placeholder="Write your review here" className="w-full h-24 border border-gray-200 rounded-lg p-2" />
+                <textarea ref={contentRef} placeholder="Write your review here" className="w-full h-24 border border-gray-200 rounded-lg p-2 text-sm" />
             </div>
             <Button disabled={isPending} onClick={onSubmitReview} size="sm" className="mt-2">
                 <RenderIf condition={isPending}>

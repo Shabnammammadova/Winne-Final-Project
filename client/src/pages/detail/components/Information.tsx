@@ -14,10 +14,12 @@ export const Information = () => {
     const handleTabClick = (tab) => {
         setActiveTab(tab);
     };
+
     const { data: review, isLoading } = useQuery({
         queryKey: [QUERY_KEYS.REVIEW],
-        queryFn: () => reviewService.getAll,
+        queryFn: () => reviewService.getAll(),
     })
+
     if (isLoading) {
         return (
             <div className="flex justify-center items-center mt-28">
@@ -26,7 +28,8 @@ export const Information = () => {
         );
     }
 
-    const reviews = review?.length
+    const reviews = review?.data?.items || []; // reviews massivini əldə et
+
     return (
         <div className="font-sans">
             <div className="flex flex-row items-center justify-center border border-solid border-t border-b">
@@ -59,9 +62,11 @@ export const Information = () => {
             </div>
             {activeTab === "description" && <History />}
             {activeTab === "information" && <Return />}
-            {activeTab === "review" && <Review review={reviews} />}
+            {activeTab === "review" && reviews.length > 0 ? (
+                reviews.map((review) => <Review key={review._id} review={review} />)
+            ) : (
+                <div>No reviews available.</div>
+            )}
         </div>
     );
 };
-
-

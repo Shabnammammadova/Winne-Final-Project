@@ -76,11 +76,10 @@ export type Review = {
     author: User;
     content: string;
     createdAt: string;
-    id: string;
+    _id: string;
     rating: number;
     product: Product;
     status: ReviewStatus;
-    _id: string
 }
 
 export enum ReviewStatus {

@@ -32,11 +32,24 @@ const remove = async (productId: string) => {
     }
 };
 
+
+const removeAll = async (userId: string) => {
+    try {
+        const response = await axiosInstance.delete(`/basket/clear/${userId}`);
+        return response;
+    } catch (error) {
+        console.error("Error clearing basket:", error);
+        throw error;
+    }
+};
+
+
 const basketService = {
     getAll,
     add,
     update,
-    remove
+    remove,
+    removeAll
 };
 
 export default basketService;

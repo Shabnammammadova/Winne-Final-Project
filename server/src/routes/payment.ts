@@ -47,6 +47,20 @@ router.post("/verify", async (req: any, res: any) => {
             }
 
             const productId = new mongoose.Types.ObjectId(productData.productId);
+
+
+            const existingOrder = await Order.findOne({
+                user: session.metadata.userID,
+                product: productId,
+                payment: "completed",
+            });
+
+            if (existingOrder) {
+                // console.log("existingorder:", existingOrder);
+                continue;
+            }
+
+            // console.log(" new order", productData);
             const newOrder = new Order({
                 user: session.metadata.userID,
                 product: productId,
@@ -59,6 +73,7 @@ router.post("/verify", async (req: any, res: any) => {
 
             orders.push(newOrder);
             await newOrder.save();
+
 
             const existingItem = user.basket.find(item => item.productId?.toString() === productId.toString());
             if (existingItem) {
@@ -77,8 +92,7 @@ router.post("/verify", async (req: any, res: any) => {
         });
 
         await user.save();
-        console.log("✅ Fixed basket with missing productId:", user.basket);
-
+        // console.log("✅ Fixed basket with missing productId:", user.basket);
 
         res.json({ success: true, message: "Orders verified and saved", orders });
     } catch (error) {
