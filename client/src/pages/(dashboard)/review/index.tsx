@@ -2,7 +2,6 @@ import { useQuery } from "@tanstack/react-query"
 import { columns } from "./column"
 import { DataTable } from "./data-table"
 import { QUERY_KEYS } from "@/constants/query-keys"
-
 import reviewService from "@/services/review"
 import { Spinner } from "@/components/shared/Spinner"
 

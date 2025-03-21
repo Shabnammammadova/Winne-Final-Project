@@ -26,6 +26,7 @@ export type Product = {
     createdAt: string;
     currency: string;
     discount: number;
+    quantity: number,
     category: Category;
     images: string[];
     reviews: Review[]

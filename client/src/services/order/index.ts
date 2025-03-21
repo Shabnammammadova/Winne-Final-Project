@@ -7,7 +7,6 @@ const getAll = async () => {
 }
 
 
-
 const create = async (data: CreateOrderRequestPayload) => {
     return await axiosInstance.post("/order", data)
 }
@@ -18,7 +17,7 @@ const changeStatus = async (data: ChangeStatusRequestPayload) => {
     })
 }
 const cancel = async (data: { id: string }) => {
-    return await axiosInstance.patch(`/reservation/${data.id}/cancel`);
+    return await axiosInstance.patch(`/order/${data.id}/cancel`);
 };
 
 const orderService = { create, getAll, changeStatus, cancel }

@@ -188,7 +188,7 @@ const update = async (req: Request, res: Response) => {
         category.products.push(product._id);
         await category.save();
         if (data.name) product.name = data.name;
-        if (data.category) product.category = data.category;
+        if (data.categoryId) product.category = data.categoryId;
         if (data.price) product.price = data.price;
         if (data.discount) product.discount = data.discount;
         if (data.images) product.images = data.images;

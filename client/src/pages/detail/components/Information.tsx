@@ -28,7 +28,7 @@ export const Information = () => {
         );
     }
 
-    const reviews = review?.data?.items || []; // reviews massivini əldə et
+    const reviews = review?.data?.items || [];
 
     return (
         <div className="font-sans">
@@ -62,11 +62,14 @@ export const Information = () => {
             </div>
             {activeTab === "description" && <History />}
             {activeTab === "information" && <Return />}
-            {activeTab === "review" && reviews.length > 0 ? (
-                reviews.map((review) => <Review key={review._id} review={review} />)
-            ) : (
-                <div>No reviews available.</div>
+            {activeTab === "review" && (
+                reviews.length > 0 ? (
+                    reviews.map((review) => <Review key={review._id} review={review} />)
+                ) : (
+                    <div className="text-center mt-4 text-lg">No reviews available.</div>
+                )
             )}
+
         </div>
     );
 };

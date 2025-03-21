@@ -74,7 +74,7 @@ const create = async (req: Request, res: Response) => {
         const dateCount = calculateDateDifference(startDate, endDate);
 
 
-        const total = totalPrice || dateCount * product.price;
+        const total = totalPrice || (dateCount * product.price);
 
 
         const order = new Order({

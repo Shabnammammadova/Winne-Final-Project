@@ -83,7 +83,7 @@ export const columns: ColumnDef<Review>[] = [
                 status: ReviewStatus.Approved | ReviewStatus.Rejected
             ) {
                 mutate({
-                    id: data.row.original.id,
+                    id: data.row.original._id,
                     status,
                 });
             }
@@ -98,8 +98,7 @@ export const columns: ColumnDef<Review>[] = [
                             <DropdownMenuSeparator />
                             <RenderIf
                                 condition={
-                                    status === ReviewStatus.Pending ||
-                                    status === ReviewStatus.Rejected
+                                    status === ReviewStatus.Pending
                                 }
                             >
                                 <DropdownMenuItem

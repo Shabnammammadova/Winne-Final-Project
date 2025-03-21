@@ -15,6 +15,7 @@ import { useRef, useState } from "react";
 import reviewService from "@/services/review";
 import { toast } from "sonner";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 
 const OrderPage = () => {
@@ -22,7 +23,7 @@ const OrderPage = () => {
         queryKey: [QUERY_KEYS.ORDERS],
         queryFn: orderService.getAll
     });
-
+    const { t } = useTranslation()
 
 
     if (isError) {
@@ -37,7 +38,7 @@ const OrderPage = () => {
     return (
         <div className="pt-4 lg:pt-8 pb-8 lg:pb-16 flex flex-col gap-y-4 text-center mx-a">
             <h2 className="text-2xl font-semibold  dark:text-white text-black">
-                Your Orders
+                {t("Your Orders")}
             </h2>
             {
                 items.length ? (
@@ -67,6 +68,7 @@ const OrderCard = ({ order }: { order: Order }) => {
         mutate({ id: order.id })
     }
     const showReview = !order.hasReview && order.status === OrderStatus.Approved && new Date(order.endDate) < new Date()
+    const { t } = useTranslation()
     const navigate = useNavigate();
     return (
         <div className="bg-white  dark:text-white shadow-md rounded-lg p-4 relative font-sans">
@@ -75,7 +77,7 @@ const OrderCard = ({ order }: { order: Order }) => {
                     <img src={product.images[0]} alt="" className="w-24 h-24 object-contain rounded-lg cursor-pointer" onClick={() => navigate(`/wine/detail/${product._id}`)} />
                     <div className="ml-4">
                         <div className=" items-start flex flex-col gap-x-4">
-                            <h2 className="text-lg font-semibold text-primary">{product.name}</h2>
+                            <h2 className="text-lg font-semibold text-primary capitalize">{t(`products.${product.name.replace(/\s+/g, "_").toLowerCase()}`)}</h2>
                             <div className=" gap-1 text-black">
                                 <p className="text-sm  text-gray-500 line-through">
                                     {product.discount ? `$${product.price}` : null}
@@ -83,6 +85,7 @@ const OrderCard = ({ order }: { order: Order }) => {
                                 <p className="text-sm text-black">
                                     ${product.discount ? product.price - product.discount : product.price}
                                 </p>
+                                <p>{product.quantity}</p>
                             </div>
                         </div>
                     </div>
@@ -91,7 +94,7 @@ const OrderCard = ({ order }: { order: Order }) => {
                     <TooltipProvider>
                         <Tooltip>
                             <TooltipTrigger>
-                                <ReservationCardStatus status={order.status} />
+                                <OrderCardStatus status={order.status} />
                             </TooltipTrigger>
                             <TooltipContent className="capitalize bg-muted-foreground">
                                 {order.status}
@@ -119,7 +122,7 @@ const OrderCard = ({ order }: { order: Order }) => {
 }
 
 
-const ReservationCardStatus = ({ status }: { status: OrderStatus }) => {
+const OrderCardStatus = ({ status }: { status: OrderStatus }) => {
     switch (status) {
         case OrderStatus.Pending:
             return <span className="bg-yellow-500 w-3 h-3 rounded-full inline-block" />
