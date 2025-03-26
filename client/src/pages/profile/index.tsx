@@ -45,7 +45,7 @@ export const UserProfile = () => {
                             <img
                                 src={avatarPreview}
                                 alt="User Avatar"
-                                className="w-24 h-24 rounded-full mx-auto"
+                                className="w-24 h-24 rounded-full mx-auto object-cover"
                             />
                             <input
                                 id="avatar-upload"
