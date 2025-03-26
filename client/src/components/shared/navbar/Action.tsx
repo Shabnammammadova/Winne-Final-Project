@@ -31,7 +31,6 @@ export const Action = () => {
     const dispatch = useAppDispatch();
     const { t } = useTranslation();
 
-
     const { data: basketList } = useQuery({
         queryKey: [QUERY_KEYS.SHOP],
         queryFn: () => basketService.getAll()

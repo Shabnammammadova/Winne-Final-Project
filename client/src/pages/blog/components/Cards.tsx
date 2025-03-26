@@ -3,7 +3,7 @@ import MonthFormatter from "@/components/shared/MonthFormatter";
 import { Blog } from "@/types";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
-
+import VideoBackground from "../../../assets/videos/3569292-uhd_3840_2160_24fps.mp4"
 
 type Props = {
     blog: Blog[]
@@ -16,6 +16,23 @@ export const BlogCards = ({ blog }: Props) => {
 
     return (
         <div className="bg-white dark:bg-black  pb-[70px] border-b  border-gray-200">
+            <div>
+                <video
+                    width="100%"
+                    height="360"
+                    loop
+                    muted
+                    autoPlay
+                    playsInline
+                    style={{
+                        objectFit: 'cover',
+                        cursor: 'pointer'
+                    }}
+                >
+                    <source src={VideoBackground} type="video/mp4" />
+                </video>
+
+            </div>
             <div className="flex justify-center items-center flex-col font-sans">
                 <p className="text-2xl font-medium mt-5 pb-2 tracking-[1px] uppercase dark:text-white">{t("news")}</p>
                 <span className="border-red-800 border-2 w-[75px]"></span>
