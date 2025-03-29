@@ -47,7 +47,7 @@ export const HelpPopover = () => {
         if (!socket) return;
         socket.on("message", (message) => {
             setMessages((prev) => [...prev, message])
-            console.log(message);
+            // console.log(message);
 
         })
     }, [socket])
@@ -65,7 +65,7 @@ export const HelpPopover = () => {
             setMessages(conversationData.data?.item?.messages ?? [])
         }
     }, [status])
-    console.log("conversationdata", conversationData);
+    // console.log("conversationdata", conversationData);
 
     useEffect(() => {
         if (wrapperRef.current && isOpen) {

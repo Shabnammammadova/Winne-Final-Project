@@ -54,7 +54,7 @@ export function ShoppingCart({ basket, setBasket }: Props) {
 
     const handleCheckout = async () => {
         try {
-            console.log("Basket checkout:", basket);
+            // console.log("Basket checkout:", basket);
 
 
             const response = await fetch(`${import.meta.env.VITE_APP_API_BASE_URL}/checkout`, {
@@ -64,7 +64,7 @@ export function ShoppingCart({ basket, setBasket }: Props) {
             });
 
             const data = await response.json();
-            console.log("API-data", data);
+            // console.log("API-data", data);
 
             const { sessionId, order } = data;
 

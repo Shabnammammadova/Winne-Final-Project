@@ -13,7 +13,7 @@ router.patch("/:id/cancel", authorize({}), orderController.cancel)
 router.patch("/:id/change-status", authorize({ isAdmin: true }),
     validateSchema(changeStatusSchema),
     orderController.changeStatus)
-console.log(new Date());
+
 
 
 export default router

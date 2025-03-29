@@ -20,6 +20,7 @@ passport.use(
         async (accessToken, refreshToken, profile, done) => {
             try {
                 let user = await User.findOne({ googleID: profile.id });
+                console.log("profile", profile);
 
                 if (!user) {
                     const randomPassword = crypto.randomBytes(16).toString("hex");

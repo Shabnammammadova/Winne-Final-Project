@@ -18,33 +18,35 @@ passport.use(
         },
         async (accessToken: string, refreshToken: string, profile: Profile, done: any) => {
             try {
+                if (!profile.id) {
+                    return done(new Error("GitHub ID not found"));
+                }
+
                 let user = await User.findOne({ githubID: profile.id });
 
                 if (!user) {
+                    const existingEmailUser = await User.findOne({ email: profile.emails?.[0]?.value });
+
+                    if (existingEmailUser) {
+                        return done(null, existingEmailUser);
+                    }
+
                     const randomPassword = crypto.randomBytes(16).toString("hex");
                     const hashedPassword = await bcrypt.hash(randomPassword, 10);
 
-
-
-                    const defaultName = profile.displayName || "Unknown Name";
-                    const defaultEmail = profile.emails?.[0]?.value || `${profile.emails}`;
-
-
                     user = new User({
                         githubID: profile.id,
-                        name: defaultName.split(" ")[0] || "User",
-                        surname: defaultName.split(" ")[1] || "GitHub",
-                        email: defaultEmail,
+                        name: profile.displayName?.split(" ")[0] || "User",
+                        surname: profile.displayName?.split(" ")[1] || "GitHub",
+                        email: profile.emails?.[0]?.value || `github_user_${profile.id}@example.com`,
                         password: hashedPassword,
                         avatar: profile.photos?.[0]?.value,
                     });
 
                     await user.save();
                 }
-                const userObj: IUser = user.toObject();
-                delete userObj.password;
 
-                done(null, userObj);
+                done(null, user);
             } catch (error) {
                 done(error);
             }
