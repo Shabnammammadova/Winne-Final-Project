@@ -4,6 +4,7 @@ import User from "../mongoose/schemas/user";
 import { IUser } from "../types/user";
 import { transporter } from "../utils/mail";
 import crypto from "crypto";
+import { v4 } from "uuid"
 
 const login = (req: Request, res: Response) => {
     res.json({
@@ -27,7 +28,11 @@ const register = async (req: Request, res: Response) => {
         return;
     }
 
-    const newUser = new User(user);
+    const newUser = new User({
+        ...user,
+        googleID: v4(),
+        githubID: v4()
+    });
     await newUser.save();
 
     const userObj: IUser = newUser.toObject();

@@ -78,7 +78,9 @@ export const columns: ColumnDef<Review>[] = [
                 },
             });
             const status = data.row.original.status;
-
+            if (status !== ReviewStatus.Pending && status !== ReviewStatus.Approved) {
+                return null
+            }
             function handleStatusChange(
                 status: ReviewStatus.Approved | ReviewStatus.Rejected
             ) {

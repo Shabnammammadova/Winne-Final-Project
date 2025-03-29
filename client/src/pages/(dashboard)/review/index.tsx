@@ -9,7 +9,7 @@ import { Spinner } from "@/components/shared/Spinner"
 
 const DashboardReviewListPage = () => {
     const { data, isLoading, isError } = useQuery({
-        queryKey: [QUERY_KEYS.ADMIN_ORDERS],
+        queryKey: [QUERY_KEYS.ADMIN_REVIEW],
         queryFn: () => reviewService.getAll()
     })
 
